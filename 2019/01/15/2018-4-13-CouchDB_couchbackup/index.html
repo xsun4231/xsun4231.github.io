@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang=jp>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="原文 couchbackup。  前提介绍CouchBackup 是一个用来备份和还原数据的命令行工具，它只是简单的生成或者读取一个保存数据的文件，并不支持过于复杂的数据库结构，比如在数据库中插入其他文件。安装使用CouchBackup前要确认已经安装了正确版本的Node.js和CouchDB安装couchbackup的命令是：1npm install -g @cloudant/couchbac">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Couchbackup 使用方法">
+<meta property="og:url" content="https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/index.html">
+<meta property="og:site_name" content="XSUN4231">
+<meta property="og:description" content="原文 couchbackup。  前提介绍CouchBackup 是一个用来备份和还原数据的命令行工具，它只是简单的生成或者读取一个保存数据的文件，并不支持过于复杂的数据库结构，比如在数据库中插入其他文件。安装使用CouchBackup前要确认已经安装了正确版本的Node.js和CouchDB安装couchbackup的命令是：1npm install -g @cloudant/couchbac">
+<meta property="og:locale" content="jp">
+<meta property="og:updated_time" content="2019-01-15T04:45:18.806Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Couchbackup 使用方法">
+<meta name="twitter:description" content="原文 couchbackup。  前提介绍CouchBackup 是一个用来备份和还原数据的命令行工具，它只是简单的生成或者读取一个保存数据的文件，并不支持过于复杂的数据库结构，比如在数据库中插入其他文件。安装使用CouchBackup前要确认已经安装了正确版本的Node.js和CouchDB安装couchbackup的命令是：1npm install -g @cloudant/couchbac">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/public/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/public/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/public/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Couchbackup 使用方法</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/public/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/public/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/public/">ホーム</a></li>
+         
+          <li><a href="/public/about/">情報</a></li>
+         
+          <li><a href="/public/archives/">ドキュメント</a></li>
+         
+          <li><a href="/public/projects_url">プロジェクト</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/public/2019/01/15/2018-06-20-ImmediatelyInvokedFunctionException/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">次に記事</span>
+      <span id="i-next" class="info" style="display:none;">前の記事</span>
+      <span id="i-top" class="info" style="display:none;">上に戻る</span>
+      <span id="i-share" class="info" style="display:none;">シェア</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&text=Couchbackup 使用方法"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&is_video=false&description=Couchbackup 使用方法"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Couchbackup 使用方法&body=Check out this article: https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&name=Couchbackup 使用方法&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前提介绍"><span class="toc-number">1.</span> <span class="toc-text">前提介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境变量"><span class="toc-number">2.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#备份和还原"><span class="toc-number">3.</span> <span class="toc-text">备份和还原</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#备份"><span class="toc-number">3.1.</span> <span class="toc-text">备份</span></a></li></ol></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Couchbackup 使用方法
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">XSUN4231</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-01-15T04:45:18.806Z" itemprop="datePublished">2019-01-15</time>
+        
+        (Updated: <time datetime="2019-01-15T04:45:18.806Z" itemprop="dateModified">2019-01-15</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/public/categories/Tools/">Tools</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>原文 <a href="https://github.com/cloudant/couchbackup" target="_blank" rel="noopener">couchbackup</a>。</p>
+</blockquote>
+<h1 id="前提介绍"><a href="#前提介绍" class="headerlink" title="前提介绍"></a>前提介绍</h1><p>CouchBackup 是一个用来备份和还原数据的命令行工具，它只是简单的生成或者读取一个保存数据的文件，并不支持过于复杂的数据库结构，比如在数据库中插入其他文件。<br>安装使用CouchBackup前要确认已经安装了正确版本的<code>Node.js</code>和<code>CouchDB</code><br>安装couchbackup的命令是：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @cloudant/couchbackup</span><br></pre></td></tr></table></figure></p>
+<h1 id="环境变量"><a href="#环境变量" class="headerlink" title="环境变量"></a>环境变量</h1><p>设置CouchDB的URl可以使用下面的命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export COUCH_URL=http://localhost:5984</span><br></pre></td></tr></table></figure></p>
+<p>或者<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export COUCH_URL=https://myusername:mypassword@myhost.cloudant.com</span><br></pre></td></tr></table></figure></p>
+<p>指定数据库的名字可以使用以下命令：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export COUCH_DATABASE=animal_db</span><br></pre></td></tr></table></figure></p>
+<p>不过我们可以在备份还原的时候直接指定参数<code>--url</code>和<code>--db</code></p>
+<h1 id="备份和还原"><a href="#备份和还原" class="headerlink" title="备份和还原"></a>备份和还原</h1><h2 id="备份"><a href="#备份" class="headerlink" title="备份"></a>备份</h2><p>可以使用以下的指令对环境变量指定的数据库进行备份：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">couchbackup &gt; fileName.txt</span><br></pre></td></tr></table></figure></p>
+<p>也可以使用参数指定备份的数据库：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Couchbackup --db animal_db &gt; fileName.txt</span><br></pre></td></tr></table></figure></p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/public/">ホーム</a></li>
+         
+          <li><a href="/public/about/">情報</a></li>
+         
+          <li><a href="/public/archives/">ドキュメント</a></li>
+         
+          <li><a href="/public/projects_url">プロジェクト</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#前提介绍"><span class="toc-number">1.</span> <span class="toc-text">前提介绍</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#环境变量"><span class="toc-number">2.</span> <span class="toc-text">环境变量</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#备份和还原"><span class="toc-number">3.</span> <span class="toc-text">备份和还原</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#备份"><span class="toc-number">3.1.</span> <span class="toc-text">备份</span></a></li></ol></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&text=Couchbackup 使用方法"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&is_video=false&description=Couchbackup 使用方法"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Couchbackup 使用方法&body=Check out this article: https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&title=Couchbackup 使用方法"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xsun4231.github.io/2019/01/15/2018-4-13-CouchDB_couchbackup/&name=Couchbackup 使用方法&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> メニュー</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目次</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> シェア</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 上に戻る</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    著作権 &copy; 2019 XSUN
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/public/">ホーム</a></li>
+         
+          <li><a href="/public/about/">情報</a></li>
+         
+          <li><a href="/public/archives/">ドキュメント</a></li>
+         
+          <li><a href="/public/projects_url">プロジェクト</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/public/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/public/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/public/lib/jquery/jquery.min.js"></script>
+<script src="/public/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/public/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang=jp>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="“这里应该怎么设置来着？ ”   TOC{:toc}  配置propertity文件时，显示UTF-8编码的方法直接打开propertity文件的话，UTF-8编码会直接显示ASCII编码而不是文字，可以在设置里修改：File -&amp;gt; Setting -&amp;gt; Editor -&amp;gt; File Encoding下找到.propertity文件的设置，勾选transparent nativ">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Intellj IDEA使用笔记">
+<meta property="og:url" content="https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/index.html">
+<meta property="og:site_name" content="XSUN4231">
+<meta property="og:description" content="“这里应该怎么设置来着？ ”   TOC{:toc}  配置propertity文件时，显示UTF-8编码的方法直接打开propertity文件的话，UTF-8编码会直接显示ASCII编码而不是文字，可以在设置里修改：File -&amp;gt; Setting -&amp;gt; Editor -&amp;gt; File Encoding下找到.propertity文件的设置，勾选transparent nativ">
+<meta property="og:locale" content="jp">
+<meta property="og:updated_time" content="2019-01-15T04:45:18.801Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Intellj IDEA使用笔记">
+<meta name="twitter:description" content="“这里应该怎么设置来着？ ”   TOC{:toc}  配置propertity文件时，显示UTF-8编码的方法直接打开propertity文件的话，UTF-8编码会直接显示ASCII编码而不是文字，可以在设置里修改：File -&amp;gt; Setting -&amp;gt; Editor -&amp;gt; File Encoding下找到.propertity文件的设置，勾选transparent nativ">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/public/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/public/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/public/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Intellj IDEA使用笔记</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/public/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/public/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/public/">ホーム</a></li>
+         
+          <li><a href="/public/about/">情報</a></li>
+         
+          <li><a href="/public/archives/">ドキュメント</a></li>
+         
+          <li><a href="/public/projects_url">プロジェクト</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        <li><a class="icon" href="/public/2019/01/15/2018-04-26-JavaScript/"><i class="fas fa-chevron-left" aria-hidden="true" onmouseover="$('#i-prev').toggle();" onmouseout="$('#i-prev').toggle();"></i></a></li>
+        
+        
+        <li><a class="icon" href="/public/2019/01/15/2017-12-22-Eclipse/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">次に記事</span>
+      <span id="i-next" class="info" style="display:none;">前の記事</span>
+      <span id="i-top" class="info" style="display:none;">上に戻る</span>
+      <span id="i-share" class="info" style="display:none;">シェア</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&text=Intellj IDEA使用笔记"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&is_video=false&description=Intellj IDEA使用笔记"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Intellj IDEA使用笔记&body=Check out this article: https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&name=Intellj IDEA使用笔记&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置propertity文件时，显示UTF-8编码的方法"><span class="toc-number">1.</span> <span class="toc-text">配置propertity文件时，显示UTF-8编码的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Uppercase-amp-lowercase"><span class="toc-number">2.</span> <span class="toc-text">Uppercase &amp; lowercase</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Intellj IDEA使用笔记
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">XSUN4231</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2019-01-15T04:45:18.800Z" itemprop="datePublished">2019-01-15</time>
+        
+        (Updated: <time datetime="2019-01-15T04:45:18.801Z" itemprop="dateModified">2019-01-15</time>)
+        
+      
+    </div>
+
+
+      
+    <div class="article-category">
+        <i class="fas fa-archive"></i>
+        <a class="category-link" href="/public/categories/Tools/">Tools</a>
+    </div>
+
+
+      
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>“这里应该怎么设置来着？ ”</p>
+</blockquote>
+<ul>
+<li>TOC<br>{:toc}</li>
+</ul>
+<h1 id="配置propertity文件时，显示UTF-8编码的方法"><a href="#配置propertity文件时，显示UTF-8编码的方法" class="headerlink" title="配置propertity文件时，显示UTF-8编码的方法"></a>配置propertity文件时，显示UTF-8编码的方法</h1><p>直接打开propertity文件的话，UTF-8编码会直接显示ASCII编码而不是文字，可以在设置里修改：<br><code>File -&gt; Setting -&gt; Editor -&gt; File Encoding</code><br>下找到.propertity文件的设置，勾选<br><code>transparent native to ascii conversion</code></p>
+<h1 id="Uppercase-amp-lowercase"><a href="#Uppercase-amp-lowercase" class="headerlink" title="Uppercase &amp; lowercase"></a>Uppercase &amp; lowercase</h1><p>It is possible to encode non-ASCII symbols using both uppercase and lowercase hex sequences (for example, <strong>\u00E3</strong> and <strong>\u00e3</strong>). By default, only uppercase sequences are enabled. To use lowercase hex sequences, set the <code>idea.native2ascii.lowercase</code> property in the <strong>idea.properties</strong> file to <code>true</code>.</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/public/">ホーム</a></li>
+         
+          <li><a href="/public/about/">情報</a></li>
+         
+          <li><a href="/public/archives/">ドキュメント</a></li>
+         
+          <li><a href="/public/projects_url">プロジェクト</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#配置propertity文件时，显示UTF-8编码的方法"><span class="toc-number">1.</span> <span class="toc-text">配置propertity文件时，显示UTF-8编码的方法</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Uppercase-amp-lowercase"><span class="toc-number">2.</span> <span class="toc-text">Uppercase &amp; lowercase</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&text=Intellj IDEA使用笔记"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&is_video=false&description=Intellj IDEA使用笔记"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Intellj IDEA使用笔记&body=Check out this article: https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&title=Intellj IDEA使用笔记"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xsun4231.github.io/2019/01/15/2018-03-05-IntellJ_IDEA/&name=Intellj IDEA使用笔记&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> メニュー</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> 目次</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> シェア</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> 上に戻る</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    著作権 &copy; 2019 XSUN
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/public/">ホーム</a></li>
+         
+          <li><a href="/public/about/">情報</a></li>
+         
+          <li><a href="/public/archives/">ドキュメント</a></li>
+         
+          <li><a href="/public/projects_url">プロジェクト</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/public/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/public/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/public/lib/jquery/jquery.min.js"></script>
+<script src="/public/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/public/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
