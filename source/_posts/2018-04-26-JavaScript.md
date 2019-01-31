@@ -1,8 +1,7 @@
 ---
-category: JavaScript
-path: '/JavaScript/:01'
-title: 'JavaScript 基本'
-layout: nil
+title: JavaScript Memo
+date: 2018-04-26
+tags:
 ---
 
 Successes differ from errors in that their body may not be a simple response object with a code and a message. The headers however are consistent across all calls:

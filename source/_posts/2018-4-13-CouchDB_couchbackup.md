@@ -1,9 +1,7 @@
 ---
-category: Tools
-path: 'Tools/CouchDB'
-title: 'Couchbackup 使用方法'
-type: 
-layout: nil
+title: Couch Backup Memo
+date: 2018-04-13
+tags:
 ---
 
 > 原文 [couchbackup](https://github.com/cloudant/couchbackup)。
