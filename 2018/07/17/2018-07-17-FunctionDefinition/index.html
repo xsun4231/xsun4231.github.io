@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang=en>
+<head><meta name="generator" content="Hexo 3.8.0">
+    <!-- so meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="HandheldFriendly" content="True">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="description" content="需要什么，就去学什么咯。  JavaScript中定义函数，通常会遇到以下两种写法： 写法A123function name1()&amp;#123;  //...&amp;#125; 写法B123var name2 = function()&amp;#123;  // ...&amp;#125;; 这两种写法有什么区别呢？很久很久以前,stackoverflow上面有人问了一样的问题。 funciton的基本定义首先，在Ja">
+<meta name="keywords" content="JavaScript">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Define Functions in JavaScript">
+<meta property="og:url" content="https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/index.html">
+<meta property="og:site_name" content="XSUN">
+<meta property="og:description" content="需要什么，就去学什么咯。  JavaScript中定义函数，通常会遇到以下两种写法： 写法A123function name1()&amp;#123;  //...&amp;#125; 写法B123var name2 = function()&amp;#123;  // ...&amp;#125;; 这两种写法有什么区别呢？很久很久以前,stackoverflow上面有人问了一样的问题。 funciton的基本定义首先，在Ja">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-01-31T08:38:45.178Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Define Functions in JavaScript">
+<meta name="twitter:description" content="需要什么，就去学什么咯。  JavaScript中定义函数，通常会遇到以下两种写法： 写法A123function name1()&amp;#123;  //...&amp;#125; 写法B123var name2 = function()&amp;#123;  // ...&amp;#125;; 这两种写法有什么区别呢？很久很久以前,stackoverflow上面有人问了一样的问题。 funciton的基本定义首先，在Ja">
+    
+    
+        
+          
+              <link rel="shortcut icon" href="/images/favicon.ico">
+          
+        
+        
+          
+            <link rel="icon" type="image/png" href="/images/favicon-192x192.png" sizes="192x192">
+          
+        
+        
+          
+            <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+          
+        
+    
+    <!-- title -->
+    <title>Define Functions in JavaScript</title>
+    <!-- styles -->
+    <link rel="stylesheet" href="/css/style.css">
+    <!-- persian styles -->
+    
+      <link rel="stylesheet" href="/css/rtl.css">
+    
+    <!-- rss -->
+    
+    
+</head>
+
+<body class="max-width mx-auto px3 ltr">
+    
+      <div id="header-post">
+  <a id="menu-icon" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="menu-icon-tablet" href="#"><i class="fas fa-bars fa-lg"></i></a>
+  <a id="top-icon-tablet" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');" style="display:none;"><i class="fas fa-chevron-up fa-lg"></i></a>
+  <span id="menu">
+    <span id="nav">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/">Projects</a></li>
+        
+      </ul>
+    </span>
+    <br>
+    <span id="actions">
+      <ul>
+        
+        
+        <li><a class="icon" href="/2018/06/20/2018-06-20-ImmediatelyInvokedFunctionException/"><i class="fas fa-chevron-right" aria-hidden="true" onmouseover="$('#i-next').toggle();" onmouseout="$('#i-next').toggle();"></i></a></li>
+        
+        <li><a class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up" aria-hidden="true" onmouseover="$('#i-top').toggle();" onmouseout="$('#i-top').toggle();"></i></a></li>
+        <li><a class="icon" href="#"><i class="fas fa-share-alt" aria-hidden="true" onmouseover="$('#i-share').toggle();" onmouseout="$('#i-share').toggle();" onclick="$('#share').toggle();return false;"></i></a></li>
+      </ul>
+      <span id="i-prev" class="info" style="display:none;">Previous post</span>
+      <span id="i-next" class="info" style="display:none;">Next post</span>
+      <span id="i-top" class="info" style="display:none;">Back to top</span>
+      <span id="i-share" class="info" style="display:none;">Share post</span>
+    </span>
+    <br>
+    <div id="share" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/"><i class="fab fa-facebook " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&text=Define Functions in JavaScript"><i class="fab fa-twitter " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-linkedin " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&is_video=false&description=Define Functions in JavaScript"><i class="fab fa-pinterest " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Define Functions in JavaScript&body=Check out this article: https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/"><i class="fas fa-envelope " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-get-pocket " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-reddit " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-stumbleupon " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-digg " aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&name=Define Functions in JavaScript&description="><i class="fab fa-tumblr " aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+    <div id="toc">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#funciton的基本定义"><span class="toc-number">1.</span> <span class="toc-text">funciton的基本定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展"><span class="toc-number">2.</span> <span class="toc-text">扩展</span></a></li></ol>
+    </div>
+  </span>
+</div>
+
+    
+    <div class="content index py4">
+        
+        <article class="post" itemscope="" itemtype="http://schema.org/BlogPosting">
+  <header>
+    
+    <h1 class="posttitle" itemprop="name headline">
+        Define Functions in JavaScript
+    </h1>
+
+
+
+    <div class="meta">
+      <span class="author" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+        <span itemprop="name">XSUN</span>
+      </span>
+      
+    <div class="postdate">
+      
+        <time datetime="2018-07-16T15:00:00.000Z" itemprop="datePublished">2018-07-17</time>
+        
+      
+    </div>
+
+
+      
+
+      
+    <div class="article-tag">
+        <i class="fas fa-tag"></i>
+        <a class="tag-link" href="/tags/JavaScript/">JavaScript</a>
+    </div>
+
+
+    </div>
+  </header>
+  
+
+  <div class="content" itemprop="articleBody">
+    <blockquote>
+<p>需要什么，就去学什么咯。</p>
+</blockquote>
+<p>JavaScript中定义函数，通常会遇到以下两种写法：</p>
+<p>写法A<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>写法B<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这两种写法有什么区别呢？很久很久以前,<a href="https://stackoverflow.com/questions/336859/var-functionname-function-vs-function-functionname" target="_blank" rel="noopener">stackoverflow</a>上面有人问了一样的问题。</p>
+<h2 id="funciton的基本定义"><a href="#funciton的基本定义" class="headerlink" title="funciton的基本定义"></a>funciton的基本定义</h2><p>首先，在JavaScript中function的最基本定义方法是写法A，这种定义的内容在脚本被编译时就会执行，生成一个有名字的函数对象。</p>
+<p>而写法B实际上是定义了一个无名的函数对象，又将这个对象赋给了一个有名字的变量。<br>这种写法的存在，方便了我们将函数定义为对象的属性：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">target.add = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;;</span><br><span class="line">target.add(<span class="number">1</span>,<span class="number">1</span>); <span class="comment">//2</span></span><br></pre></td></tr></table></figure></p>
+<p>所以写法A定义的是一个完整的函数对象，而写法B定义的函数是没有名字的，<code>name2</code>是变量的名字，而不是函数的。</p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>其实还可以使用<code>new</code>来声明函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"return a+b;"</span>);</span><br></pre></td></tr></table></figure></p>
+<p>这里注意使用的是<code>Function</code>而不是<code>function</code>，这是具体的定义了一个<code>Function</code>类型的对象。速度慢，只有在特定情况下使用，比如想要让用户去控制函数内容的时候。</p>
+
+  </div>
+</article>
+
+
+
+        
+          <div id="footer-post-container">
+  <div id="footer-post">
+
+    <div id="nav-footer" style="display: none">
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/">Projects</a></li>
+        
+      </ul>
+    </div>
+
+    <div id="toc-footer" style="display: none">
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#funciton的基本定义"><span class="toc-number">1.</span> <span class="toc-text">funciton的基本定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#扩展"><span class="toc-number">2.</span> <span class="toc-text">扩展</span></a></li></ol>
+    </div>
+
+    <div id="share-footer" style="display: none">
+      <ul>
+  <li><a class="icon" href="http://www.facebook.com/sharer.php?u=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/"><i class="fab fa-facebook fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://twitter.com/share?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&text=Define Functions in JavaScript"><i class="fab fa-twitter fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.linkedin.com/shareArticle?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-linkedin fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://pinterest.com/pin/create/bookmarklet/?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&is_video=false&description=Define Functions in JavaScript"><i class="fab fa-pinterest fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="mailto:?subject=Define Functions in JavaScript&body=Check out this article: https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/"><i class="fas fa-envelope fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="https://getpocket.com/save?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-get-pocket fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://reddit.com/submit?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-reddit fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.stumbleupon.com/submit?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-stumbleupon fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://digg.com/submit?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&title=Define Functions in JavaScript"><i class="fab fa-digg fa-lg" aria-hidden="true"></i></a></li>
+  <li><a class="icon" href="http://www.tumblr.com/share/link?url=https://xsun4231.github.io/2018/07/17/2018-07-17-FunctionDefinition/&name=Define Functions in JavaScript&description="><i class="fab fa-tumblr fa-lg" aria-hidden="true"></i></a></li>
+</ul>
+
+    </div>
+
+    <div id="actions-footer">
+        <a id="menu" class="icon" href="#" onclick="$('#nav-footer').toggle();return false;"><i class="fas fa-bars fa-lg" aria-hidden="true"></i> Menu</a>
+        <a id="toc" class="icon" href="#" onclick="$('#toc-footer').toggle();return false;"><i class="fas fa-list fa-lg" aria-hidden="true"></i> TOC</a>
+        <a id="share" class="icon" href="#" onclick="$('#share-footer').toggle();return false;"><i class="fas fa-share-alt fa-lg" aria-hidden="true"></i> Share</a>
+        <a id="top" style="display:none" class="icon" href="#" onclick="$('html, body').animate({ scrollTop: 0 }, 'fast');"><i class="fas fa-chevron-up fa-lg" aria-hidden="true"></i> Top</a>
+    </div>
+
+  </div>
+</div>
+
+        
+        <footer id="footer">
+  <div class="footer-left">
+    Copyright &copy; 2019 XSUN
+  </div>
+  <div class="footer-middle">
+    theme made by https://github.com/probberechts/hexo-theme-cactus
+  </div>
+  <div class="footer-right">
+    <nav>
+      <ul>
+         
+          <li><a href="/">Home</a></li>
+         
+          <li><a href="/">About</a></li>
+         
+          <li><a href="/archives/">Writing</a></li>
+         
+          <li><a href="/">Projects</a></li>
+        
+      </ul>
+    </nav>
+  </div>
+</footer>
+
+    </div>
+    <!-- styles -->
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+<link rel="stylesheet" href="/lib/justified-gallery/css/justifiedGallery.min.css">
+
+    <!-- jquery -->
+<script src="/lib/jquery/jquery.min.js"></script>
+<script src="/lib/justified-gallery/js/jquery.justifiedGallery.min.js"></script>
+<script src="/js/main.js"></script>
+<!-- search -->
+
+<!-- Google Analytics -->
+
+<!-- Baidu Analytics -->
+
+<!-- Disqus Comments -->
+
+
+</body>
+</html>
