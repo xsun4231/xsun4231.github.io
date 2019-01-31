@@ -1,15 +1,10 @@
 ---
-category: Tools
-path: 'Tools/IDEA'
-title: 'Intellj IDEA使用笔记'
-type: 
-layout: nil
+title: Intellj IDEA Memo
+date: 2018-03-05
+tags:
 ---
 
 > “这里应该怎么设置来着？ ”
-
-* TOC
-{:toc}
 
 # 配置propertity文件时，显示UTF-8编码的方法
 

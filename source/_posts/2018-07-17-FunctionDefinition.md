@@ -1,15 +1,10 @@
 ---
-category: JavaScript
-path: '/JavaScript/:02'
-title: 'JavaScript中函数的定义方法'
-type: 
-layout: nil
+title: Define Functions in JavaScript
+date: 2018-07-17
+tags: JavaScript
 ---
 
 > 需要什么，就去学什么咯。
-
-* TOC
-{: toc}
 
 JavaScript中定义函数，通常会遇到以下两种写法：
 
