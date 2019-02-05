@@ -4,57 +4,20 @@ date: 2018-04-26
 tags:
 ---
 
-Successes differ from errors in that their body may not be a simple response object with a code and a message. The headers however are consistent across all calls:
-
-* `GET`, `PUT`, `DELETE` returns `200 OK` on success,
-* `POST ` returns 201 on success,
-
-When [retrieving stuff](#get-stuff) for example:
-
-```Status: 200 OK```
-```{
-    {
-        id: thing_1,
-        name: 'My first thing'
-    },
-    {
-        id: thing_2,
-        name: 'My second thing'
-    }
-}```
-
-### Error
-
-Error responses are simply returning [standard HTTP error codes](http://www.w3.org/Protocols/rfc2616/rfc2616-sec10.html) along with some additional information:
-
-* The error code is sent back as a status header,
-* The body includes an object describing both the code and message (for debugging and/or display purposes),
-
-For a call with an invalid authentication token for example:
-
-```Status: 401 Access denied```
-```{
-    code: 401,
-    message: 'Access denied: invalid authentication token.'
-}```
-
-
-
-
-# 介绍
+## 介绍
 JavaScript使用的是ECMA(European Computer Manufacturers Association)的ECMAScript标准,也就是人们常说的ES6,ES7,ES8.而JavaScript本身是网景公司(Netscape)对ES标准的一种实现,JavaScript是该公司的注册商标.(这也是前阵子苹果下架了所有名称里带JavaScript的app的原因)
 > JavaScript 是Brendan Eich用两周写出来的一种语言.所以有点设计缺陷也可以理解,比如`typeof null == "object"`
 由于浏览器确定了使用的JavaScript版本,所以写JavaScript程序时,要注意ES版本与浏览器的支持是否匹配.
 
-# 基本
-## 写在哪里
+## 基本
+### 写在哪里
 JavaScript的代码可以直接写在网页html里,也可以单独写在js文件中. 
 html里的JavaScript代码要写在 `<scrpt>` 标签内,标签的 `type` 属性不需要定义：
 ```<html>
 <head>
   <script>
     alert('Hello, World!');
-  </script>
+  </script>:
 </head>
 <body>
   ...
@@ -73,7 +36,7 @@ html里的JavaScript代码要写在 `<scrpt>` 标签内,标签的 `type` 属性�
 </html> 
 ```
 
-## 简单语法
+### 简单语法
 JavaScript每个语句以`;`结束,JavaScript的引擎会自动添加,所以这里并不强制要求,不过因为自动添加的`;`有时会造成歧义,所以手动添加还是最保险的.
 
 赋值语句
@@ -91,14 +54,14 @@ if( 1 > 0 ){
 
 另外跟Java一样,JavaScript的注释写法也是`//`和`/* */`,JavaScript也对大小写敏感.
 
-## 变量
+### 变量
 1. JavaScript是动态语言,变量的声明使用**var**,赋值使用**=**.  
-2. 使用var声明的变量其[作用域](#heading-作用域)都在函数内，而不使用var声明的变量则是全局变量.  
+2. 使用var声明的变量其[作用域](##heading-作用域)都在函数内，而不使用var声明的变量则是全局变量.  
 3. 变量名要求由大小写英文,数字,`$`和`_`组成,不可以用数字开头,也不可以使用JavaScript的关键字作为变量名.
 
-# 数据类型
+## 数据类型
 
-## 基本型
+### 基本型
 JavaScript有五种基本类型：
 * number
 * string
@@ -114,16 +77,16 @@ typeof undefined;//"undefined"
 typeof null;//"object"
 ```
 
-### 数字型 Number
+#### 数字型 Number
 JavaScript中数字型不区分整数和浮点数,正、负、整数、浮点数、NaN、Infinity都是Number型,可直接进行运算.
 > NaN: Not a Number 
 >  
 > Infinity: ∞ 无穷大
 
-### 字符串
+#### 字符串
 JavaScript中字符串可以用双引号`"`,也可以用单引号`'`来表示.
 
-### 布尔型
+#### 布尔型
 JavaScript中的布尔型由true和false构成,以及 **与,或,取反**的运算都与Java相同.
 
 >JavaScript中进行比较的时候,如果使用`==`,会自动转换类型再进行比较,不转换类型的比较则需使用三个等号`===`.  
@@ -147,15 +110,15 @@ JavaScript中的布尔型由true和false构成,以及 **与,或,取反**的运�
 > Math.abs(1/3 - (1 - 2/3)) < 0.000001; \\true
 > ```
 
-### 空值和未定义
+#### 空值和未定义
 JavaScript中类似于Java,也通过**null**来表示空值,空值与长度为零的字符串不同.JavScript同时还定义了一个表示未定义的常量**undefined**.一般在检测参数时可以用到,未输入的参数会被当做**undefined**处理.
 
-## 引用类型
+### 引用类型
 
-### 数组 Array
+#### 数组 Array
 JavaScript通过`[]`来表示数组,使用`,`来分隔元素.也可以用`new Array(1,2,3);`来定义数组.数组中的元素可以是任意的数据类型,通过索引`arr[index]`来访问.
 
-### 对象 Object
+#### 对象 Object
 JavaScript的对象是由成对的**key-value**组成的无序集合.**key**都是字符串,**value**可以是任意数据类型.
 ```JavaScript
 var person = {
@@ -173,7 +136,7 @@ person.age; // 23
 ```
 
 
-# 作用域
+## 作用域
 传统的编程语言,作用域一般是块级,也就是一个`{}`内是一个作用域,所以在`if else while for`的范围内定义的局部变量不会影响到外面.而JavaScript的作用域是函数级,一个`function`为一个作用域,在函数内部定义的变量,不受函数内部语法块的影响.
 ```JavaScript
 var x = 1; // 1
@@ -193,7 +156,7 @@ if(true){
 console.log(x);//1
 ```
 
-### 函数作用域提升
+#### 函数作用域提升
 函数声明分为：声明式 和 变量式
 
 声明式会自动将声明放在函数最前面,并执行赋值的内容.
