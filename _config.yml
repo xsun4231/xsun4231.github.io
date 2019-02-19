@@ -80,5 +80,5 @@ deploy:
   type: git
   repo: https://github.com/xsun4231/xsun4231.github.io.git
   branch: master
-  message:
+  message: Deployed from source
 
