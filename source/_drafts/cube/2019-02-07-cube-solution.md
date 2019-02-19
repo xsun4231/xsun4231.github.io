@@ -1,7 +1,10 @@
 ---
 title: cube_solution
 date: 2019-02-07 13:23:57
-tags: cube
+tags: 
+    - cube
+categories: 
+    - Rubik's Cube
 ---
 
 

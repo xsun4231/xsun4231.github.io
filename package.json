@@ -5,6 +5,9 @@
   "hexo": {
     "version": "3.8.0"
   },
+  "scripts": {
+    "test": "jest"
+  },
   "dependencies": {
     "hexo": "^3.7.0",
     "hexo-cli": "^1.1.0",
@@ -21,6 +24,10 @@
     "hexo-renderer-sass": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.1",
-    "hexo-util": "^0.6.3"
+    "hexo-util": "^0.6.3",
+    "jquery": "^3.3.1"
+  },
+  "devDependencies": {
+    "jest": "^24.1.0"
   }
 }

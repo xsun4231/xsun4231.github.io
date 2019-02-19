@@ -1,7 +1,10 @@
 ---
 title: 魔方还原入门方法
 date: 2019-02-05 22:16:36
-tags: cube
+tags: 
+    - cub
+categories: 
+    - Rubik's Cube
 ---
 
 ## 魔方的基本结构
