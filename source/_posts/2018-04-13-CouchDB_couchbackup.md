@@ -2,6 +2,7 @@
 title: Couch Backup Memo
 date: 2018-04-13
 tags:
+    - Couch DB
 ---
 
 > 原文 [couchbackup](https://github.com/cloudant/couchbackup)。
