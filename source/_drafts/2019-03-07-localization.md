@@ -72,3 +72,58 @@ type=paper
 3. `bag ?`
 4. 代码的第20行会抛出 `RuntimeException`
 
+#### 补全下面获取资源包的代码:
+```Java
+public class Flights_en extends ____ {
+    protected Object[][] ____ {
+        return new Object[0][0];
+    }
+}
+```
+
+1. `JavaResourceBundle, getContents`
+2. `JavaResourceBundle, getProperties`
+3. `ListResourceBundle, getContents`
+4. `ListResourceBundle, getProperties`
+
+#### 下面表示印度和印地语的 有效`locale`格式是：
+
+1. hi_IN
+2. HI_in
+3. in_HI
+4. IN_hi
+
+#### 下面Java代码中的`purple`会使用哪个资源文件的值：
+```Java
+Locale.setDefault(new Locale("en", "US"));
+ResourceBundle rb = ResourceBUndle.getBundle("Colors");
+rb.getString("purple");
+```
+
+1. `Colors.class`
+2. `Colors.properties`
+3. `Colors_en_US.class`
+4. `Colors_en_US.properties`
+
+#### 下面Java代码的输出结果是：
+
+```Java
+package counter;
+import java.util.*;
+public class CountResource extends ListResourceBundle {
+    private int count = 0;@
+    Override protected Object[][] getContents() {
+        return new Object[][] {
+            {
+                "count", count++
+            }
+        };
+    }
+    public static void main(String[] args) {
+        ResourceBundle rb = ResourceBundle.getBundle("counter.CountResource");
+        System.out.println(rb.getObject("count") + " " + rb.getObject("count"));
+    }
+}
+```
+
+
