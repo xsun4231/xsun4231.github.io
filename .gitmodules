@@ -1,0 +1,3 @@
+[submodule "themes/purely"]
+	path = themes/purely
+	url = https://github.com/geekrainy/hexo-theme-purely.git
