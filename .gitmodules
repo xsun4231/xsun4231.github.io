@@ -1,3 +1,6 @@
 [submodule "themes/purely"]
 	path = themes/purely
 	url = https://github.com/geekrainy/hexo-theme-purely.git
+[submodule "themes/main"]
+	path = themes/main
+	url = git@github.com:Null-PE/main.git
