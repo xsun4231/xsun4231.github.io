@@ -6,7 +6,7 @@ tags:
 
 # Ejs 文件是什么
 
-Embadded JavaScript 是一种从JavaScript快速生成html的建议模板，详细说明可以阅读说明文档 [Ejs 中文文档](https://ejs.bootcss.com)。  
+嵌入式JavaScript代码：Embadded JavaScript 是一种从JavaScript快速生成html的建议模板，详细说明可以阅读说明文档 [Ejs 中文文档](https://ejs.bootcss.com)。  
 Hexo网页使用ejs的时候，使用命令 `npm install hexo-renderer-ejs --save`， 添加ejs的支持就可以了。这里作为备忘录，简单记录一下标签的写法。
 
 ## 标签 
