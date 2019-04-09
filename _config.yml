@@ -33,7 +33,7 @@ default_layout: post
 titlecase: false # Transform title into titlecase
 external_link: true # Open external links in new tab
 filename_case: 0
-render_drafts: false
+render_drafts: true
 post_asset_folder: true #文章资源文件夹启用flag
 relative_link: false
 future: true
@@ -81,4 +81,9 @@ deploy:
   repo: https://github.com/xsun4231/xsun4231.github.io.git
   branch:
   message:
+
+
+search:
+  path: search
+  field: all
 
