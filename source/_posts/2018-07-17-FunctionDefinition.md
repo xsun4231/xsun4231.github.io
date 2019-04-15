@@ -1,7 +1,8 @@
 ---
 title: Define Functions in JavaScript
 date: 2018-07-17
-tags: JavaScript
+tags: 
+    - JavaScript
 ---
 
 > 需要什么，就去学什么咯。

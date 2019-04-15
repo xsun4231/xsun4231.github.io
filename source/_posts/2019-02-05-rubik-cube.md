@@ -3,8 +3,6 @@ title: LBL法还原魔方
 date: 2019-02-05 22:16:36
 tags: 
     - Bubik's Cube
-categories: 
-    - Rubik's Cube
 ---
 
 > 我写的东西，自己都看不懂

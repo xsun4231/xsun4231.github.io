@@ -2,6 +2,7 @@
 title: JavaScript Memo
 date: 2018-04-26
 tags:
+  - JavaScript
 ---
 
 ## 介绍

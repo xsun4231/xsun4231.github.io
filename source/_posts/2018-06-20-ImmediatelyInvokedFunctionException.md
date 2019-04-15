@@ -1,7 +1,8 @@
 ---
 title: Immediately Invoked Function Exception in JavaScript
 date: 2018-06-20
-tags: JavaScript
+tags: 
+  - JavaScript
 ---
 
 > 需要什么，就去学什么咯。
