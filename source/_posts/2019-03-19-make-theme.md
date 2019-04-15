@@ -2,6 +2,7 @@
 title: make-theme
 date: 2019-03-19 10:27:18
 tags:
+    - Hexo
 ---
 
 ## theme 结构

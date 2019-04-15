@@ -2,6 +2,8 @@
 title: jQuery-Memo
 date: 2019-03-19 14:06:56
 tags:
+    - JavaScript
+    - jQuery
 ---
 
 ## $(document).ready()

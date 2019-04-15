@@ -1,13 +1,12 @@
 ---
 title: python 中的字符串格式化
 tags:
-  - Python 3
-  - String
-  - f-strings
+  - python 
+  - f-string
 date: 2019-04-12 16:46:14
 ---
 
-> 原文： {% asset_link https://realpython.com/python-f-strings/ python-f-strings %}
+> 原文： [python-f-string](https://realpython.com/python-f-strings/)
 
 自`3.6`版本开始，python引入了一种叫做`f-strings`的写法，使用改写发可以极大地增强字符串的可读性（当然好处不止这些).
 不过在学习`f-strings`之前，先看看以往的写法都有哪些。
@@ -17,7 +16,7 @@ date: 2019-04-12 16:46:14
  1. 使用转移符 `%`
  1. 使用字符串的格式化方法 `str.format()` 
 
-### 选项1 `%`
+### 旧选项1 `%`
 跟其他编程语言一样，python也可以用`%`来把变量值插入到字符串中的对应位置。写法如下：
 ```python
 name = 'Tom'
@@ -35,7 +34,7 @@ print('Hello %s, you are a %s.this is %s, a %s' % (name1, type1, name2, type2))
 ```
 但是转移符这种东西，一个不小心就容易写错。
 
-### 选项2 `str.format()`
+### 旧选项2 `str.format()`
 从`2.6`开始，python为字符串添加了一个`format()`方法，可以将引入的参数按顺序替换到字符串中的`{}`处。例如：
 ```python
 name1 = 'Tom'
@@ -79,7 +78,7 @@ print('Hello {name}, you are a {type}.'.format(**character))
 这样可读性就非常好了，不过在`3.6`版本，更好的写法出现了。
 
 ## 新方法
-关于`f-string`的引入，可以参看{% asset_link https://www.python.org/dev/peps/pep-0498/ PEP498 %}, 或者{% https://docs.python.org/3/reference/lexical_analysis.html#f-strings Python-doc %}.  
+关于`f-string`的引入，可以参看[PEP498](https://www.python.org/dev/peps/pep-0498/), 或者[Python-doc](https://docs.python.org/3/reference/lexical_analysis.html#f-strings).  
 
 
 写法非常简单，在字符串前加`f`或者`F`，在字符串中直接插入`{变量名}`，就可以了：
@@ -90,3 +89,41 @@ print(f'Hello {name}, you are a {type}.')
 # 输出结果: 'Hello Tom, you are a cat.'
 ```
 
+在`{}`中不仅可以使用字符串，还可以使用运算公式，甚至调用方法：
+
+```python
+def change_name(input):
+    return 'Jerry'
+name = 'Tom'
+print(f"Hello {change_name(name)}.")
+# 输出结果: 'Hello Jerry.'
+```
+
+> 当使用`object`时，f-string会默认调用`__str__()`方法，如果想调用`__repr__`，需要在对象名后面加`!r`：
+ ```Python
+ f"{object}"
+ # 输出 object.__str__()的内容
+ f"{object!r}"
+ # 输出 object.__repr__()的内容
+ ```
+
+最后一个考点：换行。在python中可以使用`'''`来输出带有换行的字符串，不过直接在前面加上f的结果并不怎么好看：
+```python
+message = f'''
+Hi,
+you are a 
+Cat
+'''
+# message : '\nHi, \nyou are a \nCat\n'
+```
+
+`f-string`的换行方法是，在每行的最后添加`\`
+```python
+message = f''\
+f'Hi '\
+f'you are a '\
+f'Cat '
+# message ： 'Hi you are a Cat'
+```
+
+**注意** 一般情况下`f-string`使用单引号和双引号没有区别，但比如引用字典，需要单引号来标记key时，f-stirng就需要使用双引号了，否则字符串中的单引号会被错误理解。
