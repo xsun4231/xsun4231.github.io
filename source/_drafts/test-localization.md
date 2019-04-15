@@ -4,8 +4,6 @@ date: 2019-03-07 14:55:39
 tags:
     - Java
     - OCP Java SE8
-categories: 
-    - OCP Java SE8
 ---
 
 ## 例题
