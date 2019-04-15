@@ -1,8 +1,8 @@
 ---
 title: 关于 Lodash 函数库
 tags:
-  - lodash
-  - javascript
+  - Lodash
+  - Javascript
 date: 2019-04-05 12:04:23
 ---
 

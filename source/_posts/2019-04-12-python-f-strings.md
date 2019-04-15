@@ -1,8 +1,8 @@
 ---
 title: python 中的字符串格式化
 tags:
-  - python 
-  - f-string
+  - Python 
+  - F-string
 date: 2019-04-12 16:46:14
 ---
 

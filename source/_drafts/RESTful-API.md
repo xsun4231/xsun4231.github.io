@@ -2,7 +2,7 @@
 title: RESTful-API
 tags:
   - REST
-  - RESTful
+  - RESTful API
   - Representational State Transfer
   - Web
 date: 2019-04-12 10:55:22
