@@ -41,6 +41,23 @@ git安装完之后，打开命令行执行`git --version`看看是否可以查�
 git clone git@github.com:用户名/项目名.github.io.git
 ```
 
+
+## remote 和 local
+git管理的代码有两个地方: 
+1. 一个是**remote** 可以理解为远端，也就是指托管代码的地方，使用github时，值得也就是github服务器端
+2. 一个是**local** 直译本地，意译本地，他也就是本地的意思
+
+从远端向本地同步代码，叫做`pull` 也就是拉，将本地代码同步到远端，叫做`push` 推送，简单而形象。
+
+local不需要，当然也不能修改，因为代码就在本地. remote可以随时添加，删除或者修改，一个remote
+名称对应一个url地址，默认的remote一般是origin.
+* `git remote` 确认remote，会返回remote的名称
+* `git remote get-url remoteName` 获得remote的url
+* `git remote set-url remoteName url` 设置remote的url
+
+## branch
+
+
 ## 前方施工中。。。
 
 
