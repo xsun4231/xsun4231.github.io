@@ -49,13 +49,17 @@ git管理的代码有两个地方:
 
 从远端向本地同步代码，叫做`pull` 也就是拉，将本地代码同步到远端，叫做`push` 推送，简单而形象。
 
-local不需要，当然也不能修改，因为代码就在本地. remote可以随时添加，删除或者修改，一个remote
-名称对应一个url地址，默认的remote一般是origin.
+local值不需要，当然也不能修改，因为代码就在本地. remote的值可以随时添加，删除或者修改，remote是name和url成对设置的，一般默认的remote名是origin
 * `git remote` 确认remote，会返回remote的名称
 * `git remote get-url remoteName` 获得remote的url
 * `git remote set-url remoteName url` 设置remote的url
 
 ## branch
+无论是local还是remote, 代码通过`branch`（分支）来进行版本管理，branch可以理解成时间线，或者河流，可以分成几个分支并行前进，也可以随时汇集到一起（只要内容没有冲突）。
+可以通过`git branch`来查当前本地的分支。
+切换分支的命令为 `git checkout "branch_name"`
+常用的生成分支命令为 `git checkout -b "new_branch_name" "base_branch_name"`
+* 分支的名称不可以有空格，所以一般通过下划线连接单词，当分支名含有特殊符号比如 # 时，需要在分支名前后加 " 来防止控制台执行时的歧义。 
 
 
 ## 前方施工中。。。
