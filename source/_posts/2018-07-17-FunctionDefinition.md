@@ -1,11 +1,9 @@
 ---
-title: Define Functions in JavaScript
+title: JavaScript 两种常用的函数定义方法
 date: 2018-07-17
 tags: 
     - JavaScript
 ---
-
-> 需要什么，就去学什么咯。
 
 JavaScript中定义函数，通常会遇到以下两种写法：
 

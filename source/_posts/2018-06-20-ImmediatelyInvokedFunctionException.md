@@ -1,11 +1,9 @@
 ---
-title: Immediately Invoked Function Exception in JavaScript
+title: Immediately_Invoked_Function -- 立即调用函数的写法
 date: 2018-06-20
 tags: 
   - JavaScript
 ---
-
-> 需要什么，就去学什么咯。
 
 ## 自执行-立即调用的函数表达式
 在某些情况下，我们不需要函数创建多个实例，也不需要对返回值做什么处理，便可以通过在函数声明的后面添加`()`来实现自执行。因为`foo`仅仅是`function(){}`这个表达式的一个引用，在函数表达时候后添加`()`便可以执行。
