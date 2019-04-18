@@ -8,7 +8,7 @@ date: 2019-04-15 15:46:33
 
 首先，Git和GitHub不是一个东西。Git是一个版本管理系统，而GitHub是一个用来保存软件代码的平台。我们不妨把git看作是通讯技术，而github只是**一个**通讯服务商。也就是说除了github之外，还有很多的代码托管平台，大家都是用的git来上传下载代码，只不过github名气最大。
 
-> 为了不受各种不同的软件影响，这里说的都是通过命令行操作
+* 为了不受各种不同的软件影响，这里说的都是通过命令行操作
 
 ## 环境搭建
 首先要做的事安装`git`，下载地址在[这里](https://git-scm.com/downloads).
@@ -55,14 +55,60 @@ local值不需要，当然也不能修改，因为代码就在本地. remote的�
 * `git remote set-url remoteName url` 设置remote的url
 
 ## branch
-无论是local还是remote, 代码通过`branch`（分支）来进行版本管理，branch可以理解成时间线，或者河流，可以分成几个分支并行前进，也可以随时汇集到一起（只要内容没有冲突）。
+为了实现并行的开发，代码通过`branch`（分支）来进行管理，不妨branch理解成时间线、河流，可分成几个分支并行前进，也可以随时汇集到一起（只要内容没有冲突）。
 可以通过`git branch`来查当前本地的分支。
 切换分支的命令为 `git checkout "branch_name"`
 常用的生成分支命令为 `git checkout -b "new_branch_name" "base_branch_name"`
+使用`git branch "new_branch_name`也可以生成新的分支，不过该命令并不切换到新生成的分支.
+
 * 分支的名称不可以有空格，所以一般通过下划线连接单词，当分支名含有特殊符号比如 # 时，需要在分支名前后加 " 来防止控制台执行时的歧义。 
 
+## commit 
+如果说branch是时间线，那么commit就是时间线上的存档点。刚刚创建或者修改完的文件，在git中并不算**保存**了，如果强行修改分支，这些内容就会丢失。将修改的内容保存到branch的记录中的操作，叫做`commit（提交）`. 
 
-## 前方施工中。。。
+执行commit之前，首先需要把准备提交的文件添加到提交名单，这个操作使用 `git add` 命令。
+添加之前，可以通过`git status`命令来查看有哪些文件被修改了.
 
+这里简单的从bash颜色上区分一下，
+绿色的内容(Changes to be committed) 是已经准备好可以提交的内容，
+红色的内容(Changes not staged for commit) 是还没有添加到提交列表的修改.
 
+下面介绍几种简单常用的命令
+```
+# 将所有的修改添加到提交列表
+git add --all
+
+# 将指定文件添加到提交列表，多个文件的时候使用空格区分
+git add aaa.md
+git add bbb.md ccc.md path/ddd.md
+
+# 可以使用正规表达来指定多个文件
+git add a*.md
+git add path/\*.md
+
+```
+
+文件添加完，就可以执行commit来提交了：
+```
+# 提交的时候，commit信息是必须的，可以直接使用-m 来指定commit信息
+git commit -m "在这里输入一条commit信息"
+
+# 使用github的时候，可以在commit信息里通过 #+编号 来关联Issue，这样提交的commit可以在Issue中直接找到。
+git commit -m "#001 commmit信息"
+```
+
+## push
+将remote的最新内容同步到本地的命令是`git pull`，将本地的修改推送到remote的命令是`git push`.
+
+* 出现冲突的时候可以加上`--force`来强制推送，不过这个操作不推荐，推送代码尽可能在解决冲突之后，使用最简单流畅的`git push`
+
+推送命令的对象是分支，所以当我们推送本地创建的新分支时，需要指定一下这个分支在remote的信息：
+```
+# git push 推送命令
+# --set-upstream 告诉git 我要设置推送目的地
+# remotename 要推送到的remote名 一般是 origin
+# branch_name 推送的branch名 含有特殊字符的话要用"branch_name"
+git push --set-upstream remotename branch_name
+```
+* 无论是切换分支，还是推送的时候，如果前面命令输入正确，git bash可以补全分支名。所以多用`tab`不仅方便，还能帮忙检查一下分支名前面的命令行有没有错。
 
