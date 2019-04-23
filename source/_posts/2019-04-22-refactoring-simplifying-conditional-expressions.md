@@ -6,7 +6,7 @@ date: 2019-04-22 14:22:37
 ---
 
 
-> 原文 [publisher logo Refactoring: Improving the Design of Existing Code] Chapter 9 Simplifying Conditianal Expressions
+> 原文 [publisher logo Refactoring: Improving the Design of Existing Code](https://books.google.co.jp/books/about/Refactoring.html?id=HmrDHwgkbPsC&printsec=frontcover&source=kp_read_button&redir_esc=y#v=onepage&q&f=false) Chapter 9 Simplifying Conditianal Expressions
 
 
 ## 分离条件 - Decompose Conditional
