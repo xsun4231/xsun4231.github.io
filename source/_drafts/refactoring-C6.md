@@ -1,6 +1,7 @@
 ---
-title: refactoring-C6
+title: 代码重构 - 改善方法的结构
 tags:
-  - null
+  - Refactoring
 date: 2019-04-24 14:06:44
 ---
+
