@@ -221,7 +221,7 @@ foo = anotherObject;             // × 这个不行
 
 Java是值传递的编程语言，对于基本数据类型的值传递很好理解，对于引用类型的参数，[java基本数据类型传递与引用传递区别](https://blog.csdn.net/javazejian/article/details/51192130) 这篇文章里有个图很有助于理解
 
-{asset_img passByReference.PNG pbr}
+{% asset_img passByReference.PNG pbr %}
 方法的代码如下
 ```Java
 package com.zejian.test;
