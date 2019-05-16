@@ -1,5 +1,5 @@
 ---
-title: JavaScript Memo
+title: JavaScript 基本知识备忘录
 date: 2018-04-26
 tags:
   - JavaScript
