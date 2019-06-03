@@ -66,4 +66,181 @@ List<Complaint> litany = Collections.list(legacyLitany);
 * JavaBeans 
   * 先通过零参构造体获得一个对象，然后使用setter给属性一一赋值
 
-其实还有第三种方法可以考虑：建造者模式 -- 先生成类的一个建造者对象，把需要设置的属性值设置给建造者对象，最后执行建造者的建造方法得到一个对象。
+其实还有第三种方法可以考虑：建造者模式.  
+先使用类的必要属性获得一个该类的Builder，然后将需要的可选属性赋值给Builder，最后执行Builder的Build方法，获得所需要的对象。  
+建造者举例：
+```Java
+// Builder Pattern
+public class NutritionFacts{
+  private final int servingSize;
+  private final int servings;
+  private final int calories;
+  private final int fat;
+  private final int sodium;
+  private final int carbohydrate;
+
+  public static class Builder{
+    // Required parameters
+    private final int servingSize;
+    private final int servings;
+
+    // optional parameters 
+    // initialized to default values
+    private int calories = 0;
+    private int fat = 0;
+    private int sodium = 0;
+    private int carbohydrate = 0;
+
+    // constructor with required parameters
+    public Builder(int servingSize, int servings){
+      this.servingSize = servingSize;
+      this.servings = servings;
+    }
+
+    // methods to add optional paramters
+    // return builder instance to make it chained.
+    public Builder calories(int val){
+      calories = val;
+      return this;
+    }
+
+    public Builder fat(int val){
+      fat = val;
+      return this;
+    }
+
+    public Builder carbohydrate(int val){
+      carbohydrate = val;
+      return this;
+    }
+
+    public NutritionFacts build(){
+      return new NutritionFacts(this);
+    }
+
+  }
+
+  // constructor for building
+  private NutritionFacts(Builder builder){
+    servingSize = builder.servingSize;
+    servings = builder.servings;
+    calories = builder.calories;
+    fat = builder.fat;
+    sodium = builder.sodium;
+    carbohydrate = builder.carbohydrate;
+  }
+}
+```
+
+使用的时候就是这种效果：
+```Java
+NutritionFacts cocaCola = new NutritionFacts.Builder(240, 8)  // 新建一个Builder的instance，构造体包含必要属性   
+    .calories(100).sodium(35).carbohydrate(27)    // 对可选属性赋值
+    .build();    // 生成目标类的instance
+```
+
+###  Builder模式在继承中的使用
+首先我们创建一个抽象类Pizza，Pizza内部包含了一个静态的抽象类Builder：
+```Java
+public abstract class Pizza {
+    public enum Topping {HAM, NUSHROOM, ONION, PEPPER, SAUSAGE}
+
+    final Set<Topping> toppings;
+
+    abstract static class Builder<T extends Builder<T>> {
+        EnumSet<Topping> toppings = EnumSet.noneOf(Topping.class);
+        public T addToping(Topping topping){
+            toppings.add(Objects.requireNonNull(topping));
+            return self();
+        }
+
+        abstract Pizza build();
+
+        // Subclasses must override this method to return "this"
+        protected abstract T self();
+    }
+
+    Pizza(Builder<?> builder){
+        toppings = builder.topping.clone(); //书中说这里参看 item 50 (Make defensive copies when needed) 
+    }
+}
+```
+
+接下来写两个子类：
+```Java
+
+public class NyPizza extends Pizza {
+    public enum Size{SMALL, MEDIUM, LARGE}
+    private final Size size; // 这是NyPizza 独有的属性
+
+    public static class Builder extends Pizza.Builder<Builder> {
+        private final Size size;
+
+        // Size 是必要属性，在生成Builder的instance时设置为参数
+        public Builder(Size size){
+            this.size = Objects.requireNonNull(size);
+        }
+
+        @Override
+        public NyPizza build(){
+            return new NyPizza(this); // 返回的是Nypizza的instance
+        }
+
+        @Override
+        protected Builder self(){
+            return this;
+        }
+    }
+
+    private NyPizza(Builder builder){
+        super(builder);
+        size = builder.size;
+    }
+}
+
+public class Calzone extends Pizza {
+    private final boolean sauceInside;
+
+    public static class Builder extends Pizza.Builder<Builder> {
+        private boolean sauceInside = false; // Default
+
+        public Builder sauceInside(){
+            sauceInside = true;
+            return this;
+        }
+
+        @Override
+        public Calzone build(){
+            return new Calzone(this);
+        }
+
+        @Override
+        protected Builder self(){
+            return this;
+        }
+    }
+
+    private Calzone(Builder builder){
+        super(builder);
+        sauceInside = builder.sauceInside;
+    }
+}
+```
+
+> **covariant return type**   
+> 
+> 协变返回值类型，指子类成员函数的返回值类型不必完全等同于重写的父类中的函数返回值类型，可以是更（狭窄）的类型
+
+在使用的时候，两个子类可以使用自己的Builder来建造instance：
+```Java
+NyPizza pizza = new NyPizza.Builder(SMALL)
+    .addTopping(SAUSAGE).addTopping(ONION).build();
+Calzone calzone = new Calzone.Builder()
+    .addTopping(HAM).sauceInside().build();
+```
+
+Builder模式的一个优点是对属性的赋值可以自由设置，反复利用。比如需要生成一串序列号不同的对象的时候。  
+
+Builder模式最大的缺点就是使用的时候你必须额外穿件一个Builder对象，虽然微乎其微，但也是有时间和空间开销的。所以最好是在类有足够多（一只手数不过来的时候*此处不许用二进制来数）的属性，或者将来很有可能会添加很多的属性时，采用Builder模式来创建对象实体。
+
+
