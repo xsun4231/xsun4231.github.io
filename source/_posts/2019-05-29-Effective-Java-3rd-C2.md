@@ -1,9 +1,13 @@
 ---
-title: Effect Java 3rd Edition -- Chapter 2 对象的生成与销毁
+title: Effective Java 3rd Edition(1)
 tags:
-  - null
+  - Effective Java
+  - Static Factory
+  - Builder
 date: 2019-05-29 10:56:18
 ---
+
+对象的生成与销毁 - Creating and Destroying Objects
 
 ## Item1 使用静态工厂代替构造体
 
@@ -21,10 +25,10 @@ date: 2019-05-29 10:56:18
 
 ### 静态工厂的缺点
 
-1. 没有public或者private构造体的无法被继承
+1. 没有public或者private构造体的类无法被继承
 2. 静态工厂不如构造体显眼
 
-### 例子
+### 一些常用的静态工厂方法
 
 from 
 ```Java
@@ -66,9 +70,8 @@ List<Complaint> litany = Collections.list(legacyLitany);
 * JavaBeans 
   * 先通过零参构造体获得一个对象，然后使用setter给属性一一赋值
 
-其实还有第三种方法可以考虑：建造者模式.  
-先使用类的必要属性获得一个该类的Builder，然后将需要的可选属性赋值给Builder，最后执行Builder的Build方法，获得所需要的对象。  
-建造者举例：
+麻烦、容易写错、可读性差等等，这两种方法的缺点就不细说了。其实还有第三种方法可以考虑：建造者模式.  
+先使用类的必要属性获得一个该类的Builder，然后将需要的可选属性赋值给Builder，最后执行Builder的Build方法，获得所需要的对象。举个栗子：
 ```Java
 // Builder Pattern
 public class NutritionFacts{
@@ -239,8 +242,8 @@ Calzone calzone = new Calzone.Builder()
     .addTopping(HAM).sauceInside().build();
 ```
 
-Builder模式的一个优点是对属性的赋值可以自由设置，反复利用。比如需要生成一串序列号不同的对象的时候。  
+Builder模式的一个优点是对属性的赋值可以自由设置，builder对象可以反复利用。
 
-Builder模式最大的缺点就是使用的时候你必须额外穿件一个Builder对象，虽然微乎其微，但也是有时间和空间开销的。所以最好是在类有足够多（一只手数不过来的时候*此处不许用二进制来数）的属性，或者将来很有可能会添加很多的属性时，采用Builder模式来创建对象实体。
+Builder模式最大的缺点就是你必须额外生成一个Builder对象，虽然时间和空间的开销微乎其微，但在一些严格要求性能的场合，还是不能忽视的。所以使用Builder模式的前提是类有足够多（一只手数不过来的时候&&此处不许用二进制来数）的属性，或者将来很有可能会添加很多的属性。
 
 
