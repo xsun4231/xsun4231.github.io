@@ -37,6 +37,7 @@ render_drafts: true
 post_asset_folder: true #文章资源文件夹启用flag
 relative_link: false
 future: true
+
 highlight:
   enable: true
   line_number: true
