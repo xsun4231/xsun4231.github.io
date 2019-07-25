@@ -1,9 +1,11 @@
 ---
 title: 使用DB2的Docker镜像建立本地开发用的数据库
 tags:
-  - null
+  - Docker
+  - DB2
 date: 2019-07-23 14:36:40
 ---
+
 
 这个是2019-07-23的笔记，DB2的社区免费版授权和镜像的使用方法随时可能改变。
 
@@ -48,3 +50,5 @@ driver: db2jcc4.jar
 驱动文件可以在IBM的服务网页找到 [db2jcc4.jar](http://www-01.ibm.com/support/docview.wss?uid=swg21363866)
 
 ## 结束
+有时候会提示port无法使用，容器不能启动。先确定port50000没有被占用，如果可以使用，就重启docker。
+
