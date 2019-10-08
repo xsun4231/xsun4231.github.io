@@ -1,14 +1,10 @@
 ---
-title: <Effective Java 3rd Edition> 第二章:对象的创见与销毁
+title: '<Effective Java 3rd Edition> 第二章:对象的创见与销毁'
 tags:
-  - Effective Java
-  - Static Factory
-  - Builder
-  - Private Constructor
-  - Injection
-  - Try-with-Resource
+  - null
 date: 2019-05-29 10:56:18
 ---
+
 
 # 对象的生成与销毁 - Creating and Destroying Objects
 
