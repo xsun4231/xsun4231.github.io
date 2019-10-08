@@ -1,12 +1,12 @@
 ---
-title: OCP-checklist
+title: OCP SE8 学习笔记
 tags:
-  - Java Certification
+  - null
 date: 2019-08-05 10:47:17
 ---
 
 
-OCP Oracle Certified Professional Java Programmer II 考试要点：
+OCP Oracle Certified Professional SE8 Java Programmer II 考试要点：
 
  * {% post_link advanced-class-design  Javaクラス設計%}
  * {% post_link design-patterns-and-principles 高度なJavaクラス設計 %}

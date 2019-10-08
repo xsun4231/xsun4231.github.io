@@ -5,6 +5,7 @@ tags:
 date: 2019-08-05 10:29:26
 ---
 
+
 ## java.util.function package
 
 ## FunctionalInterface
