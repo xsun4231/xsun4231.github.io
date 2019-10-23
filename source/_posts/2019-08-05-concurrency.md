@@ -4,10 +4,8 @@ tags:
   - null
 date: 2019-08-05 10:30:11
 ---
-
-## 什么是Concurrency
-Concurrency的意思是并发性，或者并行性（日语），顾名思义指的是同时处理不同的任务。
-并发编程并不针对多核CPU，即使只有一个CPU，也可以通过分时段的线程切换来实现多个线程的并发执行。
+Concurrency的意思是并发性，或者并行性（日语），顾名思义指的是同时处理不同的任务。并发编程的核心线程，可以简单地理解成RTS游戏里的“工人“单位:一个工人同一时间只能执行一个建造任务，增加工人可以增加建造序列的数量，也可以通过给工人切换建造任务来**看起来**增加建造序列，而这里的微操，全都是由系统来控制的。
+所以，并发编程并不针对多核CPU，即使只有一个CPU，也可以通过分时段的线程切换来实现多个线程的并发执行。
 
 ## Java的基本多线程写法
 首先是线程的最基本写法。Java中有两种最基本的线程编写方法：
@@ -15,66 +13,66 @@ Concurrency的意思是并发性，或者并行性（日语），顾名思义指
 ```Java
 public class Sample{
     public static void main(String... args) {
-        ThreadA a = new ThreadA();
-        ThreadB b = new ThreadB();
-
+        WorkerA a = new WorkerA();
+        WorkerB b = new WorkerB();
+        // 这里我们有两个工人，可以同时启动两个建造任务了
         a.start();
         b.start();
     }
 }
 
-class ThreadA extends Thread {
+class WorkerA extends Thread {
+    /**
+    * 在run里写上具体要给这个工人分配的任务
+    */
+    @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            System.out.print("A " + i);
+            System.out.print("Yes, my lord. " + i);
         }
+        System.out.println("Building cpmolete.");
     }
 }
 
-class ThreadB extends Thread {
+class WorkerB extends Thread {
+    @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            System.out.print("B" + i);
+            System.out.print("了解。" + i);
         }
+        System.out.println("任務完了。");
     }
 }
 
 ```
 
-2. 实现Runnable接口。`Thread`的构造体可以接受一个Runnable的参数，所以我们也可以通过写一个实现了Runnable接口的类来生成线程。
+2. 实现Runnable接口。`Thread`的构造体可以接受一个Runnable的参数，所以我们也可以通过写一个实现了Runnable接口的类来生成线程。虽然也是在run方法中写所要执行的任务，但是实现Runnable的类是作为生成线程的参数来使用，所以我们可以理解为创建了一类工作，然后以该工作为参数创建(灵魂召唤)多个工人来执行。
 ```Java
   public class Sample {
     public static void main(String[] args) {
-        ThreadA A = new ThreadA();
-        ThreadB B = new ThreadB();
+        // 我们创建了两个同样的工人，会执行同一种建造任务，比如都去造房子（卡人口不可取）
+        Work work = new Work();
 
-        Thread a = new Thread(A);
-        Thread b = new Thread(B);
+        Thread workerA = new Thread(work);
+        Thread workerB = new Thread(work);
 
-        a.start();
-        b.start();
+        workerA.start();
+        workerB.start();
     }
 }
 
-class ThreadA implements Runnable {
+class Work implements Runnable {
     @Override
     public void run() {
         for (int i = 0; i < 10; i++) {
-            System.out.println("A " + i);
+            System.out.print("Yes, my lord. " + i);
         }
+        System.out.println("Building cpmolete.");
     }
 }
 
-class ThreadB implements Runnable {
-    @Override
-    public void run() {
-        for (int i = 0; i < 10; i++) {
-            System.out.println(" B " + i);
-        }
-    }
-}
 ```
-**Runnable的一个好处是可以使用Lambda表达式来定义**
+**Runnable最大的好处是可以使用Lambda表达式来定义**，这样我们就不必对应每一个任务都建一个类了。
 ```Java
 Thread c = new Thread(() -> {
     for (int i = 0; i < 10; i++) {
@@ -88,29 +86,29 @@ c.start();
 `java.lang`的列举型Thread.State中定义了6中线程状态：
 ```Java
 /**
-	 * A Thread which has not yet started.
-	 */
-	NEW,
-	/**
-	 * A Thread which is running or suspended.
-	 */
-	RUNNABLE,
-	/**
-	 * A Thread which is blocked on a monitor.
-	 */
-	BLOCKED, 
-	/**
-	 * A Thread which is waiting with no timeout.
-	 */
-	WAITING,
-	/**
-	 * A Thread which is waiting with a timeout.
-	 */
-	TIMED_WAITING, 
-	/**
-	 * A thread which is no longer alive.
-	 */
-	TERMINATED
+* A Thread which has not yet started.
+*/
+NEW,
+/**
+* A Thread which is running or suspended.
+*/
+RUNNABLE,
+/**
+* A Thread which is blocked on a monitor.
+*/
+BLOCKED, 
+/**
+* A Thread which is waiting with no timeout.
+*/
+WAITING,
+/**
+* A Thread which is waiting with a timeout.
+*/
+TIMED_WAITING, 
+/**
+* A thread which is no longer alive.
+*/
+TERMINATED
 ```
 
 一个线程只能由`start()`启动一次，多次启动会产生`IllegalThreadStateException`
