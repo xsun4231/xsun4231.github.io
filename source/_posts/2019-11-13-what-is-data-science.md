@@ -1,7 +1,6 @@
 ---
 title: 第一节：什么是Data Science
 tags:
-  - Data Science
   - IBM Data Science
 date: 2019-11-13 09:16:04
 ---
