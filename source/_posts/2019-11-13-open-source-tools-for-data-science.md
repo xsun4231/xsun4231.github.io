@@ -1,7 +1,6 @@
 ---
 title: 第二节：Data Science相关的开源工具
 tags:
-  - Data Science
   - IBM Data Science
 date: 2019-11-13 13:16:41
 ---
