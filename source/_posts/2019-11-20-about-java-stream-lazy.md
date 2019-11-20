@@ -21,8 +21,7 @@ Stream.of("aaa", "aa", "bbbb", "bb", "ccccc", "cc", "dddddd", "eeeeeee")
         .filter(len -> len > 3)
         .peek(System.out::println)
         .limit(2);
-```  
-
+```
 答案是：什么也不输出。因为`limit()`是个中间方法，对这个stream的操作将不会生效。  
 
 ### 执行顺序
@@ -51,6 +50,5 @@ Stream.of("aaa", "aa", "bbbb", "bb", "ccccc", "cc", "dddddd", "eeeeeee")
         .limit(2)
         .peek(System.out::println)
         .sum();
-```  
-
+```
 结果跟`forEach()`是一样的。
