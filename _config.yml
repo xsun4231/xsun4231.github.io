@@ -89,3 +89,5 @@ search:
   field: all
   content: true
 
+mathjax:
+  enable: true
