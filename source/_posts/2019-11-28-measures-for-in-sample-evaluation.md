@@ -4,6 +4,7 @@ tags:
   - Python
   - Data Science
 date: 2019-11-28 14:00:58
+mathjax: true
 ---
 
 ## 均方误差 Mean Square Error
