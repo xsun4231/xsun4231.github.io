@@ -16,3 +16,12 @@ date: 2019-12-10 11:12:39
 5. Logistic Regression
 6. Neural Networks
 7. Support Vector Machines
+
+### KNN
+
+### Decision Tree
+
+### Logistic Regression
+
+### Support Vector Machine
+
