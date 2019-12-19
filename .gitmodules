@@ -1,6 +1,3 @@
-[submodule "themes/main"]
-	path = themes/main
-	url = git@github.com:Null-PE/main.git
 [submodule "themes/theme-bmw"]
 	path = themes/theme-bmw
 	url = git@github.com:dongyuanxin/theme-bmw.git
