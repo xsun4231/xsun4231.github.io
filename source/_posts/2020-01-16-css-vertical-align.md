@@ -5,8 +5,9 @@ tags:
 date: 2020-01-16 21:09:17
 ---
 
+本来想直接把代码内嵌到markdown里，但是hexo好像不支持，残念
 
-
+```html
 <table style="width:1000px">
   <tr>
     <th></th>
@@ -27,3 +28,14 @@ date: 2020-01-16 21:09:17
     <td style="vertical-align: middle;">vertical-align: middle;</td>
   </tr>
 </table>
+```
+
+水平方向对齐：
+1. `text-align: right;`
+2. `text-align: center;`
+3. `text-align: left;`
+
+垂直方向对齐：
+1. `vertical-align: top;`
+2. `vertical-align: middle;`
+3. `vertical-align: bottom;`
