@@ -1,10 +1,10 @@
 ---
 title: AngularJS 页面载入事件的相关方法
 tags:
-  - angularjs
-  - state event
+  - null
 date: 2020-01-21 09:46:17
 ---
+
 
 AngularJS的uirouter一个重要的内容就是使用`state`的使用，这里记录一组关于`state`的事件，每当路由转移过程中发生对应事件时，都会在`$rootScrope`广播，使用`$rootScope.$on('$stateEventName', function(event, ...))`获取该事件。
 
