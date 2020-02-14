@@ -3,15 +3,15 @@
   "version": "0.0.0",
   "private": true,
   "hexo": {
-    "version": "3.8.0"
+    "version": "4.2.0"
   },
   "scripts": {
     "test": ""
   },
   "dependencies": {
     "eslint": "^6.0.1",
-    "hexo": "^3.7.0",
-    "hexo-cli": "^1.1.0",
+    "hexo": "^4.2.0",
+    "hexo-cli": "^3.1.0",
     "hexo-deployer-git": "^1.0.0",
     "hexo-filter-plantuml": "^1.0.2",
     "hexo-fs": "^1.0.2",
@@ -24,11 +24,11 @@
     "hexo-pagination": "^0.1.0",
     "hexo-renderer-ejs": "^0.3.1",
     "hexo-renderer-kramed": "^0.1.4",
-    "hexo-renderer-pug": "0.0.5",
+    "hexo-renderer-pug": "^1.0.0",
     "hexo-renderer-sass": "^0.3.2",
     "hexo-renderer-stylus": "^0.3.3",
     "hexo-server": "^0.3.1",
     "hexo-util": "^0.6.3",
-    "npm": "^6.11.2"
+    "npm": "^6.13.7"
   }
 }
