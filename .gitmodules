@@ -1,0 +1,3 @@
+[submodule "themes/yearn"]
+	path = themes/yearn
+	url = git@github.com:Youthink/hexo-themes-yearn.git
