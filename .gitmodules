@@ -1,6 +1,0 @@
-[submodule "themes/theme-bmw"]
-	path = themes/theme-bmw
-	url = git@github.com:dongyuanxin/theme-bmw.git
-[submodule "themes/maupassant"]
-	path = themes/maupassant
-	url = git@github.com:tufu9441/maupassant-hexo.git
