@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="hexo,个人博客,blog" />
+  <meta name="description" content="Null Page" />
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  <link rel="dns-prefetch" href="https://at.alicdn.com">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>关于枚举型的一些理解</title>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">XSUN</a>
+  <a class="face-img" href="/">
+    <img src="">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    关于枚举型的一些理解
+  </h1>
+  
+
+
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2019-07-16T23:39:22.000Z" itemprop="datePublished">2019-07-17</time>
+      </li>
+      <li>
+        
+    更新 <time datetime="2020-07-05T10:14:59.865Z" itemprop="dateUpdated">2020-07-05</time>
+
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <div class="overdue-remind">
+          本文最后更新于$day天前，文中所描述的信息可能已发生改变。
+        </div>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>最近工作中写了一个枚举类，在code-review的时候被佐藤老师指摘了好几处，特别总结一下加深理解。</p>
+<h2 id="什么是枚举型-Enum"><a href="#什么是枚举型-Enum" class="headerlink" title="什么是枚举型 Enum"></a>什么是枚举型 Enum</h2><p>Enum是Java 5开始引入的一个接口，关键字 <code>enum</code> 创建的类会自动使用Enum接口。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> WeekDay &#123;</span><br><span class="line">    MONDAY, TUESDAY, WEDNESDAY,</span><br><span class="line">    THURSDAY, FRIDAY, SATURDAY, SUNDAY</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>像这样定义了<code>WeekDay</code>之后，我们就不必为周一到周日创建整形或者字符串的静态变量了，可以直接把<code>WeekDay</code>中定义的七个名字当做基本型来使用: <code>WeekDay.MONDAY</code> , <code>WeekDay.TUESDAY</code> , <code>WeekDay.WEDNESDAY</code> ,  <code>WeekDay.THURSDAY</code> ,  <code>WeekDay.FRIDAY</code> ,  <code>WeekDay.SATURDAY</code> ,  <code>WeekDay.SUNDAY</code> 。 </p>
+<p>枚举型的构造体是私有的，不可以使用构造体来构建枚举类的实体，但是枚举类中的元素是公开的，可以像基本型一样直接取来使用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WorkDay day = WorkDat.SUNDAY;</span><br></pre></td></tr></table></figure></p>
+<h2 id="用枚举类的思维方式来使用枚举类"><a href="#用枚举类的思维方式来使用枚举类" class="headerlink" title="用枚举类的思维方式来使用枚举类"></a>用枚举类的思维方式来使用枚举类</h2><p>引入枚举类的一个主要目的，是可以有一种类型安全，不可变的方法来定义常量。在引入枚举类之前，一般通过定义基本型的常量来表达一些固定的值。<br>比如<code>static final int MONDAY = 1;</code> 这种写法看似没什么问题，可没有什么实际意义的<code>1</code>在这里承担了很重要的职责，不免让人产生疑问，改成<code>0</code>可不可以呢？<br>而在判断是不是<code>MONDAY</code>时，又必须和<code>1</code>作比较，这就让程序逐渐变得复杂而又危险了。</p>
+<p>引入枚举类之后，MONDAY本身就可以起到表达数值，作为判断条件的作用，从而减少了产生bug的可能性。<br>所以，像下面这种强行使用枚举类的<code>name</code> <code>toString</code>来判断对象是否为枚举类中的一个元素的写法，是很不符合枚举类的思维方式的，浪费了使用枚举类的好处。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String a = System.getEnv(“TODAY”)；</span><br><span class="line">String today = <span class="string">"Undefined"</span>;</span><br><span class="line"><span class="keyword">if</span>(WeekDay.MONDAY.name.equals(a))&#123;</span><br><span class="line">  today = WeekDay.MONDAY.name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以给<code>WeekDay</code>添加一个方法来返回元素:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> WeekDay <span class="title">as</span><span class="params">(String candidate)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(MONDAY.name.equals(candidate))&#123;</span><br><span class="line">    <span class="keyword">return</span> MONDAY;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(...)&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> UNDEFINED; <span class="comment">//添加一个未定义的元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们在外面就可以告别那个中间的String，直接获取WeekDay的对象：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">WeekDay today = WeekDay.as(System.getEnv(<span class="string">"TODAY"</span>));</span><br><span class="line">If(today == WeekDay.UNDEFINED)&#123;</span><br><span class="line">  <span class="comment">// 对于未定义，空的设定值，或者默认值，可以在这里自由的设置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(today == WeekDay.MONDAY)&#123;</span><br><span class="line">  <span class="comment">// 想干啥干啥咯</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="关联-使用私有构造体或者枚举类型来强化单例性"><a href="#关联-使用私有构造体或者枚举类型来强化单例性" class="headerlink" title="关联 [使用私有构造体或者枚举类型来强化单例性]"></a>关联 [使用私有构造体或者枚举类型来强化单例性]</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://xsun4231.github.io/" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+
+        </div>
+      </div>
+    </div>
+   </div>
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io" target="_blank" rel="noopener"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn" target="_blank" rel="noopener"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2017-2020 </p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = true;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+
+  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+</body>
+</html>

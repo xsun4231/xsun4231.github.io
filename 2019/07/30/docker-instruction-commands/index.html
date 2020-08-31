@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="hexo,个人博客,blog" />
+  <meta name="description" content="Null Page" />
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  <link rel="dns-prefetch" href="https://at.alicdn.com">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>Dockerfile 命令</title>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">XSUN</a>
+  <a class="face-img" href="/">
+    <img src="">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    Dockerfile 命令
+  </h1>
+  
+
+
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2019-07-30T01:29:30.000Z" itemprop="datePublished">2019-07-30</time>
+      </li>
+      <li>
+        
+    更新 <time datetime="2020-07-05T10:14:59.866Z" itemprop="dateUpdated">2020-07-05</time>
+
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <div class="overdue-remind">
+          本文最后更新于$day天前，文中所描述的信息可能已发生改变。
+        </div>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>内容整理自<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门到实践</a></p>
+<h2 id="什么是Dockerfile"><a href="#什么是Dockerfile" class="headerlink" title="什么是Dockerfile"></a>什么是Dockerfile</h2><p>Dockerfile 是一种用来定制镜像的文本文件。我们可以在Dockerfile中指定基础镜像，执行命令，开放端口，设置环境变量等等。<br><strong>每一条指令</strong>会构建一层。参考<a href="https://docs.docker.com/storage/storagedriver/" target="_blank" rel="noopener">docker 文档</a>，docker的镜像具有下面的层结构(image layers)，增加层的厚度自然会增加镜像的大小，所以写Dockerfile时，尽量使用<code>\</code> 和 <code>&amp;&amp;</code> 巧妙地将命令的内容合并到一层。<br><a href="/2019/07/30/docker-instruction-commands/layer.png" class="gallery-item"><img src="/2019/07/30/docker-instruction-commands/layer.png" class="" title="layer"></a></p>
+<p>比如<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门到实践</a>中的例子，写一个构建<code>nginx</code>镜像的Dockerfile：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">'&lt;h1&gt;Hello, Docker!&lt;/h1&gt;'</span> &gt; /usr/share/nginx/html/index.html</span></span><br></pre></td></tr></table></figure>
+<p>这个Dockerfile包含了两个指令，<code>FROM</code>制定了基础镜像，基础镜像可以是各种服务类的官方镜像，也可以是干净的操作系统镜像，还可以是空白镜像<code>scratch</code>。<code>RUN</code>是最常用的指令，用来执行命令行命令。</p>
+<p>接下来我们执行<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx:v3 .</span><br></pre></td></tr></table></figure><br>来构建镜像，<code>it nginx:v3</code>的的意思是构建的目标名为nginx，标签为v3。</p>
+<p>docker构建镜像的log将每一条指令分的很清楚，每一条指令作为一个step来执行，完成后我们就可以看到新的镜像<code>nginx:v3</code>了。</p>
+<p>执行下面命令，通过新构建的镜像生成一个容器：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name hello -d -p <span class="number">8080</span>:<span class="number">80</span> nginx:v3</span><br></pre></td></tr></table></figure><br>然后我们访问 <code>localhost:8080</code> 就可以看到欢迎页了：<br><a href="/2019/07/30/docker-instruction-commands/hello.png" class="gallery-item"><img src="/2019/07/30/docker-instruction-commands/hello.png" class="" title="hello"></a></p>
+<h3 id="Dockerfile中用到的命令"><a href="#Dockerfile中用到的命令" class="headerlink" title="Dockerfile中用到的命令"></a>Dockerfile中用到的命令</h3><p>docker的指令一般有两种书写方式，一种是指令后跟命令行，一种是使用<code>[]</code>的函数调用写法，这里主要记录一下命令行写法。</p>
+<ul>
+<li><p>COPY<br><code>COPY &lt;context path&gt; &lt;target path&gt;</code><br>这个指令将上下文目录中的文件或者目录复制到新一层的目标路径中，要复制的文件或者目录可以有多个，可以使用通配符（符合golang的filepath.Match规则)，目标路径可以是绝对路径，也可以是工作目录的相对路径。<br>还可以加上<code>--chown=&lt;user&gt;:&lt;group&gt;</code>来改变文件的所属用户和所属组</p>
+<blockquote>
+<p>上下文路径？context path?</p>
+</blockquote>
+</li>
+<li><p>ADD<br>使用方法跟COPY基本一样。功能会丰富一点，比如源路径可以设置为url，使用url路径时docker会讲文件打包下载到目标路径。因为需要多余的RUN来处理权限，解压缩，筛选内容，这个命令并不是很实用。</p>
+</li>
+<li><p>CMD<br>用于指定默认的容器主进程的启动命令。指令的写法也有两种：  </p>
+<ul>
+<li>shell 格式 <code>CMD 命令</code></li>
+<li>exec 格式 <code>CMD [&quot;可执行文件&quot;, &quot;参数&quot;, ...&quot;参数&quot; ]</code>  </li>
+</ul>
+<p>使用shell格式写的内容会被解析为<code>CMD [&quot;sh&quot;, &quot;-c&quot;, &quot;命令&quot;]</code>，所以命令中可以使用环境变量，但是命令必须前台执行，如果命令结束后直接结束了<code>sh</code>程序，则容器也会推出。</p>
+<p>Dockerfile中设置的启动命令可以在运行时重新指定，比如我们写<code>docker run -it imagename</code>的话，就会执行默认的命令，在镜像名后面添加命令，比如<code>cat etc/os-release</code>，就可以了。</p>
+</li>
+<li><p>ENTRYPOINT<br>跟CMD一样用来设置启动时的命令行和参数，不过在重新定义的时候，要在<code>docker run</code>后面使用命令<code>--entrypoint</code>来设置。<br>ENTRYPOINT和CMD共存的意义在于，定义了ENTRYPOINT之后，CMD的内容将不再被直接执行，而是作为参数传递给ENTRYPOINT。比如<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门-Dockerfile指令详解-NETRYPOINT入口点</a>里面介绍的例子：</p>
+<ol>
+<li>如果我们想在执行的时候为<code>CMD [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://ip.cn&quot; ]</code>添加参数，直接在镜像名后面加肯定是不行的，那样会替换掉所有命令（全部重写那就另当别论了），如果使用CMD来获取参数，定义<code>ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://ip.cn&quot; ]</code>，就可以实现参数的自由设置了。</li>
+<li><p>用ENTRYPOINT来处理CMD做不到的工作。</p>
+ <figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> alpine:<span class="number">3.4</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> addgroup -S redis &amp;&amp; adduser -S -G redis redis</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [<span class="string">"docker-entrypoint.sh"</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">6379</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">"redis-server"</span> ]</span></span><br></pre></td></tr></table></figure>
+<p> docker-entrypoint.sh的内容为：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># allow the container to be started with `--user`</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">'redis-server'</span> -a <span class="string">"<span class="variable">$(id -u)</span>"</span> = <span class="string">'0'</span> ]; <span class="keyword">then</span></span><br><span class="line">    chown -R redis .</span><br><span class="line">    <span class="built_in">exec</span> su-exec redis <span class="string">"<span class="variable">$0</span>"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$@</span>"</span></span><br></pre></td></tr></table></figure>
+<p> 这里将cmd作为参数获取的方法，在ENTRYPOINT中设置了一个脚本，通过参数的内容来区别启动用户的身份。</p>
+</li>
+</ol>
+</li>
+<li><p>ENV<br>定义环境变量，就这么简单。可以用<code>=</code>，可以用空格，可以用等号加空格一行定义一群，也可以用<code>\</code>加入换行。</p>
+</li>
+<li><p>ARG<br>定义参数。参数和环境变量不同的是，参数只在构建的时候有用，在容器运行时不会被引入容器内部。参数的定义可以在<code>docker build</code>时使用<code>--build-arg &lt;name&gt;=&lt;value&gt;</code>的格式来覆盖。</p>
+</li>
+<li><p>VOLUME<br>匿名卷</p>
+</li>
+<li><p>EXPOSE<br>暴露端口</p>
+</li>
+</ul>
+<ul>
+<li><p>WORKDIR<br>指定工作目录</p>
+</li>
+<li><p>USER<br>指定当前用户</p>
+</li>
+<li><p>HEALTHCHECK<br>健康检查</p>
+</li>
+<li><p>ONBUILD<br>构建时执行</p>
+</li>
+</ul>
+<h2 id="镜像的使用"><a href="#镜像的使用" class="headerlink" title="镜像的使用"></a>镜像的使用</h2><h3 id="镜像的获取，管理和删除"><a href="#镜像的获取，管理和删除" class="headerlink" title="镜像的获取，管理和删除"></a>镜像的获取，管理和删除</h3><h3 id="commit-命令"><a href="#commit-命令" class="headerlink" title="commit 命令"></a>commit 命令</h3></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://xsun4231.github.io/" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+
+        </div>
+      </div>
+    </div>
+   </div>
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io" target="_blank" rel="noopener"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn" target="_blank" rel="noopener"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2017-2020 </p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = true;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+
+  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+</body>
+</html>

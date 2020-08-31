@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="hexo,个人博客,blog" />
+  <meta name="description" content="Null Page" />
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  <link rel="dns-prefetch" href="https://at.alicdn.com">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>Python中类的使用</title>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">XSUN</a>
+  <a class="face-img" href="/">
+    <img src="">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    Python中类的使用
+  </h1>
+  
+
+
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2020-01-28T02:52:30.000Z" itemprop="datePublished">2020-01-28</time>
+      </li>
+      <li>
+        
+    更新 <time datetime="2020-07-05T10:15:00.010Z" itemprop="dateUpdated">2020-07-05</time>
+
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <div class="overdue-remind">
+          本文最后更新于$day天前，文中所描述的信息可能已发生改变。
+        </div>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>类就是Class</p>
+</blockquote>
+<h2 id="类的基本"><a href="#类的基本" class="headerlink" title="类的基本"></a>类的基本</h2><ol>
+<li>类和实体 我们可以简单的将实体（instance）理解成具体的实物对象，把类看作是生产实体的蓝图。比如我们定义一个类<code>Car</code>，之后就可以在任何地方反复调用这个蓝图来生产<code>Car</code>的实体</li>
+<li>方法 在Python中我们可以像写脚本一样随便写个方法就执行，但是这可能带来诸多麻烦。比如我们为汽车的启动和停止写了两个方法<code>run()</code>和<code>stop()</code>，为了确定让哪辆车启动哪辆车停下，我们需要把对象的车多为参数传递进方法，是不是有一种拿遥控器开车还要每次都设置开的哪辆车的感觉？ 当我们需要在不同的地方使用这两个方法时，就要重新写一遍。如果我们把<code>run()</code> 和<code>stop()</code>写到类<code>Car</code>里面，就可以通过每个<code>Car</code>的实体，直接调用启动和停止的方法，方法属于车的实体，不同实体间的启动停止互不影响，这就有开车那味儿了。</li>
+<li>成员变量 类的成员变量分为两种(此处为Java思维）：静态变量和实例变量。 所谓静态变量，我们可以理解成刻在蓝图里的，比如我们给<code>Car</code>定义一个静态变量<code>轮子数 = 4</code>,这样我们生成的每个车都可以使用这个变量，甚至不生成实例的时候，也可以使用<code>Car.轮子数</code>, 只要看一下蓝图，就知道这个变量值。相比之下，实例变量就是指从属于实例的变量，比如<code>排气量 长度 宽度</code>,如果要调用这些变量，直接通过<code>Car.排气量</code>是不行的，因为图纸上可没具体写这变量是多少，需要先生成一个实体<code>my_car = Car()</code>，然后给<code>my_car</code>设置并使用</li>
+</ol>
+<h2 id="Python中类的使用"><a href="#Python中类的使用" class="headerlink" title="Python中类的使用"></a>Python中类的使用</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>Python中定义类使用的是关键字<code>class</code>，类的范围通过统一的缩进来管理<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>:</span></span><br><span class="line">  id = <span class="number">12345</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, id)</span>:</span></span><br><span class="line">    self.id = id</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">    print(<span class="string">f'run <span class="subst">&#123;self.id&#125;</span>!'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>类的内部使用关键字<code>def</code>来定义方法，方法必须至少有一个参数<code>self</code>，<code>self</code>的含义相当于Java的<code>this</code>，指的是类的实例，可以通过<code>self</code>来访问实例变量和方法。  </p>
+<p><code>__init__</code>是构造体，当我们使用类名来生成实例的时候，会根据参数来调用对应的构造体生成实例，最基本的写法就是直接通过构造体给实例变量初始化，比如使用上面代码里得构造体：<code>Car(54321)</code>。  </p>
+<p>Python中使用<code>__</code>双下划线来定义私有变量和私有方法，私有的元素无法在外部通过实例名或者类名访问到</p>
+<p>就像Java中所有的类都是Object的字类，都继承了一些基本的方法一样，Python中也有一些类的专有方法, 且可以重写：</p>
+<ul>
+<li><strong>init</strong> : 构造函数，在生成对象时调用</li>
+<li><strong>del</strong> : 析构函数，释放对象时使用</li>
+<li><strong>repr</strong> : 打印，转换</li>
+<li><strong>setitem</strong> : 按照索引赋值</li>
+<li><strong>getitem</strong>: 按照索引获取值</li>
+<li><strong>len</strong>: 获得长度</li>
+<li><strong>cmp</strong>: 比较运算</li>
+<li><strong>call</strong>: 函数调用</li>
+<li><strong>add</strong>: 加运算</li>
+<li><strong>sub</strong>: 减运算</li>
+<li><strong>mul</strong>: 乘运算</li>
+<li><strong>truediv</strong>: 除运算</li>
+<li><strong>mod</strong>: 求余运算</li>
+<li><strong>pow</strong>: 乘方</li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>跟同事聊了聊为什么要使用类，想起了一个很重要的点：内存管理。<br>如果我们不适用类来管理方法和变量的话，程序运行过程中，定义的变量和方法就会一直存在，占用内存空间；但是当我们使用了类之后，则可以在需要的时候声明类的实例来调用内存，当一个实例不再被使用的时候，又可以通过垃圾回收自动收回内存（垃圾回收机制不同语言有不同的做法）。这样我们的程序才可以根据需求灵活地使用资源。<br>当然，方法和变量的管理更方便什么的，也算使用类的好处</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://xsun4231.github.io/" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+
+        </div>
+      </div>
+    </div>
+   </div>
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io" target="_blank" rel="noopener"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn" target="_blank" rel="noopener"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2017-2020 </p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = true;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+
+  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+</body>
+</html>

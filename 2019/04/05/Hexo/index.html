@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="hexo,个人博客,blog" />
+  <meta name="description" content="Null Page" />
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  <link rel="dns-prefetch" href="https://at.alicdn.com">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>Hexo 说明文档笔记</title>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">XSUN</a>
+  <a class="face-img" href="/">
+    <img src="">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    Hexo 说明文档笔记
+  </h1>
+  
+
+
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2019-04-05T04:28:49.000Z" itemprop="datePublished">2019-04-05</time>
+      </li>
+      <li>
+        
+    更新 <time datetime="2020-07-05T10:14:59.860Z" itemprop="dateUpdated">2020-07-05</time>
+
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <div class="overdue-remind">
+          本文最后更新于$day天前，文中所描述的信息可能已发生改变。
+        </div>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<ul>
+<li><a href="https://hexo.io" target="_blank" rel="noopener">Hexo 文档</a></li>
+</ul>
+<h2 id="theme文件夹结构"><a href="#theme文件夹结构" class="headerlink" title="theme文件夹结构"></a>theme文件夹结构</h2><ul>
+<li>_config.yml</li>
+<li>languages</li>
+<li>layout</li>
+<li>scripts</li>
+<li>source</li>
+</ul>
+<h3 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h3><p>主题的配置文件，修改主题的配置文件不需要重启服务器（修改网站根目录的那个_config.yml则需要重启才能生效)</p>
+<h3 id="languages"><a href="#languages" class="headerlink" title="languages"></a>languages</h3><p>国际化设置，使用yml文件设置网站元素的翻译，具体参考<a href="https://hexo.io/docs/internationalization" target="_blank" rel="noopener">i18n</a></p>
+<h3 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h3><p>网页、模板的设置。hexo默认使用Swig,不过也可以手动添加EJS,Haml,Jade或者Pug的支持。模板的写法参考 <a href="https://hexo.io/docs/templates" target="_blank" rel="noopener">Templates</a></p>
+<h3 id="scripts"><a href="#scripts" class="headerlink" title="scripts"></a>scripts</h3><p>存放JavaScript代码的文件夹，Hexo会自动加载这里的javaScript文件。扩展功能参考 <a href="https://hexo.io/docs/plugins" target="_blank" rel="noopener">plugins</a></p>
+<h3 id="source"><a href="#source" class="headerlink" title="source"></a>source</h3><p>顾名思义，这里是存放资源的。不属于页面模板的资源理论上都应该在此文件夹下面。</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout 布局"></a>Layout 布局</h3><p>在主题文件夹下的layout中定义不同模板的页面的呈现方式，具体的模板文件定义了页面的<code>body</code>内容，而layout则定义了如何显示<code>body</code>。<br>比如在布局中这样写：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;<span class="name">%-</span> <span class="attr">body</span> %&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><br>系统默认的布局为layout布局，不过在post的头部可以通过定义来使用具体的布局。</p>
+<h3 id="Partial-组件"><a href="#Partial-组件" class="headerlink" title="Partial 组件"></a>Partial 组件</h3><p>不同页面之间共享的内容可以写成组件来管理，比如<code>Header</code>,<code>Footer</code>,<code>Sidebar</code>。<br>引用组件时：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%-</span> <span class="attr">partial</span>('<span class="attr">partial</span>/<span class="attr">header</span>') %&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h2 id="资源文件夹"><a href="#资源文件夹" class="headerlink" title="资源文件夹"></a>资源文件夹</h2><p>从<code>Hexo 3</code>开始，在<code>_config.yml</code>中启用<code>post_asset_folder=true</code>, 使用hexo的资源文件夹功能。<br>启用后，<code>_posts</code>里每生成一个post，会在相同路径下生成一个同名的文件夹作用该post的资源管理文件夹。</p>
+<h3 id="引用资源文件夹中的资源"><a href="#引用资源文件夹中的资源" class="headerlink" title="引用资源文件夹中的资源"></a>引用资源文件夹中的资源</h3><p>启用了<code>asset_folder</code>后，可以使用以下几种命令，在文章中引用资源:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path name %&#125;</span><br><span class="line">&#123;% asset_img name title %&#125;</span><br><span class="line">&#123;% asset_link name title %&#125;</span><br></pre></td></tr></table></figure><br>在<code>name</code>的地方填写资源文件夹内的相对路径。</p>
+<p>比如以下的文件结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- sample.md</span><br><span class="line">- sample</span><br><span class="line">  - part1</span><br><span class="line">   - img.jpg</span><br></pre></td></tr></table></figure></p>
+<p>在sample.md中引用img.jpg时的写法是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img part1\img.jpg this is title %&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>使用资源文件夹与使用<code>markdown</code>的引用语法的最大不同就是：在网站首页或者归档处显示时，使用资源文件夹功能的引用可以被显示，而<code>markdown</code>语法引用的内容则无法被正确显示。</p>
+<h3 id="样板"><a href="#样板" class="headerlink" title="样板"></a>样板</h3><a href="/2019/04/05/Hexo/1.JPG" class="gallery-item"><img src="/2019/04/05/Hexo/1.JPG" class="" title="i1"></a>
+<h2 id="国际化-i18n"><a href="#国际化-i18n" class="headerlink" title="国际化 i18n"></a>国际化 i18n</h2><p><code>i18n</code> (Internationalization) 是指针对不同的国家、地域、语言环境，改变网站通用部分的显示语言。</p>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>使用<code>YAML</code>或者<code>JSON</code>编写不同的语言文件，并统一放在主题文件夹<code>languages</code>中。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>使用<code>__</code>或者<code>_p</code>来取得对应语言的字符串。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu：</span><br><span class="line">  titile: HOME</span><br><span class="line">  archive: ARCHIVE</span><br><span class="line">  search: SEARCH</span><br></pre></td></tr></table></figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu：</span><br><span class="line">  titile: 首页</span><br><span class="line">  archive: 归档</span><br><span class="line">  search: 搜索</span><br></pre></td></tr></table></figure></p>
+<p>在模板中使用目录时（例如语言是英文）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%&#x3D; __(&#39;menu.title&#39;) %&gt; &#x2F;&#x2F; HOME</span><br><span class="line">&lt;%&#x3D; __(&#39;menu.archive&#39;) %&gt; &#x2F;&#x2F; 归档</span><br><span class="line">&lt;%&#x3D; __(&#39;menu.search) %&gt; &#x2F;&#x2F; 搜索</span><br></pre></td></tr></table></figure></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://xsun4231.github.io/" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+
+        </div>
+      </div>
+    </div>
+   </div>
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io" target="_blank" rel="noopener"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn" target="_blank" rel="noopener"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2017-2020 </p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = true;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+
+  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+</body>
+</html>

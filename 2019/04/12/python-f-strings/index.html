@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="keywords" content="hexo,个人博客,blog" />
+  <meta name="description" content="Null Page" />
+  <meta http-equiv="x-dns-prefetch-control" content="on">
+  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
+  <link rel="dns-prefetch" href="https://at.alicdn.com">
+  
+  <link rel="dns-prefetch" href="https://widget.daovoice.io">
+  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
+  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  
+  
+  
+  <link rel="stylesheet" type="text/css" href="/./style/main.css">
+	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
+	<title>python 中的字符串格式化</title>
+  
+  
+    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
+  </script>
+  
+<meta name="generator" content="Hexo 4.2.1"></head>
+<body>
+  <canvas id="pattern-placeholder" height="230"></canvas>
+<div class="navbar-header">
+  <a class="blog-title" href="/">XSUN</a>
+  <a class="face-img" href="/">
+    <img src="">
+  </a>
+</div>
+<main>
+  <div class="article-title">
+    
+  
+  <h1 class="title">
+    python 中的字符串格式化
+  </h1>
+  
+
+
+    <ul class="article-info">
+      <li>
+        发布
+        <time datetime="2019-04-12T07:46:14.000Z" itemprop="datePublished">2019-04-12</time>
+      </li>
+      <li>
+        
+    更新 <time datetime="2020-07-05T10:14:59.861Z" itemprop="dateUpdated">2020-07-05</time>
+
+      </li>
+      <li id="busuanzi_container_page_pv">
+        阅读 <span id="busuanzi_value_page_pv"></span>
+      </li>
+    </ul>
+  </div>
+  <div class="container">
+    <div class="article">
+      <div class="content">
+        
+        <div class="overdue-remind">
+          本文最后更新于$day天前，文中所描述的信息可能已发生改变。
+        </div>
+        
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>原文： <a href="https://realpython.com/python-f-strings/" target="_blank" rel="noopener">python-f-string</a></p>
+</blockquote>
+<p>自<code>3.6</code>版本开始，python引入了一种叫做<code>f-strings</code>的写法，使用改写发可以极大地增强字符串的可读性（当然好处不止这些).<br>不过在学习<code>f-strings</code>之前，先看看以往的写法都有哪些。</p>
+<h2 id="旧方法"><a href="#旧方法" class="headerlink" title="旧方法"></a>旧方法</h2><p>在<code>3.6</code>之前，我们常用的字符串格式化写法有两种：</p>
+<ol>
+<li>使用转移符 <code>%</code></li>
+<li>使用字符串的格式化方法 <code>str.format()</code> </li>
+</ol>
+<h3 id="旧选项1"><a href="#旧选项1" class="headerlink" title="旧选项1 %"></a>旧选项1 <code>%</code></h3><p>跟其他编程语言一样，python也可以用<code>%</code>来把变量值插入到字符串中的对应位置。写法如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">'Hello %s.'</span> % name)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom.'</span></span><br></pre></td></tr></table></figure><br>输出多个变量时，在<code>%</code>后使用括号将所有变量放到一起：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello %s, you are a %s.this is %s, a %s'</span> % (name1, type1, name2, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure><br>但是转移符这种东西，一个不小心就容易写错。</p>
+<h3 id="旧选项2-str-format"><a href="#旧选项2-str-format" class="headerlink" title="旧选项2 str.format()"></a>旧选项2 <code>str.format()</code></h3><p>从<code>2.6</code>开始，python为字符串添加了一个<code>format()</code>方法，可以将引入的参数按顺序替换到字符串中的<code>{}</code>处。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;&#125;, you are a &#123;&#125;.this is &#123;&#125;, a &#123;&#125;'</span>.format(name1, type1, name2, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p>使用<code>format()</code>你还可以自定义参数的插入顺序，例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;0&#125;, you are a &#123;2&#125;.this is &#123;1&#125;, a &#123;3&#125;'</span>.format(name1, name2, type1, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p><code>format()</code>方法的功能还不止于此，既然<code>index</code>可以用来出入参数，那可不可以用参数名称呢？毕竟<code>0,1,2,3</code>的可读性有限。答案是可以：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;name_a&#125;, you are a &#123;type_a&#125;.this is &#123;name_b&#125;, a &#123;type_b&#125;'</span>.format(name_a = name1, name_b = name2, type_a = type1, type_b = type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p>既然可以这样写了，那干脆直接引入<code>dict</code>得了.这个也是可以的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">character = &#123;</span><br><span class="line">  <span class="string">'name'</span> : <span class="string">'Tom'</span>,</span><br><span class="line">  <span class="string">'type'</span> : <span class="string">'cat'</span></span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">'Hello &#123;name&#125;, you are a &#123;type&#125;.'</span>.format(**character))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat.'</span></span><br></pre></td></tr></table></figure></p>
+<p>这样可读性就非常好了，不过在<code>3.6</code>版本，更好的写法出现了。</p>
+<h2 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h2><p>关于<code>f-string</code>的引入，可以参看<a href="https://www.python.org/dev/peps/pep-0498/" target="_blank" rel="noopener">PEP498</a>, 或者<a href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings" target="_blank" rel="noopener">Python-doc</a>.  </p>
+<p>写法非常简单，在字符串前加<code>f</code>或者<code>F</code>，在字符串中直接插入<code>{变量名}</code>，就可以了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">type = <span class="string">'cat'</span></span><br><span class="line">print(<span class="string">f'Hello <span class="subst">&#123;name&#125;</span>, you are a <span class="subst">&#123;type&#125;</span>.'</span>)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat.'</span></span><br></pre></td></tr></table></figure></p>
+<p>在<code>{}</code>中不仅可以使用字符串，还可以使用运算公式，甚至调用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_name</span><span class="params">(input)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Jerry'</span></span><br><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">f"Hello <span class="subst">&#123;change_name(name)&#125;</span>."</span>)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Jerry.'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当使用<code>object</code>时，f-string会默认调用<code>__str__()</code>方法，如果想调用<code>__repr__</code>，需要在对象名后面加<code>!r</code>：<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f"<span class="subst">&#123;object&#125;</span>"</span></span><br><span class="line"><span class="comment"># 输出 object.__str__()的内容</span></span><br><span class="line"><span class="string">f"<span class="subst">&#123;object!r&#125;</span>"</span></span><br><span class="line"><span class="comment"># 输出 object.__repr__()的内容</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>最后一个考点：换行。在python中可以使用<code>&#39;&#39;&#39;</code>来输出带有换行的字符串，不过直接在前面加上f的结果并不怎么好看：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">f'''</span></span><br><span class="line"><span class="string">Hi,</span></span><br><span class="line"><span class="string">you are a </span></span><br><span class="line"><span class="string">Cat</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># message : '\nHi, \nyou are a \nCat\n'</span></span><br></pre></td></tr></table></figure></p>
+<p><code>f-string</code>的换行方法是，在每行的最后添加<code>\</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">f''</span>\</span><br><span class="line"><span class="string">f'Hi '</span>\</span><br><span class="line"><span class="string">f'you are a '</span>\</span><br><span class="line"><span class="string">f'Cat '</span></span><br><span class="line"><span class="comment"># message ： 'Hi you are a Cat'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong> 一般情况下<code>f-string</code>使用单引号和双引号没有区别，但比如引用字典，需要单引号来标记key时，f-stirng就需要使用双引号了，否则字符串中的单引号会被错误理解。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      </div>
+        <div class="support-author">
+          <p>感谢您的阅读。 🙏
+          <a href="https://xsun4231.github.io/" target="_blank">关于转载请看这里</a>
+            <!--<a class="btn-pay"  href="#pay-modal">¥ 打赏支持</a>-->
+          </p>
+        </div>
+        <!--
+            <div class="like ">
+              <div class="like-button">
+                <a id="like-note" href="">
+                  <i class="icon-heart"></i>喜欢
+                </a>
+              </div>
+              <span id="likes-count">256</span>
+            </div>
+        -->
+        <div class="otherLink">
+          <div class="previous">
+          </div>
+          <div class="next">
+          </div>
+        </div>
+        <div class="comments" id="comments">
+          
+
+        </div>
+      </div>
+    </div>
+   </div>
+</main>
+<div class="footer">
+  <div class="info">
+    <p>
+    <a href="https://hexo.io" target="_blank" rel="noopener"> Hexo </a> 强力驱动 |
+      <a href="https://github.com/Youthink/hexo-themes-yearn" target="_blank" rel="noopener"> Yearn </a>
+      主题
+    </p>
+    <p>&copy;2017-2020 </p>
+  </div>
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+<script>//console
+  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
+  var canConsole = true;
+  var consoleInfo = (function(consoleConfig) {
+  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
+    return;
+  }
+  var consoleColor = '#6190e8';
+  var _console;
+  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
+  var textStyle = 'color: ' + consoleColor + ';';
+
+  consoleConfig.map(o => {
+    var num = (o.match(/%c/g) || []).length;
+    if(/^http(s)?:\/\//.test(o)) {
+      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
+      return;
+    }
+    if (num > 0) {
+      var logArguments = [];
+      for (var i = 0; i < num; i++) {
+        if (i % 2 === 0) {
+          logArguments.push(backgroundTextStyle);
+        } else {
+          logArguments.push(textStyle);
+        }
+      }
+      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
+      return;
+    }
+    console.log('%c' + o, textStyle);
+  });
+}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+
+  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+</body>
+</html>
