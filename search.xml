@@ -4,6 +4,44 @@
   
     
     <entry>
+      <title>PlantUML（一） 类图</title>
+      <link href="/2020/10/12/er-1/"/>
+      <url>/2020/10/12/er-1/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>ER图笔记（一）</p><p><strong>ER图</strong> Entity Relationship Diagram</p><h3 id="Cardinality"><a href="#Cardinality" class="headerlink" title="Cardinality"></a>Cardinality</h3><p>在线的端点通过下列符号来指定数量关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--  1</span><br><span class="line">--||  1 &amp;&amp; only 1</span><br><span class="line">--o|  0 or 1</span><br></pre></td></tr></table></figure></p><p><a href="https://www.plantuml.com/plantuml/svg/SzJDqKtaSjAjgKbIu7BMpQz91W00" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzJDqKtaSjAjgKbIu7BMpQz91W00" /></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--&#123;  multi</span><br><span class="line">--|&#123;  1 or more</span><br><span class="line">--o&#123;  0 or more</span><br></pre></td></tr></table></figure><br><a href="https://www.plantuml.com/plantuml/svg/Sz6jJk5orQsfJkLoqyslJWC0" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/Sz6jJk5orQsfJkLoqyslJWC0" /></a></p><h3 id="Direction"><a href="#Direction" class="headerlink" title="Direction"></a>Direction</h3><p>在线的中央插入下列关键字来指定方向<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">up, u</span><br><span class="line">down, d, do</span><br><span class="line">left, l, le</span><br><span class="line">right, r, ri</span><br></pre></td></tr></table></figure></p><p><a href="https://www.plantuml.com/plantuml/svg/SzGjrRKBBU1oqatHjNF9Byy30000" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzGjrRKBBU1oqatHjNF9Byy30000" /></a><br><a href="https://www.plantuml.com/plantuml/svg/SzRDqRNpIKqhuNBHBTAr2yfCpoW10000" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzRDqRNpIKqhuNBHBTAr2yfCpoW10000" /></a></p><h3 id="package-style"><a href="#package-style" class="headerlink" title="package style"></a>package style</h3><p>可以使用自带的模版来定义每个包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package foo1 &lt;&lt;Node&gt;&gt; &#123;</span><br><span class="line">  class Class1</span><br><span class="line">&#125;</span><br><span class="line">package foo2 &lt;&lt;Rectangle&gt;&gt; &#123;</span><br><span class="line">  class Class2</span><br><span class="line">&#125;</span><br><span class="line">package foo3 &lt;&lt;Folder&gt;&gt; &#123;</span><br><span class="line">  class Class3</span><br><span class="line">&#125;</span><br><span class="line">package foo4 &lt;&lt;Frame&gt;&gt; &#123;</span><br><span class="line">  class Class4</span><br><span class="line">&#125;</span><br><span class="line">package foo5 &lt;&lt;Cloud&gt;&gt; &#123;</span><br><span class="line">  class Class5</span><br><span class="line">&#125;</span><br><span class="line">package foo6 &lt;&lt;Database&gt;&gt; &#123;</span><br><span class="line">  class Class6</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p><a href="https://www.plantuml.com/plantuml/svg/RSon3O0W443HdYbk1GMj38t6qi8DJa0BqJEYbM5tiJ84cb-z_0FLYek1cQY0fXb86odXOG3AedFGVYsOPySFom17eoxS5vlHPQnvq3rPRSwKyfYAZvwuPQOYbbMGhQLRfxAAPHraXnTEw3BRclaN" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/RSon3O0W443HdYbk1GMj38t6qi8DJa0BqJEYbM5tiJ84cb-z_0FLYek1cQY0fXb86odXOG3AedFGVYsOPySFom17eoxS5vlHPQnvq3rPRSwKyfYAZvwuPQOYbbMGhQLRfxAAPHraXnTEw3BRclaN" /></a></p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> PlantUML </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>实用Optional时需要注意的二三事</title>
+      <link href="/2020/08/31/java-optional-best-practice/"/>
+      <url>/2020/08/31/java-optional-best-practice/</url>
+      
+        <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="使用了Optional为什么还发生NullPointerException"><a href="#使用了Optional为什么还发生NullPointerException" class="headerlink" title="使用了Optional为什么还发生NullPointerException"></a>使用了Optional为什么还发生NullPointerException</h2><h2 id="对于空值应该怎么设置"><a href="#对于空值应该怎么设置" class="headerlink" title="对于空值应该怎么设置"></a>对于空值应该怎么设置</h2><h2 id="如何高效的实用Optional返回值"><a href="#如何高效的实用Optional返回值" class="headerlink" title="如何高效的实用Optional返回值"></a>如何高效的实用Optional返回值</h2><h2 id="如何避免Optional相关的反模式"><a href="#如何避免Optional相关的反模式" class="headerlink" title="如何避免Optional相关的反模式"></a>如何避免Optional相关的反模式</h2><h2 id="怎么把Optional用的更专业"><a href="#怎么把Optional用的更专业" class="headerlink" title="怎么把Optional用的更专业"></a>怎么把Optional用的更专业</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blogs.oracle.com/javamagazine/12-recipes-for-using-the-optional-class-as-its-meant-to-be-used" target="_blank" rel="noopener">The Java Optianl class (12 recipes)</a></p><p><a href="https://blogs.oracle.com/javamagazine/the-java-optional-class-11-more-recipes-for-preventing-null-pointer-exceptions" target="_blank" rel="noopener">The Java Optianl class (11 recipes)</a></p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+      
+      
+      
+        <tags>
+            
+            <tag> Java </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>关于Enums的小问题</title>
       <link href="/2020/02/14/oracle-quiz-enums/"/>
       <url>/2020/02/14/oracle-quiz-enums/</url>
