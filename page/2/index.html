@@ -1,364 +1,965 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="keywords" content="hexo,个人博客,blog" />
-  <meta name="description" content="Null Page" />
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
-  <link rel="dns-prefetch" href="https://at.alicdn.com">
-  
-  <link rel="dns-prefetch" href="https://widget.daovoice.io">
-  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
-  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  <meta charset="utf-8">
   
   
   
-  <link rel="stylesheet" type="text/css" href="/./style/main.css">
-	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<title>XSUN</title>
+    <meta name="description" content="这人懒的不仅post没写完，连网页都只做了一半。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    XSUN</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
   
   
-    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
-  </script>
+<link rel="stylesheet" href="/css/style.css">
+
   
-<meta name="generator" content="Hexo 4.2.1"></head>
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XSUN" type="application/atom+xml">
+</head>
+
 <body>
-  <div class="left-aside">
-    <div class="face-img"><img src=""></div>
-    <div class="intro-word">
-        <h2>XSUN</h2>
-        <p>爱生活 爱加班</p>
+<main class="content">
+  <section class="jumbotron">
+  <div class="video">
+    
+      <div class="video-frame">
+        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+      </div>
+    
+    <div class="video-media">
+      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
+             poster="/images/ocean/ocean.jpeg" x5-video-player-type="h5">
+        <!-- <source src="/images/ocean/ocean.mp4" type="video/mp4"> -->
+        <!-- <source src="/images/ocean/ocean.ogv" type="video/ogg"> -->
+        <!-- <source src="/images/ocean/ocean.webm" type="video/webm"> -->
+        <!-- <p>Your user agent does not support the HTML5 Video element.</p> -->
+      </video>
+      <div class="video-overlay"></div>
     </div>
-    <div class="sns">
-        <ul>
-            
-            <li>
-                <a class="github" target="_blank" href="https://github.com/Null-PE" title="github">
-                    <img src="/./img/icon-github.png" alt="github" data-tooltip="github">
-                </a>
-            </li>
-            
-        </ul>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">XSUN</a></h1>
+      <p>旅は道連れ世は情け</p>
+      <div><img src="/images/hexo-inverted.svg" class="brand" alt="XSUN"></div>
     </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+
+<div id="landingpage">
+  <section class="outer">
+    <article class="articles">
+      
+      <h1 class="page-type-title"></h1>
+      
+        
+          <article id="post-measures-for-in-sample-evaluation" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/11/28/measures-for-in-sample-evaluation/">均方误差和决定系数</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/28/measures-for-in-sample-evaluation/" class="article-date">
+  <time datetime="2019-11-28T05:00:58.000Z" itemprop="datePublished">2019-11-28</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="均方误差-Mean-Square-Error"><a href="#均方误差-Mean-Square-Error" class="headerlink" title="均方误差 Mean Square Error"></a>均方误差 Mean Square Error</h2><p>是对误差的一个估计，其定义为所有估值和样本的误差平方的平均值。  </p>
+<p>在python中这样写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line">mean_sqlared_error(df[<span class="string">'data'</span>],predict)</span><br></pre></td></tr></table></figure></p>
+<h2 id="决定系数-Coefficient-of-determination-R-2"><a href="#决定系数-Coefficient-of-determination-R-2" class="headerlink" title="决定系数 Coefficient of determination / $R^2$"></a>决定系数 Coefficient of determination / $R^2$</h2><p>维基百科的定义是：<em>用于度量因变量的变异中可由自变量解释部分所占的比例，以此来判断统计模型的解释力。</em>  </p>
+<ul>
+<li>首先得到一组因变量 取得平均值 $\bar{y}$</li>
+<li>由此可以得到总的方差 $SS_{tot}$</li>
+<li>再取得预估值的方差 $SS_{res}$</li>
+<li>最后得到决定系数 $R^2 = 1 - \frac{SS<em>{tot}}{SS</em>{res}}$</li>
+</ul>
+<p>在python中这样写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">lm=LinearRegression()</span><br><span class="line"></span><br><span class="line">lm.score(X,Y)</span><br></pre></td></tr></table></figure></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/11/28/measures-for-in-sample-evaluation/" data-id="cki6vunrf0013o89kal116xaq" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-linear-regression" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/11/26/linear-regression/">使用Python的线性回归分析</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/26/linear-regression/" class="article-date">
+  <time datetime="2019-11-26T02:32:56.000Z" itemprop="datePublished">2019-11-26</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="线性回归是啥？"><a href="#线性回归是啥？" class="headerlink" title="线性回归是啥？"></a>线性回归是啥？</h2><p>线性回归是统计学中的一种回归分析方法，我们可以简单的记住线性回归中有两个重要变量：</p>
+<ol>
+<li>The predictor(independent) variable 自变量 x</li>
+<li>the target(dependent) variable 因变量 y</li>
+</ol>
+<p>如果线性回归方程中只有一个x，则称为简单线性回归，大于一个x时，成为多元线性回归。<br>举个例子<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">y &#x3D; b0 + b1*x</span><br></pre></td></tr></table></figure><br>这个简单线性回归方程中，x是自变量，y是因变量，b0是intercept, b1叫做slope</p>
+<h2 id="Python中的简单线性回归"><a href="#Python中的简单线性回归" class="headerlink" title="Python中的简单线性回归"></a>Python中的简单线性回归</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">lm=LinearRegression()</span><br><span class="line"></span><br><span class="line"><span class="comment"># 假设我们有一个dataframe df</span></span><br><span class="line">X = df[[<span class="string">'highway-mpg'</span>]] <span class="comment">#作为自变量 X可以指定多列</span></span><br><span class="line">Y = df[<span class="string">'Price'</span>] <span class="comment">#因变量Y只有一列</span></span><br><span class="line"></span><br><span class="line">lm.fit(X,Y) <span class="comment">#使用线性回归分析</span></span><br><span class="line"></span><br><span class="line">Yhat = lm.predict(X_0) <span class="comment"># X_0 跟X又相同的列数</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 可以查看线性回归方程的参数</span></span><br><span class="line">lm.intercept_</span><br><span class="line"></span><br><span class="line">lm.coef_</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/11/26/linear-regression/" data-id="cki6vunrg0014o89k129u4n6y" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Analysis/" rel="tag">Data Analysis</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-about-java-stream-lazy" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/11/20/about-java-stream-lazy/">关于Java的stream执行顺序的笔记</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/20/about-java-stream-lazy/" class="article-date">
+  <time datetime="2019-11-20T04:39:55.000Z" itemprop="datePublished">2019-11-20</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="Java-util-stream-基本"><a href="#Java-util-stream-基本" class="headerlink" title="Java.util.stream 基本"></a>Java.util.stream 基本</h2><p>首先来个例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="string">"aaa"</span>, <span class="string">"aa"</span>, <span class="string">"bbbb"</span>, <span class="string">"bb"</span>, <span class="string">"ccccc"</span>, <span class="string">"cc"</span>, <span class="string">"dddddd"</span>, <span class="string">"eeeeeee"</span>)</span><br><span class="line">        .filter(len -&gt; len.length() &gt; <span class="number">3</span>)</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure><br>stream在使用的时候，分为中间操作（intermediate operation)和终端操作（terminal operation），例子中的<code>filter()</code>就是中间操作，中间操作可以有多个，跟火车厢一样接起来就可以。<br>而终端操作（或者叫终结操作)只能有一个。终端操作很容易理解成是对stream的结束，事实上终端操作最主要的作用是执行。如果没有终端操作，中间操作的内容将不会生效。所以，下面这个stream执行后是什么效果？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="string">"aaa"</span>, <span class="string">"aa"</span>, <span class="string">"bbbb"</span>, <span class="string">"bb"</span>, <span class="string">"ccccc"</span>, <span class="string">"cc"</span>, <span class="string">"dddddd"</span>, <span class="string">"eeeeeee"</span>)</span><br><span class="line">        .mapToInt(String::length)</span><br><span class="line">        .filter(len -&gt; len &gt; <span class="number">3</span>)</span><br><span class="line">        .peek(System.out::println)</span><br><span class="line">        .limit(<span class="number">2</span>);</span><br></pre></td></tr></table></figure><br>答案是：什么也不输出。因为<code>limit()</code>是个中间方法，对这个stream的操作将不会生效。  </p>
+<h3 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h3><p>弄懂了什么中间操作和终端操作的区别以后，我们就要面对下一个疑问了：中间操作和终端操作的执行顺序是什么？<br>很简单，来个例子瞧瞧：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="string">"aaa"</span>, <span class="string">"aa"</span>, <span class="string">"bbbb"</span>, <span class="string">"bb"</span>, <span class="string">"ccccc"</span>, <span class="string">"cc"</span>, <span class="string">"dddddd"</span>, <span class="string">"eeeeeee"</span>)</span><br><span class="line">        .filter(len -&gt; len.length() &gt; <span class="number">3</span>)</span><br><span class="line">        .peek(System.out::println)</span><br><span class="line">        .mapToInt(String::length)</span><br><span class="line">        .limit(<span class="number">2</span>)</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure><br>输出结果有几行？内容是?</p>
+<a href="/2019/11/20/about-java-stream-lazy/1.png" class="gallery-item"><img src="/2019/11/20/about-java-stream-lazy/1.png" class="" title="result"></a>
+<p>这里重点在<code>peek()</code>，<code>limit()</code>和<code>forEach()</code>的生效顺序，从结果上来看,应该是stream中的每一个元素，对应一组打包的操作，所以输出字符串b之后紧接着输出的是b的长度，而不是字符串c。而<code>limit()</code>限制了处理的元素个数，大于limit的元素到达不了终端操作，自然不会生效。</p>
+<p>我们换个方法再验证一遍，这次终端操作用<code>sum()</code>来替代<code>forEach()</code>，终端操作不是对元素逐一的操作了，对中间操作的执行顺序会有什么影响吗？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="string">"aaa"</span>, <span class="string">"aa"</span>, <span class="string">"bbbb"</span>, <span class="string">"bb"</span>, <span class="string">"ccccc"</span>, <span class="string">"cc"</span>, <span class="string">"dddddd"</span>, <span class="string">"eeeeeee"</span>)</span><br><span class="line">        .filter(len -&gt; len.length() &gt; <span class="number">3</span>)</span><br><span class="line">        .peek(System.out::println)</span><br><span class="line">        .mapToInt(String::length)</span><br><span class="line">        .limit(<span class="number">2</span>)</span><br><span class="line">        .peek(System.out::println)</span><br><span class="line">        .sum();</span><br></pre></td></tr></table></figure><br>结果跟<code>forEach()</code>是一样的。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/11/20/about-java-stream-lazy/" data-id="cki6vunre0010o89k4hxhaftp" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/stream/" rel="tag">stream</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-log4j-using-lambda" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/11/14/log4j-using-lambda/">Log4j 节能写法</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/14/log4j-using-lambda/" class="article-date">
+  <time datetime="2019-11-14T08:06:39.000Z" itemprop="datePublished">2019-11-14</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="尽量使用Supplier-lt-gt-来生成log"><a href="#尽量使用Supplier-lt-gt-来生成log" class="headerlink" title="尽量使用Supplier&lt;&gt; 来生成log"></a>尽量使用Supplier&lt;&gt; 来生成log</h2><p>比如debug，我们可以使用下面三种方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message object with the &#123;<span class="doctag">@link</span> Level#DEBUG DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message string to log.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message with parameters at the &#123;<span class="doctag">@link</span> Level#DEBUG DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message to log; the format depends on the message factory.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> params parameters to the message.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> #getMessageFactory()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message, Object... params)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message with parameters which are only to be constructed if the logging level is the &#123;<span class="doctag">@link</span> Level#DEBUG</span></span><br><span class="line"><span class="comment"> * DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message to log; the format depends on the message factory.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> paramSuppliers An array of functions, which when called, produce the desired log message parameters.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.4</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message, Supplier&lt;?&gt;... paramSuppliers)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="第一种：直接输出信息。"><a href="#第一种：直接输出信息。" class="headerlink" title="第一种：直接输出信息。"></a>第一种：直接输出信息。</h3><p>最不环保的写法，甚至新手的话可能会出现<code>logger.debug(&quot;A is &quot; + a + &quot;, B is&quot; + b + &quot;.&quot;);</code>这种写法，首先使用<code>+</code>来生成log文本是非常耗时的，其次，无论log输出的级别是否低于debug，这段字符串的处理都会被执行。</p>
+<h3 id="第二种：使用MessageFactory和参数生成log"><a href="#第二种：使用MessageFactory和参数生成log" class="headerlink" title="第二种：使用MessageFactory和参数生成log"></a>第二种：使用MessageFactory和参数生成log</h3><p>OpenJDK 8之前这么写是没问题的，使用MessageFactory来生成log既增加了可读性，又比字符串连接要节能。不过问题是log的生成还是总需要被执行。</p>
+<h3 id="第三种：使用Lambda"><a href="#第三种：使用Lambda" class="headerlink" title="第三种：使用Lambda"></a>第三种：使用Lambda</h3><p>doc中写了:<code>only to be constructed if the logging level is the DEBUG level.</code>，还需要解释吗？</p>
+<h3 id="那么，当需要把objectA写到debug里时"><a href="#那么，当需要把objectA写到debug里时" class="headerlink" title="那么，当需要把objectA写到debug里时"></a>那么，当需要把objectA写到debug里时</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logger.debug(objectA.toString()); <span class="comment">// 一般写法</span></span><br><span class="line"></span><br><span class="line">logger.debug(() -&gt; objectA.toString()); <span class="comment">// 略动脑筋的写法</span></span><br><span class="line"></span><br><span class="line">logger.debug(objectA::toString); <span class="comment">//文艺写法</span></span><br></pre></td></tr></table></figure>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/11/14/log4j-using-lambda/" data-id="cki6vunre0011o89kcfdpez83" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-has-a-and-is-a" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/11/14/has-a-and-is-a/">HAS-A 和 IS-A的区别</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/14/has-a-and-is-a/" class="article-date">
+  <time datetime="2019-11-14T04:39:09.000Z" itemprop="datePublished">2019-11-14</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h2><p>不妨通过字面意思来理解，HAS-A 就是有什么的意思，而IS-A就是是什么的意思。在面向对象编程（OOP）中，类的继承就是IS-A的关系，简单来说就是“张三是个人，旺财是条狗”的意思。而类的对象使用，多数时候可以看作是HAS-A的关系，比如把身高，体重都看作是类的话，我们可以说“张三有身高，有体重”。</p>
+<ul>
+<li>Inheritance 继承 IS-A</li>
+<li>composition 组成 HAS-A</li>
+</ul>
+<h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>谷歌搜到的第一篇说明就很<a href="https://www.w3resource.com/java-tutorial/inheritance-composition-relationship.php" target="_blank" rel="noopener">浅显易懂</a></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Class Car&#123; ... &#125; <span class="comment">// 车是一个类 </span></span><br><span class="line"></span><br><span class="line">Class Engine&#123; ... &#125; <span class="comment">// 引擎也是一个类</span></span><br><span class="line"></span><br><span class="line">Class Toyota extends Car &#123; <span class="comment">// 丰田车作为一个有继承关系的子类，跟Car是IS-A关系，跟Engine是HAS-A的关系</span></span><br><span class="line">  <span class="keyword">private</span> Engine;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/11/14/has-a-and-is-a/" data-id="cki6vunrc000yo89ka1n9ag0m" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Inheritance/" rel="tag">Inheritance</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-concurrency" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/08/05/concurrency/">Concurrency - Java的并发编程</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/08/05/concurrency/" class="article-date">
+  <time datetime="2019-08-05T01:30:11.000Z" itemprop="datePublished">2019-08-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>Concurrency的意思是并发性，或者并行性（日语），顾名思义指的是同时处理不同的任务。并发编程的核心线程，可以简单地理解成RTS游戏里的“工人“单位:一个工人同一时间只能执行一个建造任务，增加工人可以增加建造序列的数量，也可以通过给工人切换建造任务来<strong>看起来</strong>增加建造序列，而这里的微操，全都是由系统来控制的。<br>所以，并发编程并不针对多核CPU，即使只有一个CPU，也可以通过分时段的线程切换来实现多个线程的并发执行。</p>
+<h2 id="Java的基本多线程写法"><a href="#Java的基本多线程写法" class="headerlink" title="Java的基本多线程写法"></a>Java的基本多线程写法</h2><p>首先是线程的最基本写法。Java中有两种最基本的线程编写方法：</p>
+<ol>
+<li><p>继承Thread类，在<code>run()</code>中书写程序内容，使用<code>start()</code>来启动线程。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span></span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String... args)</span> </span>&#123;</span><br><span class="line">        WorkerA a = <span class="keyword">new</span> WorkerA();</span><br><span class="line">        WorkerB b = <span class="keyword">new</span> WorkerB();</span><br><span class="line">        <span class="comment">// 这里我们有两个工人，可以同时启动两个建造任务了</span></span><br><span class="line">        a.start();</span><br><span class="line">        b.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WorkerA</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="comment">/**</span></span><br><span class="line"><span class="comment">    * 在run里写上具体要给这个工人分配的任务</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">"Yes, my lord. "</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"Building cpmolete."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">WorkerB</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">"了解。"</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"任務完了。"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>实现Runnable接口。<code>Thread</code>的构造体可以接受一个Runnable的参数，所以我们也可以通过写一个实现了Runnable接口的类来生成线程。虽然也是在run方法中写所要执行的任务，但是实现Runnable的类是作为生成线程的参数来使用，所以我们可以理解为创建了一类工作，然后以该工作为参数创建(灵魂召唤)多个工人来执行。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">  <span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Sample</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 我们创建了两个同样的工人，会执行同一种建造任务，比如都去造房子（卡人口不可取）</span></span><br><span class="line">        Work work = <span class="keyword">new</span> Work();</span><br><span class="line"></span><br><span class="line">        Thread workerA = <span class="keyword">new</span> Thread(work);</span><br><span class="line">        Thread workerB = <span class="keyword">new</span> Thread(work);</span><br><span class="line"></span><br><span class="line">        workerA.start();</span><br><span class="line">        workerB.start();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Work</span> <span class="keyword">implements</span> <span class="title">Runnable</span> </span>&#123;</span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">            System.out.print(<span class="string">"Yes, my lord. "</span> + i);</span><br><span class="line">        &#125;</span><br><span class="line">        System.out.println(<span class="string">"Building cpmolete."</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>Runnable也可以使用Lambda表达式来定义</strong>，这样我们就可以直接写run方法的内容而不用去定义一整个类了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Thread c = <span class="keyword">new</span> Thread(() -&gt; &#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        System.out.println(<span class="string">"C "</span> + i);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">c.start();</span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+<h3 id="线程的状态和优先级"><a href="#线程的状态和优先级" class="headerlink" title="线程的状态和优先级"></a>线程的状态和优先级</h3><p><code>java.lang</code>的列举型Thread.State中定义了6中线程状态：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* A Thread which has not yet started.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">NEW,</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* A Thread which is running or suspended.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">RUNNABLE,</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* A Thread which is blocked on a monitor.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">BLOCKED, </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* A Thread which is waiting with no timeout.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">WAITING,</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* A Thread which is waiting with a timeout.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">TIMED_WAITING, </span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment">* A thread which is no longer alive.</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line">TERMINATED</span><br></pre></td></tr></table></figure></p>
+<p>一个线程只能由<code>start()</code>启动一次，多次启动会产生<code>IllegalThreadStateException</code></p>
+<p>在Thread类中定义了三个优先级常数：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The maximum priority value for a Thread.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MAX_PRIORITY = <span class="number">10</span>;		<span class="comment">// Maximum allowed priority for a thread</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The minimum priority value for a Thread.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> MIN_PRIORITY = <span class="number">1</span>;			<span class="comment">// Minimum allowed priority for a thread</span></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * The default priority value for a Thread.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">final</span> <span class="keyword">static</span> <span class="keyword">int</span> NORM_PRIORITY = <span class="number">5</span>;		<span class="comment">// Normal priority for a thread</span></span><br></pre></td></tr></table></figure><br>线程的优先级可以通过<code>priority</code>的getter和setter来设置和确认，当两个进行中的线程发生冲突时，一般优先级高的线程会先运行，但这并不等于说优先级高的线程一定会被优先启动。系统在启动线程的时候并不看优先级的高低。</p>
+<h3 id="Thread类"><a href="#Thread类" class="headerlink" title="Thread类"></a>Thread类</h3><p>Thread类提供了各种用来控制线程启动，暂停，再开，终止的方法，这里记录以下两个点的理解：</p>
+<ol>
+<li>InterruptedException. 当线程进入待机或者睡眠等状态时，就需要针对InterruptedException写一个try-catch，简单理解就是被人吵醒时应该怎么办。</li>
+<li>sleep可以设置一定的时间，但并不等于时间到了线程就会停止挂起，继续运行。sleep只是线程在不被interrupt的情况下最短的睡眠时长，时间到了之后，也要视系统的资源分配情况来决定什么时候继续运行。</li>
+</ol>
+<h3 id="同步与排他"><a href="#同步与排他" class="headerlink" title="同步与排他"></a>同步与排他</h3><p>并发编程一个很常见的问题就是不同线程对同一资源的读写控制，这里就要提到两个很基本的概念，同步和排他（锁）。<br>排他锁比较好理解，就是通过关键字或者方法来指定某一部分同一时间只能被一个线程使用，被调用时这部分资源会被锁定，其他想要使用该资源的线程则会被挂起，知道资源解锁，轮班使用。<br><code>synchronized</code>是用来指定锁定资源的关键字，可以用来修饰方法，也可以用来指定代码块。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">synchronized</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;...&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 或者</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add</span><span class="params">(<span class="keyword">int</span> a)</span></span>&#123;</span><br><span class="line">    <span class="keyword">synchronized</span>(想要锁定的对象)&#123;</span><br><span class="line">        <span class="comment">//指定的对象在这段代码运行过程中被上锁</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>同步则是指使用wait(),notify(),notifyAll()等方法，具体的控制线程的运行。<br>wait()可以指定也可以不指定超时的值，wait可以让线程进入等待，直到等待超时或者其他的线程使用了notify(),notifyAll()或者interrupt()方法，使等待的线程进入可执行的状态。<br>notify()会随机让一个等待的线程再开，notifyAll()则是让所有该对象的线程再开。<br>wait(),notify(),notifyAll()都是用来控制线程访问被锁资源的，所以如果没有synchronized锁定资源，这些方法的会抛出<code>IllegalMonitorStateException</code>  </p>
+<p>排他锁无法避免会出现不同的线程锁定不同的资源大家都干不了活儿的局面，这就是死锁；或者因为要使用的资源不断被其他线程占用而导致某一线程进展缓慢，这叫活锁。<br>死锁和活锁都不会在编译或者运行时报错，所以要留意设置超时，一定时间后手动解锁资源。等待资源访问时线程会处于<code>饥饿</code>的状态，饥饿的线程越多，则说明程序效率越低。为了减少饥饿，资源的调用顺序，锁定的粒度都需要好好思考。</p>
+<h3 id="并发集合"><a href="#并发集合" class="headerlink" title="并发集合"></a>并发集合</h3><h2 id="高效的线程管理"><a href="#高效的线程管理" class="headerlink" title="高效的线程管理"></a>高效的线程管理</h2><h3 id="执行器"><a href="#执行器" class="headerlink" title="执行器"></a>执行器</h3><h3 id="线程池"><a href="#线程池" class="headerlink" title="线程池"></a>线程池</h3><h4 id="线程池的四种-BlockedQueue"><a href="#线程池的四种-BlockedQueue" class="headerlink" title="线程池的四种 BlockedQueue"></a>线程池的四种 BlockedQueue</h4><h2 id="多线程中的问题"><a href="#多线程中的问题" class="headerlink" title="多线程中的问题"></a>多线程中的问题</h2><h3 id="内存释放-shutdown-和-shutdownNow"><a href="#内存释放-shutdown-和-shutdownNow" class="headerlink" title="内存释放 shutdown 和 shutdownNow"></a>内存释放 shutdown 和 shutdownNow</h3><h3 id="InterruptException"><a href="#InterruptException" class="headerlink" title="InterruptException"></a>InterruptException</h3><h3 id="使用TimeUnit"><a href="#使用TimeUnit" class="headerlink" title="使用TimeUnit"></a>使用TimeUnit</h3><h3 id=""><a href="#" class="headerlink" title=" "></a> </h3></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/08/05/concurrency/" data-id="cki6vunrc000wo89k7big3ai1" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%A1%AB%E4%B9%8B%E5%9D%91/" rel="tag">未填之坑</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-docker-instruction-commands" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/07/30/docker-instruction-commands/">Dockerfile 命令</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/30/docker-instruction-commands/" class="article-date">
+  <time datetime="2019-07-30T01:29:30.000Z" itemprop="datePublished">2019-07-30</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>内容整理自<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门到实践</a></p>
+<h2 id="什么是Dockerfile"><a href="#什么是Dockerfile" class="headerlink" title="什么是Dockerfile"></a>什么是Dockerfile</h2><p>Dockerfile 是一种用来定制镜像的文本文件。我们可以在Dockerfile中指定基础镜像，执行命令，开放端口，设置环境变量等等。<br><strong>每一条指令</strong>会构建一层。参考<a href="https://docs.docker.com/storage/storagedriver/" target="_blank" rel="noopener">docker 文档</a>，docker的镜像具有下面的层结构(image layers)，增加层的厚度自然会增加镜像的大小，所以写Dockerfile时，尽量使用<code>\</code> 和 <code>&amp;&amp;</code> 巧妙地将命令的内容合并到一层。<br><a href="/2019/07/30/docker-instruction-commands/layer.png" class="gallery-item"><img src="/2019/07/30/docker-instruction-commands/layer.png" class="" title="layer"></a></p>
+<p>比如<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门到实践</a>中的例子，写一个构建<code>nginx</code>镜像的Dockerfile：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">'&lt;h1&gt;Hello, Docker!&lt;/h1&gt;'</span> &gt; /usr/share/nginx/html/index.html</span></span><br></pre></td></tr></table></figure>
+<p>这个Dockerfile包含了两个指令，<code>FROM</code>制定了基础镜像，基础镜像可以是各种服务类的官方镜像，也可以是干净的操作系统镜像，还可以是空白镜像<code>scratch</code>。<code>RUN</code>是最常用的指令，用来执行命令行命令。</p>
+<p>接下来我们执行<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx:v3 .</span><br></pre></td></tr></table></figure><br>来构建镜像，<code>it nginx:v3</code>的的意思是构建的目标名为nginx，标签为v3。</p>
+<p>docker构建镜像的log将每一条指令分的很清楚，每一条指令作为一个step来执行，完成后我们就可以看到新的镜像<code>nginx:v3</code>了。</p>
+<p>执行下面命令，通过新构建的镜像生成一个容器：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name hello -d -p <span class="number">8080</span>:<span class="number">80</span> nginx:v3</span><br></pre></td></tr></table></figure><br>然后我们访问 <code>localhost:8080</code> 就可以看到欢迎页了：<br><a href="/2019/07/30/docker-instruction-commands/hello.png" class="gallery-item"><img src="/2019/07/30/docker-instruction-commands/hello.png" class="" title="hello"></a></p>
+<h3 id="Dockerfile中用到的命令"><a href="#Dockerfile中用到的命令" class="headerlink" title="Dockerfile中用到的命令"></a>Dockerfile中用到的命令</h3><p>docker的指令一般有两种书写方式，一种是指令后跟命令行，一种是使用<code>[]</code>的函数调用写法，这里主要记录一下命令行写法。</p>
+<ul>
+<li><p>COPY<br><code>COPY &lt;context path&gt; &lt;target path&gt;</code><br>这个指令将上下文目录中的文件或者目录复制到新一层的目标路径中，要复制的文件或者目录可以有多个，可以使用通配符（符合golang的filepath.Match规则)，目标路径可以是绝对路径，也可以是工作目录的相对路径。<br>还可以加上<code>--chown=&lt;user&gt;:&lt;group&gt;</code>来改变文件的所属用户和所属组</p>
+<blockquote>
+<p>上下文路径？context path?</p>
+</blockquote>
+</li>
+<li><p>ADD<br>使用方法跟COPY基本一样。功能会丰富一点，比如源路径可以设置为url，使用url路径时docker会讲文件打包下载到目标路径。因为需要多余的RUN来处理权限，解压缩，筛选内容，这个命令并不是很实用。</p>
+</li>
+<li><p>CMD<br>用于指定默认的容器主进程的启动命令。指令的写法也有两种：  </p>
+<ul>
+<li>shell 格式 <code>CMD 命令</code></li>
+<li>exec 格式 <code>CMD [&quot;可执行文件&quot;, &quot;参数&quot;, ...&quot;参数&quot; ]</code>  </li>
+</ul>
+<p>使用shell格式写的内容会被解析为<code>CMD [&quot;sh&quot;, &quot;-c&quot;, &quot;命令&quot;]</code>，所以命令中可以使用环境变量，但是命令必须前台执行，如果命令结束后直接结束了<code>sh</code>程序，则容器也会推出。</p>
+<p>Dockerfile中设置的启动命令可以在运行时重新指定，比如我们写<code>docker run -it imagename</code>的话，就会执行默认的命令，在镜像名后面添加命令，比如<code>cat etc/os-release</code>，就可以了。</p>
+</li>
+<li><p>ENTRYPOINT<br>跟CMD一样用来设置启动时的命令行和参数，不过在重新定义的时候，要在<code>docker run</code>后面使用命令<code>--entrypoint</code>来设置。<br>ENTRYPOINT和CMD共存的意义在于，定义了ENTRYPOINT之后，CMD的内容将不再被直接执行，而是作为参数传递给ENTRYPOINT。比如<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门-Dockerfile指令详解-NETRYPOINT入口点</a>里面介绍的例子：</p>
+<ol>
+<li>如果我们想在执行的时候为<code>CMD [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://ip.cn&quot; ]</code>添加参数，直接在镜像名后面加肯定是不行的，那样会替换掉所有命令（全部重写那就另当别论了），如果使用CMD来获取参数，定义<code>ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://ip.cn&quot; ]</code>，就可以实现参数的自由设置了。</li>
+<li><p>用ENTRYPOINT来处理CMD做不到的工作。</p>
+ <figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> alpine:<span class="number">3.4</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> addgroup -S redis &amp;&amp; adduser -S -G redis redis</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [<span class="string">"docker-entrypoint.sh"</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">6379</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">"redis-server"</span> ]</span></span><br></pre></td></tr></table></figure>
+<p> docker-entrypoint.sh的内容为：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># allow the container to be started with `--user`</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">'redis-server'</span> -a <span class="string">"<span class="variable">$(id -u)</span>"</span> = <span class="string">'0'</span> ]; <span class="keyword">then</span></span><br><span class="line">    chown -R redis .</span><br><span class="line">    <span class="built_in">exec</span> su-exec redis <span class="string">"<span class="variable">$0</span>"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$@</span>"</span></span><br></pre></td></tr></table></figure>
+<p> 这里将cmd作为参数获取的方法，在ENTRYPOINT中设置了一个脚本，通过参数的内容来区别启动用户的身份。</p>
+</li>
+</ol>
+</li>
+<li><p>ENV<br>定义环境变量，就这么简单。可以用<code>=</code>，可以用空格，可以用等号加空格一行定义一群，也可以用<code>\</code>加入换行。</p>
+</li>
+<li><p>ARG<br>定义参数。参数和环境变量不同的是，参数只在构建的时候有用，在容器运行时不会被引入容器内部。参数的定义可以在<code>docker build</code>时使用<code>--build-arg &lt;name&gt;=&lt;value&gt;</code>的格式来覆盖。</p>
+</li>
+<li><p>VOLUME<br>匿名卷</p>
+</li>
+<li><p>EXPOSE<br>暴露端口</p>
+</li>
+</ul>
+<ul>
+<li><p>WORKDIR<br>指定工作目录</p>
+</li>
+<li><p>USER<br>指定当前用户</p>
+</li>
+<li><p>HEALTHCHECK<br>健康检查</p>
+</li>
+<li><p>ONBUILD<br>构建时执行</p>
+</li>
+</ul>
+<h2 id="镜像的使用"><a href="#镜像的使用" class="headerlink" title="镜像的使用"></a>镜像的使用</h2><h3 id="镜像的获取，管理和删除"><a href="#镜像的获取，管理和删除" class="headerlink" title="镜像的获取，管理和删除"></a>镜像的获取，管理和删除</h3><h3 id="commit-命令"><a href="#commit-命令" class="headerlink" title="commit 命令"></a>commit 命令</h3></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/07/30/docker-instruction-commands/" data-id="cki6vunrb000uo89k70ewhsyc" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-docker-ibmdb2" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/07/23/docker-ibmdb2/">使用DB2的Docker镜像建立本地开发用的数据库</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/23/docker-ibmdb2/" class="article-date">
+  <time datetime="2019-07-23T05:36:40.000Z" itemprop="datePublished">2019-07-23</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>这个是2019-07-23的笔记，DB2的社区免费版授权和镜像的使用方法随时可能改变。</p>
+<h2 id="从哪儿找DB2"><a href="#从哪儿找DB2" class="headerlink" title="从哪儿找DB2"></a>从哪儿找DB2</h2><p>DB2的免费版本在 <a href="https://www.ibm.com/cloud/blog/announcements/ibm-db2-developer-community-edition" target="_blank" rel="noopener">2019年的社区版DB2</a> 中可以找到，提供了三种免费版的使用方法：</p>
+<ol>
+<li>使用docker镜像</li>
+<li>下载DB2程序</li>
+<li>IBM Cloud的DB2服务（免费套餐）</li>
+</ol>
+<p>这里记一下使用第一种方法Docker镜像的构建过程。</p>
+<h2 id="开工"><a href="#开工" class="headerlink" title="开工"></a>开工</h2><h3 id="第一步，打开冰箱…-啊不，下载镜像，可以在docker-hub搜DB2，这篇笔记使用的是-ibmcom-db2"><a href="#第一步，打开冰箱…-啊不，下载镜像，可以在docker-hub搜DB2，这篇笔记使用的是-ibmcom-db2" class="headerlink" title="第一步，打开冰箱….啊不，下载镜像，可以在docker hub搜DB2，这篇笔记使用的是 ibmcom/db2"></a>第一步，打开冰箱….啊不，下载镜像，可以在docker hub搜DB2，这篇笔记使用的是 <a href="https://hub.docker.com/r/ibmcom/db2" target="_blank" rel="noopener">ibmcom/db2</a></h3><h3 id="第二步，创建容器，在控制台执行"><a href="#第二步，创建容器，在控制台执行" class="headerlink" title="第二步，创建容器，在控制台执行:"></a>第二步，创建容器，在控制台执行:</h3><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> --name db2 --privileged -p 50000:50000 -e LICENSE=accept -e DB2INST1_PASSWORD=password -e DBNAME=MYDATABASE ibmcom/db2</span></span><br></pre></td></tr></table></figure>
+<p>简单解释一下</p>
+<ol>
+<li><code>--name</code> 容器的名字，以后启动关闭的时候用 </li>
+<li><code>--privileged</code> 不知道（弄懂了再写）</li>
+<li><code>-p</code> 端口映射，这里的意思是本地的50000端口映射到容器的50000，这样我们就可以通过<code>localhost:50000</code>来访问容器里的数据库了</li>
+<li><code>-e</code> 给容器里设置一些环境变量<ol>
+<li><code>LICENSE</code> 嗯。。。</li>
+<li><code>DB2INST1_PASSWORD</code> 为默认的用户名db2inst1设置的密码。</li>
+<li><code>DBNAME</code> 直接使用变量作为名字建立一个database</li>
+</ol>
+</li>
+<li>最后那个<code>ibmcom/db2</code>是镜像名</li>
+</ol>
+<h3 id="第三步，连接："><a href="#第三步，连接：" class="headerlink" title="第三步，连接："></a>第三步，连接：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: jdbc:db2:&#x2F;&#x2F;localhost:50000&#x2F;MYDATABASE</span><br><span class="line">username: db2inst1</span><br><span class="line">password: password</span><br><span class="line">driver: db2jcc4.jar</span><br></pre></td></tr></table></figure>
+<p>驱动文件可以在IBM的服务网页找到 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg21363866" target="_blank" rel="noopener">db2jcc4.jar</a></p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>有时候会提示port无法使用，容器不能启动。先确定port50000没有被占用，如果可以使用，就重启docker。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/07/23/docker-ibmdb2/" data-id="cki6vunra000so89k5mb43gxd" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB2/" rel="tag">DB2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-enum-things" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/07/17/enum-things/">关于枚举型的一些理解</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/17/enum-things/" class="article-date">
+  <time datetime="2019-07-16T23:39:22.000Z" itemprop="datePublished">2019-07-17</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>最近工作中写了一个枚举类，在code-review的时候被佐藤老师指摘了好几处，特别总结一下加深理解。</p>
+<h2 id="什么是枚举型-Enum"><a href="#什么是枚举型-Enum" class="headerlink" title="什么是枚举型 Enum"></a>什么是枚举型 Enum</h2><p>Enum是Java 5开始引入的一个接口，关键字 <code>enum</code> 创建的类会自动使用Enum接口。  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> WeekDay &#123;</span><br><span class="line">    MONDAY, TUESDAY, WEDNESDAY,</span><br><span class="line">    THURSDAY, FRIDAY, SATURDAY, SUNDAY</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>像这样定义了<code>WeekDay</code>之后，我们就不必为周一到周日创建整形或者字符串的静态变量了，可以直接把<code>WeekDay</code>中定义的七个名字当做基本型来使用: <code>WeekDay.MONDAY</code> , <code>WeekDay.TUESDAY</code> , <code>WeekDay.WEDNESDAY</code> ,  <code>WeekDay.THURSDAY</code> ,  <code>WeekDay.FRIDAY</code> ,  <code>WeekDay.SATURDAY</code> ,  <code>WeekDay.SUNDAY</code> 。 </p>
+<p>枚举型的构造体是私有的，不可以使用构造体来构建枚举类的实体，但是枚举类中的元素是公开的，可以像基本型一样直接取来使用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WorkDay day = WorkDat.SUNDAY;</span><br></pre></td></tr></table></figure></p>
+<h2 id="用枚举类的思维方式来使用枚举类"><a href="#用枚举类的思维方式来使用枚举类" class="headerlink" title="用枚举类的思维方式来使用枚举类"></a>用枚举类的思维方式来使用枚举类</h2><p>引入枚举类的一个主要目的，是可以有一种类型安全，不可变的方法来定义常量。在引入枚举类之前，一般通过定义基本型的常量来表达一些固定的值。<br>比如<code>static final int MONDAY = 1;</code> 这种写法看似没什么问题，可没有什么实际意义的<code>1</code>在这里承担了很重要的职责，不免让人产生疑问，改成<code>0</code>可不可以呢？<br>而在判断是不是<code>MONDAY</code>时，又必须和<code>1</code>作比较，这就让程序逐渐变得复杂而又危险了。</p>
+<p>引入枚举类之后，MONDAY本身就可以起到表达数值，作为判断条件的作用，从而减少了产生bug的可能性。<br>所以，像下面这种强行使用枚举类的<code>name</code> <code>toString</code>来判断对象是否为枚举类中的一个元素的写法，是很不符合枚举类的思维方式的，浪费了使用枚举类的好处。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String a = System.getEnv(“TODAY”)；</span><br><span class="line">String today = <span class="string">"Undefined"</span>;</span><br><span class="line"><span class="keyword">if</span>(WeekDay.MONDAY.name.equals(a))&#123;</span><br><span class="line">  today = WeekDay.MONDAY.name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>我们可以给<code>WeekDay</code>添加一个方法来返回元素:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> WeekDay <span class="title">as</span><span class="params">(String candidate)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(MONDAY.name.equals(candidate))&#123;</span><br><span class="line">    <span class="keyword">return</span> MONDAY;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(...)&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> UNDEFINED; <span class="comment">//添加一个未定义的元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样我们在外面就可以告别那个中间的String，直接获取WeekDay的对象：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">WeekDay today = WeekDay.as(System.getEnv(<span class="string">"TODAY"</span>));</span><br><span class="line">If(today == WeekDay.UNDEFINED)&#123;</span><br><span class="line">  <span class="comment">// 对于未定义，空的设定值，或者默认值，可以在这里自由的设置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(today == WeekDay.MONDAY)&#123;</span><br><span class="line">  <span class="comment">// 想干啥干啥咯</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="关联-使用私有构造体或者枚举类型来强化单例性"><a href="#关联-使用私有构造体或者枚举类型来强化单例性" class="headerlink" title="关联 [使用私有构造体或者枚举类型来强化单例性]"></a>关联 [使用私有构造体或者枚举类型来强化单例性]</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/07/17/enum-things/" data-id="cki6vunr7000po89kfoh17dug" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-AuthN-vs-AuthZ" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/07/09/AuthN-vs-AuthZ/">区分 Authentication(AuthN) 和 Authorization(AuthZ)</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/09/AuthN-vs-AuthZ/" class="article-date">
+  <time datetime="2019-07-09T02:48:48.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>最近写的一段代码里，关于关键字<code>Auth</code>的使用在review的时候被佐藤老师批评了，一直以来对于认证和授权都没有好好的理解，在这里整理一下。</p>
+<h2 id="别直接用Auth来命名"><a href="#别直接用Auth来命名" class="headerlink" title="别直接用Auth来命名"></a>别直接用Auth来命名</h2><p>之前对于<code>Auth</code>这个关键字的理解，一直都处于大概知道什么意思的模糊状态。其实使用<code>Auth</code>作为关键字来命名方法和变量，并不是很合适，因为<code>Authentication</code> 和 <code>Authorization</code> 的缩写都可以是<code>Auth</code>。  </p>
+<p><code>Authentication</code> 的中文翻译是<code>认证</code>，日语翻译是<code>認証</code>，可以理解为判断<strong>你是不是谁</strong>的操作，比如输入用户名和密码，系统判断这个用户名存在，且密码匹配，就是认证。</p>
+<p><code>Authorization</code> 的中文翻译是<code>授权</code>，日语翻译是<code>認可</code>, 我的理解是<strong>你可不可以</strong>的意思，例如用户名密码通过认证之后，系统判断该用户是否有访问权限，给与权限的操作，就是授权。</p>
+<h2 id="401-和-403"><a href="#401-和-403" class="headerlink" title="401 和 403"></a>401 和 403</h2><p>HTTP的返回值401和403是一对很容易弄混的数字。</p>
+<ul>
+<li>401 Unauthorized</li>
+<li>403 Forbidden</li>
+</ul>
+<p>401是发生用户认证错误时的返回值，而403是拒绝访问。那么结合上面对<code>Authentication</code>和<code>Authorization</code>的理解不难发现:</p>
+<ul>
+<li>401 虽然写着Unauthorized的名字，返回的却是Authentication的错误</li>
+<li>403 则承担着返回Unauthorized错误的职责</li>
+</ul>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/07/09/AuthN-vs-AuthZ/" data-id="cki6vunr6000mo89kdjcb2yrk" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+    </article>
+    
+  
+    
+      <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+      </nav>
+    
+  </section>
 </div>
-<div class="right-aside">
-    <div class="right-nav ms">
-        <div class="main">
-          <svg id="nav-menu" class="icon icon-menu" aria-hidden="true">
-            <use xlink:href="#icon-menu"></use>
-          </svg>
-          <ul class="left">
-              
-          </ul>
-          <div class="search">
-            <div class="search-box">
-              <input type="search"  id="search" class="input-search" placeholder="搜索">
-              <i class="icon-search"></i>
-              <div class="search-result-box">
-                <ul id="search-result"></ul>
-              </div>
-            </div>
-            <svg id="nav-search" class="icon icon-search" aria-hidden="true">
-              <use xlink:href="#icon-search"></use>
-            </svg>
-          </div>
-        </div>
-    </div>
-    <div class="right-main">
-        <div class="category">
-            <ul>
-                <li><a href="/" class="active">最新</a></li>
-                
-            </ul>
-        </div>
-        <div class="clear"></div>
-        <div class="list">
-            <div>
-                
-                
+
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
   
-    <div class="item">
-      <div class="title">
-        <a href="/2019/11/28/measures-for-in-sample-evaluation/">均方误差和决定系数</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-11-28T05:00:58.000Z" itemprop="date">2019-11-28</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.009Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/11/28/measures-for-in-sample-evaluation/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
+    <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 XSUN</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="XSUN"></a>
     </div>
   
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/11/26/linear-regression/">使用Python的线性回归分析</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-11-26T02:32:56.000Z" itemprop="date">2019-11-26</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.009Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/11/26/linear-regression/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/11/20/about-java-stream-lazy/">关于Java的stream执行顺序的笔记</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-11-20T04:39:55.000Z" itemprop="date">2019-11-20</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.008Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/11/20/about-java-stream-lazy/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/11/14/log4j-using-lambda/">Log4j 节能写法</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-11-14T08:06:39.000Z" itemprop="date">2019-11-14</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.008Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/11/14/log4j-using-lambda/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/11/14/has-a-and-is-a/">HAS-A 和 IS-A的区别</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-11-14T04:39:09.000Z" itemprop="date">2019-11-14</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.008Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/11/14/has-a-and-is-a/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/08/05/concurrency/">Concurrency - Java的并发编程</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-08-05T01:30:11.000Z" itemprop="date">2019-08-05</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.867Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/08/05/concurrency/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/07/30/docker-instruction-commands/">Dockerfile 命令</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-07-30T01:29:30.000Z" itemprop="date">2019-07-30</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.866Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/07/30/docker-instruction-commands/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/07/23/docker-ibmdb2/">使用DB2的Docker镜像建立本地开发用的数据库</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-07-23T05:36:40.000Z" itemprop="date">2019-07-23</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.865Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/07/23/docker-ibmdb2/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/07/17/enum-things/">关于枚举型的一些理解</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-07-16T23:39:22.000Z" itemprop="date">2019-07-17</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.865Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/07/17/enum-things/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/07/09/AuthN-vs-AuthZ/">区分 Authentication(AuthN) 和 Authorization(AuthZ)</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-07-09T02:48:48.000Z" itemprop="date">2019-07-09</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.865Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/07/09/AuthN-vs-AuthZ/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-<nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/">&amp;laquo;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">&amp;raquo;</a>
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
 </nav>
-
-
-            </div>
-        </div>
-        <div class="clear"></div>
-        <!-- <div class="hosted">
-          <ul>
-            <li class="coding">
-              <a href="https://coding.net/pages" target="_blank" rel="noopener">
-                <img src="/./img/coding.png">
-              </a>
-            </li>
-            <li class="github-pages">
-              <a href="https://pages.github.com" target="_blank" rel="noopener">
-                <img src="/./img/github-pages.png">
-              </a>
-            </li>
-          </ul>
-        </div> -->
-    </div>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
 </div>
-<script>
-  var homeLeftBgArr = 'https://ws3.sinaimg.cn/large/006tKfTcly1fsulzlvofnj30af0k5jvu.jpg,https://ws2.sinaimg.cn/large/006tNbRwly1fwl2alhqibj31kw2dcu0y.jpg,https://ws1.sinaimg.cn/large/006tNbRwly1fwl2bclcirj31kw2czk7v.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2c765jej31kw2d1npe.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2dentnvj31kw2dc1l2.jpg,https://ws4.sinaimg.cn/large/006tNbRwly1fwl2dqawiej31kw2d8x6p.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2f7yp25j31kw3a97wh.jpg'.split(',');
-  var homeLeftBgArrLen = homeLeftBgArr.length;
-  var leftBackgroundUrl = homeLeftBgArr[Math.floor(Math.random() * homeLeftBgArrLen)];
-  var homeLeftAsideNode = document.getElementsByClassName('left-aside')[0];
-  if (homeLeftAsideNode) {
-    homeLeftAsideNode.style.backgroundImage = 'url(' + leftBackgroundUrl + ')';
-  }
-</script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-</script>
-<script>//console
-  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
-  var canConsole = true;
-  var consoleInfo = (function(consoleConfig) {
-  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
-    return;
-  }
-  var consoleColor = '#6190e8';
-  var _console;
-  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
-  var textStyle = 'color: ' + consoleColor + ';';
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
 
-  consoleConfig.map(o => {
-    var num = (o.match(/%c/g) || []).length;
-    if(/^http(s)?:\/\//.test(o)) {
-      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
-      return;
-    }
-    if (num > 0) {
-      var logArguments = [];
-      for (var i = 0; i < num; i++) {
-        if (i % 2 === 0) {
-          logArguments.push(backgroundTextStyle);
-        } else {
-          logArguments.push(textStyle);
-        }
-      }
-      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
-      return;
-    }
-    console.log('%c' + o, textStyle);
-  });
-}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+<script src="/js/jquery-2.0.3.min.js"></script>
 
-  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
 </body>
 </html>

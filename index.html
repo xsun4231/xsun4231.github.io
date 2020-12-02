@@ -1,364 +1,957 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="keywords" content="hexo,个人博客,blog" />
-  <meta name="description" content="Null Page" />
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
-  <link rel="dns-prefetch" href="https://at.alicdn.com">
-  
-  <link rel="dns-prefetch" href="https://widget.daovoice.io">
-  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
-  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  <meta charset="utf-8">
   
   
   
-  <link rel="stylesheet" type="text/css" href="/./style/main.css">
-	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<title>XSUN</title>
+    <meta name="description" content="这人懒的不仅post没写完，连网页都只做了一半。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    XSUN</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
   
   
-    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
-  </script>
+<link rel="stylesheet" href="/css/style.css">
+
   
-<meta name="generator" content="Hexo 4.2.1"></head>
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XSUN" type="application/atom+xml">
+</head>
+
 <body>
-  <div class="left-aside">
-    <div class="face-img"><img src=""></div>
-    <div class="intro-word">
-        <h2>XSUN</h2>
-        <p>爱生活 爱加班</p>
+<main class="content">
+  <section class="jumbotron">
+  <div class="video">
+    
+      <div class="video-frame">
+        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+      </div>
+    
+    <div class="video-media">
+      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
+             poster="/images/ocean/ocean.jpeg" x5-video-player-type="h5">
+        <!-- <source src="/images/ocean/ocean.mp4" type="video/mp4"> -->
+        <!-- <source src="/images/ocean/ocean.ogv" type="video/ogg"> -->
+        <!-- <source src="/images/ocean/ocean.webm" type="video/webm"> -->
+        <!-- <p>Your user agent does not support the HTML5 Video element.</p> -->
+      </video>
+      <div class="video-overlay"></div>
     </div>
-    <div class="sns">
-        <ul>
-            
-            <li>
-                <a class="github" target="_blank" href="https://github.com/Null-PE" title="github">
-                    <img src="/./img/icon-github.png" alt="github" data-tooltip="github">
-                </a>
-            </li>
-            
-        </ul>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">XSUN</a></h1>
+      <p>旅は道連れ世は情け</p>
+      <div><img src="/images/hexo-inverted.svg" class="brand" alt="XSUN"></div>
     </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+
+<div id="landingpage">
+  <section class="outer">
+    <article class="articles">
+      
+      <h1 class="page-type-title"></h1>
+      
+        
+          <article id="post-er-1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/10/12/er-1/">PlantUML（一） 类图</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/10/12/er-1/" class="article-date">
+  <time datetime="2020-10-12T08:35:23.000Z" itemprop="datePublished">2020-10-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>ER图笔记（一）</p>
+<p><strong>ER图</strong> Entity Relationship Diagram</p>
+<h3 id="Cardinality"><a href="#Cardinality" class="headerlink" title="Cardinality"></a>Cardinality</h3><p>在线的端点通过下列符号来指定数量关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--  1</span><br><span class="line">--||  1 &amp;&amp; only 1</span><br><span class="line">--o|  0 or 1</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.plantuml.com/plantuml/svg/SzJDqKtaSjAjgKbIu7BMpQz91W00" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzJDqKtaSjAjgKbIu7BMpQz91W00" /></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--&#123;  multi</span><br><span class="line">--|&#123;  1 or more</span><br><span class="line">--o&#123;  0 or more</span><br></pre></td></tr></table></figure><br><a href="https://www.plantuml.com/plantuml/svg/Sz6jJk5orQsfJkLoqyslJWC0" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/Sz6jJk5orQsfJkLoqyslJWC0" /></a></p>
+<h3 id="Direction"><a href="#Direction" class="headerlink" title="Direction"></a>Direction</h3><p>在线的中央插入下列关键字来指定方向<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">up, u</span><br><span class="line">down, d, do</span><br><span class="line">left, l, le</span><br><span class="line">right, r, ri</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.plantuml.com/plantuml/svg/SzGjrRKBBU1oqatHjNF9Byy30000" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzGjrRKBBU1oqatHjNF9Byy30000" /></a><br><a href="https://www.plantuml.com/plantuml/svg/SzRDqRNpIKqhuNBHBTAr2yfCpoW10000" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzRDqRNpIKqhuNBHBTAr2yfCpoW10000" /></a></p>
+<h3 id="package-style"><a href="#package-style" class="headerlink" title="package style"></a>package style</h3><p>可以使用自带的模版来定义每个包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package foo1 &lt;&lt;Node&gt;&gt; &#123;</span><br><span class="line">  class Class1</span><br><span class="line">&#125;</span><br><span class="line">package foo2 &lt;&lt;Rectangle&gt;&gt; &#123;</span><br><span class="line">  class Class2</span><br><span class="line">&#125;</span><br><span class="line">package foo3 &lt;&lt;Folder&gt;&gt; &#123;</span><br><span class="line">  class Class3</span><br><span class="line">&#125;</span><br><span class="line">package foo4 &lt;&lt;Frame&gt;&gt; &#123;</span><br><span class="line">  class Class4</span><br><span class="line">&#125;</span><br><span class="line">package foo5 &lt;&lt;Cloud&gt;&gt; &#123;</span><br><span class="line">  class Class5</span><br><span class="line">&#125;</span><br><span class="line">package foo6 &lt;&lt;Database&gt;&gt; &#123;</span><br><span class="line">  class Class6</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.plantuml.com/plantuml/svg/RSon3O0W443HdYbk1GMj38t6qi8DJa0BqJEYbM5tiJ84cb-z_0FLYek1cQY0fXb86odXOG3AedFGVYsOPySFom17eoxS5vlHPQnvq3rPRSwKyfYAZvwuPQOYbbMGhQLRfxAAPHraXnTEw3BRclaN" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/RSon3O0W443HdYbk1GMj38t6qi8DJa0BqJEYbM5tiJ84cb-z_0FLYek1cQY0fXb86odXOG3AedFGVYsOPySFom17eoxS5vlHPQnvq3rPRSwKyfYAZvwuPQOYbbMGhQLRfxAAPHraXnTEw3BRclaN" /></a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/10/12/er-1/" data-id="cki6vunrt001lo89kaz1tey2t" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PlantUML/" rel="tag">PlantUML</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-java-optional-best-practice" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/08/31/java-optional-best-practice/">实用Optional时需要注意的二三事</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/08/31/java-optional-best-practice/" class="article-date">
+  <time datetime="2020-08-31T00:20:42.000Z" itemprop="datePublished">2020-08-31</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="使用了Optional为什么还发生NullPointerException"><a href="#使用了Optional为什么还发生NullPointerException" class="headerlink" title="使用了Optional为什么还发生NullPointerException"></a>使用了Optional为什么还发生NullPointerException</h2><h2 id="对于空值应该怎么设置"><a href="#对于空值应该怎么设置" class="headerlink" title="对于空值应该怎么设置"></a>对于空值应该怎么设置</h2><h2 id="如何高效的实用Optional返回值"><a href="#如何高效的实用Optional返回值" class="headerlink" title="如何高效的实用Optional返回值"></a>如何高效的实用Optional返回值</h2><h2 id="如何避免Optional相关的反模式"><a href="#如何避免Optional相关的反模式" class="headerlink" title="如何避免Optional相关的反模式"></a>如何避免Optional相关的反模式</h2><h2 id="怎么把Optional用的更专业"><a href="#怎么把Optional用的更专业" class="headerlink" title="怎么把Optional用的更专业"></a>怎么把Optional用的更专业</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blogs.oracle.com/javamagazine/12-recipes-for-using-the-optional-class-as-its-meant-to-be-used" target="_blank" rel="noopener">The Java Optianl class (12 recipes)</a></p>
+<p><a href="https://blogs.oracle.com/javamagazine/the-java-optional-class-11-more-recipes-for-preventing-null-pointer-exceptions" target="_blank" rel="noopener">The Java Optianl class (11 recipes)</a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/08/31/java-optional-best-practice/" data-id="cki6vunru001oo89kgh1i1f2v" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-oracle-quiz-enums" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/02/14/oracle-quiz-enums/">关于Enums的小问题</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/14/oracle-quiz-enums/" class="article-date">
+  <time datetime="2020-02-14T04:32:14.000Z" itemprop="datePublished">2020-02-14</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p><a href="https://blogs.oracle.com/javamagazine/quiz-yourself-understanding-enums-advanced" target="_blank" rel="noopener">原文链接</a></p>
+<p>首先给出以下Enum：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> Size&#123;</span><br><span class="line">  SMALL,</span><br><span class="line">  MEDIUM,</span><br><span class="line">  LARGE</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>问下面的代码执行的结果是：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">final</span> <span class="keyword">var</span> size = Size.SMALL; <span class="comment">//line n1</span></span><br><span class="line">    <span class="keyword">switch</span> (size) &#123; <span class="comment">//line n2</span></span><br><span class="line">        <span class="keyword">case</span> SMALL: &#123;System.out.println(size);&#125; <span class="comment">//line n3</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<ol>
+<li>n1处编译失败，初始化的写法错误</li>
+<li>n2处编译失败，没对应把所有Size包含在case内</li>
+<li>n3处编译失败，case后面应该是完整的<code>Size.SMALL</code></li>
+<li>输出 <code>SMALL</code></li>
+<li>输出 <code>Size@3cb5cdba</code></li>
+</ol>
+<h2 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h2><p>选项1是错的，局部变量可以使用final来修饰，从<code>Java 10</code>开始，可以使用关键字<code>var</code>来声明局部变量，声明的变量类型由初始化的类型决定。<br>选项2也是错的，switch-case从来都不需要面对所有情况写case。<br>选项3也是错的，当switch的判断条件是enum类型时，case里不需要写类名。<br>选项4是对的，enum类型默认重写了<code>toString</code>方法，输出name的值。<br>选项5是错的，上面说了，enum的toString输出的是name，而不是HashCode.</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/02/14/oracle-quiz-enums/" data-id="cki6vunrt001ko89k26xa5oao" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Quiz-Yourself/" rel="tag">Quiz Yourself</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-java-io-csv" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/02/06/java-io-csv/">使用Java读写CSV文件</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/02/06/java-io-csv/" class="article-date">
+  <time datetime="2020-02-06T01:04:09.000Z" itemprop="datePublished">2020-02-06</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>最近针对一个Issue，需要给excel文件的读写功能增加CSV的支持，本来以为使用类似的方法可以直接写到DTO里面，结果一查，Java好像对CSV的支持还是最原始最基本的写法（并非贬义，可能是容易了反而不需要什么工具来读写CSV）。</p>
+<p>总结成一句话就是，读写CSV就相当于读写一个纯字符串文件。</p>
+<h2 id="读取CSV"><a href="#读取CSV" class="headerlink" title="读取CSV"></a>读取CSV</h2><p>读取CSV文件大致分为以下几步：</p>
+<ol>
+<li>使用<code>FileInputStream</code>读取csv文件</li>
+<li>使用<code>BufferedReader</code>来对输入流进行更高效的处理</li>
+<li>将每一行的数据作为字符串读取，使用<code>split(&quot;,&quot;)</code>分割</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 字符编码 设置下没坏处</span></span><br><span class="line">Charset charset = StandardCharsets.UTF_8;</span><br><span class="line"><span class="comment">// 缓存大小 提高读取效率 </span></span><br><span class="line"><span class="keyword">int</span> bufferSize = <span class="number">5</span> * <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">try</span> (BufferedReader reader = <span class="keyword">new</span> BufferedReader(</span><br><span class="line">        <span class="keyword">new</span> InputStreamReader(<span class="keyword">new</span> FileInputStream(<span class="string">"input/sample.csv"</span>), charset), bufferSize)) &#123;</span><br><span class="line">    String line;</span><br><span class="line">    List&lt;String[]&gt; data = <span class="keyword">new</span> ArrayList&lt;&gt;();</span><br><span class="line">    <span class="comment">// 这里假设文件不是很大，不然这么些内存是不够用的</span></span><br><span class="line">    <span class="keyword">while</span> (Objects.nonNull(line = reader.readLine())) &#123;</span><br><span class="line">        data.add(line.split(<span class="string">","</span>));</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 然后 想怎么用就怎么用了</span></span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    <span class="comment">// IOException 就囊括了读取文件可能发生的全部意外</span></span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="写CSV"><a href="#写CSV" class="headerlink" title="写CSV"></a>写CSV</h2><p>跟上面读取CSV的操作正好反过来，写CSV文件分为以下几步:</p>
+<ol>
+<li>使用<code>FileOutputStream</code>输出文件</li>
+<li>将要输出的一行数据使用指定的符号（csv一般是逗号）连接成字符串</li>
+<li>输出到文件，使用<code>BufferedWriter.write()</code>的话记得换行</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 文件路径和文件名</span></span><br><span class="line">String file = <span class="string">"output/output.csv"</span>;</span><br><span class="line"><span class="comment">// 指定字符编码</span></span><br><span class="line">Charset charset = StandardCharsets.UTF_8;</span><br><span class="line"><span class="comment">// 指定缓存</span></span><br><span class="line"><span class="keyword">int</span> bufferSize = <span class="number">5</span> * <span class="number">1024</span> * <span class="number">1024</span>;</span><br><span class="line"><span class="keyword">try</span> (BufferedWriter writer = <span class="keyword">new</span> BufferedWriter(</span><br><span class="line">        <span class="keyword">new</span> OutputStreamWriter(<span class="keyword">new</span> FileOutputStream(file), charset), bufferSize</span><br><span class="line">)) &#123;</span><br><span class="line">    <span class="keyword">for</span> (String[] datum : data) &#123;</span><br><span class="line">        writer.write(String.join(<span class="string">","</span>, datum));</span><br><span class="line">        <span class="comment">// 换行</span></span><br><span class="line">        writer.newLine();</span><br><span class="line">    &#125;</span><br><span class="line">&#125; <span class="keyword">catch</span> (IOException e) &#123;</span><br><span class="line">    e.printStackTrace();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/02/06/java-io-csv/" data-id="cki6vunrr001ho89k0afx1f27" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/CSV/" rel="tag">CSV</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-clob-octet" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/01/28/clob-octet/">二进制大对象和字符大对象</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/01/28/clob-octet/" class="article-date">
+  <time datetime="2020-01-28T07:06:55.000Z" itemprop="datePublished">2020-01-28</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>这都是啥啥啥</p>
+</blockquote>
+<h2 id="CLOB-和-BLOB"><a href="#CLOB-和-BLOB" class="headerlink" title="CLOB 和 BLOB"></a>CLOB 和 BLOB</h2><p><strong>CLOB</strong> 是可变长度的字符（char）大（long）对象（Object），用于基于字符的数据，以字节Byte或者标准八字节OCTET为单位，最大长度是2G（2,147,483,647）</p>
+<p><strong>BLOB</strong> 是可变长度的二进制（Binary）大（long）对象（Object），用于保存语音，混合媒体等非传统数据，以字节Byte为单位，最大长度也是2G（2,147,483,647）</p>
+<h2 id="OCTET-和-Byte"><a href="#OCTET-和-Byte" class="headerlink" title="OCTET 和 Byte"></a>OCTET 和 Byte</h2><p>我们都知道计算机中一个0/1表示一个比特bit,八个比特表示一个字节byte。但是在实际应用中，byte可以表示4-10比特的不同长度，为了统一标准，将严格意义上的8bits也称为<a href="https://zh.wikipedia.org/wiki/%E5%85%AB%E4%BD%8D%E5%85%83%E7%B5%84" target="_blank" rel="noopener">OCTET</a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/01/28/clob-octet/" data-id="cki6vunrm001do89k0aip351v" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-python-class" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/01/28/python-class/">Python中类的使用</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/01/28/python-class/" class="article-date">
+  <time datetime="2020-01-28T02:52:30.000Z" itemprop="datePublished">2020-01-28</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>类就是Class</p>
+</blockquote>
+<h2 id="类的基本"><a href="#类的基本" class="headerlink" title="类的基本"></a>类的基本</h2><ol>
+<li>类和实体 我们可以简单的将实体（instance）理解成具体的实物对象，把类看作是生产实体的蓝图。比如我们定义一个类<code>Car</code>，之后就可以在任何地方反复调用这个蓝图来生产<code>Car</code>的实体</li>
+<li>方法 在Python中我们可以像写脚本一样随便写个方法就执行，但是这可能带来诸多麻烦。比如我们为汽车的启动和停止写了两个方法<code>run()</code>和<code>stop()</code>，为了确定让哪辆车启动哪辆车停下，我们需要把对象的车多为参数传递进方法，是不是有一种拿遥控器开车还要每次都设置开的哪辆车的感觉？ 当我们需要在不同的地方使用这两个方法时，就要重新写一遍。如果我们把<code>run()</code> 和<code>stop()</code>写到类<code>Car</code>里面，就可以通过每个<code>Car</code>的实体，直接调用启动和停止的方法，方法属于车的实体，不同实体间的启动停止互不影响，这就有开车那味儿了。</li>
+<li>成员变量 类的成员变量分为两种(此处为Java思维）：静态变量和实例变量。 所谓静态变量，我们可以理解成刻在蓝图里的，比如我们给<code>Car</code>定义一个静态变量<code>轮子数 = 4</code>,这样我们生成的每个车都可以使用这个变量，甚至不生成实例的时候，也可以使用<code>Car.轮子数</code>, 只要看一下蓝图，就知道这个变量值。相比之下，实例变量就是指从属于实例的变量，比如<code>排气量 长度 宽度</code>,如果要调用这些变量，直接通过<code>Car.排气量</code>是不行的，因为图纸上可没具体写这变量是多少，需要先生成一个实体<code>my_car = Car()</code>，然后给<code>my_car</code>设置并使用</li>
+</ol>
+<h2 id="Python中类的使用"><a href="#Python中类的使用" class="headerlink" title="Python中类的使用"></a>Python中类的使用</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>Python中定义类使用的是关键字<code>class</code>，类的范围通过统一的缩进来管理<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>:</span></span><br><span class="line">  id = <span class="number">12345</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, id)</span>:</span></span><br><span class="line">    self.id = id</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">    print(<span class="string">f'run <span class="subst">&#123;self.id&#125;</span>!'</span>)</span><br></pre></td></tr></table></figure></p>
+<p>类的内部使用关键字<code>def</code>来定义方法，方法必须至少有一个参数<code>self</code>，<code>self</code>的含义相当于Java的<code>this</code>，指的是类的实例，可以通过<code>self</code>来访问实例变量和方法。  </p>
+<p><code>__init__</code>是构造体，当我们使用类名来生成实例的时候，会根据参数来调用对应的构造体生成实例，最基本的写法就是直接通过构造体给实例变量初始化，比如使用上面代码里得构造体：<code>Car(54321)</code>。  </p>
+<p>Python中使用<code>__</code>双下划线来定义私有变量和私有方法，私有的元素无法在外部通过实例名或者类名访问到</p>
+<p>就像Java中所有的类都是Object的字类，都继承了一些基本的方法一样，Python中也有一些类的专有方法, 且可以重写：</p>
+<ul>
+<li><strong>init</strong> : 构造函数，在生成对象时调用</li>
+<li><strong>del</strong> : 析构函数，释放对象时使用</li>
+<li><strong>repr</strong> : 打印，转换</li>
+<li><strong>setitem</strong> : 按照索引赋值</li>
+<li><strong>getitem</strong>: 按照索引获取值</li>
+<li><strong>len</strong>: 获得长度</li>
+<li><strong>cmp</strong>: 比较运算</li>
+<li><strong>call</strong>: 函数调用</li>
+<li><strong>add</strong>: 加运算</li>
+<li><strong>sub</strong>: 减运算</li>
+<li><strong>mul</strong>: 乘运算</li>
+<li><strong>truediv</strong>: 除运算</li>
+<li><strong>mod</strong>: 求余运算</li>
+<li><strong>pow</strong>: 乘方</li>
+</ul>
+<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>跟同事聊了聊为什么要使用类，想起了一个很重要的点：内存管理。<br>如果我们不适用类来管理方法和变量的话，程序运行过程中，定义的变量和方法就会一直存在，占用内存空间；但是当我们使用了类之后，则可以在需要的时候声明类的实例来调用内存，当一个实例不再被使用的时候，又可以通过垃圾回收自动收回内存（垃圾回收机制不同语言有不同的做法）。这样我们的程序才可以根据需求灵活地使用资源。<br>当然，方法和变量的管理更方便什么的，也算使用类的好处</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/01/28/python-class/" data-id="cki6vunrr001io89k0wshfgk2" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-git-prune" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/01/24/git-prune/">Git Prune命令</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/01/24/git-prune/" class="article-date">
+  <time datetime="2020-01-24T05:45:42.000Z" itemprop="datePublished">2020-01-24</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p><code>git prune</code> 简单地说就是一个清扫（housekeeping）的命令。</p>
+<p>使用git查看分支，可以看到分支有三个重要分类：本地分支，本地-远程分支的参照，远程分支<br>比如我们在github上merge了一个PR，顺手删除了一个分支，这时在本地的电脑上本删除的分支对应的本地分支，远程分支，远程本地的参照关系都还存在，如果我们使用<code>git branch -D name</code>删除该分支， 会发现只删除了本地的分支，所参照的远程分支<code>origin/name</code>依然存在，清理这种残留垃圾的命令的时候，就是用到了prune。</p>
+<h3 id="git-remove-prune-和-git-fetch-prune"><a href="#git-remove-prune-和-git-fetch-prune" class="headerlink" title="git remove prune 和 git fetch --prune"></a><code>git remove prune</code> 和 <code>git fetch --prune</code></h3><p><code>git remove prune</code> 清理所有已经删掉的远程分支参照，但是不会删除本地分支</p>
+<p><code>git fetch --prune</code> 则是清理完远程的无用分支之后，再把最近状态fetch到本地</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/01/24/git-prune/" data-id="cki6vunrn001go89kdf5e3vt4" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-ng-state-event" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/01/21/ng-state-event/">AngularJS 页面载入事件的相关方法</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/01/21/ng-state-event/" class="article-date">
+  <time datetime="2020-01-21T00:46:17.000Z" itemprop="datePublished">2020-01-21</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>AngularJS的uirouter一个重要的内容就是使用<code>state</code>的使用，这里记录一组关于<code>state</code>的事件，每当路由转移过程中发生对应事件时，都会在<code>$rootScrope</code>广播，使用<code>$rootScope.$on(&#39;$stateEventName&#39;, function(event, ...))</code>获取该事件。</p>
+<h2 id="0-引入router-state-events"><a href="#0-引入router-state-events" class="headerlink" title="0. 引入router.state.events"></a>0. 引入router.state.events</h2><p>首先引入JavaScript源文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"stateEvents.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br>然后导入模块：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">"myApplication"</span>, [<span class="string">'ui.router'</span>, <span class="string">'ui.router.state.events'</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="1-事件"><a href="#1-事件" class="headerlink" title="1. 事件"></a>1. <a href="https://ui-router.github.io/ng1/docs/latest/modules/ng1_state_events.html" target="_blank" rel="noopener">事件</a></h2><ol>
+<li>$stateChangeCancel</li>
+<li>$stateChangeStart</li>
+<li>$stateNotFound</li>
+<li>$stateChangeError</li>
+<li>$stateChangeSuccess</li>
+</ol>
+<h3 id="stateChangeCancel"><a href="#stateChangeCancel" class="headerlink" title="$stateChangeCancel"></a>$stateChangeCancel</h3><p>当一个页面的转移被取消时，会在<code>$rootScope</code>广播<code>$stateChangeCancel</code>事件<br>有以下参数可以使用：</p>
+<ul>
+<li>toState 目标state</li>
+<li>toParams 前往目标state时的参数</li>
+<li>fromState 来源state</li>
+<li>fromParams 带来的参数</li>
+<li>options 选项</li>
+<li>$transition$ </li>
+</ul>
+<p>和开始事件<code>$stateChangeStart</code> ， 成功事件<code>$stateChangeSuccess</code> 提供的参数相同</p>
+<h3 id="stateChangeError"><a href="#stateChangeError" class="headerlink" title="$stateChangeError"></a>$stateChangeError</h3><p>相比于开始和成功的事件，错误事件多一个参数<code>error</code>，其内容当然是错误信息。</p>
+<h3 id="stateNotFound"><a href="#stateNotFound" class="headerlink" title="$stateNotFound"></a>$stateNotFound</h3><p>没有找到state时的事件，提供一下参数可以用：</p>
+<ul>
+<li>unfoudState 未找到的state信息，提供<code>to</code> <code>toParams</code> <code>options</code>等属性</li>
+<li>fromState 来源state</li>
+<li>fromParams 来源参数</li>
+<li>options 选项</li>
+</ul>
+<h2 id="2-更新到-Transition-Hooks"><a href="#2-更新到-Transition-Hooks" class="headerlink" title="2. 更新到 Transition Hooks"></a>2. 更新到 <a href="https://ui-router.github.io/ng1/docs/1.0.0/classes/transition.transitionservice.html" target="_blank" rel="noopener">Transition Hooks</a></h2><p>uirouter已经更新了IHookRegistry接口，可以对<code>transition</code>进行更为详细控制。<br><code>$transition</code> 和<code>$transitionService</code>都实现了该接口，但是<code>$transition</code>对象只能在转换开始前使用。  </p>
+<p>该接口提供以下方法：</p>
+<ol>
+<li>getHooks 返回所有已登录的hook方法，参数时方法名，比如<code>onBefore onEnter</code>等等</li>
+<li>onBefore 开始前</li>
+<li>onStart 开始后</li>
+<li>onExit 退出，onStart之后transition会推出state</li>
+<li>onRetain 保留，onExit之后onRetain会被执行，子state会被优先执行</li>
+<li>onEnter 进入，在onRetain结束后，transition会进入state</li>
+<li>onFinish 结束前，这是最后可以取消或者定向transition的方法</li>
+<li>onError 错误</li>
+<li>onSuccess 成功</li>
+</ol>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/01/21/ng-state-event/" data-id="cki6vunrl001bo89kdn80fych" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-css-vertical-align" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/01/16/css-vertical-align/">CSS 文字对齐</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/01/16/css-vertical-align/" class="article-date">
+  <time datetime="2020-01-16T12:09:17.000Z" itemprop="datePublished">2020-01-16</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>本来想直接把代码内嵌到markdown里，但是hexo好像不支持，残念</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">style</span>=<span class="string">"width:1000px"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>A<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>B<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>C<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span> &gt;</span>0<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"text-align: right;"</span>&gt;</span>text-align: right;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"text-align: left;"</span>&gt;</span>text-align: left;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"text-align: center;"</span>&gt;</span>text-align: center;<span class="tag">&lt;/<span class="name">td</span>&gt;</span>                                             </span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">style</span>=<span class="string">"height:100px;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>1<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"vertical-align: top;"</span>&gt;</span>vertical-align: top;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"vertical-align: bottom;"</span>&gt;</span>vertical-align: bottom;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"vertical-align: middle;"</span>&gt;</span>vertical-align: middle;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>水平方向对齐：</p>
+<ol>
+<li><code>text-align: right;</code></li>
+<li><code>text-align: center;</code></li>
+<li><code>text-align: left;</code></li>
+</ol>
+<p>垂直方向对齐：</p>
+<ol>
+<li><code>vertical-align: top;</code></li>
+<li><code>vertical-align: middle;</code></li>
+<li><code>vertical-align: bottom;</code></li>
+</ol>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/01/16/css-vertical-align/" data-id="cki6vunri0018o89keyr9hhpk" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-pipenv-introduction" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/12/12/pipenv-introduction/">pipenv 基本的介绍和使用方法</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/12/12/pipenv-introduction/" class="article-date">
+  <time datetime="2019-12-12T05:29:51.000Z" itemprop="datePublished">2019-12-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>根据项目需要，搞一个配置文件Pipfile，传到github里，完事儿。</p>
+</blockquote>
+<h2 id="为什么要用pipenv"><a href="#为什么要用pipenv" class="headerlink" title="为什么要用pipenv"></a>为什么要用pipenv</h2><p>首先，我们假设….算了，不扯那些没用的。做Python的开发，无论你用的什么工具，最麻烦的事儿应该莫过于包的管理。<a href="https://pypi.org/project/pipenv/" target="_blank" rel="noopener">pipenv</a>简单来说就是一个python官方推荐的包管理工具。<br>相比于pip等其他工具，pipenv最大的特点是可以根据项目，生成不同的环境，在ProjectA中设置的Pipfile不会影响到ProjectB,更不会影响到系统默认的pip列表。这个为项目定制的虚拟环境，我们称之为<code>shell</code>。  </p>
+<h3 id="安装pipenv"><a href="#安装pipenv" class="headerlink" title="安装pipenv"></a>安装pipenv</h3><p>安装pipenv之前，首先确定系统里有以下两样东西：</p>
+<ol>
+<li>python</li>
+<li>pip</li>
+</ol>
+<p>pipenv是通过pip安装的工具，所以执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pipenv</span><br></pre></td></tr></table></figure><br>由于pipenv可以在系统里不同版本的Python间任意切换，所以执行pip的时候不同太在乎Python版本问题。</p>
+<h3 id="requirements-txt-和-Pipfile"><a href="#requirements-txt-和-Pipfile" class="headerlink" title="requirements.txt 和 Pipfile"></a>requirements.txt 和 Pipfile</h3><p>pipenv 管理Python环境的配置文件是<code>Pipfile</code>，大致长这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[[source]]</span><br><span class="line">name &#x3D; &quot;pypi&quot;</span><br><span class="line">url &#x3D; &quot;https:&#x2F;&#x2F;pypi.org&#x2F;simple&quot;</span><br><span class="line">verify_ssl &#x3D; true</span><br><span class="line"></span><br><span class="line">[dev-packages]</span><br><span class="line"></span><br><span class="line">[packages]</span><br><span class="line">pandas &#x3D; &quot;&#x3D;&#x3D;0.25.1&quot;</span><br><span class="line"></span><br><span class="line">[requires]</span><br><span class="line">python_version &#x3D; &quot;3.7&quot;</span><br></pre></td></tr></table></figure>
+<p>我们可以直接写，也可以用<code>pipenv install</code>来生成默认的Pipfile, 不过还有个更方便的方法是直接由pip生成的requirements.txt配置文件来生成Pipfile。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 首先在当前路径里使用pip生成requirements.txt</span><br><span class="line"></span><br><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br><span class="line"># 然后生成Pipfile</span><br><span class="line"># -r 的意思是将后面配置文件里的包添加到Pipfile里</span><br><span class="line"></span><br><span class="line">pipenv install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<h3 id="指定Python版本"><a href="#指定Python版本" class="headerlink" title="指定Python版本"></a>指定Python版本</h3><p>pipenv可以指定虚拟环境的python版本，随时通过修改Pipfile来切换（修改是通过命令行修改的意思，当然你要直接修改也没什么区别，但是不用命令来修改配置文件就会觉得很low啊）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## 使用下面的命令，从当前系统已经安装的不同版本的Python中选择一个</span><br><span class="line">pipenv --python 版本号</span><br><span class="line"></span><br><span class="line">## 比如</span><br><span class="line">pipenv --python 3.5</span><br><span class="line"></span><br><span class="line">pipenv --python 3.7</span><br><span class="line"></span><br><span class="line">pipenv --python 2.6</span><br></pre></td></tr></table></figure><br>如果Pipfile中指定的Python版本在当前系统下不存在，之后启动虚拟环境时会跳出警告。</p>
+<h3 id="耗时警报-锁定"><a href="#耗时警报-锁定" class="headerlink" title="(耗时警报) 锁定"></a>(耗时警报) 锁定</h3><p>更新Pipfile之后，启动虚拟环境之前，我们需要把Pipfile中列出的包安装好，或者删除已经不用的包，这个操作就是<code>pipenv lock</code></p>
+<p>由于需要从服务器下载相应的包（这是我猜的，鬼晓得为什么这玩意儿怎么那么慢，<a href="https://github.com/pypa/pipenv/issues/1785" target="_blank" rel="noopener">官方</a>似乎也没有什么行之有效的办法）</p>
+<h3 id="去吧-皮卡丘！"><a href="#去吧-皮卡丘！" class="headerlink" title="去吧 皮卡丘！"></a>去吧 皮卡丘！</h3><p>都搞定之后，<code>pipenv shell</code>跑起来，我们就进入定制的虚拟环境了。</p>
+<h3 id="直接看这里就可以了"><a href="#直接看这里就可以了" class="headerlink" title="直接看这里就可以了"></a>直接看这里就可以了</h3><p>说了那么老多，其实安装好pipenv之后，直接一个<code>pipenv -h</code>查看help文档就可以了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">Options:</span><br><span class="line">  --where             Output project home information.</span><br><span class="line">  --venv              Output virtualenv information.</span><br><span class="line">  --py                Output Python interpreter information.</span><br><span class="line">  --envs              Output Environment Variable options.</span><br><span class="line">  --rm                Remove the virtualenv.</span><br><span class="line">  --bare              Minimal output.</span><br><span class="line">  --completion        Output completion (to be eval&#39;d).</span><br><span class="line">  --man               Display manpage.</span><br><span class="line">  --support           Output diagnostic information for use in GitHub issues.</span><br><span class="line">  --site-packages     Enable site-packages for the virtualenv.  [env var:</span><br><span class="line">                      PIPENV_SITE_PACKAGES]</span><br><span class="line">  --python TEXT       Specify which version of Python virtualenv should use.</span><br><span class="line">  --three &#x2F; --two     Use Python 3&#x2F;2 when creating virtualenv.</span><br><span class="line">  --clear             Clears caches (pipenv, pip, and pip-tools).  [env var:</span><br><span class="line">                      PIPENV_CLEAR]</span><br><span class="line">  -v, --verbose       Verbose mode.</span><br><span class="line">  --pypi-mirror TEXT  Specify a PyPI mirror.</span><br><span class="line">  --version           Show the version and exit.</span><br><span class="line">  -h, --help          Show this message and exit.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Usage Examples:</span><br><span class="line">   Create a new project using Python 3.7, specifically:</span><br><span class="line">   $ pipenv --python 3.7</span><br><span class="line"></span><br><span class="line">   Remove project virtualenv (inferred from current directory):</span><br><span class="line">   $ pipenv --rm</span><br><span class="line"></span><br><span class="line">   Install all dependencies for a project (including dev):</span><br><span class="line">   $ pipenv install --dev</span><br><span class="line"></span><br><span class="line">   Create a lockfile containing pre-releases:</span><br><span class="line">   $ pipenv lock --pre</span><br><span class="line"></span><br><span class="line">   Show a graph of your installed dependencies:</span><br><span class="line">   $ pipenv graph</span><br><span class="line"></span><br><span class="line">   Check your installed dependencies for security vulnerabilities:</span><br><span class="line">   $ pipenv check</span><br><span class="line"></span><br><span class="line">   Install a local setup.py into your virtual environment&#x2F;Pipfile:</span><br><span class="line">   $ pipenv install -e .</span><br><span class="line"></span><br><span class="line">   Use a lower-level pip command:</span><br><span class="line">   $ pipenv run pip freeze</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  check      Checks for security vulnerabilities and against PEP 508 markers</span><br><span class="line">             provided in Pipfile.</span><br><span class="line">  clean      Uninstalls all packages not specified in Pipfile.lock.</span><br><span class="line">  graph      Displays currently-installed dependency graph information.</span><br><span class="line">  install    Installs provided packages and adds them to Pipfile, or (if no</span><br><span class="line">             packages are given), installs all packages from Pipfile.</span><br><span class="line">  lock       Generates Pipfile.lock.</span><br><span class="line">  open       View a given module in your editor.</span><br><span class="line">  run        Spawns a command installed into the virtualenv.</span><br><span class="line">  shell      Spawns a shell within the virtualenv.</span><br><span class="line">  sync       Installs all packages specified in Pipfile.lock.</span><br><span class="line">  uninstall  Un-installs a provided package and removes it from Pipfile.</span><br><span class="line">  update     Runs lock, then sync.</span><br></pre></td></tr></table></figure></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/12/12/pipenv-introduction/" data-id="cki6vunrh0016o89k11nofkon" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pipenv/" rel="tag">Pipenv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+    </article>
+    
+  
+    
+      <nav class="page-nav">
+        <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+      </nav>
+    
+  </section>
 </div>
-<div class="right-aside">
-    <div class="right-nav ms">
-        <div class="main">
-          <svg id="nav-menu" class="icon icon-menu" aria-hidden="true">
-            <use xlink:href="#icon-menu"></use>
-          </svg>
-          <ul class="left">
-              
-          </ul>
-          <div class="search">
-            <div class="search-box">
-              <input type="search"  id="search" class="input-search" placeholder="搜索">
-              <i class="icon-search"></i>
-              <div class="search-result-box">
-                <ul id="search-result"></ul>
-              </div>
-            </div>
-            <svg id="nav-search" class="icon icon-search" aria-hidden="true">
-              <use xlink:href="#icon-search"></use>
-            </svg>
-          </div>
-        </div>
-    </div>
-    <div class="right-main">
-        <div class="category">
-            <ul>
-                <li><a href="/" class="active">最新</a></li>
-                
-            </ul>
-        </div>
-        <div class="clear"></div>
-        <div class="list">
-            <div>
-                
-                
+
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
   
-    <div class="item">
-      <div class="title">
-        <a href="/2020/10/12/er-1/">PlantUML（一） 类图</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-10-12T08:35:23.000Z" itemprop="date">2020-10-12</time>
-          </li>
-          <li>更新 <time datetime="2020-10-13T06:09:33.677Z" itemprop="dateUpdated">2020-10-13</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/10/12/er-1/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
+    <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 XSUN</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="XSUN"></a>
     </div>
   
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2020/08/31/java-optional-best-practice/">实用Optional时需要注意的二三事</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-08-31T00:20:42.000Z" itemprop="date">2020-08-31</time>
-          </li>
-          <li>更新 <time datetime="2020-09-05T14:35:04.191Z" itemprop="dateUpdated">2020-09-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/08/31/java-optional-best-practice/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2020/02/14/oracle-quiz-enums/">关于Enums的小问题</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-02-14T04:32:14.000Z" itemprop="date">2020-02-14</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.010Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/02/14/oracle-quiz-enums/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2020/02/06/java-io-csv/">使用Java读写CSV文件</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-02-06T01:04:09.000Z" itemprop="date">2020-02-06</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.010Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/02/06/java-io-csv/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2020/01/28/clob-octet/">二进制大对象和字符大对象</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-01-28T07:06:55.000Z" itemprop="date">2020-01-28</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.010Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/01/28/clob-octet/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2020/01/28/python-class/">Python中类的使用</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-01-28T02:52:30.000Z" itemprop="date">2020-01-28</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.010Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/01/28/python-class/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2020/01/24/git-prune/">Git Prune命令</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-01-24T05:45:42.000Z" itemprop="date">2020-01-24</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.009Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/01/24/git-prune/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2020/01/21/ng-state-event/">AngularJS 页面载入事件的相关方法</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-01-21T00:46:17.000Z" itemprop="date">2020-01-21</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.009Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/01/21/ng-state-event/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2020/01/16/css-vertical-align/">CSS 文字对齐</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2020-01-16T12:09:17.000Z" itemprop="date">2020-01-16</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.009Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2020/01/16/css-vertical-align/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/12/12/pipenv-introduction/">pipenv 基本的介绍和使用方法</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-12-12T05:29:51.000Z" itemprop="date">2019-12-12</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:15:00.009Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/12/12/pipenv-introduction/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-<nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">&amp;raquo;</a>
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
 </nav>
-
-
-            </div>
-        </div>
-        <div class="clear"></div>
-        <!-- <div class="hosted">
-          <ul>
-            <li class="coding">
-              <a href="https://coding.net/pages" target="_blank" rel="noopener">
-                <img src="/./img/coding.png">
-              </a>
-            </li>
-            <li class="github-pages">
-              <a href="https://pages.github.com" target="_blank" rel="noopener">
-                <img src="/./img/github-pages.png">
-              </a>
-            </li>
-          </ul>
-        </div> -->
-    </div>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
 </div>
-<script>
-  var homeLeftBgArr = 'https://ws3.sinaimg.cn/large/006tKfTcly1fsulzlvofnj30af0k5jvu.jpg,https://ws2.sinaimg.cn/large/006tNbRwly1fwl2alhqibj31kw2dcu0y.jpg,https://ws1.sinaimg.cn/large/006tNbRwly1fwl2bclcirj31kw2czk7v.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2c765jej31kw2d1npe.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2dentnvj31kw2dc1l2.jpg,https://ws4.sinaimg.cn/large/006tNbRwly1fwl2dqawiej31kw2d8x6p.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2f7yp25j31kw3a97wh.jpg'.split(',');
-  var homeLeftBgArrLen = homeLeftBgArr.length;
-  var leftBackgroundUrl = homeLeftBgArr[Math.floor(Math.random() * homeLeftBgArrLen)];
-  var homeLeftAsideNode = document.getElementsByClassName('left-aside')[0];
-  if (homeLeftAsideNode) {
-    homeLeftAsideNode.style.backgroundImage = 'url(' + leftBackgroundUrl + ')';
-  }
-</script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-</script>
-<script>//console
-  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
-  var canConsole = true;
-  var consoleInfo = (function(consoleConfig) {
-  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
-    return;
-  }
-  var consoleColor = '#6190e8';
-  var _console;
-  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
-  var textStyle = 'color: ' + consoleColor + ';';
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
 
-  consoleConfig.map(o => {
-    var num = (o.match(/%c/g) || []).length;
-    if(/^http(s)?:\/\//.test(o)) {
-      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
-      return;
-    }
-    if (num > 0) {
-      var logArguments = [];
-      for (var i = 0; i < num; i++) {
-        if (i % 2 === 0) {
-          logArguments.push(backgroundTextStyle);
-        } else {
-          logArguments.push(textStyle);
-        }
-      }
-      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
-      return;
-    }
-    console.log('%c' + o, textStyle);
-  });
-}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+<script src="/js/jquery-2.0.3.min.js"></script>
 
-  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
 </body>
 </html>

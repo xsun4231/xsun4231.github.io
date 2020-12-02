@@ -1,238 +1,579 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="keywords" content="hexo,个人博客,blog" />
-  <meta name="description" content="Null Page" />
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
-  <link rel="dns-prefetch" href="https://at.alicdn.com">
-  
-  <link rel="dns-prefetch" href="https://widget.daovoice.io">
-  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
-  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  <meta charset="utf-8">
   
   
   
-  <link rel="stylesheet" type="text/css" href="/./style/main.css">
-	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<title>XSUN</title>
+    <meta name="description" content="这人懒的不仅post没写完，连网页都只做了一半。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    XSUN</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
   
   
-    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
-  </script>
+<link rel="stylesheet" href="/css/style.css">
+
   
-<meta name="generator" content="Hexo 4.2.1"></head>
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XSUN" type="application/atom+xml">
+</head>
+
 <body>
-  <div class="left-aside">
-    <div class="face-img"><img src=""></div>
-    <div class="intro-word">
-        <h2>XSUN</h2>
-        <p>爱生活 爱加班</p>
+<main class="content">
+  <section class="jumbotron">
+  <div class="video">
+    
+      <div class="video-frame">
+        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+      </div>
+    
+    <div class="video-media">
+      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
+             poster="/images/ocean/ocean.jpeg" x5-video-player-type="h5">
+        <!-- <source src="/images/ocean/ocean.mp4" type="video/mp4"> -->
+        <!-- <source src="/images/ocean/ocean.ogv" type="video/ogg"> -->
+        <!-- <source src="/images/ocean/ocean.webm" type="video/webm"> -->
+        <!-- <p>Your user agent does not support the HTML5 Video element.</p> -->
+      </video>
+      <div class="video-overlay"></div>
     </div>
-    <div class="sns">
-        <ul>
-            
-            <li>
-                <a class="github" target="_blank" href="https://github.com/Null-PE" title="github">
-                    <img src="/./img/icon-github.png" alt="github" data-tooltip="github">
-                </a>
-            </li>
-            
-        </ul>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">XSUN</a></h1>
+      <p>旅は道連れ世は情け</p>
+      <div><img src="/images/hexo-inverted.svg" class="brand" alt="XSUN"></div>
     </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+
+<div id="landingpage">
+  <section class="outer">
+    <article class="articles">
+      
+      <h1 class="page-type-title"></h1>
+      
+        
+          <article id="post-NaN" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2018/05/29/NaN/">Java 中的NaN</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/05/29/NaN/" class="article-date">
+  <time datetime="2018-05-28T15:00:00.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在学习JavaScript时看到了Number类型中的NaN和Infinity，因为概念本身是通用的，所以趁机总结了一下Java中的NaN和Infinity。</p>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><p>Java的Float型和Double型各有三个很特别的常量：NaN(非数），POSITIVE_INFINITY(正无穷)，NEGATIVE_INFINITY(负无穷)</p>
+<p><strong>Float</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding the positive infinity of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> float&#125;. It is equal to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Float.intBitsToFloat(0x7f800000)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> POSITIVE_INFINITY = <span class="number">1.0f</span> / <span class="number">0.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding the negative infinity of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> float&#125;. It is equal to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Float.intBitsToFloat(0xff800000)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> NEGATIVE_INFINITY = -<span class="number">1.0f</span> / <span class="number">0.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding a Not-a-Number (NaN) value of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> float&#125;.  It is equivalent to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Float.intBitsToFloat(0x7fc00000)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> NaN = <span class="number">0.0f</span> / <span class="number">0.0f</span>;</span><br></pre></td></tr></table></figure><br><strong>Double</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding the positive infinity of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> double&#125;. It is equal to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Double.longBitsToDouble(0x7ff0000000000000L)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> POSITIVE_INFINITY = <span class="number">1.0</span> / <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding the negative infinity of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> double&#125;. It is equal to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Double.longBitsToDouble(0xfff0000000000000L)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> NEGATIVE_INFINITY = -<span class="number">1.0</span> / <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding a Not-a-Number (NaN) value of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> double&#125;. It is equivalent to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Double.longBitsToDouble(0x7ff8000000000000L)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> NaN = <span class="number">0.0</span>d / <span class="number">0.0</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h2><p>NaN是<code>Not a Number</code>的缩写，表示未定义或者不可表示的值，NaN有一个特性，那就是它与任何数都不相等，包括它自己。判断一个数是不是NaN，<strong>只能</strong>使用Float或者Double的<code>isNaN()</code>方法，那么这个方法是怎么判断的呢？我们看一看(查看的是Float版，Double除了参数类型都一样，下面二者没有区别的部分都直接使用Float的内容来说明)：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns &#123;<span class="doctag">@code</span> true&#125; if the specified number is a</span></span><br><span class="line"><span class="comment"> * Not-a-Number (NaN) value, &#123;<span class="doctag">@code</span> false&#125; otherwise.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>   v   the value to be tested.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>  &#123;<span class="doctag">@code</span> true&#125; if the argument is NaN;</span></span><br><span class="line"><span class="comment"> *          &#123;<span class="doctag">@code</span> false&#125; otherwise.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNaN</span><span class="params">(<span class="keyword">float</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (v != v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>所以，跟自己不相等的数字，就是NaN.</p>
+<h3 id="计算中产生的NaN"><a href="#计算中产生的NaN" class="headerlink" title="计算中产生的NaN"></a>计算中产生的NaN</h3><p>什么时候会产生NaN呢？首先，任何与NaN进行的运算，其结果都是NaN.比如下面的运算，不要去想太多，结果就是<code>NaN</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> x = Float.NaN;</span><br><span class="line">		<span class="keyword">var</span> y = x - x + <span class="number">1</span>;</span><br><span class="line">		System.out.println(y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>其次，从数学角度讲，无法进行的运算(<code>N/0</code>)或者会产生复数的运算(<code>sqrt(-N)</code>)，都会产生NaN。</p>
+<p>(咕咕咕，后面的笔记被鸽了)</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2018/05/29/NaN/" data-id="cki6vunqg0003o89kgmod0iir" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-JavaScript" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2018/04/26/JavaScript/">JavaScript 基本知识备忘录</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/04/26/JavaScript/" class="article-date">
+  <time datetime="2018-04-25T15:00:00.000Z" itemprop="datePublished">2018-04-26</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>JavaScript使用的是ECMA(European Computer Manufacturers Association)的ECMAScript标准,也就是人们常说的ES6,ES7,ES8.而JavaScript本身是网景公司(Netscape)对ES标准的一种实现,JavaScript是该公司的注册商标.(这也是前阵子苹果下架了所有名称里带JavaScript的app的原因)</p>
+<blockquote>
+<p>JavaScript 是Brendan Eich用两周写出来的一种语言.所以有点设计缺陷也可以理解,比如<code>typeof null == &quot;object&quot;</code><br>由于浏览器确定了使用的JavaScript版本,所以写JavaScript程序时,要注意ES版本与浏览器的支持是否匹配.</p>
+</blockquote>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><h3 id="写在哪里"><a href="#写在哪里" class="headerlink" title="写在哪里"></a>写在哪里</h3><p>JavaScript的代码可以直接写在网页html里,也可以单独写在js文件中.<br>html里的JavaScript代码要写在 <code>&lt;scrpt&gt;</code> 标签内,标签的 <code>type</code> 属性不需要定义：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;script&gt;</span><br><span class="line">    alert(&#39;Hello, World!&#39;);</span><br><span class="line">  &lt;&#x2F;script&gt;:</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure></p>
+<p>我们也可以把<code>alert(&#39;Hello, World!&#39;)</code>单独写在一个js文件中,取个名字<code>hello.js</code>,然后把js文件的引用写入html的head中(其实写在body里也能跑)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;script src&#x3D;&quot;hello.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;&#x2F;head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  ...</span><br><span class="line">&lt;&#x2F;body&gt;</span><br><span class="line">&lt;&#x2F;html&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="简单语法"><a href="#简单语法" class="headerlink" title="简单语法"></a>简单语法</h3><p>JavaScript每个语句以<code>;</code>结束,JavaScript的引擎会自动添加,所以这里并不强制要求,不过因为自动添加的<code>;</code>有时会造成歧义,所以手动添加还是最保险的.</p>
+<p>赋值语句<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>;</span><br></pre></td></tr></table></figure><br>条件判断<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>( <span class="number">1</span> &gt; <span class="number">0</span> )&#123;</span><br><span class="line">    x = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>一般规范：4空格缩进,80字换行</p>
+</blockquote>
+<p>另外跟Java一样,JavaScript的注释写法也是<code>//</code>和<code>/* */</code>,JavaScript也对大小写敏感.</p>
+<h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ol>
+<li>JavaScript是动态语言,变量的声明使用<strong>var</strong>,赋值使用<strong>=</strong>.  </li>
+<li>使用var声明的变量其<a href="##heading-作用域">作用域</a>都在函数内，而不使用var声明的变量则是全局变量.  </li>
+<li>变量名要求由大小写英文,数字,<code>$</code>和<code>_</code>组成,不可以用数字开头,也不可以使用JavaScript的关键字作为变量名.</li>
+</ol>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><h3 id="基本型"><a href="#基本型" class="headerlink" title="基本型"></a>基本型</h3><p>JavaScript有五种基本类型：</p>
+<ul>
+<li>number</li>
+<li>string</li>
+<li>boolean</li>
+<li>undefined</li>
+<li>null</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">1</span>;<span class="comment">//"number"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">"abc"</span>;<span class="comment">//"string"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">true</span>;<span class="comment">//"boolean"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span>;<span class="comment">//"undefined"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span>;<span class="comment">//"object"</span></span><br></pre></td></tr></table></figure>
+<h4 id="数字型-Number"><a href="#数字型-Number" class="headerlink" title="数字型 Number"></a>数字型 Number</h4><p>JavaScript中数字型不区分整数和浮点数,正、负、整数、浮点数、NaN、Infinity都是Number型,可直接进行运算.</p>
+<blockquote>
+<p>NaN: Not a Number </p>
+<p>Infinity: ∞ 无穷大</p>
+</blockquote>
+<h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>JavaScript中字符串可以用双引号<code>&quot;</code>,也可以用单引号<code>&#39;</code>来表示.</p>
+<h4 id="布尔型"><a href="#布尔型" class="headerlink" title="布尔型"></a>布尔型</h4><p>JavaScript中的布尔型由true和false构成,以及 <strong>与,或,取反</strong>的运算都与Java相同.</p>
+<blockquote>
+<p>JavaScript中进行比较的时候,如果使用<code>==</code>,会自动转换类型再进行比较,不转换类型的比较则需使用三个等号<code>===</code>.<br><a href="/2018/04/26/JavaScript/equals.PNG" class="gallery-item"><img src="/2018/04/26/JavaScript/equals.PNG" class="" title="equals"></a></p>
+<p>NaN与所有Number都不相等,包括它自己,判断NaN的时候只能使用<code>isNaN()</code>.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">isNaN</span>(<span class="literal">NaN</span>) <span class="comment">//true</span></span><br><span class="line">&gt;<span class="comment">// function isNaN(a)&#123;</span></span><br><span class="line">&gt;<span class="comment">//     return a != a;</span></span><br><span class="line">&gt;<span class="comment">// &#125;</span></span><br></pre></td></tr></table></figure></p>
+<p>JavaScript的浮点数在运算时会产生误差,直接进行比较会出现错误结果.这点在Java中也是一样，所以要进行精确比较的时候,不应该使用浮点型.<br>　<br><a href="/2018/04/26/JavaScript/float.PNG" class="gallery-item"><img src="/2018/04/26/JavaScript/float.PNG" class="" title="float"></a></p>
+<p>可以通过检测误差绝对值来进行比较:<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Math</span>.abs(<span class="number">1</span>/<span class="number">3</span> - (<span class="number">1</span> - <span class="number">2</span>/<span class="number">3</span>)) &lt; <span class="number">0.000001</span>; \\<span class="literal">true</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<h4 id="空值和未定义"><a href="#空值和未定义" class="headerlink" title="空值和未定义"></a>空值和未定义</h4><p>JavaScript中类似于Java,也通过<strong>null</strong>来表示空值,空值与长度为零的字符串不同.JavScript同时还定义了一个表示未定义的常量<strong>undefined</strong>.一般在检测参数时可以用到,未输入的参数会被当做<strong>undefined</strong>处理.</p>
+<h3 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h3><h4 id="数组-Array"><a href="#数组-Array" class="headerlink" title="数组 Array"></a>数组 Array</h4><p>JavaScript通过<code>[]</code>来表示数组,使用<code>,</code>来分隔元素.也可以用<code>new Array(1,2,3);</code>来定义数组.数组中的元素可以是任意的数据类型,通过索引<code>arr[index]</code>来访问.</p>
+<h4 id="对象-Object"><a href="#对象-Object" class="headerlink" title="对象 Object"></a>对象 Object</h4><p>JavaScript的对象是由成对的<strong>key-value</strong>组成的无序集合.<strong>key</strong>都是字符串,<strong>value</strong>可以是任意数据类型.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">  name: <span class="string">'Bob'</span>,</span><br><span class="line">  age: <span class="number">23</span>,</span><br><span class="line">  tags: [<span class="string">'person'</span>, <span class="string">'young'</span>],</span><br><span class="line">  married: <span class="literal">false</span>,</span><br><span class="line">  code: <span class="literal">null</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>通过以下格式获取对象的属性：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">person.name;<span class="comment">// Bob</span></span><br><span class="line">person.age; <span class="comment">// 23</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><p>传统的编程语言,作用域一般是块级,也就是一个<code>{}</code>内是一个作用域,所以在<code>if else while for</code>的范围内定义的局部变量不会影响到外面.而JavaScript的作用域是函数级,一个<code>function</code>为一个作用域,在函数内部定义的变量,不受函数内部语法块的影响.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>; <span class="comment">// 1</span></span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="keyword">var</span> x = <span class="number">2</span>; <span class="comment">//2</span></span><br><span class="line">&#125;</span><br><span class="line">condole.log(x); <span class="comment">//2</span></span><br></pre></td></tr></table></figure><br>如果一定要实现块作用域的话,便需要插入函数来起到划分的作用<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> x = <span class="number">1</span>; <span class="comment">//1</span></span><br><span class="line"><span class="keyword">if</span>(<span class="literal">true</span>)&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">print</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> x = <span class="number">2</span>;<span class="comment">//2</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(x);<span class="comment">//1</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="函数作用域提升"><a href="#函数作用域提升" class="headerlink" title="函数作用域提升"></a>函数作用域提升</h4><p>函数声明分为：声明式 和 变量式</p>
+<p>声明式会自动将声明放在函数最前面,并执行赋值的内容.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>所以下面的函数没有问题<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">test(<span class="string">"test"</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(arg); <span class="comment">//test</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>变量式会将声明提升到函数最前,而后再赋值<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = funciton()&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>所以下面的代码中,函数被声明之后,还没有赋值,便被执行,会报错.<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">baz(<span class="string">"baz"</span>); <span class="comment">//baz is not a function</span></span><br><span class="line"><span class="keyword">var</span> baz = <span class="function"><span class="keyword">function</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(arg);</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure><br>需要注意的是,变量式声明中的函数,是不会被提升作用域的<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> baz = <span class="function"><span class="keyword">function</span> <span class="title">spam</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(arg &lt; <span class="number">5</span>)&#123;</span><br><span class="line">    spam(arg + <span class="number">1</span>);<span class="comment">//只在函数的作用域内有效</span></span><br><span class="line">  &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(arg);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br><span class="line">baz(<span class="number">1</span>); <span class="comment">//5</span></span><br><span class="line">spam(<span class="number">1</span>);<span class="comment">//spam is not defined</span></span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<blockquote>
+<p>使用var声明的变量或者函数,要放到其作用域的顶端.</p>
+</blockquote>
+</blockquote>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2018/04/26/JavaScript/" data-id="cki6vunqh0004o89k8wjybmov" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-IDE_memo" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/12/22/IDE_memo/">IDE使用备忘录</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2017/12/22/IDE_memo/" class="article-date">
+  <time datetime="2017-12-21T15:00:00.000Z" itemprop="datePublished">2017-12-22</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>“这里应该怎么设置来着？ ”</p>
+</blockquote>
+<h2 id="Eclipse"><a href="#Eclipse" class="headerlink" title="Eclipse"></a>Eclipse</h2><h3 id="Web-Application-Library添加本地jar包"><a href="#Web-Application-Library添加本地jar包" class="headerlink" title="Web Application Library添加本地jar包"></a>Web Application Library添加本地jar包</h3><p>在项目上右键 -&gt; Deployment Assembly -&gt; add -&gt; project.</p>
+<h3 id="显示-隐藏-空白符号"><a href="#显示-隐藏-空白符号" class="headerlink" title="显示/隐藏 空白符号"></a>显示/隐藏 空白符号</h3><p>在 <code>Windows/Preferences/General/Editors/Text Editors</code> 中<br>通过勾选 <code>Show whitespace characters</code> 来设置是否显示空白符号<br>点击右侧的<code>configure visibility</code>，还可以进行具体(比如换行符)的设置.</p>
+
+<p>隐藏状态<br></p>
+<p>显示状态<br></p>
+<h2 id="Intellj-IDEA"><a href="#Intellj-IDEA" class="headerlink" title="Intellj IDEA"></a>Intellj IDEA</h2><h3 id="propertity文件相关"><a href="#propertity文件相关" class="headerlink" title="propertity文件相关"></a>propertity文件相关</h3><h4 id="显示文字而不是ASCII编码"><a href="#显示文字而不是ASCII编码" class="headerlink" title="显示文字而不是ASCII编码"></a>显示文字而不是ASCII编码</h4><p>直接打开propertity文件的话，UTF-8编码会直接显示ASCII编码而不是文字，可以在设置里修改：<br><code>File -&gt; Setting -&gt; Editor -&gt; File Encoding</code>  </p>
+<p>大约中间靠下的位置，勾选<br><code>transparent native to ascii conversion</code><br>就可以显示文字而不是直接显示ASCII编码了。</p>
+<h4 id="修改ASCII编码的默认大小写"><a href="#修改ASCII编码的默认大小写" class="headerlink" title="修改ASCII编码的默认大小写"></a>修改ASCII编码的默认大小写</h4><p>使用ASCII码的property文件在IDEA中编辑会默认使用大写字母(例：使用 <strong>\u00E3</strong> 而不是 <strong>\u00e3</strong>)<br>如果想要保存成小写字母，需要在IntellJ的根目录下找到 <strong>idea.properties</strong>，在其中添加：<br><code>idea.native2ascii.lowercase=true</code></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2017/12/22/IDE_memo/" data-id="cki6vunq80000o89kg6tn9z0d" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Eclipse/" rel="tag">Eclipse</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/IntellJ-IDEA/" rel="tag">IntellJ IDEA</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-Markdown" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2017/11/18/Markdown/">Markdown 语法笔记</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2017/11/18/Markdown/" class="article-date">
+  <time datetime="2017-11-17T15:00:00.000Z" itemprop="datePublished">2017-11-18</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>内容整理自 <a href="https://www.markdowntutorial.com/" target="_blank" rel="noopener">markdowntutorial</a>.</p>
+</blockquote>
+<h2 id="粗体和斜体"><a href="#粗体和斜体" class="headerlink" title="粗体和斜体"></a>粗体和斜体</h2><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a><em>斜体</em></h3><p><code>_Italic_</code><br>输入内容的前后添加下划线，使字体变为斜体。</p>
+<h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a><strong>粗体</strong></h3><p><code>**Bold**</code><br>输入内容的前后添加星号，使字体变为粗体。</p>
+<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a><del>删除线</del></h3><p><code>~~删除线~~</code><br>输入内容的前后加波浪线，在文字上添加删除划线。</p>
+<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Header one</span><br><span class="line">## Header two </span><br><span class="line">### Header three</span><br><span class="line">#### Header four</span><br><span class="line">##### Header five</span><br><span class="line">###### Header six</span><br></pre></td></tr></table></figure>
+<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="完整的链接"><a href="#完整的链接" class="headerlink" title="完整的链接"></a>完整的链接</h3><p><code>[XSUN的主页](https://xsun4231.github.io/)</code><br>效果： <a href="https://xsun4231.github.io/">XSUN的主页</a><br>链接的书写格式： 方括号+圆括号的组合 方括号内为页面显示内容，圆括号内为链接URL</p>
+<h3 id="参照"><a href="#参照" class="headerlink" title="参照"></a>参照</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[从这里进入][url名]</span><br><span class="line">[从这里也可以][url名]</span><br><span class="line">[这里也行][url名]</span><br><span class="line"></span><br><span class="line">[url名]: https:&#x2F;&#x2F;xsun4231.github.io&#x2F;</span><br></pre></td></tr></table></figure>
+<p><a href="https://xsun4231.github.io/">从这里进入</a><br><a href="https://xsun4231.github.io/">从这里也可以</a><br><a href="https://xsun4231.github.io/">这里也行</a></p>
+<p>设置参照与设置链接方法基本相同，只是在链接URL前面单独设置一个标签，标签可反复使用。</p>
+<h2 id="插入（图片）"><a href="#插入（图片）" class="headerlink" title="插入（图片）"></a>插入（图片）</h2><p><code>![这是一张很可爱的图片](https://octodex.github.com/images/spidertocat.png)</code></p>
+<p><a href="https://octodex.github.com/images/spidertocat.png" target="_blank" rel="noopener" title="这是一张很可爱的图片" class="gallery-item"><img src="https://octodex.github.com/images/spidertocat.png" alt="这是一张很可爱的图片"></a></p>
+<p>图片的是指方法与链接的设置方法基本相同，只是在方括号前面添加叹号。</p>
+<blockquote>
+<p>图片的链接同样可以设置为参照</p>
+</blockquote>
+<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><code>&gt; 孟子曰：孔子说的对。</code></p>
+<blockquote>
+<p>孟子曰：孔子说的对。</p>
+</blockquote>
+<p>在文字块(以换行结束)前添加大于号(右尖括号)，则将整个文字块设置成引用。<br>将多个段落设置成一个引用块时，在每一个新段落(换行后)添加大于号。</p>
+<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">* milk</span><br><span class="line">* egg</span><br><span class="line">* apple</span><br><span class="line">    1. fuji</span><br><span class="line">    2. fuji2</span><br><span class="line">    3. fuji3</span><br><span class="line">* banana</span><br><span class="line">* people</span><br><span class="line">    1. AAA</span><br><span class="line">    1. BBB</span><br><span class="line">    1. CCC</span><br></pre></td></tr></table></figure>
+<ul>
+<li>milk</li>
+<li>egg</li>
+<li>apple<ol>
+<li>fuji</li>
+<li>fuji2</li>
+<li>fuji3</li>
+</ol>
+</li>
+<li>banana<ol>
+<li>AAA</li>
+<li>BBB</li>
+<li>CCC</li>
+</ol>
+</li>
+</ul>
+<p>列表用星号来标记，在星号前添加缩进来增加层次，使用数字代替星号可以将标签变为数字。</p>
+<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一段</span><br><span class="line">第二段</span><br><span class="line">第三段</span><br></pre></td></tr></table></figure>
+<p>代码块外的单一换行不会被识别，可以使用多个换行来制造强制换行，不过会造成很大的间距。</p>
+<p><strong>第一段</strong><br><strong>第二段</strong></p>
+<p><strong>第三段</strong></p>
+<p>标准的换行是在行位添加两个空格：</p>
+<p><strong>第一段</strong><br><strong>第二段</strong><br><strong>第三段</strong></p>
+<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@requires_authorization</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    # A comment</span><br><span class="line">    print &#39;hello world&#39;</span><br></pre></td></tr></table></figure>
+<p><strong>` 是键盘左上角Esc下面那个，不是单引号’</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">三个&#96; </span><br><span class="line">@requires_authorization</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    # A comment</span><br><span class="line">    print &#39;hello world&#39;</span><br><span class="line"></span><br><span class="line">三个&#96;</span><br></pre></td></tr></table></figure></p>
+<h2 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| ID     | NAME | AGE   |</span><br><span class="line">| :---- | ----: | :---: |</span><br><span class="line">| 00001 | AAAA |  5    |</span><br><span class="line">| 002 | BB |  12   |</span><br><span class="line">| 03 | CCC |  9  |</span><br></pre></td></tr></table></figure>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left">ID</th>
+<th style="text-align:right">NAME</th>
+<th style="text-align:center">AGE</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">00001</td>
+<td style="text-align:right">AAAA</td>
+<td style="text-align:center">5</td>
+</tr>
+<tr>
+<td style="text-align:left">002</td>
+<td style="text-align:right">BB</td>
+<td style="text-align:center">12</td>
+</tr>
+<tr>
+<td style="text-align:left">03</td>
+<td style="text-align:right">CCC</td>
+<td style="text-align:center">9</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div class="right-aside">
-    <div class="right-nav ms">
-        <div class="main">
-          <svg id="nav-menu" class="icon icon-menu" aria-hidden="true">
-            <use xlink:href="#icon-menu"></use>
-          </svg>
-          <ul class="left">
-              
-          </ul>
-          <div class="search">
-            <div class="search-box">
-              <input type="search"  id="search" class="input-search" placeholder="搜索">
-              <i class="icon-search"></i>
-              <div class="search-result-box">
-                <ul id="search-result"></ul>
-              </div>
-            </div>
-            <svg id="nav-search" class="icon icon-search" aria-hidden="true">
-              <use xlink:href="#icon-search"></use>
-            </svg>
-          </div>
-        </div>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
     </div>
-    <div class="right-main">
-        <div class="category">
-            <ul>
-                <li><a href="/" class="active">最新</a></li>
-                
-            </ul>
-        </div>
-        <div class="clear"></div>
-        <div class="list">
-            <div>
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2018/05/29/NaN/">Java 中的NaN</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2018-05-28T15:00:00.000Z" itemprop="date">2018-05-29</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.859Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2018/05/29/NaN/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2017/11/18/Markdown/" data-id="cki6vunqe0001o89kd3n6e7po" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
+
+    </footer>
+
+  </div>
+
   
 
-
-                
-                
   
-    <div class="item">
-      <div class="title">
-        <a href="/2018/04/26/JavaScript/">JavaScript 基本知识备忘录</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2018-04-25T15:00:00.000Z" itemprop="date">2018-04-26</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.858Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2018/04/26/JavaScript/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
+
+</article>
+        
+    </article>
+    
+  
+    
+      <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+      </nav>
+    
+  </section>
+</div>
+
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
+  
+    <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 XSUN</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="XSUN"></a>
     </div>
   
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2017/12/22/IDE_memo/">IDE使用备忘录</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2017-12-21T15:00:00.000Z" itemprop="date">2017-12-22</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.857Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2017/12/22/IDE_memo/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2017/11/18/Markdown/">Markdown 语法笔记</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2017-11-17T15:00:00.000Z" itemprop="date">2017-11-18</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.857Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2017/11/18/Markdown/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-<nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/3/">&amp;laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
 </nav>
-
-
-            </div>
-        </div>
-        <div class="clear"></div>
-        <!-- <div class="hosted">
-          <ul>
-            <li class="coding">
-              <a href="https://coding.net/pages" target="_blank" rel="noopener">
-                <img src="/./img/coding.png">
-              </a>
-            </li>
-            <li class="github-pages">
-              <a href="https://pages.github.com" target="_blank" rel="noopener">
-                <img src="/./img/github-pages.png">
-              </a>
-            </li>
-          </ul>
-        </div> -->
-    </div>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
 </div>
-<script>
-  var homeLeftBgArr = 'https://ws3.sinaimg.cn/large/006tKfTcly1fsulzlvofnj30af0k5jvu.jpg,https://ws2.sinaimg.cn/large/006tNbRwly1fwl2alhqibj31kw2dcu0y.jpg,https://ws1.sinaimg.cn/large/006tNbRwly1fwl2bclcirj31kw2czk7v.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2c765jej31kw2d1npe.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2dentnvj31kw2dc1l2.jpg,https://ws4.sinaimg.cn/large/006tNbRwly1fwl2dqawiej31kw2d8x6p.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2f7yp25j31kw3a97wh.jpg'.split(',');
-  var homeLeftBgArrLen = homeLeftBgArr.length;
-  var leftBackgroundUrl = homeLeftBgArr[Math.floor(Math.random() * homeLeftBgArrLen)];
-  var homeLeftAsideNode = document.getElementsByClassName('left-aside')[0];
-  if (homeLeftAsideNode) {
-    homeLeftAsideNode.style.backgroundImage = 'url(' + leftBackgroundUrl + ')';
-  }
-</script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-</script>
-<script>//console
-  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
-  var canConsole = true;
-  var consoleInfo = (function(consoleConfig) {
-  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
-    return;
-  }
-  var consoleColor = '#6190e8';
-  var _console;
-  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
-  var textStyle = 'color: ' + consoleColor + ';';
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
 
-  consoleConfig.map(o => {
-    var num = (o.match(/%c/g) || []).length;
-    if(/^http(s)?:\/\//.test(o)) {
-      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
-      return;
-    }
-    if (num > 0) {
-      var logArguments = [];
-      for (var i = 0; i < num; i++) {
-        if (i % 2 === 0) {
-          logArguments.push(backgroundTextStyle);
-        } else {
-          logArguments.push(textStyle);
-        }
-      }
-      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
-      return;
-    }
-    console.log('%c' + o, textStyle);
-  });
-}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+<script src="/js/jquery-2.0.3.min.js"></script>
 
-  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
 </body>
 </html>

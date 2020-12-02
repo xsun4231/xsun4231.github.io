@@ -1,364 +1,1105 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-  <meta name="keywords" content="hexo,个人博客,blog" />
-  <meta name="description" content="Null Page" />
-  <meta http-equiv="x-dns-prefetch-control" content="on">
-  <link rel="dns-prefetch" href="https://busuanzi.ibruce.info">
-  <link rel="dns-prefetch" href="https://at.alicdn.com">
-  
-  <link rel="dns-prefetch" href="https://widget.daovoice.io">
-  <link rel="dns-prefetch" href="https://widget-static-cdn.daovoice.io">
-  <link rel="dns-prefetch" href="https://im.daovoice.io">
+  <meta charset="utf-8">
   
   
   
-  <link rel="stylesheet" type="text/css" href="/./style/main.css">
-	<link rel="shortcut icon" href="/favicon.ico" title="Favicon">
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1/dist/gitalk.css">
-	<title>XSUN</title>
+    <meta name="description" content="这人懒的不仅post没写完，连网页都只做了一半。">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>
+    
+    XSUN</title>
+  
+    <link rel="shortcut icon" href="/favicon.ico">
   
   
-    <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/123456.js","daovoice");daovoice('init',{app_id: "123456"});daovoice('update');
-  </script>
+<link rel="stylesheet" href="/css/style.css">
+
   
-<meta name="generator" content="Hexo 4.2.1"></head>
+    
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.min.css">
+
+  
+  
+<script src="/js/pace.min.js"></script>
+
+<meta name="generator" content="Hexo 4.2.1"><link rel="alternate" href="/atom.xml" title="XSUN" type="application/atom+xml">
+</head>
+
 <body>
-  <div class="left-aside">
-    <div class="face-img"><img src=""></div>
-    <div class="intro-word">
-        <h2>XSUN</h2>
-        <p>爱生活 爱加班</p>
+<main class="content">
+  <section class="jumbotron">
+  <div class="video">
+    
+      <div class="video-frame">
+        <img src="/images/ocean/overlay-hero.png" alt="Decorative image frame">
+      </div>
+    
+    <div class="video-media">
+      <video playsinline="" autoplay="" loop="" muted="" data-autoplay=""
+             poster="/images/ocean/ocean.jpeg" x5-video-player-type="h5">
+        <!-- <source src="/images/ocean/ocean.mp4" type="video/mp4"> -->
+        <!-- <source src="/images/ocean/ocean.ogv" type="video/ogg"> -->
+        <!-- <source src="/images/ocean/ocean.webm" type="video/webm"> -->
+        <!-- <p>Your user agent does not support the HTML5 Video element.</p> -->
+      </video>
+      <div class="video-overlay"></div>
     </div>
-    <div class="sns">
-        <ul>
-            
-            <li>
-                <a class="github" target="_blank" href="https://github.com/Null-PE" title="github">
-                    <img src="/./img/icon-github.png" alt="github" data-tooltip="github">
-                </a>
-            </li>
-            
-        </ul>
+    <div class="video-inner text-center text-white">
+      <h1><a href="/">XSUN</a></h1>
+      <p>旅は道連れ世は情け</p>
+      <div><img src="/images/hexo-inverted.svg" class="brand" alt="XSUN"></div>
     </div>
+    <div class="video-learn-more">
+      <a class="anchor" href="#landingpage"><i class="fe fe-mouse"></i></a>
+    </div>
+  </div>
+</section>
+
+<div id="landingpage">
+  <section class="outer">
+    <article class="articles">
+      
+      <h1 class="page-type-title"></h1>
+      
+        
+          <article id="post-refactoring-C6" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/04/24/refactoring-C6/">代码重构 - 改善方法的结构</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/24/refactoring-C6/" class="article-date">
+  <time datetime="2019-04-24T05:06:44.000Z" itemprop="datePublished">2019-04-24</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>代码重构做的最多的就是改善方法的结构。去掉方法中不需要的元素，修改不明确的名称，将复杂而冗长的方法改成精简而明确的小方法群组，是重构方法的主要思路。  </p>
+<p>方法重构用的最多的是【提取方法】，有种将一地零落的玩具分类整理装箱的感觉；而【方法内联】一般在方法提取的过于详细以至于产生了反作用，或者需要重新整理方法间关系时使用。  </p>
+<p>【提取方法】的最大问题，是如何处理局部变量，这就用到了对局部变量的重构技巧。  </p>
+<h2 id="提取方法-Extract-Method"><a href="#提取方法-Extract-Method" class="headerlink" title="提取方法 Extract Method"></a>提取方法 Extract Method</h2><p>如果发现方法内有一个代码块在很具体的做一件事儿，或者有一句漂亮的注释解释了接下来好几行的操作，那就试试把它提取成一个方法吧，然后取个足以说明其作用的方法名。比如：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span> </span>&#123;</span><br><span class="line">    printBanner();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//print details</span></span><br><span class="line">    System.out.println (<span class="string">"name:"</span> + _name);</span><br><span class="line">    System.out.println (<span class="string">"amount"</span> + amount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>重构后是这个样子：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span> </span>&#123;</span><br><span class="line">    printBanner();</span><br><span class="line">    printDetails(amount);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printDetails</span> <span class="params">(<span class="keyword">double</span> amount)</span> </span>&#123;</span><br><span class="line">    System.out.println (<span class="string">"name:"</span> + _name);</span><br><span class="line">    System.out.println (<span class="string">"amount"</span> + amount);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>漂亮的代码往往方法都很简短，有着意思明确的方法名。方法越简洁，被重复利用的机会就越大；方法名如果足以传达信息，又可以省去不少的注释。<br>方法的简洁程度和方法名的好坏是联系在一起的，提取方法可以看做是用方法名来取代原位置的代码块，如果不能通过方法名理解原本代码块要执行的操作，重构也就失去了意义。<br>重构的时候不用刻意去思考方法或者方法名的长度，重构的关键在于方法名和代码块之间的语义距离（semantic distance)。</p>
+<h3 id="局部变量的处理"><a href="#局部变量的处理" class="headerlink" title="局部变量的处理"></a>局部变量的处理</h3><p>如果要提取的代码块使用了局部变量，提取方法的操作就要变得稍微复杂一些了。<br>首先我们需要观察一下局部变量定义、赋值以及被调用的位置，如果局部变量相关的代码可以移动位置，不妨先优化一下，因为优化前后，接下来的重构操作可能会有很大不同。</p>
+<ol>
+<li>如果局部变量足够“局部”，可以直接放到新方法内部，当然是最简单的情况。  </li>
+<li>如果局部变量的赋值是在新方法的处理范围外，新方法只是调用了变量值而没有进行修改，我们可以把局部变量当做参数传达给新的方法。  </li>
+<li>如果需要新方法的处理来给变量赋值，而变量值的使用又在新方法的范围外，则需要为新方法添加返回值，返回变量值。</li>
+</ol>
+<blockquote>
+<p>想返回多个变量值咋整嘞？这里涉及到了[单一返回值]的问题。编程语言普遍使用的是单一返回值的方法结构，这样可以保证代码的可读性，避免混乱。如果遇到了需要返回多个值的情况，不妨试着细化方法的划分，使用多个单一返回值的方法来实现。</p>
+</blockquote>
+<p>栗子，重构下面代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    Enumeration e = _orders.elements();</span><br><span class="line">    <span class="keyword">double</span> outstanding = <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line">    printBanner();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// calculate outstanding</span></span><br><span class="line">    <span class="keyword">while</span> (e.hasMoreElements()) &#123;</span><br><span class="line">        Order each = (Order) e.nextElement();</span><br><span class="line">        outstanding += each.getAmount();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    printDetails(outstanding);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>书中直接进行了如下的重构:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    printBanner();</span><br><span class="line">    <span class="keyword">double</span> outstanding = getOutstanding();</span><br><span class="line">    printDetails(outstanding);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">getOutstanding</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Enumeration e = _orders.elements();</span><br><span class="line">    <span class="keyword">double</span> outstanding = <span class="number">0.0</span>;</span><br><span class="line">    <span class="keyword">while</span> (e.hasMoreElements()) &#123;</span><br><span class="line">        Order each = (Order) e.nextElement();</span><br><span class="line">        outstanding += each.getAmount();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> outstanding;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>书中说将<code>outstanding</code>的计算提取成了一个独立的方法，而前面的局部变量因为只在计算中被使用到，所以一并提取了出来。这里有一个看似理所当然却值得做笔记的操作：作者并没有将<code>printBanner()</code>或者<code>printDetails()</code>放在新方法内。<br>如果将<code>pringDetails()</code>放到<code>getOutstanding()</code>里，不就不需要设返回值了？ 这是因为重构的对象是计算<code>outstanding</code>的代码块，如果将不相关的方法一并放到新方法内，就偏离了重构的目的。<br>假设将<code>printDetails()</code>放在了<code>getOutstanding()</code>内，再看<code>printOwing()</code>会发现，可以获取的信息变少了，<code>printDetails()</code>这个操作被隐藏在了<code>getOutStanding</code>里，而这并不在我们重构的计划内。<br>提取方法的重构目的，是用简明的方法调用来代替具体的代码块，提高原位置代码的可读性。如果将代码的方法调用看做是一个树状结构，提取方法就是在增加分支的深度。我们在读代码的时候，并不能看到下层方法的内容，所以将原本需要在上层直接读到的内容放在了很深的位置，反而会降低代码的可读性。</p>
+<h2 id="方法内联-Inline-Method"><a href="#方法内联-Inline-Method" class="headerlink" title="方法内联 Inline Method"></a>方法内联 Inline Method</h2><p>重构的一个重要目的是用简洁明了的方法名来替代代码原本所在的位置，以提高可读性。但有时会发现一些方法的内容已经简洁的跟方法名不相上下，这时就可以考虑舍弃方法了。  </p>
+<p>比如下面代码，<code>moreThanFiveLateDeliveries</code>和<code>_numberOfLateDeliveries &gt; 5</code>几乎没什么区别，也就没有必要留着方法了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getRating</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (moreThanFiveLateDeliveries()) ? <span class="number">2</span> : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">moreThanFiveLateDeliveries</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> _numberOfLateDeliveries &gt; <span class="number">5</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">getRating</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (_numberOfLateDeliveries &gt; <span class="number">5</span>)? <span class="number">2</span> : <span class="number">1</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="内联局部变量"><a href="#内联局部变量" class="headerlink" title="内联局部变量"></a>内联局部变量</h2><p>如果有一个局部变量像下面的<code>basePrice</code>一样只做了一次很简单的赋值操作，又没有被多个位置引用，那就没必要留着它了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> basePrice = anOrder.basePrice();</span><br><span class="line"><span class="keyword">return</span> (basePrice &gt; <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (anOrder.basePrice() &gt; <span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="使用查找方法替代局部变量"><a href="#使用查找方法替代局部变量" class="headerlink" title="使用查找方法替代局部变量"></a>使用查找方法替代局部变量</h2><p>有时我们为了重复使用某一个表达式的结果，会将其保存在局部变量中，但是局部变量的访问有范围限制，想要使用该变量，就需要在同一个方法内，结果导致方法过长，过长的方法往往有着复杂的结构而又不好重构。如果使用查找方法来替代局部变量，便可以摆脱局部变量的范围限制，在类的各个地方都能使用表达式的结果，重构的时候也就少了很多顾虑。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> basePrice = _quantity * _itemPrice;</span><br><span class="line"><span class="keyword">if</span> (basePrice &gt; <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">return</span> basePrice * <span class="number">0.95</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> basePrice * <span class="number">0.98</span>;</span><br></pre></td></tr></table></figure>
+<p>将<code>basePrice</code>提取成为一个方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (basePrice() &gt; <span class="number">1000</span>)</span><br><span class="line">    <span class="keyword">return</span> basePrice() * <span class="number">0.95</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    <span class="keyword">return</span> basePrice() * <span class="number">0.98</span>;</span><br><span class="line">...</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">basePrice</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> _quantity * _itemPrice;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="引入解释用变量"><a href="#引入解释用变量" class="headerlink" title="引入解释用变量"></a>引入解释用变量</h2><p>比如下面代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ( (platform.toUpperCase().indexOf(<span class="string">"MAC"</span>) &gt; -<span class="number">1</span>)&amp;&amp;</span><br><span class="line">      (browser.toUpperCase().indexOf(<span class="string">"IE"</span>) &gt; -<span class="number">1</span>)&amp;&amp;</span><br><span class="line">       wasInitialized() &amp;&amp; resize &gt; <span class="number">0</span> )</span><br><span class="line"> &#123;</span><br><span class="line">   <span class="comment">// do something</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure><br>条件语句的表达式非常复杂，难以理解，可以引入解释变量，提高条件语句的可读性：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> isMacOs     = platform.toUpperCase().indexOf(<span class="string">"MAC"</span>) &gt; -<span class="number">1</span>;</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> isIEBrowser = browser.toUpperCase().indexOf(<span class="string">"IE"</span>)  &gt; -<span class="number">1</span>;</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> wasResized  = resize &gt; <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (isMacOs &amp;&amp; isIEBrowser &amp;&amp; wasInitialized() &amp;&amp; wasResized) &#123;</span><br><span class="line">    <span class="comment">// do something</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>不难发现，这个重构操作对条件语句的重构有很不错的效果，但是会引入新的局部变量。我们完全可以通过提取方法来简化表达式，所以作者也有提到：一般在无法提取方法时，才会想起来引入解释变量。<br>有些方法由于使用了大量局部变量，使用提取方法来重构会很麻烦，这时引入解释变量可能有助于梳理算法结构，对进一步的重构有很大帮助。</p>
+<h2 id="分割局部变量"><a href="#分割局部变量" class="headerlink" title="分割局部变量"></a>分割局部变量</h2><p>我们可以这样理解:局部变量在方法中的作用大致有两种，</p>
+<ol>
+<li>一种是在循环的处理中，用来当做index或者flag。</li>
+<li>另一种是用来保存值或参照，方便多次的使用，这种局部变量应该只能被赋值一次。<br>如果一个局部变量承担了超出上述范围的责任，就该考虑分割它了。让一个局部变量承担多种责任，会降低代码的可读性，造成混乱。所以遇到这种情况，尽可能一个变量一个责任的进行分割。分割之后，再考虑其他的重构操作。比如：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">double</span> temp = <span class="number">2</span> * (_height + _width);</span><br><span class="line">System.out.println (temp);</span><br><span class="line">temp = _height * _width;</span><br><span class="line">System.out.println (temp);</span><br></pre></td></tr></table></figure>
+<p><code>temp</code>两次每调用时，保存的内容不一样，所以应该分割为两个变量：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">final</span> <span class="keyword">double</span> perimeter = <span class="number">2</span> * (_height + _width);</span><br><span class="line">System.out.println (perimeter);</span><br><span class="line"><span class="keyword">final</span> <span class="keyword">double</span> area = _height * _width;</span><br><span class="line">System.out.println (area);</span><br></pre></td></tr></table></figure>
+<h2 id="移除对参数的赋值操作"><a href="#移除对参数的赋值操作" class="headerlink" title="移除对参数的赋值操作"></a>移除对参数的赋值操作</h2><p><strong>参数可以引用，修改，但不可以直接使用 <code>=</code> 赋值 </strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">aMethod</span><span class="params">(Object foo)</span> </span>&#123;</span><br><span class="line">foo.modifyInSomeWay();           <span class="comment">// √ 这个可以</span></span><br><span class="line">foo = anotherObject;             <span class="comment">// × 这个不行</span></span><br></pre></td></tr></table></figure><br>首先要弄懂赋值的概念，使用<code>=</code>的操作，其作用不是修改变量的值，而是改变了该变量名所参照的对象。在方法中改变参数的参照（进行赋值操作），我的理解是有两个问题：</p>
+<ol>
+<li>如果想通过方法的调用来改变参数的参照对象，可以通过返回值来进行赋值，直接在方法中使用<code>=</code>，调用方法的地方看不到该赋值操作，会降低代码的可读性。</li>
+<li>如果是<strong>Pass By Value</strong>的编程语言，改变参数的参照（Reference），并不会影响到函数外的原变量。这就造成了混乱。</li>
+</ol>
+<h3 id="Pass-By-Value-amp-amp-Pass-By-Reference"><a href="#Pass-By-Value-amp-amp-Pass-By-Reference" class="headerlink" title="Pass By Value &amp;&amp; Pass By Reference"></a>Pass By Value &amp;&amp; Pass By Reference</h3><p>复习一下值传递和引用传递</p>
+<ul>
+<li>值传递<ul>
+<li>方法的参数是变量值的拷贝，在方法内修改参数值不会影响方法外变量的值</li>
+</ul>
+</li>
+<li>引用传递<ul>
+<li>方法的参数时变量的地址，在方法内修改参数会直接影响该内存地址的内容，方法外变量的值也会改变。</li>
+</ul>
+</li>
+</ul>
+<p>Java是值传递的编程语言，对于基本数据类型的值传递很好理解，对于引用类型的参数，<a href="https://blog.csdn.net/javazejian/article/details/51192130" target="_blank" rel="noopener">java基本数据类型传递与引用传递区别</a> 这篇文章里有个图很有助于理解</p>
+
+<p>方法的代码如下<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">package</span> com.zejian.test;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * java中的按值调用</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@author</span> zejian</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">CallByValue</span> </span>&#123;</span><br><span class="line">	<span class="keyword">private</span> <span class="keyword">static</span> User user=<span class="keyword">null</span>;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">updateUser</span><span class="params">(User student)</span></span>&#123;</span><br><span class="line">		student.setName(<span class="string">"Lishen"</span>);</span><br><span class="line">		student.setAge(<span class="number">18</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		user = <span class="keyword">new</span> User(<span class="string">"zhangsan"</span>,<span class="number">26</span>);</span><br><span class="line">		System.out.println(<span class="string">"调用前user的值："</span>+user.toString());</span><br><span class="line">		updateUser(user);</span><br><span class="line">		System.out.println(<span class="string">"调用后user的值："</span>+user.toString());</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>我们可以把引用类型的对象看作是一个值，引用类型的参数所传递的，是这个对象（图中的user），这就是引用类型的值传递。<br>通过<code>student</code>调用对象的方法是可以修改<code>user</code>内容的，但如果使用<code>=</code>来对<code>student</code>进行赋值，只是让<code>student</code>指向了一个新的对象，并不会影响到<code>user</code>。为了防止参数赋值造成混乱，Java其实可以将参数设置为<code>final</code>，只不过好像没怎么见谁用过…</p>
+<h2 id="把方法换成对象"><a href="#把方法换成对象" class="headerlink" title="把方法换成对象"></a>把方法换成对象</h2><p>如果一个方法中有太多的局部变量，以至于无法通过提取方法进行重构（可是不进行重构方法又太丑陋了），不妨把方法整体提取为一个独立的对象，局部变量变为该对象的属性后，就可以在对象内轻松地提取方法进行下一步的重构了。</p>
+<p>书中例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">Class Account</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">gamma</span> <span class="params">(<span class="keyword">int</span> inputVal, <span class="keyword">int</span> quantity, <span class="keyword">int</span> yearToDate)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> importantValue1 = (inputVal * quantity) + delta();</span><br><span class="line">        <span class="keyword">int</span> importantValue2 = (inputVal * yearToDate) + <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">if</span> ((yearToDate - importantValue1) &gt; <span class="number">100</span>)</span><br><span class="line">            importantValue2 -= <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">int</span> importantValue3 = importantValue2 * <span class="number">7</span>;</span><br><span class="line">        <span class="comment">// and so on.</span></span><br><span class="line">        <span class="keyword">return</span> importantValue3 - <span class="number">2</span> * importantValue1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>上面代码中，如果想要将计算返回值的部分提取出来，就需要将好多局部变量作为参数传递，非常复杂。我们可以使用对象来替代方法，首先写一个<code>Gamma</code>类：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Gamma</span>...</span></span><br><span class="line"><span class="class">    <span class="title">private</span> <span class="title">final</span> <span class="title">Account</span> <span class="title">_account</span></span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> inputVal;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> quantity;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> yearToDate;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> importantValue1;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> importantValue2;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">int</span> importantValue3;</span><br></pre></td></tr></table></figure><br>再为<code>Gamma</code>类添加一个构造体：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Gamma (Account source, <span class="keyword">int</span> inputValArg, <span class="keyword">int</span> quantityArg, <span class="keyword">int</span> yearToDateArg) &#123;</span><br><span class="line">        _account = source; <span class="comment">// 为了使用方法delta()</span></span><br><span class="line">        inputVal = inputValArg;</span><br><span class="line">        quantity = quantityArg;</span><br><span class="line">        yearToDate = yearToDateArg;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>然后将原方法的处理内容转移到<code>Gamma</code>中，作为一个待重构的方法：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compute</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">        importantValue1 = (inputVal * quantity) + _account.delta();</span><br><span class="line">        importantValue2 = (inputVal * yearToDate) + <span class="number">100</span>;</span><br><span class="line">        <span class="keyword">if</span> ((yearToDate - importantValue1) &gt; <span class="number">100</span>)</span><br><span class="line">            importantValue2 -= <span class="number">20</span>;</span><br><span class="line">        <span class="keyword">int</span> importantValue3 = importantValue2 * <span class="number">7</span>;</span><br><span class="line">        <span class="comment">// and so on.</span></span><br><span class="line">        <span class="keyword">return</span> importantValue3 - <span class="number">2</span> * importantValue1;</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure><br>这时，由于局部变量都已经变成了<code>Gamma</code>类的属性，我们提取方法时不需要再担心局部变量了：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">compute</span> <span class="params">()</span> </span>&#123;</span><br><span class="line">       importantValue1 = (inputVal * quantity) + _account.delta();</span><br><span class="line">       importantValue2 = (inputVal * yearToDate) + <span class="number">100</span>;</span><br><span class="line">       importantThing();</span><br><span class="line">       <span class="keyword">int</span> importantValue3 = importantValue2 * <span class="number">7</span>;</span><br><span class="line">       <span class="comment">// and so on.</span></span><br><span class="line">       <span class="keyword">return</span> importantValue3 - <span class="number">2</span> * importantValue1;</span><br><span class="line">   &#125;</span><br><span class="line"></span><br><span class="line">   <span class="function"><span class="keyword">void</span> <span class="title">importantThing</span><span class="params">()</span> </span>&#123;</span><br><span class="line">       <span class="keyword">if</span> ((yearToDate - importantValue1) &gt; <span class="number">100</span>)</span><br><span class="line">            importantValue2 -= <span class="number">20</span>;</span><br><span class="line">   &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="优化算法"><a href="#优化算法" class="headerlink" title="优化算法"></a>优化算法</h2><p>书中用的是<strong>substitue algorithm</strong>, 意思是用简明易懂的写法来替代旧算法，并没有追求提高算法效率或者降低消耗，我在理解的时候把这个重构操作也归类为<strong>优化</strong>  </p>
+<p>意思很简单：即使做的还是那些事儿，如果可以让你的算法看起来更容易理解，Just do it.</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/04/24/refactoring-C6/" data-id="cki6vunr8000qo89kd7ae83hl" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Refactoring/" rel="tag">Refactoring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8D%E6%9E%84/" rel="tag">重构</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-C9" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/04/22/C9/">代码重构 - 简化条件语句</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/22/C9/" class="article-date">
+  <time datetime="2019-04-22T05:22:37.000Z" itemprop="datePublished">2019-04-22</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>原文 <a href="https://books.google.co.jp/books/about/Refactoring.html?id=HmrDHwgkbPsC&amp;printsec=frontcover&amp;source=kp_read_button&amp;redir_esc=y#v=onepage&amp;q&amp;f=false" target="_blank" rel="noopener">publisher logo Refactoring: Improving the Design of Existing Code</a> Chapter 9 Simplifying Conditianal Expressions</p>
+</blockquote>
+<h2 id="分离条件-Decompose-Conditional"><a href="#分离条件-Decompose-Conditional" class="headerlink" title="分离条件 - Decompose Conditional"></a>分离条件 - Decompose Conditional</h2><p>很多程序之所以“复杂难懂”，是因为出现了“复杂难懂”的条件语句。当人们看到条件语句时，最想获取的信息是：if XXX 的时候，do YYY； else do ZZZ。所以简化条件语句最简单直接的方法就是把长长的判断语句或者大段大段的处理分离出来，留下最基本的<code>if else</code>结构，一目了然，至于具体的判断方法和处理内容，则去具体的方法中查看。</p>
+<blockquote>
+<p>遇到有嵌套结构的条件语句时，不妨先试试先整理成卫语句(Guard Clauses)，行不通再进行分解处理。</p>
+</blockquote>
+<p>比如我们遇到下面这段代码：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (date.before (SUMMER_START) || date.after(SUMMER_END))&#123;</span><br><span class="line">  charge = quantity * winterRate + winterServiceCharge;</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">  charge = quantity * summerRate;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对条件和判断后的代码分别施放<strong>Extract Method</strong>法术:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (notSummer(date))&#123;</span><br><span class="line">  charge = winterCharge(quantity);</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">  charge = summerCharge (quantity);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">boolean</span> <span class="title">notSummer</span><span class="params">(Date date)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> date.before (SUMMER_START) || date.after(SUMMER_END);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">double</span> <span class="title">summerCharge</span><span class="params">(<span class="keyword">int</span> quantity)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> quantity * summerRate;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">private</span> <span class="keyword">double</span> <span class="title">winterCharge</span><span class="params">(<span class="keyword">int</span> quantity)</span> </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> quantity * winterRate + winterServiceCharge;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>当然，每次抽离出方法的时候，都不要忘记进行测试，<strong>保证重构不会影响原本的处理结果</strong>，很多时候条件语句并不是十分复杂，看起来好像没有抽离成为方法的必要，这就要看条件语句读起来是否顺畅易懂了，如果可以把原本机器感十足的语句变得更像一段流畅直白的描述，条件语句的重构就是有意义的。</p>
+<h2 id="整合条件-Consolidate-Conditional-Expression"><a href="#整合条件-Consolidate-Conditional-Expression" class="headerlink" title="整合条件 - Consolidate Conditional Expression"></a>整合条件 - Consolidate Conditional Expression</h2><p>有些条件语句的虽然有着不同的判断条件，却执行着相同的动作。如果可以确定这些判断不需要完全的独立，不妨整合到一起，再抽离出一个方法，这样，条件语句就更有“一个判断”的感觉了。</p>
+<p>比如下面的代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">disabilityAmount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (_seniority &lt; <span class="number">2</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (_monthsDisabled &gt; <span class="number">12</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="keyword">if</span> (_isPartTime) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// compute the disability amount</span></span><br></pre></td></tr></table></figure>
+<p>可以整合成：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">disabilityAmount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">if</span> (isNotEligableForDisability()) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">  <span class="comment">// compute the disability amount</span></span><br></pre></td></tr></table></figure></p>
+<p>整合的对象不仅仅是同等级的条件语句(使用ors），有一些嵌套的条件语句更有整合的必要（使用ands）：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (onVacation())</span><br><span class="line">    <span class="keyword">if</span> (lengthOfService() &gt; <span class="number">10</span>)</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0.5</span>;</span><br></pre></td></tr></table></figure>
+<p>如果内层的<code>if</code>只是起到筛选的作用，而没有产生分支，就可以将内层条件语句跟外层整合到一起：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (onVacation() &amp;&amp; lengthOfService() &gt; <span class="number">10</span>) <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">return</span> <span class="number">0.5</span>;</span><br></pre></td></tr></table></figure></p>
+<p>如果条件语句的处理只是返回不同的值，不妨使用<strong>三元运算符(ternary operator)</strong> 。不过要注意，三元运算符的使用因人而异，有些项目并不喜欢代码里出现三元运算符。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">return</span> (onVacation() &amp;&amp; lengthOfService() &gt; <span class="number">10</span>) ? <span class="number">1</span> : <span class="number">0.5</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="整合重复的条件语句块-Consolidate-Duplicate-Conditional-Fragments"><a href="#整合重复的条件语句块-Consolidate-Duplicate-Conditional-Fragments" class="headerlink" title="整合重复的条件语句块 Consolidate Duplicate Conditional Fragments"></a>整合重复的条件语句块 Consolidate Duplicate Conditional Fragments</h2><p>当条件语句的<code>if</code>和<code>else</code>里出现了相同的处理时，不妨试试将其移动到条件语句之前或者之后，使条件语句中的处理更有“分歧”的感觉。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isSpecialDeal()) &#123;</span><br><span class="line">    total = price * <span class="number">0.95</span>;</span><br><span class="line">    send();</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">else</span> &#123;</span><br><span class="line">    total = price * <span class="number">0.98</span>;</span><br><span class="line">    send();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>send()</code>出现在具有分歧的处理之后，可以移动到条件语句的后面；如果出现在具有分歧的处理之前，则移动到条件语句的前面。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (isSpecialDeal())</span><br><span class="line">    total = price * <span class="number">0.95</span>;</span><br><span class="line"><span class="keyword">else</span></span><br><span class="line">    total = price * <span class="number">0.98</span>;</span><br><span class="line">send();</span><br></pre></td></tr></table></figure>
+<p>如果无法确定整合的内容在前还是应该在后，不妨先看一看在条件语句块内，该内容的位置变化是否影响处理结果，<br>在不影响处理结果的前提下将要整合的内容前移或者后撤之后，再进行重构就可以了。</p>
+<h2 id="移除控制标记-Remove-Control-Flag"><a href="#移除控制标记-Remove-Control-Flag" class="headerlink" title="移除控制标记 Remove Control Flag"></a>移除控制标记 Remove Control Flag</h2><p>如果你使用一个变量的值控制真假的判断，不妨考虑在变量值的修改处用<code>break</code>或者<code>return</code>来替代。</p>
+<p>比如下面的代码<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">checkSecurity</span><span class="params">(String[] people)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">boolean</span> found = <span class="keyword">false</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; people.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (! found) &#123;</span><br><span class="line">           <span class="keyword">if</span> (people[i].equals (<span class="string">"Don"</span>))&#123;</span><br><span class="line">             sendAlert();</span><br><span class="line">             found = <span class="keyword">true</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (people[i].equals (<span class="string">"John"</span>))&#123;</span><br><span class="line">             sendAlert();</span><br><span class="line">             found = <span class="keyword">true</span>;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>这段代码使用变量<code>found</code>来判断来逃离<code>for</code>循环，显然可以使用<code>break</code>来代替：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">checkSecurity</span><span class="params">(String[] people)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; people.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (people[i].equals (<span class="string">"Don"</span>))&#123;</span><br><span class="line">          sendAlert();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (people[i].equals (<span class="string">"John"</span>))&#123;</span><br><span class="line">          sendAlert();</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>这样不仅是代码看起来简洁了许多，也避免了后续得无意义的判断。当然，这里的条件语句还可以整合一下，就不细说了。  </p>
+<p>有些时候控制标记不仅仅是用来充当真假的判断条件，也用来保存返回值，这种情况可以考虑在适当的时候使用<code>return</code>直接结束方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">checkSecurity</span><span class="params">(String[] people)</span> </span>&#123;</span><br><span class="line">    String found = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; people.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (found.equals(<span class="string">""</span>)) &#123;</span><br><span class="line">           <span class="keyword">if</span> (people[i].equals (<span class="string">"Don"</span>))&#123;</span><br><span class="line">              sendAlert();</span><br><span class="line">              found = <span class="string">"Don"</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (people[i].equals (<span class="string">"John"</span>))&#123;</span><br><span class="line">              sendAlert();</span><br><span class="line">              found = <span class="string">"John"</span>;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    someLaterCode(found);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>我们可以先把<code>for</code>循环的内容抽离出来：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">checkSecurity</span><span class="params">(String[] people)</span> </span>&#123;</span><br><span class="line">    String found = foundMiscreant(people);</span><br><span class="line">    someLaterCode(found);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">String <span class="title">foundMiscreant</span><span class="params">(String[] people)</span></span>&#123;</span><br><span class="line">    String found = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; people.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (found.equals(<span class="string">""</span>)) &#123;</span><br><span class="line">           <span class="keyword">if</span> (people[i].equals (<span class="string">"Don"</span>))&#123;</span><br><span class="line">             sendAlert();</span><br><span class="line">             found = <span class="string">"Don"</span>;</span><br><span class="line">           &#125;</span><br><span class="line">           <span class="keyword">if</span> (people[i].equals (<span class="string">"John"</span>))&#123;</span><br><span class="line">             sendAlert();</span><br><span class="line">             found = <span class="string">"John"</span>;</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> found;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>可以看到标记<code>found</code>成为了返回值，程序的意思很明显是：[如果<code>found</code>不是空的，就返回其内容], 所以我们可以直接返回要赋给<code>found</code>的值，取消<code>found</code>这个变量。 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">String <span class="title">foundMiscreant</span><span class="params">(String[] people)</span></span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; people.length; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span> (people[i].equals (<span class="string">"Don"</span>))&#123;</span><br><span class="line">           sendAlert();</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"Don"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (people[i].equals (<span class="string">"John"</span>))&#123;</span><br><span class="line">           sendAlert();</span><br><span class="line">           <span class="keyword">return</span> <span class="string">"John"</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>细心观察 return 的位置， 你会有意想不到的收获</p>
+</blockquote>
+<h2 id="使用卫语句替代嵌套的条件语句-Replace-Nested-Conditional-with-Guard-Clauses"><a href="#使用卫语句替代嵌套的条件语句-Replace-Nested-Conditional-with-Guard-Clauses" class="headerlink" title="使用卫语句替代嵌套的条件语句 Replace Nested Conditional with Guard Clauses"></a>使用卫语句替代嵌套的条件语句 Replace Nested Conditional with Guard Clauses</h2><p>条件语句在程序中的使用可以有两种思路：</p>
+<ol>
+<li>用来处理明确的分支，程序往哪个方向走都有可能，完全取决于条件的真假。这种情况使用基本的<code>if else</code>来处理。</li>
+<li>用来处理特殊情况，程序有着一个基本的前进方向，出现一些特殊情况时，需要立即返回特定值或者转为进行特定的处理。这种情况的条件语句，我们可以称之为 卫语句(guard clause)</li>
+</ol>
+<p>当我们遇到层层嵌套的<code>if else</code>语句时，可以梳理一下程序的语义，如果发现条件语句的作用不是用来产生“平等”的分支，而是一种“出现了这种情况就赶快退出去吧”的感觉的话，不妨将<code>if else</code>简化成<code>guard clause</code>.</p>
+<blockquote>
+<p>这里作者介绍的是 嵌套的条件语句 ，实际上使用卫语句的思路在单一<code>if-else</code>时也适用，每当我们写出一个完全体的<code>if-else</code>时，都应该思考一下条件语句属于那种类型，很多时候<code>if-else</code>的分歧处理都可以用<code>if</code>的卫语句解决。</p>
+</blockquote>
+<p>比如下面的这段代码：  </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">getPayAmount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="keyword">double</span> result;</span><br><span class="line">  <span class="keyword">if</span> (_isDead) result = deadAmount();</span><br><span class="line">  <span class="keyword">else</span> &#123;</span><br><span class="line">      <span class="keyword">if</span> (_isSeparated) result = separatedAmount();</span><br><span class="line">      <span class="keyword">else</span> &#123;</span><br><span class="line">          <span class="keyword">if</span> (_isRetired) result = retiredAmount();</span><br><span class="line">          <span class="keyword">else</span> result = normalPayAmount();</span><br><span class="line">      &#125;;</span><br><span class="line">  &#125;</span><br><span class="line"><span class="keyword">return</span> result;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>这种梯田式的条件语句，而且处理的对象都是返回值，很明显可以使用卫语句来简化，我们从外向里，一层层的将<code>result</code>的赋值改为<code>return</code>，最后可以得到：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">getPayAmount</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">if</span> (_isDead) <span class="keyword">return</span> deadAmount();  </span><br><span class="line">  <span class="keyword">if</span> (_isSeparated) <span class="keyword">return</span> separatedAmount();  </span><br><span class="line">  <span class="keyword">if</span> (_isRetired) <span class="keyword">return</span> retiredAmount();  </span><br><span class="line">  <span class="keyword">return</span> normalPayAmount();&#125;;</span><br></pre></td></tr></table></figure>
+<p>使用卫语句进行重构并不局限于这一种情况，有时候我们可以发现条件语句筛选了部分情况来进行特定的处理，剩下的情况则返回默认值。这时我们可以考虑反转判断的条件式，来得到一个卫语句，今儿简化代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getAdjustedCapital</span><span class="params">()</span> </span>&#123;  </span><br><span class="line">  <span class="keyword">double</span> result = <span class="number">0.0</span>;  </span><br><span class="line">  <span class="keyword">if</span> (_capital &gt; <span class="number">0.0</span>) &#123;    </span><br><span class="line">    <span class="keyword">if</span> (_intRate &gt; <span class="number">0.0</span> &amp;&amp; _duration &gt; <span class="number">0.0</span>) &#123;     </span><br><span class="line">      result = (_income / _duration) * ADJ_FACTOR;    </span><br><span class="line">    &#125;  </span><br><span class="line">  &#125;  </span><br><span class="line">  <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>书中作者给出了详细的重构过程，这里就不细说了。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">double</span> <span class="title">getAdjustedCapital</span><span class="params">()</span> </span>&#123;    </span><br><span class="line">  <span class="keyword">if</span> (_capital &lt;= <span class="number">0.0</span>) <span class="keyword">return</span> <span class="number">0.0</span>;    </span><br><span class="line">  <span class="keyword">if</span> (_intRate &lt;= <span class="number">0.0</span> || _duration &lt;= <span class="number">0.0</span>) <span class="keyword">return</span> <span class="number">0.0</span>;    </span><br><span class="line">  <span class="keyword">return</span> (_income / _duration) * ADJ_FACTOR;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>工作中很常用到的一个思路就是，如果有一个大大的if框住了几乎整个方法的内容，一定要看看可不可以反转if的条件在最前面直接return，从{}中解放这段代码。</p>
+</blockquote>
+<h2 id="利用多态来重构条件语句-Replace-Conditional-with-Polymorphism"><a href="#利用多态来重构条件语句-Replace-Conditional-with-Polymorphism" class="headerlink" title="利用多态来重构条件语句 Replace Conditional with Polymorphism"></a>利用多态来重构条件语句 Replace Conditional with Polymorphism</h2><p>比如我们有下面这个结构, <code>Employee</code>的<code>type</code>为抽象类<code>EmployeeType</code>，被三个类实现，每个类返回的<code>typeCode</code>不同：</p>
+<p><a href="https://www.plantuml.com/plantuml/svg/bP312i8m38RlVOgmanvsyEf19kBHaxv0tC8ej6bfCx6ClRkTOx0X2Bi4Glxl_vDKKJ18Put2PvI0jK1jC4QuMczS8deaJxq2wEVv09e5Mf9nSd4DxVPgK6fDZSGeyvZErdKiMGHByDlxe5yejCe2oMLXoArceW3q5kBcTwy_ozoGiTs8JkGT3KMBl2rr5a5Pdg0u5EkxZjDbLVRBx_u0" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/bP312i8m38RlVOgmanvsyEf19kBHaxv0tC8ej6bfCx6ClRkTOx0X2Bi4Glxl_vDKKJ18Put2PvI0jK1jC4QuMczS8deaJxq2wEVv09e5Mf9nSd4DxVPgK6fDZSGeyvZErdKiMGHByDlxe5yejCe2oMLXoArceW3q5kBcTwy_ozoGiTs8JkGT3KMBl2rr5a5Pdg0u5EkxZjDbLVRBx_u0" /></a></p>
+<p><code>Employee</code>的方法<code>payAmount()</code>的内容为：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">payAmount</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (getType()) &#123;</span><br><span class="line">        <span class="keyword">case</span> EmployeeType.ENGINEER:</span><br><span class="line">            <span class="keyword">return</span> _monthlySalary;</span><br><span class="line">        <span class="keyword">case</span> EmployeeType.SALESMAN:</span><br><span class="line">            <span class="keyword">return</span> _monthlySalary + _commission;</span><br><span class="line">        <span class="keyword">case</span> EmployeeType.MANAGER:</span><br><span class="line">            <span class="keyword">return</span> _monthlySalary + _bonus;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Incorrect Employee"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>因为<code>type</code>的其实是<code>EmployeeType</code>子类的属性，所以我们可以将这个方法移动到<code>EmployeeType</code>中，利用子类来实现不同的处理。首先，移动方法到<code>EmployeeType</code>里，由于使用了<code>Employee</code>才有的属性，所以我们需要将<code>employee</code>作为参数传递进去：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">payAmount</span><span class="params">(Employee emp)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">switch</span> (getTypeCode()) &#123;</span><br><span class="line">        <span class="keyword">case</span> ENGINEER:</span><br><span class="line">            <span class="keyword">return</span> emp.getMonthlySalary();</span><br><span class="line">        <span class="keyword">case</span> SALESMAN:</span><br><span class="line">            <span class="keyword">return</span> emp.getMonthlySalary() + emp.getCommission();</span><br><span class="line">        <span class="keyword">case</span> MANAGER:</span><br><span class="line">            <span class="keyword">return</span> emp.getMonthlySalary() + emp.getBonus();</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">            <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Incorrect Employee"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><code>EmployeeType</code>是抽象类，所以我们要继续将方法<code>payAmout()</code>在具体的子类中进行实现，不过子类中就用不到<code>switch</code>了。在重构的过程中，我们可以在<code>EmployeeType</code>中添加例外处理，比如当我们在<code>Engineer</code>中实现了<code>payAmount()</code>后:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Engineer</span> ...</span></span><br><span class="line"><span class="class">  <span class="title">int</span> <span class="title">payAmount</span>(<span class="title">Employee</span> <span class="title">emp</span>) </span>&#123;      </span><br><span class="line">    <span class="keyword">return</span> emp.getMonthlySalary();  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmployeeType</span>...</span></span><br><span class="line"><span class="class">  <span class="title">int</span> <span class="title">payAmount</span>(<span class="title">Employee</span> <span class="title">emp</span>) </span>&#123;</span><br><span class="line">      <span class="keyword">switch</span> (getTypeCode()) &#123;</span><br><span class="line">          <span class="keyword">case</span> ENGINEER:</span><br><span class="line">             <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException (<span class="string">"Should be being overridden"</span>);</span><br><span class="line">          <span class="keyword">case</span> SALESMAN:</span><br><span class="line">             <span class="keyword">return</span> emp.getMonthlySalary() + emp.getCommission();</span><br><span class="line">          <span class="keyword">case</span> MANAGER:</span><br><span class="line">             <span class="keyword">return</span> emp.getMonthlySalary() + emp.getBonus();</span><br><span class="line">          <span class="keyword">default</span>:</span><br><span class="line">             <span class="keyword">throw</span> <span class="keyword">new</span> RuntimeException(<span class="string">"Incorrect Employee"</span>);</span><br><span class="line">      &#125;</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>如此下去，直到在所有的子类中都实现了<code>payAmount</code>之后，将<code>EmployeeType</code>的方法改为<code>abstract</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">EmployeeType</span>...  </span></span><br><span class="line"><span class="class">  <span class="title">abstract</span> <span class="title">int</span> <span class="title">payAmount</span>(<span class="title">Employee</span> <span class="title">emp</span>)</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Engineer</span> ...</span></span><br><span class="line"><span class="class">  <span class="title">int</span> <span class="title">payAmount</span>(<span class="title">Employee</span> <span class="title">emp</span>) </span>&#123;      </span><br><span class="line">    <span class="keyword">return</span> emp.getMonthlySalary();  </span><br><span class="line">  &#125;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Salesman</span>...  </span></span><br><span class="line"><span class="class">  <span class="title">int</span> <span class="title">payAmount</span>(<span class="title">Employee</span> <span class="title">emp</span>) </span>&#123;      </span><br><span class="line">    <span class="keyword">return</span> emp.getMonthlySalary() + emp.getCommission();  </span><br><span class="line">  &#125; </span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Manager</span>...  </span></span><br><span class="line"><span class="class">  <span class="title">int</span> <span class="title">payAmount</span>(<span class="title">Employee</span> <span class="title">emp</span>) </span>&#123;      </span><br><span class="line">    <span class="keyword">return</span> emp.getMonthlySalary() + emp.getBonus();  </span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="使用空对象-Introduce-Null-Object"><a href="#使用空对象-Introduce-Null-Object" class="headerlink" title="使用空对象 Introduce Null Object"></a>使用空对象 Introduce Null Object</h2><blockquote>
+<p>空对象模式是一种需要小心使用的设计模式，而且在JavaSE8中引入<code>Optional&lt;&gt;</code>后，几乎用不到空对象。</p>
+</blockquote>
+<h2 id="插入断言-Introduce-Assertion"><a href="#插入断言-Introduce-Assertion" class="headerlink" title="插入断言 Introduce Assertion"></a>插入断言 Introduce Assertion</h2><blockquote>
+<p>善用 <code>Assert.isTrue()</code>， 确保一些必须成立的前提条件，从而让后面的条件判断达到最简化。</p>
+</blockquote>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/04/22/C9/" data-id="cki6vunr5000lo89k81pk1c3x" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Refactoring/" rel="tag">Refactoring</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%A1%AB%E4%B9%8B%E5%9D%91/" rel="tag">未填之坑</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E9%87%8D%E6%9E%84/" rel="tag">重构</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-git-connect" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/04/15/git-connect/">通过命令行从本地推送代码到GitHub</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/15/git-connect/" class="article-date">
+  <time datetime="2019-04-15T06:46:33.000Z" itemprop="datePublished">2019-04-15</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>首先，Git和GitHub不是一个东西。Git是一个版本管理系统，而GitHub是一个用来保存软件代码的平台。我们不妨把git看作是通讯技术，而github只是<strong>一个</strong>通讯服务商。也就是说除了github之外，还有很多的代码托管平台，大家都是用的git来上传下载代码，只不过github名气最大。</p>
+<ul>
+<li>为了不受各种不同的软件影响，这里说的都是通过命令行操作.</li>
+<li>这里只介绍一些最基本的命令和用法，在命令后面加<code>--help</code>可以查看详细的文档.</li>
+</ul>
+<h2 id="环境搭建"><a href="#环境搭建" class="headerlink" title="环境搭建"></a>环境搭建</h2><p>首先要做的事安装<code>git</code>，下载地址在<a href="https://git-scm.com/downloads" target="_blank" rel="noopener">这里</a>.</p>
+<p>git安装完之后，打开命令行执行<code>git --version</code>看看是否可以查看git的版本，如果返回版本信息，就OK了. git会自己安装一个<code>git Bash</code>, 不过git的命令行并不局限于bash，windows下直接在cmd或者powershell都可以使用.</p>
+<p>本地的代码推送到github时，github需要验证用户的信息. 就好比你可以每次进门都填一次我叫什么，我从哪儿来，我是干什么的，也可以提前登陆好身份信息，“哔”的一声刷脸进门，这个登录的身份信息就是<code>ssh key</code>.</p>
+<p>接下来的操作分为三步：</p>
+<ol>
+<li><a href="https://help.github.com/en/enterprise/2.15/user/articles/checking-for-existing-ssh-keys" target="_blank" rel="noopener">确定本地是否已经有建立好的ssh key</a><ul>
+<li>打开git Bash（这里需要用到Bash, windows的cmd是没有ls命令的) 输入<code>ls -al ~/.ssh</code> 这里一个搜索命令，返回名称为<code>.ssh</code>的目录信息。如果有<code>id_rsa.pub</code>文件，就说明已经有ssh key了.  </li>
+</ul>
+</li>
+<li><a href="https://help.github.com/en/enterprise/2.15/user/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent" target="_blank" rel="noopener">如果没有，建立一组新的ssh key</a><ul>
+<li>执行命令<code>ssh-keygen -t rsa -b 4096 -C &quot;your_email@example.com&quot;</code>来生成一组ssh key，接下来直接按回车就可以了（文件位置使用默认位置不需要输入，passphrase默认空白，不设置，设置的话以后每次推送代码都要输密码）。</li>
+<li>将生成的key登录到ssh-agent. 执行命令启动ssh-agent，windows：<code>eval $(ssh-agent -s)</code>  Mac或者Linux：<code>eval &quot;$(ssh-agent -s)&quot;</code>.然后执行命令添加key，Mac：<code>ssh-add -K ~/.ssh/id_rsa</code> windows或者Linux：<code>ssh-add ~/.ssh/id_rsa</code></li>
+</ul>
+</li>
+<li><a href="https://help.github.com/en/enterprise/2.15/user/articles/adding-a-new-ssh-key-to-your-github-account" target="_blank" rel="noopener">将建立好的ssh key登录到github</a><ul>
+<li>将ssh key的内容复制到剪贴板. window可以使用命令：<code>clip &lt; ~/.ssh/id_rsa.pub</code> Mac可以使用：<code>pbcopy &lt; ~/.ssh/id_rsa.pub</code> Linux可以使用：<code>sudo apt-get install xclip</code> 和 <code>xclip -sel clip &lt; ~/.ssh/id_rsa.pub</code></li>
+</ul>
+</li>
+</ol>
+<p>添加到github这一步我们单独说一下，以防弄错。打开github页面，点击用户头像，进入<code>setting</code>，在菜单中间的位置找到<code>SSH and GPG keys</code>，点击右上角的绿色按钮<code>New SSH key</code>，在<code>Title</code>里填写要添加的ssh key的介绍，比如”公司那台贼慢的电脑/家里的老爷机/学校的大屁股显示器”,然后在将复制的SSH key粘贴到<code>Key</code>里面，点击<code>Add SSH key</code>就可以了。</p>
+<h2 id="克隆项目代码"><a href="#克隆项目代码" class="headerlink" title="克隆项目代码"></a>克隆项目代码</h2><p>我们来到<code>GitHub</code>的代码页，可以在代码的右上角看到一个绿色按钮<code>Clone or Download</code>，点开之后可以看到克隆代码用的链接。  </p>
+<p>链接有两种，<code>https</code> 和 <code>ssh</code>， 简单来讲，使用https的链接克隆的项目需要用github的用户名密码来推送，使用ssh链接克隆的项目则使用ssh-key验证<br><a href="/2019/04/15/git-connect/usehttps.PNG" class="gallery-item"><img src="/2019/04/15/git-connect/usehttps.PNG" class="" title="https"></a></p>
+<a href="/2019/04/15/git-connect/usessh.PNG" class="gallery-item"><img src="/2019/04/15/git-connect/usessh.PNG" class="" title="ssh"></a>
+<p>由于我们已经设置好了ssh-key，所以使用格式为<code>git@github.com:用户名/项目名.github.io.git</code>的ssh链接.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:用户名&#x2F;项目名.github.io.git</span><br></pre></td></tr></table></figure></p>
+<h3 id="新建的repository"><a href="#新建的repository" class="headerlink" title="新建的repository"></a>新建的repository</h3><p>如果我们要将本地的工程文件推送到一个新建的GitHub库,首先确定两件事儿：</p>
+<ol>
+<li>GitHub上建立了一个空的库，README都没有的那种，可以看到这个页面 <a href="/2019/04/15/git-connect/new_repository.PNG" class="gallery-item"><img src="/2019/04/15/git-connect/new_repository.PNG" class="" title="NEW"></a></li>
+<li>本地的工程文件初始化了git，并且没有关联其他的库. git的初始化可以使用<code>git init</code>命令，移除其他的关联，可以使用<code>git remote remove name</code> 这里的name一般是<code>origin</code>.</li>
+</ol>
+<p>然后执行下面的命令就可以了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;first commit&quot;</span><br><span class="line">git remote add origin ssh链接</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure></p>
+<h2 id="remote-和-local"><a href="#remote-和-local" class="headerlink" title="remote 和 local"></a>remote 和 local</h2><p>git管理的代码有两个地方: </p>
+<ol>
+<li>一个是<strong>remote</strong> 可以理解为远端，也就是指托管代码的地方，使用github时，值得也就是github服务器端</li>
+<li>一个是<strong>local</strong> 直译本地，意译本地，他也就是本地的意思</li>
+</ol>
+<p>从远端向本地同步代码，叫做<code>pull</code> 也就是拉，将本地代码同步到远端，叫做<code>push</code> 推送，简单而形象。</p>
+<p>local值不需要，当然也不能修改，因为代码就在本地. remote的值可以随时添加，删除或者修改，remote是name和url成对设置的，一般默认的remote名是origin</p>
+<ul>
+<li><code>git remote</code> 确认remote，会返回remote的名称</li>
+<li><code>git remote get-url remoteName</code> 获得remote的url</li>
+<li><code>git remote set-url remoteName url</code> 设置remote的url</li>
+</ul>
+<h2 id="branch"><a href="#branch" class="headerlink" title="branch"></a>branch</h2><p>为了实现并行的开发，代码通过<code>branch</code>（分支）来进行管理，不妨branch理解成时间线、河流，可分成几个分支并行前进，也可以随时汇集到一起（只要内容没有冲突）。<br>可以通过<code>git branch</code>来查当前本地的分支。<br>切换分支的命令为 <code>git checkout &quot;branch_name&quot;</code><br>常用的生成分支命令为 <code>git checkout -b &quot;new_branch_name&quot; &quot;base_branch_name&quot;</code><br>使用<code>git branch &quot;new_branch_name</code>也可以生成新的分支，不过该命令并不切换到新生成的分支.</p>
+<ul>
+<li>分支的名称不可以有空格，所以一般通过下划线连接单词，当分支名含有特殊符号比如 # 时，需要在分支名前后加 “ 来防止控制台执行时的歧义。 </li>
+</ul>
+<h2 id="commit"><a href="#commit" class="headerlink" title="commit"></a>commit</h2><p>如果说branch是时间线，那么commit就是时间线上的存档点。刚刚创建或者修改完的文件，在git中并不算<strong>保存</strong>了，如果强行修改分支，这些内容就会丢失。将修改的内容保存到branch的记录中的操作，叫做<code>commit（提交）</code>. </p>
+<p>执行commit之前，首先需要把准备提交的文件添加到提交名单，这个操作使用 <code>git add</code> 命令。<br>添加之前，可以通过<code>git status</code>命令来查看有哪些文件被修改了.</p>
+<p>这里简单的从bash颜色上区分一下，<br>绿色的内容(Changes to be committed) 是已经准备好可以提交的内容，<br>红色的内容(Changes not staged for commit) 是还没有添加到提交列表的修改.</p>
+<p>下面介绍几种简单常用的命令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"># 将所有的修改添加到提交列表</span><br><span class="line">git add --all</span><br><span class="line"></span><br><span class="line"># 将指定文件添加到提交列表，多个文件的时候使用空格区分</span><br><span class="line">git add aaa.md</span><br><span class="line">git add bbb.md ccc.md path&#x2F;ddd.md</span><br><span class="line"></span><br><span class="line"># 可以使用正规表达来指定多个文件</span><br><span class="line">git add a*.md</span><br><span class="line">git add path&#x2F;\*.md</span><br></pre></td></tr></table></figure></p>
+<p>文件添加完，就可以执行commit来提交了：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># 提交的时候，commit信息是必须的，可以直接使用-m 来指定commit信息</span><br><span class="line">git commit -m &quot;在这里输入一条commit信息&quot;</span><br><span class="line"></span><br><span class="line"># 使用github的时候，可以在commit信息里通过 #+编号 来关联Issue，这样提交的commit可以在Issue中直接找到。</span><br><span class="line">git commit -m &quot;#001 commmit信息&quot;</span><br></pre></td></tr></table></figure></p>
+<h2 id="push"><a href="#push" class="headerlink" title="push"></a>push</h2><p>将remote的最新内容同步到本地的命令是<code>git pull</code>，将本地的修改推送到remote的命令是<code>git push</code>.</p>
+<ul>
+<li>出现冲突的时候可以加上<code>--force</code>来强制推送，不过这个操作不推荐，推送代码尽可能在解决冲突之后，使用最简单流畅的<code>git push</code></li>
+</ul>
+<p>推送命令的对象是分支，所以当我们推送本地创建的新分支时，需要指定一下这个分支在remote的信息：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"># git push 推送命令</span><br><span class="line"># --set-upstream 告诉git 我要设置推送目的地</span><br><span class="line"># remotename 要推送到的remote名 一般是 origin</span><br><span class="line"># branch_name 推送的branch名 含有特殊字符的话要用&quot;branch_name&quot;</span><br><span class="line">git push --set-upstream remotename branch_name</span><br></pre></td></tr></table></figure></p>
+<ul>
+<li>无论是切换分支，还是推送的时候，如果前面命令输入正确，git bash可以补全分支名。所以多用<code>tab</code>不仅方便，还能帮忙检查一下分支名前面的命令行有没有错。</li>
+</ul>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/04/15/git-connect/" data-id="cki6vunr4000jo89k4l3caz00" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Git/" rel="tag">Git</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/GitHub/" rel="tag">GitHub</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-python-f-strings" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/04/12/python-f-strings/">python 中的字符串格式化</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/12/python-f-strings/" class="article-date">
+  <time datetime="2019-04-12T07:46:14.000Z" itemprop="datePublished">2019-04-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>原文： <a href="https://realpython.com/python-f-strings/" target="_blank" rel="noopener">python-f-string</a></p>
+</blockquote>
+<p>自<code>3.6</code>版本开始，python引入了一种叫做<code>f-strings</code>的写法，使用改写发可以极大地增强字符串的可读性（当然好处不止这些).<br>不过在学习<code>f-strings</code>之前，先看看以往的写法都有哪些。</p>
+<h2 id="旧方法"><a href="#旧方法" class="headerlink" title="旧方法"></a>旧方法</h2><p>在<code>3.6</code>之前，我们常用的字符串格式化写法有两种：</p>
+<ol>
+<li>使用转移符 <code>%</code></li>
+<li>使用字符串的格式化方法 <code>str.format()</code> </li>
+</ol>
+<h3 id="旧选项1"><a href="#旧选项1" class="headerlink" title="旧选项1 %"></a>旧选项1 <code>%</code></h3><p>跟其他编程语言一样，python也可以用<code>%</code>来把变量值插入到字符串中的对应位置。写法如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">'Hello %s.'</span> % name)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom.'</span></span><br></pre></td></tr></table></figure><br>输出多个变量时，在<code>%</code>后使用括号将所有变量放到一起：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello %s, you are a %s.this is %s, a %s'</span> % (name1, type1, name2, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure><br>但是转移符这种东西，一个不小心就容易写错。</p>
+<h3 id="旧选项2-str-format"><a href="#旧选项2-str-format" class="headerlink" title="旧选项2 str.format()"></a>旧选项2 <code>str.format()</code></h3><p>从<code>2.6</code>开始，python为字符串添加了一个<code>format()</code>方法，可以将引入的参数按顺序替换到字符串中的<code>{}</code>处。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;&#125;, you are a &#123;&#125;.this is &#123;&#125;, a &#123;&#125;'</span>.format(name1, type1, name2, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p>使用<code>format()</code>你还可以自定义参数的插入顺序，例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;0&#125;, you are a &#123;2&#125;.this is &#123;1&#125;, a &#123;3&#125;'</span>.format(name1, name2, type1, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p><code>format()</code>方法的功能还不止于此，既然<code>index</code>可以用来出入参数，那可不可以用参数名称呢？毕竟<code>0,1,2,3</code>的可读性有限。答案是可以：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;name_a&#125;, you are a &#123;type_a&#125;.this is &#123;name_b&#125;, a &#123;type_b&#125;'</span>.format(name_a = name1, name_b = name2, type_a = type1, type_b = type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p>既然可以这样写了，那干脆直接引入<code>dict</code>得了.这个也是可以的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">character = &#123;</span><br><span class="line">  <span class="string">'name'</span> : <span class="string">'Tom'</span>,</span><br><span class="line">  <span class="string">'type'</span> : <span class="string">'cat'</span></span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">'Hello &#123;name&#125;, you are a &#123;type&#125;.'</span>.format(**character))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat.'</span></span><br></pre></td></tr></table></figure></p>
+<p>这样可读性就非常好了，不过在<code>3.6</code>版本，更好的写法出现了。</p>
+<h2 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h2><p>关于<code>f-string</code>的引入，可以参看<a href="https://www.python.org/dev/peps/pep-0498/" target="_blank" rel="noopener">PEP498</a>, 或者<a href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings" target="_blank" rel="noopener">Python-doc</a>.  </p>
+<p>写法非常简单，在字符串前加<code>f</code>或者<code>F</code>，在字符串中直接插入<code>{变量名}</code>，就可以了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">type = <span class="string">'cat'</span></span><br><span class="line">print(<span class="string">f'Hello <span class="subst">&#123;name&#125;</span>, you are a <span class="subst">&#123;type&#125;</span>.'</span>)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat.'</span></span><br></pre></td></tr></table></figure></p>
+<p>在<code>{}</code>中不仅可以使用字符串，还可以使用运算公式，甚至调用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_name</span><span class="params">(input)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Jerry'</span></span><br><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">f"Hello <span class="subst">&#123;change_name(name)&#125;</span>."</span>)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Jerry.'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当使用<code>object</code>时，f-string会默认调用<code>__str__()</code>方法，如果想调用<code>__repr__</code>，需要在对象名后面加<code>!r</code>：<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f"<span class="subst">&#123;object&#125;</span>"</span></span><br><span class="line"><span class="comment"># 输出 object.__str__()的内容</span></span><br><span class="line"><span class="string">f"<span class="subst">&#123;object!r&#125;</span>"</span></span><br><span class="line"><span class="comment"># 输出 object.__repr__()的内容</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>最后一个考点：换行。在python中可以使用<code>&#39;&#39;&#39;</code>来输出带有换行的字符串，不过直接在前面加上f的结果并不怎么好看：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">f'''</span></span><br><span class="line"><span class="string">Hi,</span></span><br><span class="line"><span class="string">you are a </span></span><br><span class="line"><span class="string">Cat</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># message : '\nHi, \nyou are a \nCat\n'</span></span><br></pre></td></tr></table></figure></p>
+<p><code>f-string</code>的换行方法是，在每行的最后添加<code>\</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">f''</span>\</span><br><span class="line"><span class="string">f'Hi '</span>\</span><br><span class="line"><span class="string">f'you are a '</span>\</span><br><span class="line"><span class="string">f'Cat '</span></span><br><span class="line"><span class="comment"># message ： 'Hi you are a Cat'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong> 一般情况下<code>f-string</code>使用单引号和双引号没有区别，但比如引用字典，需要单引号来标记key时，f-stirng就需要使用双引号了，否则字符串中的单引号会被错误理解。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/04/12/python-f-strings/" data-id="cki6vunr2000ho89k4i771jmr" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/F-string/" rel="tag">F-string</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-Hexo" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/04/05/Hexo/">Hexo 说明文档笔记</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/05/Hexo/" class="article-date">
+  <time datetime="2019-04-05T04:28:49.000Z" itemprop="datePublished">2019-04-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<ul>
+<li><a href="https://hexo.io" target="_blank" rel="noopener">Hexo 文档</a></li>
+</ul>
+<h2 id="theme文件夹结构"><a href="#theme文件夹结构" class="headerlink" title="theme文件夹结构"></a>theme文件夹结构</h2><ul>
+<li>_config.yml</li>
+<li>languages</li>
+<li>layout</li>
+<li>scripts</li>
+<li>source</li>
+</ul>
+<h3 id="config-yml"><a href="#config-yml" class="headerlink" title="_config.yml"></a>_config.yml</h3><p>主题的配置文件，修改主题的配置文件不需要重启服务器（修改网站根目录的那个_config.yml则需要重启才能生效)</p>
+<h3 id="languages"><a href="#languages" class="headerlink" title="languages"></a>languages</h3><p>国际化设置，使用yml文件设置网站元素的翻译，具体参考<a href="https://hexo.io/docs/internationalization" target="_blank" rel="noopener">i18n</a></p>
+<h3 id="layout"><a href="#layout" class="headerlink" title="layout"></a>layout</h3><p>网页、模板的设置。hexo默认使用Swig,不过也可以手动添加EJS,Haml,Jade或者Pug的支持。模板的写法参考 <a href="https://hexo.io/docs/templates" target="_blank" rel="noopener">Templates</a></p>
+<h3 id="scripts"><a href="#scripts" class="headerlink" title="scripts"></a>scripts</h3><p>存放JavaScript代码的文件夹，Hexo会自动加载这里的javaScript文件。扩展功能参考 <a href="https://hexo.io/docs/plugins" target="_blank" rel="noopener">plugins</a></p>
+<h3 id="source"><a href="#source" class="headerlink" title="source"></a>source</h3><p>顾名思义，这里是存放资源的。不属于页面模板的资源理论上都应该在此文件夹下面。</p>
+<h2 id="模板"><a href="#模板" class="headerlink" title="模板"></a>模板</h2><h3 id="Layout-布局"><a href="#Layout-布局" class="headerlink" title="Layout 布局"></a>Layout 布局</h3><p>在主题文件夹下的layout中定义不同模板的页面的呈现方式，具体的模板文件定义了页面的<code>body</code>内容，而layout则定义了如何显示<code>body</code>。<br>比如在布局中这样写：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">body</span>&gt;</span><span class="tag">&lt;<span class="name">%-</span> <span class="attr">body</span> %&gt;</span><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure><br>系统默认的布局为layout布局，不过在post的头部可以通过定义来使用具体的布局。</p>
+<h3 id="Partial-组件"><a href="#Partial-组件" class="headerlink" title="Partial 组件"></a>Partial 组件</h3><p>不同页面之间共享的内容可以写成组件来管理，比如<code>Header</code>,<code>Footer</code>,<code>Sidebar</code>。<br>引用组件时：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">%-</span> <span class="attr">partial</span>('<span class="attr">partial</span>/<span class="attr">header</span>') %&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h2><h2 id="资源文件夹"><a href="#资源文件夹" class="headerlink" title="资源文件夹"></a>资源文件夹</h2><p>从<code>Hexo 3</code>开始，在<code>_config.yml</code>中启用<code>post_asset_folder=true</code>, 使用hexo的资源文件夹功能。<br>启用后，<code>_posts</code>里每生成一个post，会在相同路径下生成一个同名的文件夹作用该post的资源管理文件夹。</p>
+<h3 id="引用资源文件夹中的资源"><a href="#引用资源文件夹中的资源" class="headerlink" title="引用资源文件夹中的资源"></a>引用资源文件夹中的资源</h3><p>启用了<code>asset_folder</code>后，可以使用以下几种命令，在文章中引用资源:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_path name %&#125;</span><br><span class="line">&#123;% asset_img name title %&#125;</span><br><span class="line">&#123;% asset_link name title %&#125;</span><br></pre></td></tr></table></figure><br>在<code>name</code>的地方填写资源文件夹内的相对路径。</p>
+<p>比如以下的文件结构：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">- sample.md</span><br><span class="line">- sample</span><br><span class="line">  - part1</span><br><span class="line">   - img.jpg</span><br></pre></td></tr></table></figure></p>
+<p>在sample.md中引用img.jpg时的写法是:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123;% asset_img part1\img.jpg this is title %&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h3><p>使用资源文件夹与使用<code>markdown</code>的引用语法的最大不同就是：在网站首页或者归档处显示时，使用资源文件夹功能的引用可以被显示，而<code>markdown</code>语法引用的内容则无法被正确显示。</p>
+<h3 id="样板"><a href="#样板" class="headerlink" title="样板"></a>样板</h3><a href="/2019/04/05/Hexo/1.JPG" class="gallery-item"><img src="/2019/04/05/Hexo/1.JPG" class="" title="i1"></a>
+<h2 id="国际化-i18n"><a href="#国际化-i18n" class="headerlink" title="国际化 i18n"></a>国际化 i18n</h2><p><code>i18n</code> (Internationalization) 是指针对不同的国家、地域、语言环境，改变网站通用部分的显示语言。</p>
+<h3 id="设置"><a href="#设置" class="headerlink" title="设置"></a>设置</h3><p>使用<code>YAML</code>或者<code>JSON</code>编写不同的语言文件，并统一放在主题文件夹<code>languages</code>中。</p>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>使用<code>__</code>或者<code>_p</code>来取得对应语言的字符串。比如：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu：</span><br><span class="line">  titile: HOME</span><br><span class="line">  archive: ARCHIVE</span><br><span class="line">  search: SEARCH</span><br></pre></td></tr></table></figure><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">menu：</span><br><span class="line">  titile: 首页</span><br><span class="line">  archive: 归档</span><br><span class="line">  search: 搜索</span><br></pre></td></tr></table></figure></p>
+<p>在模板中使用目录时（例如语言是英文）：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;%&#x3D; __(&#39;menu.title&#39;) %&gt; &#x2F;&#x2F; HOME</span><br><span class="line">&lt;%&#x3D; __(&#39;menu.archive&#39;) %&gt; &#x2F;&#x2F; 归档</span><br><span class="line">&lt;%&#x3D; __(&#39;menu.search) %&gt; &#x2F;&#x2F; 搜索</span><br></pre></td></tr></table></figure></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/04/05/Hexo/" data-id="cki6vunr1000fo89kcdkz8f4y" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Gitpage/" rel="tag">Gitpage</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Hexo/" rel="tag">Hexo</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-Embadded-JavaScript" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/03/20/Embadded-JavaScript/">Embadded-JavaScript</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/03/20/Embadded-JavaScript/" class="article-date">
+  <time datetime="2019-03-20T01:51:17.000Z" itemprop="datePublished">2019-03-20</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h1 id="Ejs-文件是什么"><a href="#Ejs-文件是什么" class="headerlink" title="Ejs 文件是什么"></a>Ejs 文件是什么</h1><p>嵌入式JavaScript代码：Embadded JavaScript 是一种从JavaScript快速生成html的简易模板，详细说明可以阅读说明文档 <a href="https://ejs.bootcss.com" target="_blank" rel="noopener">Ejs 中文文档</a>。<br>Hexo网页使用ejs的时候，使用命令 <code>npm install hexo-renderer-ejs --save</code>， 添加ejs的支持就可以了。这里作为备忘录，简单记录一下标签的写法。</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>&lt;% ‘脚本’ 标签，用于流程控制，无输出。</li>
+<li>&lt;%_ 删除其前面的空格符</li>
+<li>&lt;%= 输出数据到模板（输出是转义 HTML 标签）</li>
+<li>&lt;%- 输出非转义的数据到模板</li>
+<li>&lt;%# 注释标签，不执行、不输出内容</li>
+<li>&lt;%% 输出字符串 ‘&lt;%’</li>
+<li>%&gt; 一般结束标签</li>
+<li>-%&gt; 删除紧随其后的换行符</li>
+<li>_%&gt; 将结束标签后面的空格符删除</li>
+</ul>
+<p>整理一下就是说，ejs代码就是写在html中的javascript，标签是<code>&lt;% %&gt;</code>,标签的开头和结尾有几中命令符可以使用，分别是</p>
+<ol>
+<li><code>_</code> 删除空格;</li>
+<li><code>=</code>输出数据;</li>
+<li><code>-</code> 在前：输出非转义数据（比如插入处理），在后：删除换行; </li>
+<li><code>#</code> 注释; </li>
+<li><code>%</code> 用于输出 <code>&lt;%</code></li>
+</ol>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h2 id="自定义“转义符”-（官方文档写的是分隔符-delimiters，不是很理解）"><a href="#自定义“转义符”-（官方文档写的是分隔符-delimiters，不是很理解）" class="headerlink" title="自定义“转义符” （官方文档写的是分隔符-delimiters，不是很理解）"></a>自定义“转义符” （官方文档写的是分隔符-delimiters，不是很理解）</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/03/20/Embadded-JavaScript/" data-id="cki6vunqx000co89kggyyaify" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ejs/" rel="tag">Ejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%A1%AB%E4%B9%8B%E5%9D%91/" rel="tag">未填之坑</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-jQuery-Memo" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/03/19/jQuery-Memo/">jQuery 基本知识点备忘录</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/03/19/jQuery-Memo/" class="article-date">
+  <time datetime="2019-03-19T05:06:56.000Z" itemprop="datePublished">2019-03-19</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="document-ready"><a href="#document-ready" class="headerlink" title="$(document).ready()"></a>$(document).ready()</h2><p>页面载入需要首先准备DOM（Document Object Model),jQuery可以检测到页面的DOM是否准备完毕，<code>$(document).ready(function)</code>中的function，会等到页面的DOM准备完毕再运行。<br>类似的还有<code>$(window).on(&quot;load&quot;,funciton)</code>,这种写法下的function会在整个页面（并不仅仅是DOM）载入完毕时再执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="built_in">document</span> ).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"document loaded"</span> );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$( <span class="built_in">window</span> ).on( <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"window loaded"</span> );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>将上面的代码插入页面的某个部件里执行，可以看到document很快就载入完成，等页面的所有其他元素都载入完成，<code>window loaded</code>才会被执行输出。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/03/19/jQuery-Memo/" data-id="cki6vunqq0008o89k3awebges" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%A1%AB%E4%B9%8B%E5%9D%91/" rel="tag">未填之坑</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-rubik-cube" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/02/05/rubik-cube/">LBL法还原魔方</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/02/05/rubik-cube/" class="article-date">
+  <time datetime="2019-02-05T13:16:36.000Z" itemprop="datePublished">2019-02-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>我写的东西，自己都看不懂</p>
+</blockquote>
+<h2 id="魔方的基本结构"><a href="#魔方的基本结构" class="headerlink" title="魔方的基本结构"></a>魔方的基本结构</h2><p>国际标准的魔方（Rubik’s Cube) 由黄蓝红绿橙白6个中心块，8个角，12个棱，组成。<br>魔方颜色的位置关系是：上黄下白，前蓝后绿，左橙右红。</p>
+<h2 id="魔方入门级复原步骤-原参考链接"><a href="#魔方入门级复原步骤-原参考链接" class="headerlink" title="魔方入门级复原步骤 原参考链接"></a>魔方入门级复原步骤 <a href="http://www.mf100.org/beginner.htm" target="_blank" rel="noopener">原参考链接</a></h2><p>LBL(Layer By Layer)法，复原过程以上黄下白为例。</p>
+<h3 id="第一层"><a href="#第一层" class="headerlink" title="第一层"></a>第一层</h3><p>目标：复原最下面一层：底面复位，层面看可以构成四个凸型</p>
+<p>首先，不在意侧面颜色，将四个白色棱块移动到上方（白面朝上），转动上层，将白色棱块侧面颜色移动到对应的面，180旋转侧面，将白色棱块移动到底部。<br>然后，使用左手或者右手公式，将上方的角块移到下方对应的夹角处。如果颜色方向不符合，就使用同一公式多转几次。</p>
+<h3 id="第二层"><a href="#第二层" class="headerlink" title="第二层"></a>第二层</h3><p>目标：复原中层的四个棱 - 完成两层</p>
+<p>现在底面已经复原，侧面看四个小凸型也完成，使用左手公式-整体右转-右手公式（或者 右手公式-整体左转-左手公式）将上方的棱块移动到中层。</p>
+<h3 id="第三层（顶面）"><a href="#第三层（顶面）" class="headerlink" title="第三层（顶面）"></a>第三层（顶面）</h3><p>目标：顶面复原</p>
+<p>首先，使用拐角或者一字公式，将顶面复原成十字。<br>然后连续的使用左小鱼或者右小鱼，先转出左（右）小鱼型的顶面，再对应的解决掉，就完成了顶面。</p>
+<h3 id="第三层（侧面）"><a href="#第三层（侧面）" class="headerlink" title="第三层（侧面）"></a>第三层（侧面）</h3><p>目标：完全复原</p>
+<p>观察顶层侧面的颜色结构，如果发现有至少一对眼，就将有眼的一面放到左手，做一遍一字公式+拐角公式；如果没有眼，就做一遍拐角公式+一字公式；如果全是眼….就进行下一步。<br>（此时顶层的四个顶角应该都已经复原了）使用左小鱼-上层右转-右小鱼（或者右小鱼-生成左转-左小鱼），可以将面前的两个角块和左侧（右小鱼起手则是右侧）的棱块移动到一起，这样魔方就复原了。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/02/05/rubik-cube/" data-id="cki6vunqk0005o89k2y038bs0" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bubik-s-Cube/" rel="tag">Bubik's Cube</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-FunctionDefinition" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2018/07/17/FunctionDefinition/">JavaScript 两种常用的函数定义方法</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/07/17/FunctionDefinition/" class="article-date">
+  <time datetime="2018-07-16T15:00:00.000Z" itemprop="datePublished">2018-07-17</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>JavaScript中定义函数，通常会遇到以下两种写法：</p>
+<p>写法A<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">name1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>写法B<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<p>这两种写法有什么区别呢？很久很久以前,<a href="https://stackoverflow.com/questions/336859/var-functionname-function-vs-function-functionname" target="_blank" rel="noopener">stackoverflow</a>上面有人问了一样的问题。</p>
+<h2 id="funciton的基本定义"><a href="#funciton的基本定义" class="headerlink" title="funciton的基本定义"></a>funciton的基本定义</h2><p>首先，在JavaScript中function的最基本定义方法是写法A，这种定义的内容在脚本被编译时就会执行，生成一个有名字的函数对象。</p>
+<p>而写法B实际上是定义了一个无名的函数对象，又将这个对象赋给了一个有名字的变量。<br>这种写法的存在，方便了我们将函数定义为对象的属性：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> target = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">target.add = <span class="function"><span class="keyword">function</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;;</span><br><span class="line">target.add(<span class="number">1</span>,<span class="number">1</span>); <span class="comment">//2</span></span><br></pre></td></tr></table></figure></p>
+<p>所以写法A定义的是一个完整的函数对象，而写法B定义的函数是没有名字的，<code>name2</code>是变量的名字，而不是函数的。</p>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>其实还可以使用<code>new</code>来声明函数：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"a"</span>, <span class="string">"b"</span>, <span class="string">"return a+b;"</span>);</span><br></pre></td></tr></table></figure><br>这里注意使用的是<code>Function</code>而不是<code>function</code>，这是具体的定义了一个<code>Function</code>类型的对象。速度慢，只有在特定情况下使用，比如想要让用户去控制函数内容的时候。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2018/07/17/FunctionDefinition/" data-id="cki6vunqn0007o89k11ye8ljb" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-ImmediatelyInvokedFunctionException" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2018/06/20/ImmediatelyInvokedFunctionException/">Immediately_Invoked_Function -- 立即调用函数的写法</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/06/20/ImmediatelyInvokedFunctionException/" class="article-date">
+  <time datetime="2018-06-19T15:00:00.000Z" itemprop="datePublished">2018-06-20</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="自执行-立即调用的函数表达式"><a href="#自执行-立即调用的函数表达式" class="headerlink" title="自执行-立即调用的函数表达式"></a>自执行-立即调用的函数表达式</h2><p>在某些情况下，我们不需要函数创建多个实例，也不需要对返回值做什么处理，便可以通过在函数声明的后面添加<code>()</code>来实现自执行。因为<code>foo</code>仅仅是<code>function(){}</code>这个表达式的一个引用，在函数表达时候后添加<code>()</code>便可以执行。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//do something.</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure><br>但如果我们像下面这么写，会报错：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//do somthing.</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
+<p>给括号里加入参数的话，可以不报错，但是函数不会执行，因为它会被解析成一个毫不相关的括号。<br>报错原因：解析代码的时候，function已经被识别为声明函数用，而不是一个函数表达式。<br>所以我们要做的就是把括号前面的内容解析成表达式，以下的写法都可以：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">makeCounter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by ()"</span>);</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="function"><span class="keyword">function</span> <span class="title">makeCounter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by var with ()"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by !"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by ~"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">+<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by +"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">-<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by -"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by new"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by new with ()"</span>);</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2018/06/20/ImmediatelyInvokedFunctionException/" data-id="cki6vunqt000ao89kdaseduk2" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+    </article>
+    
+  
+    
+      <nav class="page-nav">
+        <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+      </nav>
+    
+  </section>
 </div>
-<div class="right-aside">
-    <div class="right-nav ms">
-        <div class="main">
-          <svg id="nav-menu" class="icon icon-menu" aria-hidden="true">
-            <use xlink:href="#icon-menu"></use>
-          </svg>
-          <ul class="left">
-              
-          </ul>
-          <div class="search">
-            <div class="search-box">
-              <input type="search"  id="search" class="input-search" placeholder="搜索">
-              <i class="icon-search"></i>
-              <div class="search-result-box">
-                <ul id="search-result"></ul>
-              </div>
-            </div>
-            <svg id="nav-search" class="icon icon-search" aria-hidden="true">
-              <use xlink:href="#icon-search"></use>
-            </svg>
-          </div>
-        </div>
-    </div>
-    <div class="right-main">
-        <div class="category">
-            <ul>
-                <li><a href="/" class="active">最新</a></li>
-                
-            </ul>
-        </div>
-        <div class="clear"></div>
-        <div class="list">
-            <div>
-                
-                
+
+  <footer class="footer">
+  <div class="outer">
+    <div class="float-right">
+      <ul class="list-inline">
   
-    <div class="item">
-      <div class="title">
-        <a href="/2019/04/24/refactoring-C6/">代码重构 - 改善方法的结构</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-04-24T05:06:44.000Z" itemprop="date">2019-04-24</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.863Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/04/24/refactoring-C6/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
+    <li><i class="fe fe-bar-chart"></i> <span id="busuanzi_value_site_pv"></span></li>
+  
+    <li><i class="fe fe-smile-alt"></i> <span id="busuanzi_value_site_uv"></span></li>
+  
+</ul>
+    </div>
+    <ul class="list-inline">
+      <li>&copy; 2020 XSUN</li>
+      <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
+      <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
+    </ul>
+  </div>
+</footer>
+
+</main>
+<aside class="sidebar">
+  <button class="navbar-toggle"></button>
+<nav class="navbar">
+  
+    <div class="logo">
+      <a href="/"><img src="/images/hexo.svg" alt="XSUN"></a>
     </div>
   
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/04/22/C9/">代码重构 - 简化条件语句</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-04-22T05:22:37.000Z" itemprop="date">2019-04-22</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.862Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/04/22/C9/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/04/15/git-connect/">通过命令行从本地推送代码到GitHub</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-04-15T06:46:33.000Z" itemprop="date">2019-04-15</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.861Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/04/15/git-connect/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/04/12/python-f-strings/">python 中的字符串格式化</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-04-12T07:46:14.000Z" itemprop="date">2019-04-12</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.861Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/04/12/python-f-strings/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/04/05/Hexo/">Hexo 说明文档笔记</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-04-05T04:28:49.000Z" itemprop="date">2019-04-05</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.860Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/04/05/Hexo/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/03/20/Embadded-JavaScript/">Embadded-JavaScript</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-03-20T01:51:17.000Z" itemprop="date">2019-03-20</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.860Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/03/20/Embadded-JavaScript/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/03/19/jQuery-Memo/">jQuery 基本知识点备忘录</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-03-19T05:06:56.000Z" itemprop="date">2019-03-19</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.859Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/03/19/jQuery-Memo/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2019/02/05/rubik-cube/">LBL法还原魔方</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2019-02-05T13:16:36.000Z" itemprop="date">2019-02-05</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.859Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2019/02/05/rubik-cube/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2018/07/17/FunctionDefinition/">JavaScript 两种常用的函数定义方法</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2018-07-16T15:00:00.000Z" itemprop="date">2018-07-17</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.859Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2018/07/17/FunctionDefinition/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-  
-    <div class="item">
-      <div class="title">
-        <a href="/2018/06/20/ImmediatelyInvokedFunctionException/">Immediately_Invoked_Function -- 立即调用函数的写法</a>
-      </div>
-      <div class="info">
-        <ul>
-          <li>发布 <time datetime="2018-06-19T15:00:00.000Z" itemprop="date">2018-06-20</time>
-          </li>
-          <li>更新 <time datetime="2020-07-05T10:14:59.859Z" itemprop="dateUpdated">2020-07-05</time>
-          </li>
-          <!--<li> 评论 <span id = "url::https://xsun4231.github.io/2018/06/20/ImmediatelyInvokedFunctionException/" class = "cy_cmt_count" ></span>
-          </li>-->
-        </ul>
-      </div>
-    </div>
-  
-
-
-                
-                
-<nav class="page-nav">
-    <a class="extend prev" rel="prev" href="/page/2/">&amp;laquo;</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">&amp;raquo;</a>
+  <ul class="nav nav-main">
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/">Home</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/archives">Archives</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/gallery">Gallery</a>
+      </li>
+    
+      <li class="nav-item">
+        <a class="nav-item-link" href="/about">About</a>
+      </li>
+    
+    <li class="nav-item">
+      <a class="nav-item-link nav-item-search" title="搜索">
+        <i class="fe fe-search"></i>
+        搜索
+      </a>
+    </li>
+  </ul>
 </nav>
-
-
-            </div>
-        </div>
-        <div class="clear"></div>
-        <!-- <div class="hosted">
-          <ul>
-            <li class="coding">
-              <a href="https://coding.net/pages" target="_blank" rel="noopener">
-                <img src="/./img/coding.png">
-              </a>
-            </li>
-            <li class="github-pages">
-              <a href="https://pages.github.com" target="_blank" rel="noopener">
-                <img src="/./img/github-pages.png">
-              </a>
-            </li>
-          </ul>
-        </div> -->
-    </div>
+<nav class="navbar navbar-bottom">
+  <ul class="nav">
+    <li class="nav-item">
+      <div class="totop" id="totop">
+  <i class="fe fe-rocket"></i>
 </div>
-<script>
-  var homeLeftBgArr = 'https://ws3.sinaimg.cn/large/006tKfTcly1fsulzlvofnj30af0k5jvu.jpg,https://ws2.sinaimg.cn/large/006tNbRwly1fwl2alhqibj31kw2dcu0y.jpg,https://ws1.sinaimg.cn/large/006tNbRwly1fwl2bclcirj31kw2czk7v.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2c765jej31kw2d1npe.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2dentnvj31kw2dc1l2.jpg,https://ws4.sinaimg.cn/large/006tNbRwly1fwl2dqawiej31kw2d8x6p.jpg,https://ws3.sinaimg.cn/large/006tNbRwly1fwl2f7yp25j31kw3a97wh.jpg'.split(',');
-  var homeLeftBgArrLen = homeLeftBgArr.length;
-  var leftBackgroundUrl = homeLeftBgArr[Math.floor(Math.random() * homeLeftBgArrLen)];
-  var homeLeftAsideNode = document.getElementsByClassName('left-aside')[0];
-  if (homeLeftAsideNode) {
-    homeLeftAsideNode.style.backgroundImage = 'url(' + leftBackgroundUrl + ')';
-  }
-</script>
-<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
-</script>
-<script>//console
-  var consoleConfig = '\n欢迎访问 https://hufangyun.com ，围观小猿大圣的博客(づ｡◕‿‿◕｡)づ！\n,\n本博客使用 %cHexo%c 搭建，博客主题为小猿大圣开发的 %chexo-themes-yearn%c ~~~ 🎉🎉🎉 \n\n源码 https://github.com/Youthink/hexo-themes-yearn \n\n如果喜欢可以 star 支持一下 ❤️~\n,\n扫描下面的二维码，在手机上查看博客！\n,https://static.hufangyun.com/blog-url-qrcode-180-180.png,\n 想知道这个效果如何实现的？博客内搜索 console 彩蛋 🚀 ！\n'.split(',');
-  var canConsole = true;
-  var consoleInfo = (function(consoleConfig) {
-  if (!canConsole || !consoleConfig || consoleConfig.length < 1) {
-    return;
-  }
-  var consoleColor = '#6190e8';
-  var _console;
-  var backgroundTextStyle = 'padding: 1px 5px;color: #fff;background: ' + consoleColor + ';'
-  var textStyle = 'color: ' + consoleColor + ';';
+    </li>
+    <li class="nav-item">
+      
+        <a class="nav-item-link" target="_blank" href="/atom.xml" title="RSS Feed">
+          <i class="fe fe-feed"></i>
+        </a>
+      
+    </li>
+  </ul>
+</nav>
+<div class="search-form-wrap">
+  <div class="local-search local-search-plugin">
+  <input type="search" id="local-search-input" class="local-search-input" placeholder="Search...">
+  <div id="local-search-result" class="local-search-result"></div>
+</div>
+</div>
+</aside>
 
-  consoleConfig.map(o => {
-    var num = (o.match(/%c/g) || []).length;
-    if(/^http(s)?:\/\//.test(o)) {
-      console.log('%c     ', 'background: url(' + o + ') no-repeat left center;font-size: 180px;');
-      return;
-    }
-    if (num > 0) {
-      var logArguments = [];
-      for (var i = 0; i < num; i++) {
-        if (i % 2 === 0) {
-          logArguments.push(backgroundTextStyle);
-        } else {
-          logArguments.push(textStyle);
-        }
-      }
-      (_console = console).log.apply(_console, ['%c' + o, textStyle].concat(logArguments));
-      return;
-    }
-    console.log('%c' + o, textStyle);
-  });
-}(consoleConfig));</script><script type="text/javascript" src="/./js/main.js"></script>
+<script src="/js/jquery-2.0.3.min.js"></script>
 
-  <script src="//at.alicdn.com/t/font_159214_mvtxvg9me9.js"></script>
+
+<script src="/js/jquery.justifiedGallery.min.js"></script>
+
+
+<script src="/js/lazyload.min.js"></script>
+
+
+<script src="/js/busuanzi-2.3.pure.min.js"></script>
+
+
+  
+<script src="/fancybox/jquery.fancybox.min.js"></script>
+
+
+
+
+
+
+<script src="/js/ocean.js"></script>
+
+
 </body>
 </html>
