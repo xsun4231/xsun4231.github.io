@@ -65,6 +65,88 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-pipenv-introduction" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/12/12/pipenv-introduction/">pipenv 基本的介绍和使用方法</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/12/12/pipenv-introduction/" class="article-date">
+  <time datetime="2019-12-12T05:29:51.000Z" itemprop="datePublished">2019-12-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>根据项目需要，搞一个配置文件Pipfile，传到github里，完事儿。</p>
+</blockquote>
+<h2 id="为什么要用pipenv"><a href="#为什么要用pipenv" class="headerlink" title="为什么要用pipenv"></a>为什么要用pipenv</h2><p>首先，我们假设….算了，不扯那些没用的。做Python的开发，无论你用的什么工具，最麻烦的事儿应该莫过于包的管理。<a href="https://pypi.org/project/pipenv/" target="_blank" rel="noopener">pipenv</a>简单来说就是一个python官方推荐的包管理工具。<br>相比于pip等其他工具，pipenv最大的特点是可以根据项目，生成不同的环境，在ProjectA中设置的Pipfile不会影响到ProjectB,更不会影响到系统默认的pip列表。这个为项目定制的虚拟环境，我们称之为<code>shell</code>。  </p>
+<h3 id="安装pipenv"><a href="#安装pipenv" class="headerlink" title="安装pipenv"></a>安装pipenv</h3><p>安装pipenv之前，首先确定系统里有以下两样东西：</p>
+<ol>
+<li>python</li>
+<li>pip</li>
+</ol>
+<p>pipenv是通过pip安装的工具，所以执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pipenv</span><br></pre></td></tr></table></figure><br>由于pipenv可以在系统里不同版本的Python间任意切换，所以执行pip的时候不同太在乎Python版本问题。</p>
+<h3 id="requirements-txt-和-Pipfile"><a href="#requirements-txt-和-Pipfile" class="headerlink" title="requirements.txt 和 Pipfile"></a>requirements.txt 和 Pipfile</h3><p>pipenv 管理Python环境的配置文件是<code>Pipfile</code>，大致长这个样子：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[[source]]</span><br><span class="line">name &#x3D; &quot;pypi&quot;</span><br><span class="line">url &#x3D; &quot;https:&#x2F;&#x2F;pypi.org&#x2F;simple&quot;</span><br><span class="line">verify_ssl &#x3D; true</span><br><span class="line"></span><br><span class="line">[dev-packages]</span><br><span class="line"></span><br><span class="line">[packages]</span><br><span class="line">pandas &#x3D; &quot;&#x3D;&#x3D;0.25.1&quot;</span><br><span class="line"></span><br><span class="line">[requires]</span><br><span class="line">python_version &#x3D; &quot;3.7&quot;</span><br></pre></td></tr></table></figure>
+<p>我们可以直接写，也可以用<code>pipenv install</code>来生成默认的Pipfile, 不过还有个更方便的方法是直接由pip生成的requirements.txt配置文件来生成Pipfile。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 首先在当前路径里使用pip生成requirements.txt</span><br><span class="line"></span><br><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br><span class="line"># 然后生成Pipfile</span><br><span class="line"># -r 的意思是将后面配置文件里的包添加到Pipfile里</span><br><span class="line"></span><br><span class="line">pipenv install -r requirements.txt</span><br></pre></td></tr></table></figure>
+<h3 id="指定Python版本"><a href="#指定Python版本" class="headerlink" title="指定Python版本"></a>指定Python版本</h3><p>pipenv可以指定虚拟环境的python版本，随时通过修改Pipfile来切换（修改是通过命令行修改的意思，当然你要直接修改也没什么区别，但是不用命令来修改配置文件就会觉得很low啊）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## 使用下面的命令，从当前系统已经安装的不同版本的Python中选择一个</span><br><span class="line">pipenv --python 版本号</span><br><span class="line"></span><br><span class="line">## 比如</span><br><span class="line">pipenv --python 3.5</span><br><span class="line"></span><br><span class="line">pipenv --python 3.7</span><br><span class="line"></span><br><span class="line">pipenv --python 2.6</span><br></pre></td></tr></table></figure><br>如果Pipfile中指定的Python版本在当前系统下不存在，之后启动虚拟环境时会跳出警告。</p>
+<h3 id="耗时警报-锁定"><a href="#耗时警报-锁定" class="headerlink" title="(耗时警报) 锁定"></a>(耗时警报) 锁定</h3><p>更新Pipfile之后，启动虚拟环境之前，我们需要把Pipfile中列出的包安装好，或者删除已经不用的包，这个操作就是<code>pipenv lock</code></p>
+<p>由于需要从服务器下载相应的包（这是我猜的，鬼晓得为什么这玩意儿怎么那么慢，<a href="https://github.com/pypa/pipenv/issues/1785" target="_blank" rel="noopener">官方</a>似乎也没有什么行之有效的办法）</p>
+<h3 id="去吧-皮卡丘！"><a href="#去吧-皮卡丘！" class="headerlink" title="去吧 皮卡丘！"></a>去吧 皮卡丘！</h3><p>都搞定之后，<code>pipenv shell</code>跑起来，我们就进入定制的虚拟环境了。</p>
+<h3 id="直接看这里就可以了"><a href="#直接看这里就可以了" class="headerlink" title="直接看这里就可以了"></a>直接看这里就可以了</h3><p>说了那么老多，其实安装好pipenv之后，直接一个<code>pipenv -h</code>查看help文档就可以了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">Options:</span><br><span class="line">  --where             Output project home information.</span><br><span class="line">  --venv              Output virtualenv information.</span><br><span class="line">  --py                Output Python interpreter information.</span><br><span class="line">  --envs              Output Environment Variable options.</span><br><span class="line">  --rm                Remove the virtualenv.</span><br><span class="line">  --bare              Minimal output.</span><br><span class="line">  --completion        Output completion (to be eval&#39;d).</span><br><span class="line">  --man               Display manpage.</span><br><span class="line">  --support           Output diagnostic information for use in GitHub issues.</span><br><span class="line">  --site-packages     Enable site-packages for the virtualenv.  [env var:</span><br><span class="line">                      PIPENV_SITE_PACKAGES]</span><br><span class="line">  --python TEXT       Specify which version of Python virtualenv should use.</span><br><span class="line">  --three &#x2F; --two     Use Python 3&#x2F;2 when creating virtualenv.</span><br><span class="line">  --clear             Clears caches (pipenv, pip, and pip-tools).  [env var:</span><br><span class="line">                      PIPENV_CLEAR]</span><br><span class="line">  -v, --verbose       Verbose mode.</span><br><span class="line">  --pypi-mirror TEXT  Specify a PyPI mirror.</span><br><span class="line">  --version           Show the version and exit.</span><br><span class="line">  -h, --help          Show this message and exit.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Usage Examples:</span><br><span class="line">   Create a new project using Python 3.7, specifically:</span><br><span class="line">   $ pipenv --python 3.7</span><br><span class="line"></span><br><span class="line">   Remove project virtualenv (inferred from current directory):</span><br><span class="line">   $ pipenv --rm</span><br><span class="line"></span><br><span class="line">   Install all dependencies for a project (including dev):</span><br><span class="line">   $ pipenv install --dev</span><br><span class="line"></span><br><span class="line">   Create a lockfile containing pre-releases:</span><br><span class="line">   $ pipenv lock --pre</span><br><span class="line"></span><br><span class="line">   Show a graph of your installed dependencies:</span><br><span class="line">   $ pipenv graph</span><br><span class="line"></span><br><span class="line">   Check your installed dependencies for security vulnerabilities:</span><br><span class="line">   $ pipenv check</span><br><span class="line"></span><br><span class="line">   Install a local setup.py into your virtual environment&#x2F;Pipfile:</span><br><span class="line">   $ pipenv install -e .</span><br><span class="line"></span><br><span class="line">   Use a lower-level pip command:</span><br><span class="line">   $ pipenv run pip freeze</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  check      Checks for security vulnerabilities and against PEP 508 markers</span><br><span class="line">             provided in Pipfile.</span><br><span class="line">  clean      Uninstalls all packages not specified in Pipfile.lock.</span><br><span class="line">  graph      Displays currently-installed dependency graph information.</span><br><span class="line">  install    Installs provided packages and adds them to Pipfile, or (if no</span><br><span class="line">             packages are given), installs all packages from Pipfile.</span><br><span class="line">  lock       Generates Pipfile.lock.</span><br><span class="line">  open       View a given module in your editor.</span><br><span class="line">  run        Spawns a command installed into the virtualenv.</span><br><span class="line">  shell      Spawns a shell within the virtualenv.</span><br><span class="line">  sync       Installs all packages specified in Pipfile.lock.</span><br><span class="line">  uninstall  Un-installs a provided package and removes it from Pipfile.</span><br><span class="line">  update     Runs lock, then sync.</span><br></pre></td></tr></table></figure></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/12/12/pipenv-introduction/" data-id="cki6vunrh0016o89k11nofkon" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pipenv/" rel="tag">Pipenv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-measures-for-in-sample-evaluation" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -764,81 +846,6 @@
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li></ul>
 
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-AuthN-vs-AuthZ" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/07/09/AuthN-vs-AuthZ/">区分 Authentication(AuthN) 和 Authorization(AuthZ)</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/07/09/AuthN-vs-AuthZ/" class="article-date">
-  <time datetime="2019-07-09T02:48:48.000Z" itemprop="datePublished">2019-07-09</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>最近写的一段代码里，关于关键字<code>Auth</code>的使用在review的时候被佐藤老师批评了，一直以来对于认证和授权都没有好好的理解，在这里整理一下。</p>
-<h2 id="别直接用Auth来命名"><a href="#别直接用Auth来命名" class="headerlink" title="别直接用Auth来命名"></a>别直接用Auth来命名</h2><p>之前对于<code>Auth</code>这个关键字的理解，一直都处于大概知道什么意思的模糊状态。其实使用<code>Auth</code>作为关键字来命名方法和变量，并不是很合适，因为<code>Authentication</code> 和 <code>Authorization</code> 的缩写都可以是<code>Auth</code>。  </p>
-<p><code>Authentication</code> 的中文翻译是<code>认证</code>，日语翻译是<code>認証</code>，可以理解为判断<strong>你是不是谁</strong>的操作，比如输入用户名和密码，系统判断这个用户名存在，且密码匹配，就是认证。</p>
-<p><code>Authorization</code> 的中文翻译是<code>授权</code>，日语翻译是<code>認可</code>, 我的理解是<strong>你可不可以</strong>的意思，例如用户名密码通过认证之后，系统判断该用户是否有访问权限，给与权限的操作，就是授权。</p>
-<h2 id="401-和-403"><a href="#401-和-403" class="headerlink" title="401 和 403"></a>401 和 403</h2><p>HTTP的返回值401和403是一对很容易弄混的数字。</p>
-<ul>
-<li>401 Unauthorized</li>
-<li>403 Forbidden</li>
-</ul>
-<p>401是发生用户认证错误时的返回值，而403是拒绝访问。那么结合上面对<code>Authentication</code>和<code>Authorization</code>的理解不难发现:</p>
-<ul>
-<li>401 虽然写着Unauthorized的名字，返回的却是Authentication的错误</li>
-<li>403 则承担着返回Unauthorized错误的职责</li>
-</ul>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/07/09/AuthN-vs-AuthZ/" data-id="cki6vunr6000mo89kdjcb2yrk" class="article-share-link">
-        分享
-      </a>
-      
     </footer>
 
   </div>

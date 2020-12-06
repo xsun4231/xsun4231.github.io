@@ -65,6 +65,81 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-AuthN-vs-AuthZ" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/07/09/AuthN-vs-AuthZ/">区分 Authentication(AuthN) 和 Authorization(AuthZ)</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/09/AuthN-vs-AuthZ/" class="article-date">
+  <time datetime="2019-07-09T02:48:48.000Z" itemprop="datePublished">2019-07-09</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>最近写的一段代码里，关于关键字<code>Auth</code>的使用在review的时候被佐藤老师批评了，一直以来对于认证和授权都没有好好的理解，在这里整理一下。</p>
+<h2 id="别直接用Auth来命名"><a href="#别直接用Auth来命名" class="headerlink" title="别直接用Auth来命名"></a>别直接用Auth来命名</h2><p>之前对于<code>Auth</code>这个关键字的理解，一直都处于大概知道什么意思的模糊状态。其实使用<code>Auth</code>作为关键字来命名方法和变量，并不是很合适，因为<code>Authentication</code> 和 <code>Authorization</code> 的缩写都可以是<code>Auth</code>。  </p>
+<p><code>Authentication</code> 的中文翻译是<code>认证</code>，日语翻译是<code>認証</code>，可以理解为判断<strong>你是不是谁</strong>的操作，比如输入用户名和密码，系统判断这个用户名存在，且密码匹配，就是认证。</p>
+<p><code>Authorization</code> 的中文翻译是<code>授权</code>，日语翻译是<code>認可</code>, 我的理解是<strong>你可不可以</strong>的意思，例如用户名密码通过认证之后，系统判断该用户是否有访问权限，给与权限的操作，就是授权。</p>
+<h2 id="401-和-403"><a href="#401-和-403" class="headerlink" title="401 和 403"></a>401 和 403</h2><p>HTTP的返回值401和403是一对很容易弄混的数字。</p>
+<ul>
+<li>401 Unauthorized</li>
+<li>403 Forbidden</li>
+</ul>
+<p>401是发生用户认证错误时的返回值，而403是拒绝访问。那么结合上面对<code>Authentication</code>和<code>Authorization</code>的理解不难发现:</p>
+<ul>
+<li>401 虽然写着Unauthorized的名字，返回的却是Authentication的错误</li>
+<li>403 则承担着返回Unauthorized错误的职责</li>
+</ul>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/07/09/AuthN-vs-AuthZ/" data-id="cki6vunr6000mo89kdjcb2yrk" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-refactoring-C6" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -908,72 +983,6 @@
     </div>
     <footer class="article-footer">
       <a data-url="https://xsun4231.github.io/2018/07/17/FunctionDefinition/" data-id="cki6vunqn0007o89k11ye8ljb" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-ImmediatelyInvokedFunctionException" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2018/06/20/ImmediatelyInvokedFunctionException/">Immediately_Invoked_Function -- 立即调用函数的写法</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2018/06/20/ImmediatelyInvokedFunctionException/" class="article-date">
-  <time datetime="2018-06-19T15:00:00.000Z" itemprop="datePublished">2018-06-20</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="自执行-立即调用的函数表达式"><a href="#自执行-立即调用的函数表达式" class="headerlink" title="自执行-立即调用的函数表达式"></a>自执行-立即调用的函数表达式</h2><p>在某些情况下，我们不需要函数创建多个实例，也不需要对返回值做什么处理，便可以通过在函数声明的后面添加<code>()</code>来实现自执行。因为<code>foo</code>仅仅是<code>function(){}</code>这个表达式的一个引用，在函数表达时候后添加<code>()</code>便可以执行。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> foo = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//do something.</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure><br>但如果我们像下面这么写，会报错：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="comment">//do somthing.</span></span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure>
-<p>给括号里加入参数的话，可以不报错，但是函数不会执行，因为它会被解析成一个毫不相关的括号。<br>报错原因：解析代码的时候，function已经被识别为声明函数用，而不是一个函数表达式。<br>所以我们要做的就是把括号前面的内容解析成表达式，以下的写法都可以：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">(<span class="function"><span class="keyword">function</span> <span class="title">makeCounter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by ()"</span>);</span><br><span class="line">&#125;());</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> x = <span class="function"><span class="keyword">function</span> <span class="title">makeCounter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by var with ()"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">!<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by !"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">~<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by ~"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">+<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by +"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line">-<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by -"</span>);</span><br><span class="line">&#125;();</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by new"</span>);</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">"invoked by new with ()"</span>);</span><br><span class="line">&#125;();</span><br></pre></td></tr></table></figure></p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2018/06/20/ImmediatelyInvokedFunctionException/" data-id="cki6vunqt000ao89kdaseduk2" class="article-share-link">
         分享
       </a>
       

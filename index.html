@@ -65,6 +65,97 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-day-1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/12/06/day-1/">Day1 Python 基础</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/12/06/day-1/" class="article-date">
+  <time datetime="2020-12-06T09:54:13.000Z" itemprop="datePublished">2020-12-06</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>1/100</p>
+<h2 id="【1】基本元素"><a href="#【1】基本元素" class="headerlink" title="【1】基本元素"></a>【1】基本元素</h2><h3 id="常见数据类型"><a href="#常见数据类型" class="headerlink" title="常见数据类型"></a>常见数据类型</h3><ol>
+<li>整形 python3开始整数不区分int和long，支持二，八，十六进制。</li>
+<li>浮点型 可以理解成小数</li>
+<li>字符串 单引号 双引号都可以，三个引号输入多行内容</li>
+<li>布尔型 True False 开头大写</li>
+</ol>
+<blockquote>
+<p>变量名使用<em>连接 <code>my_var_name</code><br>`_name</em><code>单下划线开头为受保护的实例属性</code><strong>name</strong>`  双下划线开头的为私有属性</p>
+</blockquote>
+<p>使用 <code>type()</code> 来确认类型，使用下面的方法来转换类型：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">int() <span class="comment">#转换成整数 </span></span><br><span class="line">float() <span class="comment">#转换成浮点数</span></span><br><span class="line">str() <span class="comment">#转换成字符串，可以是字符编码</span></span><br><span class="line">chr() <span class="comment">#字符串编码（整数）转换成字符串</span></span><br><span class="line">ord() <span class="comment">#活的字符串对应的编码（整数）</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="【2】逻辑语句"><a href="#【2】逻辑语句" class="headerlink" title="【2】逻辑语句"></a>【2】逻辑语句</h2><h3 id="运算符"><a href="#运算符" class="headerlink" title="运算符"></a>运算符</h3><p>除了常见的运算符外，python常用的还有：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">is</span> </span><br><span class="line"><span class="keyword">is</span> <span class="keyword">not</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">in</span> </span><br><span class="line"><span class="keyword">not</span> <span class="keyword">in</span></span><br></pre></td></tr></table></figure>
+<h3 id="if分支"><a href="#if分支" class="headerlink" title="if分支"></a>if分支</h3><p>python的if分支跟函数，类一样都是使用缩进来表示代码的层次结构。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> name == <span class="string">'a'</span>:</span><br><span class="line">    print(<span class="string">'a'</span>)</span><br><span class="line"><span class="keyword">elif</span> name == <span class="string">'b'</span>:</span><br><span class="line">    print(<span class="string">'b'</span>)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    print(<span class="string">'c'</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="循环结构"><a href="#循环结构" class="headerlink" title="循环结构"></a>循环结构</h3><p>for-in<br>python一般使用<code>for name in collection</code>的方式来写循环语句</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum = <span class="number">0</span></span><br><span class="line"><span class="keyword">for</span> x <span class="keyword">in</span> range(<span class="number">100</span>):</span><br><span class="line">    sum += x</span><br><span class="line">print(sum)</span><br></pre></td></tr></table></figure>
+<h2 id="【3】函数"><a href="#【3】函数" class="headerlink" title="【3】函数"></a>【3】函数</h2><h3 id="函数定义和参数"><a href="#函数定义和参数" class="headerlink" title="函数定义和参数"></a>函数定义和参数</h3><p>定义函数的关键字是 <code>def</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">(a)</span>:</span></span><br><span class="line">    print(a)</span><br></pre></td></tr></table></figure></p>
+<p>python中函数的参数可以设置默认值，所以使用的时候可以忽略部分参数或者直接指定某些参数，所以python的函数不需要像Java一样重载</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(a=<span class="number">0</span>, b=<span class="number">0</span>, c=<span class="number">0</span>)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> a + b + c</span><br></pre></td></tr></table></figure>
+<p>还可以定义可变参数来接收无法确定个数的参数：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">add</span><span class="params">(*args)</span>:</span></span><br><span class="line">    total = <span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> val <span class="keyword">in</span> args:</span><br><span class="line">        total += val</span><br><span class="line">    <span class="keyword">return</span> total</span><br></pre></td></tr></table></figure></p>
+<h3 id="模块"><a href="#模块" class="headerlink" title="模块"></a>模块</h3><p>python一个文件就算一个模块，通过<code>import</code>来导入指定模块的内容。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># module1.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'hello, world'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># module2.py</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'hello, world'</span>)</span><br></pre></td></tr></table></figure>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># test</span></span><br><span class="line"><span class="keyword">import</span> module1 <span class="keyword">as</span> m1</span><br><span class="line"><span class="keyword">import</span> module2 <span class="keyword">as</span> m2</span><br><span class="line"></span><br><span class="line">m1.foo()</span><br><span class="line">m2.foo()</span><br></pre></td></tr></table></figure>
+<p>还可以直接从模块导入具体的函数<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> module1 <span class="keyword">import</span> foo</span><br><span class="line"><span class="keyword">from</span> module2 <span class="keyword">import</span> foo</span><br><span class="line"></span><br><span class="line"><span class="comment">#  后导入的foo会覆盖之前导入的foo，所以这里使用的是module2的foo</span></span><br><span class="line">foo()</span><br></pre></td></tr></table></figure></p>
+<h3 id="name-‘main‘"><a href="#name-‘main‘" class="headerlink" title="name == ‘main‘"></a><strong>name</strong> == ‘<strong>main</strong>‘</h3><p>模块中如果需要写入可执行语句，一般需要包装在 <code>__name__ == &#39;__main__&#39;</code> 中，这样除非直接运行该模块，这些可执行语句是不会被执行的<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">foo</span><span class="params">()</span>:</span></span><br><span class="line">    print(<span class="string">'hello, world'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    foo()</span><br></pre></td></tr></table></figure></p>
+<p><code>__name__</code> 是python的一个隐藏属性：模块名。 被python解释器直接执行的模块名字叫 <code>__main__</code></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/12/06/day-1/" data-id="ckicy99k50000f29kbpzv9rcd" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/100-days-of-code/" rel="tag">100 days of code</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-er-1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -748,88 +839,6 @@
       </a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-pipenv-introduction" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/12/12/pipenv-introduction/">pipenv 基本的介绍和使用方法</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/12/12/pipenv-introduction/" class="article-date">
-  <time datetime="2019-12-12T05:29:51.000Z" itemprop="datePublished">2019-12-12</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
-<p>根据项目需要，搞一个配置文件Pipfile，传到github里，完事儿。</p>
-</blockquote>
-<h2 id="为什么要用pipenv"><a href="#为什么要用pipenv" class="headerlink" title="为什么要用pipenv"></a>为什么要用pipenv</h2><p>首先，我们假设….算了，不扯那些没用的。做Python的开发，无论你用的什么工具，最麻烦的事儿应该莫过于包的管理。<a href="https://pypi.org/project/pipenv/" target="_blank" rel="noopener">pipenv</a>简单来说就是一个python官方推荐的包管理工具。<br>相比于pip等其他工具，pipenv最大的特点是可以根据项目，生成不同的环境，在ProjectA中设置的Pipfile不会影响到ProjectB,更不会影响到系统默认的pip列表。这个为项目定制的虚拟环境，我们称之为<code>shell</code>。  </p>
-<h3 id="安装pipenv"><a href="#安装pipenv" class="headerlink" title="安装pipenv"></a>安装pipenv</h3><p>安装pipenv之前，首先确定系统里有以下两样东西：</p>
-<ol>
-<li>python</li>
-<li>pip</li>
-</ol>
-<p>pipenv是通过pip安装的工具，所以执行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pipenv</span><br></pre></td></tr></table></figure><br>由于pipenv可以在系统里不同版本的Python间任意切换，所以执行pip的时候不同太在乎Python版本问题。</p>
-<h3 id="requirements-txt-和-Pipfile"><a href="#requirements-txt-和-Pipfile" class="headerlink" title="requirements.txt 和 Pipfile"></a>requirements.txt 和 Pipfile</h3><p>pipenv 管理Python环境的配置文件是<code>Pipfile</code>，大致长这个样子：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[[source]]</span><br><span class="line">name &#x3D; &quot;pypi&quot;</span><br><span class="line">url &#x3D; &quot;https:&#x2F;&#x2F;pypi.org&#x2F;simple&quot;</span><br><span class="line">verify_ssl &#x3D; true</span><br><span class="line"></span><br><span class="line">[dev-packages]</span><br><span class="line"></span><br><span class="line">[packages]</span><br><span class="line">pandas &#x3D; &quot;&#x3D;&#x3D;0.25.1&quot;</span><br><span class="line"></span><br><span class="line">[requires]</span><br><span class="line">python_version &#x3D; &quot;3.7&quot;</span><br></pre></td></tr></table></figure>
-<p>我们可以直接写，也可以用<code>pipenv install</code>来生成默认的Pipfile, 不过还有个更方便的方法是直接由pip生成的requirements.txt配置文件来生成Pipfile。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 首先在当前路径里使用pip生成requirements.txt</span><br><span class="line"></span><br><span class="line">pip freeze &gt; requirements.txt</span><br><span class="line"></span><br><span class="line"># 然后生成Pipfile</span><br><span class="line"># -r 的意思是将后面配置文件里的包添加到Pipfile里</span><br><span class="line"></span><br><span class="line">pipenv install -r requirements.txt</span><br></pre></td></tr></table></figure>
-<h3 id="指定Python版本"><a href="#指定Python版本" class="headerlink" title="指定Python版本"></a>指定Python版本</h3><p>pipenv可以指定虚拟环境的python版本，随时通过修改Pipfile来切换（修改是通过命令行修改的意思，当然你要直接修改也没什么区别，但是不用命令来修改配置文件就会觉得很low啊）<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">## 使用下面的命令，从当前系统已经安装的不同版本的Python中选择一个</span><br><span class="line">pipenv --python 版本号</span><br><span class="line"></span><br><span class="line">## 比如</span><br><span class="line">pipenv --python 3.5</span><br><span class="line"></span><br><span class="line">pipenv --python 3.7</span><br><span class="line"></span><br><span class="line">pipenv --python 2.6</span><br></pre></td></tr></table></figure><br>如果Pipfile中指定的Python版本在当前系统下不存在，之后启动虚拟环境时会跳出警告。</p>
-<h3 id="耗时警报-锁定"><a href="#耗时警报-锁定" class="headerlink" title="(耗时警报) 锁定"></a>(耗时警报) 锁定</h3><p>更新Pipfile之后，启动虚拟环境之前，我们需要把Pipfile中列出的包安装好，或者删除已经不用的包，这个操作就是<code>pipenv lock</code></p>
-<p>由于需要从服务器下载相应的包（这是我猜的，鬼晓得为什么这玩意儿怎么那么慢，<a href="https://github.com/pypa/pipenv/issues/1785" target="_blank" rel="noopener">官方</a>似乎也没有什么行之有效的办法）</p>
-<h3 id="去吧-皮卡丘！"><a href="#去吧-皮卡丘！" class="headerlink" title="去吧 皮卡丘！"></a>去吧 皮卡丘！</h3><p>都搞定之后，<code>pipenv shell</code>跑起来，我们就进入定制的虚拟环境了。</p>
-<h3 id="直接看这里就可以了"><a href="#直接看这里就可以了" class="headerlink" title="直接看这里就可以了"></a>直接看这里就可以了</h3><p>说了那么老多，其实安装好pipenv之后，直接一个<code>pipenv -h</code>查看help文档就可以了<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line">Options:</span><br><span class="line">  --where             Output project home information.</span><br><span class="line">  --venv              Output virtualenv information.</span><br><span class="line">  --py                Output Python interpreter information.</span><br><span class="line">  --envs              Output Environment Variable options.</span><br><span class="line">  --rm                Remove the virtualenv.</span><br><span class="line">  --bare              Minimal output.</span><br><span class="line">  --completion        Output completion (to be eval&#39;d).</span><br><span class="line">  --man               Display manpage.</span><br><span class="line">  --support           Output diagnostic information for use in GitHub issues.</span><br><span class="line">  --site-packages     Enable site-packages for the virtualenv.  [env var:</span><br><span class="line">                      PIPENV_SITE_PACKAGES]</span><br><span class="line">  --python TEXT       Specify which version of Python virtualenv should use.</span><br><span class="line">  --three &#x2F; --two     Use Python 3&#x2F;2 when creating virtualenv.</span><br><span class="line">  --clear             Clears caches (pipenv, pip, and pip-tools).  [env var:</span><br><span class="line">                      PIPENV_CLEAR]</span><br><span class="line">  -v, --verbose       Verbose mode.</span><br><span class="line">  --pypi-mirror TEXT  Specify a PyPI mirror.</span><br><span class="line">  --version           Show the version and exit.</span><br><span class="line">  -h, --help          Show this message and exit.</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">Usage Examples:</span><br><span class="line">   Create a new project using Python 3.7, specifically:</span><br><span class="line">   $ pipenv --python 3.7</span><br><span class="line"></span><br><span class="line">   Remove project virtualenv (inferred from current directory):</span><br><span class="line">   $ pipenv --rm</span><br><span class="line"></span><br><span class="line">   Install all dependencies for a project (including dev):</span><br><span class="line">   $ pipenv install --dev</span><br><span class="line"></span><br><span class="line">   Create a lockfile containing pre-releases:</span><br><span class="line">   $ pipenv lock --pre</span><br><span class="line"></span><br><span class="line">   Show a graph of your installed dependencies:</span><br><span class="line">   $ pipenv graph</span><br><span class="line"></span><br><span class="line">   Check your installed dependencies for security vulnerabilities:</span><br><span class="line">   $ pipenv check</span><br><span class="line"></span><br><span class="line">   Install a local setup.py into your virtual environment&#x2F;Pipfile:</span><br><span class="line">   $ pipenv install -e .</span><br><span class="line"></span><br><span class="line">   Use a lower-level pip command:</span><br><span class="line">   $ pipenv run pip freeze</span><br><span class="line"></span><br><span class="line">Commands:</span><br><span class="line">  check      Checks for security vulnerabilities and against PEP 508 markers</span><br><span class="line">             provided in Pipfile.</span><br><span class="line">  clean      Uninstalls all packages not specified in Pipfile.lock.</span><br><span class="line">  graph      Displays currently-installed dependency graph information.</span><br><span class="line">  install    Installs provided packages and adds them to Pipfile, or (if no</span><br><span class="line">             packages are given), installs all packages from Pipfile.</span><br><span class="line">  lock       Generates Pipfile.lock.</span><br><span class="line">  open       View a given module in your editor.</span><br><span class="line">  run        Spawns a command installed into the virtualenv.</span><br><span class="line">  shell      Spawns a shell within the virtualenv.</span><br><span class="line">  sync       Installs all packages specified in Pipfile.lock.</span><br><span class="line">  uninstall  Un-installs a provided package and removes it from Pipfile.</span><br><span class="line">  update     Runs lock, then sync.</span><br></pre></td></tr></table></figure></p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/12/12/pipenv-introduction/" data-id="cki6vunrh0016o89k11nofkon" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pipenv/" rel="tag">Pipenv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
 
     </footer>
 
