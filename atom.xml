@@ -6,7 +6,7 @@
   <link href="https://xsun4231.github.io/atom.xml" rel="self"/>
   
   <link href="https://xsun4231.github.io/"/>
-  <updated>2020-12-07T14:56:16.453Z</updated>
+  <updated>2021-04-20T14:33:21.413Z</updated>
   <id>https://xsun4231.github.io/</id>
   
   <author>
@@ -15,6 +15,52 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Servlet 基础</title>
+    <link href="https://xsun4231.github.io/2021/04/20/servlet-1/"/>
+    <id>https://xsun4231.github.io/2021/04/20/servlet-1/</id>
+    <published>2021-04-20T14:11:34.000Z</published>
+    <updated>2021-04-20T14:33:21.413Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>内容总结自网络。</p><h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Servlet(Server Applet) 可以翻译为Java小服务程序或者服务连接器。是用Java编写的服务器端程序，具有独立于平台和协议的特性。主要的功能是交互式地浏览和生成数据，生成动态Web内容。</p><p>狭义的Servlet是指Java的一个接口，广义的Servlet是指任何实现了这个接口的类。从原理上讲Servlet可以响应任何类型的请求，但绝大多数情况侠Servlet只用来扩展基于HTTP协议的Web服务器。</p><h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>Servlet交互式地浏览和生成数据的过程为：</p><ol><li>客户端发送请求到服务器</li><li>服务器将请求信息发送至Servlet</li><li>Servlet生成响应内容并传给服务器。</li><li>服务器将响应返回客户端</li></ol><h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol><li>客户端请求Servlet</li><li>加载Servlet到内存</li><li>生成Servlet实例，调用init()初始化</li><li>server调用service()方法，将一个请求对象和一个响应对象传递给service()</li><li>service()调用资源处理请求，使用响应对象的方法将响应传回server，再传回到客户端</li><li>(一般是server关闭时)调用destroy()方法</li></ol></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
+      
+    
+    
+    
+    
+    <category term="Java" scheme="https://xsun4231.github.io/tags/Java/"/>
+    
+    <category term="Servlet" scheme="https://xsun4231.github.io/tags/Servlet/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Day 3 面向对象进阶</title>
+    <link href="https://xsun4231.github.io/2020/12/07/day-3/"/>
+    <id>https://xsun4231.github.io/2020/12/07/day-3/</id>
+    <published>2020-12-07T14:59:08.000Z</published>
+    <updated>2020-12-08T15:29:07.826Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>3/100</p><h2 id="slots"><a href="#slots" class="headerlink" title="slots"></a><strong>slots</strong></h2><p>Python是动态语言，我们可以随时为对象绑定新的属性和方法。但是如果我们想限制类型的对象所能绑定的属性，则需要用到<code>__slots__</code>。</p><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    __slots__ = (<span class="string">'_name'</span>, <span class="string">'_age'</span>, <span class="string">'_gender'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self._name = name</span><br><span class="line">        self._age = age</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._age</span><br><span class="line"></span><br><span class="line"><span class="meta">    @age.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self, age)</span>:</span></span><br><span class="line">        self._age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">play</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self._age &lt;= <span class="number">16</span>:</span><br><span class="line">            print(<span class="string">'play game'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'work'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    person = Person(<span class="string">'Alice'</span>, <span class="number">20</span>)</span><br><span class="line">    person.play()</span><br><span class="line">    person._gender = <span class="string">'male'</span></span><br><span class="line">    <span class="comment"># Error</span></span><br><span class="line">    <span class="comment"># person._family = True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure><h2 id="特殊方法"><a href="#特殊方法" class="headerlink" title="特殊方法"></a>特殊方法</h2><ol><li>静态方法使用 <code>@staticmethod</code> 修饰</li><li>类方法使用 <code>@classmethod</code> 来修饰, 类方法的第一个参数必须是<code>cls</code>，表示当前类的对象</li></ol></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
+      
+    
+    
+    
+    
+    <category term="100 days of code" scheme="https://xsun4231.github.io/tags/100-days-of-code/"/>
+    
+  </entry>
   
   <entry>
     <title>Day2 面向对象相关</title>
@@ -415,50 +461,6 @@
     
     
     <category term="未填之坑" scheme="https://xsun4231.github.io/tags/%E6%9C%AA%E5%A1%AB%E4%B9%8B%E5%9D%91/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Dockerfile 命令</title>
-    <link href="https://xsun4231.github.io/2019/07/30/docker-instruction-commands/"/>
-    <id>https://xsun4231.github.io/2019/07/30/docker-instruction-commands/</id>
-    <published>2019-07-30T01:29:30.000Z</published>
-    <updated>2020-07-05T10:14:59.866Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>内容整理自<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门到实践</a></p><h2 id="什么是Dockerfile"><a href="#什么是Dockerfile" class="headerlink" title="什么是Dockerfile"></a>什么是Dockerfile</h2><p>Dockerfile 是一种用来定制镜像的文本文件。我们可以在Dockerfile中指定基础镜像，执行命令，开放端口，设置环境变量等等。<br><strong>每一条指令</strong>会构建一层。参考<a href="https://docs.docker.com/storage/storagedriver/" target="_blank" rel="noopener">docker 文档</a>，docker的镜像具有下面的层结构(image layers)，增加层的厚度自然会增加镜像的大小，所以写Dockerfile时，尽量使用<code>\</code> 和 <code>&amp;&amp;</code> 巧妙地将命令的内容合并到一层。<br><a href="/2019/07/30/docker-instruction-commands/layer.png" class="gallery-item"><img src="/2019/07/30/docker-instruction-commands/layer.png" class="" title="layer"></a></p><p>比如<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门到实践</a>中的例子，写一个构建<code>nginx</code>镜像的Dockerfile：</p><figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">'&lt;h1&gt;Hello, Docker!&lt;/h1&gt;'</span> &gt; /usr/share/nginx/html/index.html</span></span><br></pre></td></tr></table></figure><p>这个Dockerfile包含了两个指令，<code>FROM</code>制定了基础镜像，基础镜像可以是各种服务类的官方镜像，也可以是干净的操作系统镜像，还可以是空白镜像<code>scratch</code>。<code>RUN</code>是最常用的指令，用来执行命令行命令。</p><p>接下来我们执行<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx:v3 .</span><br></pre></td></tr></table></figure><br>来构建镜像，<code>it nginx:v3</code>的的意思是构建的目标名为nginx，标签为v3。</p><p>docker构建镜像的log将每一条指令分的很清楚，每一条指令作为一个step来执行，完成后我们就可以看到新的镜像<code>nginx:v3</code>了。</p><p>执行下面命令，通过新构建的镜像生成一个容器：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name hello -d -p <span class="number">8080</span>:<span class="number">80</span> nginx:v3</span><br></pre></td></tr></table></figure><br>然后我们访问 <code>localhost:8080</code> 就可以看到欢迎页了：<br><a href="/2019/07/30/docker-instruction-commands/hello.png" class="gallery-item"><img src="/2019/07/30/docker-instruction-commands/hello.png" class="" title="hello"></a></p><h3 id="Dockerfile中用到的命令"><a href="#Dockerfile中用到的命令" class="headerlink" title="Dockerfile中用到的命令"></a>Dockerfile中用到的命令</h3><p>docker的指令一般有两种书写方式，一种是指令后跟命令行，一种是使用<code>[]</code>的函数调用写法，这里主要记录一下命令行写法。</p><ul><li><p>COPY<br><code>COPY &lt;context path&gt; &lt;target path&gt;</code><br>这个指令将上下文目录中的文件或者目录复制到新一层的目标路径中，要复制的文件或者目录可以有多个，可以使用通配符（符合golang的filepath.Match规则)，目标路径可以是绝对路径，也可以是工作目录的相对路径。<br>还可以加上<code>--chown=&lt;user&gt;:&lt;group&gt;</code>来改变文件的所属用户和所属组</p><blockquote><p>上下文路径？context path?</p></blockquote></li><li><p>ADD<br>使用方法跟COPY基本一样。功能会丰富一点，比如源路径可以设置为url，使用url路径时docker会讲文件打包下载到目标路径。因为需要多余的RUN来处理权限，解压缩，筛选内容，这个命令并不是很实用。</p></li><li><p>CMD<br>用于指定默认的容器主进程的启动命令。指令的写法也有两种：  </p><ul><li>shell 格式 <code>CMD 命令</code></li><li>exec 格式 <code>CMD [&quot;可执行文件&quot;, &quot;参数&quot;, ...&quot;参数&quot; ]</code>  </li></ul><p>使用shell格式写的内容会被解析为<code>CMD [&quot;sh&quot;, &quot;-c&quot;, &quot;命令&quot;]</code>，所以命令中可以使用环境变量，但是命令必须前台执行，如果命令结束后直接结束了<code>sh</code>程序，则容器也会推出。</p><p>Dockerfile中设置的启动命令可以在运行时重新指定，比如我们写<code>docker run -it imagename</code>的话，就会执行默认的命令，在镜像名后面添加命令，比如<code>cat etc/os-release</code>，就可以了。</p></li><li><p>ENTRYPOINT<br>跟CMD一样用来设置启动时的命令行和参数，不过在重新定义的时候，要在<code>docker run</code>后面使用命令<code>--entrypoint</code>来设置。<br>ENTRYPOINT和CMD共存的意义在于，定义了ENTRYPOINT之后，CMD的内容将不再被直接执行，而是作为参数传递给ENTRYPOINT。比如<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门-Dockerfile指令详解-NETRYPOINT入口点</a>里面介绍的例子：</p><ol><li>如果我们想在执行的时候为<code>CMD [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://ip.cn&quot; ]</code>添加参数，直接在镜像名后面加肯定是不行的，那样会替换掉所有命令（全部重写那就另当别论了），如果使用CMD来获取参数，定义<code>ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://ip.cn&quot; ]</code>，就可以实现参数的自由设置了。</li><li><p>用ENTRYPOINT来处理CMD做不到的工作。</p> <figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> alpine:<span class="number">3.4</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> addgroup -S redis &amp;&amp; adduser -S -G redis redis</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [<span class="string">"docker-entrypoint.sh"</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">6379</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">"redis-server"</span> ]</span></span><br></pre></td></tr></table></figure><p> docker-entrypoint.sh的内容为：</p> <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># allow the container to be started with `--user`</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">'redis-server'</span> -a <span class="string">"<span class="variable">$(id -u)</span>"</span> = <span class="string">'0'</span> ]; <span class="keyword">then</span></span><br><span class="line">    chown -R redis .</span><br><span class="line">    <span class="built_in">exec</span> su-exec redis <span class="string">"<span class="variable">$0</span>"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$@</span>"</span></span><br></pre></td></tr></table></figure><p> 这里将cmd作为参数获取的方法，在ENTRYPOINT中设置了一个脚本，通过参数的内容来区别启动用户的身份。</p></li></ol></li><li><p>ENV<br>定义环境变量，就这么简单。可以用<code>=</code>，可以用空格，可以用等号加空格一行定义一群，也可以用<code>\</code>加入换行。</p></li><li><p>ARG<br>定义参数。参数和环境变量不同的是，参数只在构建的时候有用，在容器运行时不会被引入容器内部。参数的定义可以在<code>docker build</code>时使用<code>--build-arg &lt;name&gt;=&lt;value&gt;</code>的格式来覆盖。</p></li><li><p>VOLUME<br>匿名卷</p></li><li><p>EXPOSE<br>暴露端口</p></li></ul><ul><li><p>WORKDIR<br>指定工作目录</p></li><li><p>USER<br>指定当前用户</p></li><li><p>HEALTHCHECK<br>健康检查</p></li><li><p>ONBUILD<br>构建时执行</p></li></ul><h2 id="镜像的使用"><a href="#镜像的使用" class="headerlink" title="镜像的使用"></a>镜像的使用</h2><h3 id="镜像的获取，管理和删除"><a href="#镜像的获取，管理和删除" class="headerlink" title="镜像的获取，管理和删除"></a>镜像的获取，管理和删除</h3><h3 id="commit-命令"><a href="#commit-命令" class="headerlink" title="commit 命令"></a>commit 命令</h3></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
-      
-    
-    
-    
-    
-  </entry>
-  
-  <entry>
-    <title>使用DB2的Docker镜像建立本地开发用的数据库</title>
-    <link href="https://xsun4231.github.io/2019/07/23/docker-ibmdb2/"/>
-    <id>https://xsun4231.github.io/2019/07/23/docker-ibmdb2/</id>
-    <published>2019-07-23T05:36:40.000Z</published>
-    <updated>2020-07-05T10:14:59.865Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>这个是2019-07-23的笔记，DB2的社区免费版授权和镜像的使用方法随时可能改变。</p><h2 id="从哪儿找DB2"><a href="#从哪儿找DB2" class="headerlink" title="从哪儿找DB2"></a>从哪儿找DB2</h2><p>DB2的免费版本在 <a href="https://www.ibm.com/cloud/blog/announcements/ibm-db2-developer-community-edition" target="_blank" rel="noopener">2019年的社区版DB2</a> 中可以找到，提供了三种免费版的使用方法：</p><ol><li>使用docker镜像</li><li>下载DB2程序</li><li>IBM Cloud的DB2服务（免费套餐）</li></ol><p>这里记一下使用第一种方法Docker镜像的构建过程。</p><h2 id="开工"><a href="#开工" class="headerlink" title="开工"></a>开工</h2><h3 id="第一步，打开冰箱…-啊不，下载镜像，可以在docker-hub搜DB2，这篇笔记使用的是-ibmcom-db2"><a href="#第一步，打开冰箱…-啊不，下载镜像，可以在docker-hub搜DB2，这篇笔记使用的是-ibmcom-db2" class="headerlink" title="第一步，打开冰箱….啊不，下载镜像，可以在docker hub搜DB2，这篇笔记使用的是 ibmcom/db2"></a>第一步，打开冰箱….啊不，下载镜像，可以在docker hub搜DB2，这篇笔记使用的是 <a href="https://hub.docker.com/r/ibmcom/db2" target="_blank" rel="noopener">ibmcom/db2</a></h3><h3 id="第二步，创建容器，在控制台执行"><a href="#第二步，创建容器，在控制台执行" class="headerlink" title="第二步，创建容器，在控制台执行:"></a>第二步，创建容器，在控制台执行:</h3><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> --name db2 --privileged -p 50000:50000 -e LICENSE=accept -e DB2INST1_PASSWORD=password -e DBNAME=MYDATABASE ibmcom/db2</span></span><br></pre></td></tr></table></figure><p>简单解释一下</p><ol><li><code>--name</code> 容器的名字，以后启动关闭的时候用 </li><li><code>--privileged</code> 不知道（弄懂了再写）</li><li><code>-p</code> 端口映射，这里的意思是本地的50000端口映射到容器的50000，这样我们就可以通过<code>localhost:50000</code>来访问容器里的数据库了</li><li><code>-e</code> 给容器里设置一些环境变量<ol><li><code>LICENSE</code> 嗯。。。</li><li><code>DB2INST1_PASSWORD</code> 为默认的用户名db2inst1设置的密码。</li><li><code>DBNAME</code> 直接使用变量作为名字建立一个database</li></ol></li><li>最后那个<code>ibmcom/db2</code>是镜像名</li></ol><h3 id="第三步，连接："><a href="#第三步，连接：" class="headerlink" title="第三步，连接："></a>第三步，连接：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: jdbc:db2:&#x2F;&#x2F;localhost:50000&#x2F;MYDATABASE</span><br><span class="line">username: db2inst1</span><br><span class="line">password: password</span><br><span class="line">driver: db2jcc4.jar</span><br></pre></td></tr></table></figure><p>驱动文件可以在IBM的服务网页找到 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg21363866" target="_blank" rel="noopener">db2jcc4.jar</a></p><h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>有时候会提示port无法使用，容器不能启动。先确定port50000没有被占用，如果可以使用，就重启docker。</p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
-      
-    
-    
-    
-    
-    <category term="Docker" scheme="https://xsun4231.github.io/tags/Docker/"/>
-    
-    <category term="DB2" scheme="https://xsun4231.github.io/tags/DB2/"/>
     
   </entry>
   

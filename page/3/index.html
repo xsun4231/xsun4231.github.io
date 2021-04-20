@@ -65,6 +65,210 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-docker-instruction-commands" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/07/30/docker-instruction-commands/">Dockerfile 命令</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/30/docker-instruction-commands/" class="article-date">
+  <time datetime="2019-07-30T01:29:30.000Z" itemprop="datePublished">2019-07-30</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>内容整理自<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门到实践</a></p>
+<h2 id="什么是Dockerfile"><a href="#什么是Dockerfile" class="headerlink" title="什么是Dockerfile"></a>什么是Dockerfile</h2><p>Dockerfile 是一种用来定制镜像的文本文件。我们可以在Dockerfile中指定基础镜像，执行命令，开放端口，设置环境变量等等。<br><strong>每一条指令</strong>会构建一层。参考<a href="https://docs.docker.com/storage/storagedriver/" target="_blank" rel="noopener">docker 文档</a>，docker的镜像具有下面的层结构(image layers)，增加层的厚度自然会增加镜像的大小，所以写Dockerfile时，尽量使用<code>\</code> 和 <code>&amp;&amp;</code> 巧妙地将命令的内容合并到一层。<br><a href="/2019/07/30/docker-instruction-commands/layer.png" class="gallery-item"><img src="/2019/07/30/docker-instruction-commands/layer.png" class="" title="layer"></a></p>
+<p>比如<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门到实践</a>中的例子，写一个构建<code>nginx</code>镜像的Dockerfile：</p>
+<figure class="highlight dockerfile"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> nginx</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> <span class="built_in">echo</span> <span class="string">'&lt;h1&gt;Hello, Docker!&lt;/h1&gt;'</span> &gt; /usr/share/nginx/html/index.html</span></span><br></pre></td></tr></table></figure>
+<p>这个Dockerfile包含了两个指令，<code>FROM</code>制定了基础镜像，基础镜像可以是各种服务类的官方镜像，也可以是干净的操作系统镜像，还可以是空白镜像<code>scratch</code>。<code>RUN</code>是最常用的指令，用来执行命令行命令。</p>
+<p>接下来我们执行<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build -t nginx:v3 .</span><br></pre></td></tr></table></figure><br>来构建镜像，<code>it nginx:v3</code>的的意思是构建的目标名为nginx，标签为v3。</p>
+<p>docker构建镜像的log将每一条指令分的很清楚，每一条指令作为一个step来执行，完成后我们就可以看到新的镜像<code>nginx:v3</code>了。</p>
+<p>执行下面命令，通过新构建的镜像生成一个容器：<br><figure class="highlight cmd"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run --name hello -d -p <span class="number">8080</span>:<span class="number">80</span> nginx:v3</span><br></pre></td></tr></table></figure><br>然后我们访问 <code>localhost:8080</code> 就可以看到欢迎页了：<br><a href="/2019/07/30/docker-instruction-commands/hello.png" class="gallery-item"><img src="/2019/07/30/docker-instruction-commands/hello.png" class="" title="hello"></a></p>
+<h3 id="Dockerfile中用到的命令"><a href="#Dockerfile中用到的命令" class="headerlink" title="Dockerfile中用到的命令"></a>Dockerfile中用到的命令</h3><p>docker的指令一般有两种书写方式，一种是指令后跟命令行，一种是使用<code>[]</code>的函数调用写法，这里主要记录一下命令行写法。</p>
+<ul>
+<li><p>COPY<br><code>COPY &lt;context path&gt; &lt;target path&gt;</code><br>这个指令将上下文目录中的文件或者目录复制到新一层的目标路径中，要复制的文件或者目录可以有多个，可以使用通配符（符合golang的filepath.Match规则)，目标路径可以是绝对路径，也可以是工作目录的相对路径。<br>还可以加上<code>--chown=&lt;user&gt;:&lt;group&gt;</code>来改变文件的所属用户和所属组</p>
+<blockquote>
+<p>上下文路径？context path?</p>
+</blockquote>
+</li>
+<li><p>ADD<br>使用方法跟COPY基本一样。功能会丰富一点，比如源路径可以设置为url，使用url路径时docker会讲文件打包下载到目标路径。因为需要多余的RUN来处理权限，解压缩，筛选内容，这个命令并不是很实用。</p>
+</li>
+<li><p>CMD<br>用于指定默认的容器主进程的启动命令。指令的写法也有两种：  </p>
+<ul>
+<li>shell 格式 <code>CMD 命令</code></li>
+<li>exec 格式 <code>CMD [&quot;可执行文件&quot;, &quot;参数&quot;, ...&quot;参数&quot; ]</code>  </li>
+</ul>
+<p>使用shell格式写的内容会被解析为<code>CMD [&quot;sh&quot;, &quot;-c&quot;, &quot;命令&quot;]</code>，所以命令中可以使用环境变量，但是命令必须前台执行，如果命令结束后直接结束了<code>sh</code>程序，则容器也会推出。</p>
+<p>Dockerfile中设置的启动命令可以在运行时重新指定，比如我们写<code>docker run -it imagename</code>的话，就会执行默认的命令，在镜像名后面添加命令，比如<code>cat etc/os-release</code>，就可以了。</p>
+</li>
+<li><p>ENTRYPOINT<br>跟CMD一样用来设置启动时的命令行和参数，不过在重新定义的时候，要在<code>docker run</code>后面使用命令<code>--entrypoint</code>来设置。<br>ENTRYPOINT和CMD共存的意义在于，定义了ENTRYPOINT之后，CMD的内容将不再被直接执行，而是作为参数传递给ENTRYPOINT。比如<a href="https://legacy.gitbook.com/book/yeasy/docker_practice/details" target="_blank" rel="noopener">Docker入门-Dockerfile指令详解-NETRYPOINT入口点</a>里面介绍的例子：</p>
+<ol>
+<li>如果我们想在执行的时候为<code>CMD [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://ip.cn&quot; ]</code>添加参数，直接在镜像名后面加肯定是不行的，那样会替换掉所有命令（全部重写那就另当别论了），如果使用CMD来获取参数，定义<code>ENTRYPOINT [ &quot;curl&quot;, &quot;-s&quot;, &quot;https://ip.cn&quot; ]</code>，就可以实现参数的自由设置了。</li>
+<li><p>用ENTRYPOINT来处理CMD做不到的工作。</p>
+ <figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">FROM</span> alpine:<span class="number">3.4</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">RUN</span><span class="bash"> addgroup -S redis &amp;&amp; adduser -S -G redis redis</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">ENTRYPOINT</span><span class="bash"> [<span class="string">"docker-entrypoint.sh"</span>]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">EXPOSE</span> <span class="number">6379</span></span><br><span class="line"><span class="keyword">CMD</span><span class="bash"> [ <span class="string">"redis-server"</span> ]</span></span><br></pre></td></tr></table></figure>
+<p> docker-entrypoint.sh的内容为：</p>
+ <figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#!/bin/sh</span></span><br><span class="line">...</span><br><span class="line"><span class="comment"># allow the container to be started with `--user`</span></span><br><span class="line"><span class="keyword">if</span> [ <span class="string">"<span class="variable">$1</span>"</span> = <span class="string">'redis-server'</span> -a <span class="string">"<span class="variable">$(id -u)</span>"</span> = <span class="string">'0'</span> ]; <span class="keyword">then</span></span><br><span class="line">    chown -R redis .</span><br><span class="line">    <span class="built_in">exec</span> su-exec redis <span class="string">"<span class="variable">$0</span>"</span> <span class="string">"<span class="variable">$@</span>"</span></span><br><span class="line"><span class="keyword">fi</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">exec</span> <span class="string">"<span class="variable">$@</span>"</span></span><br></pre></td></tr></table></figure>
+<p> 这里将cmd作为参数获取的方法，在ENTRYPOINT中设置了一个脚本，通过参数的内容来区别启动用户的身份。</p>
+</li>
+</ol>
+</li>
+<li><p>ENV<br>定义环境变量，就这么简单。可以用<code>=</code>，可以用空格，可以用等号加空格一行定义一群，也可以用<code>\</code>加入换行。</p>
+</li>
+<li><p>ARG<br>定义参数。参数和环境变量不同的是，参数只在构建的时候有用，在容器运行时不会被引入容器内部。参数的定义可以在<code>docker build</code>时使用<code>--build-arg &lt;name&gt;=&lt;value&gt;</code>的格式来覆盖。</p>
+</li>
+<li><p>VOLUME<br>匿名卷</p>
+</li>
+<li><p>EXPOSE<br>暴露端口</p>
+</li>
+</ul>
+<ul>
+<li><p>WORKDIR<br>指定工作目录</p>
+</li>
+<li><p>USER<br>指定当前用户</p>
+</li>
+<li><p>HEALTHCHECK<br>健康检查</p>
+</li>
+<li><p>ONBUILD<br>构建时执行</p>
+</li>
+</ul>
+<h2 id="镜像的使用"><a href="#镜像的使用" class="headerlink" title="镜像的使用"></a>镜像的使用</h2><h3 id="镜像的获取，管理和删除"><a href="#镜像的获取，管理和删除" class="headerlink" title="镜像的获取，管理和删除"></a>镜像的获取，管理和删除</h3><h3 id="commit-命令"><a href="#commit-命令" class="headerlink" title="commit 命令"></a>commit 命令</h3></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/07/30/docker-instruction-commands/" data-id="cki6vunrb000uo89k70ewhsyc" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-docker-ibmdb2" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/07/23/docker-ibmdb2/">使用DB2的Docker镜像建立本地开发用的数据库</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/07/23/docker-ibmdb2/" class="article-date">
+  <time datetime="2019-07-23T05:36:40.000Z" itemprop="datePublished">2019-07-23</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>这个是2019-07-23的笔记，DB2的社区免费版授权和镜像的使用方法随时可能改变。</p>
+<h2 id="从哪儿找DB2"><a href="#从哪儿找DB2" class="headerlink" title="从哪儿找DB2"></a>从哪儿找DB2</h2><p>DB2的免费版本在 <a href="https://www.ibm.com/cloud/blog/announcements/ibm-db2-developer-community-edition" target="_blank" rel="noopener">2019年的社区版DB2</a> 中可以找到，提供了三种免费版的使用方法：</p>
+<ol>
+<li>使用docker镜像</li>
+<li>下载DB2程序</li>
+<li>IBM Cloud的DB2服务（免费套餐）</li>
+</ol>
+<p>这里记一下使用第一种方法Docker镜像的构建过程。</p>
+<h2 id="开工"><a href="#开工" class="headerlink" title="开工"></a>开工</h2><h3 id="第一步，打开冰箱…-啊不，下载镜像，可以在docker-hub搜DB2，这篇笔记使用的是-ibmcom-db2"><a href="#第一步，打开冰箱…-啊不，下载镜像，可以在docker-hub搜DB2，这篇笔记使用的是-ibmcom-db2" class="headerlink" title="第一步，打开冰箱….啊不，下载镜像，可以在docker hub搜DB2，这篇笔记使用的是 ibmcom/db2"></a>第一步，打开冰箱….啊不，下载镜像，可以在docker hub搜DB2，这篇笔记使用的是 <a href="https://hub.docker.com/r/ibmcom/db2" target="_blank" rel="noopener">ibmcom/db2</a></h3><h3 id="第二步，创建容器，在控制台执行"><a href="#第二步，创建容器，在控制台执行" class="headerlink" title="第二步，创建容器，在控制台执行:"></a>第二步，创建容器，在控制台执行:</h3><figure class="highlight docker"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker <span class="keyword">run</span><span class="bash"> --name db2 --privileged -p 50000:50000 -e LICENSE=accept -e DB2INST1_PASSWORD=password -e DBNAME=MYDATABASE ibmcom/db2</span></span><br></pre></td></tr></table></figure>
+<p>简单解释一下</p>
+<ol>
+<li><code>--name</code> 容器的名字，以后启动关闭的时候用 </li>
+<li><code>--privileged</code> 不知道（弄懂了再写）</li>
+<li><code>-p</code> 端口映射，这里的意思是本地的50000端口映射到容器的50000，这样我们就可以通过<code>localhost:50000</code>来访问容器里的数据库了</li>
+<li><code>-e</code> 给容器里设置一些环境变量<ol>
+<li><code>LICENSE</code> 嗯。。。</li>
+<li><code>DB2INST1_PASSWORD</code> 为默认的用户名db2inst1设置的密码。</li>
+<li><code>DBNAME</code> 直接使用变量作为名字建立一个database</li>
+</ol>
+</li>
+<li>最后那个<code>ibmcom/db2</code>是镜像名</li>
+</ol>
+<h3 id="第三步，连接："><a href="#第三步，连接：" class="headerlink" title="第三步，连接："></a>第三步，连接：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">url: jdbc:db2:&#x2F;&#x2F;localhost:50000&#x2F;MYDATABASE</span><br><span class="line">username: db2inst1</span><br><span class="line">password: password</span><br><span class="line">driver: db2jcc4.jar</span><br></pre></td></tr></table></figure>
+<p>驱动文件可以在IBM的服务网页找到 <a href="http://www-01.ibm.com/support/docview.wss?uid=swg21363866" target="_blank" rel="noopener">db2jcc4.jar</a></p>
+<h2 id="结束"><a href="#结束" class="headerlink" title="结束"></a>结束</h2><p>有时候会提示port无法使用，容器不能启动。先确定port50000没有被占用，如果可以使用，就重启docker。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/07/23/docker-ibmdb2/" data-id="cki6vunra000so89k5mb43gxd" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB2/" rel="tag">DB2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-enum-things" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -858,148 +1062,6 @@
 
 </article>
         
-          <article id="post-jQuery-Memo" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/03/19/jQuery-Memo/">jQuery 基本知识点备忘录</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/03/19/jQuery-Memo/" class="article-date">
-  <time datetime="2019-03-19T05:06:56.000Z" itemprop="datePublished">2019-03-19</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="document-ready"><a href="#document-ready" class="headerlink" title="$(document).ready()"></a>$(document).ready()</h2><p>页面载入需要首先准备DOM（Document Object Model),jQuery可以检测到页面的DOM是否准备完毕，<code>$(document).ready(function)</code>中的function，会等到页面的DOM准备完毕再运行。<br>类似的还有<code>$(window).on(&quot;load&quot;,funciton)</code>,这种写法下的function会在整个页面（并不仅仅是DOM）载入完毕时再执行。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="built_in">document</span> ).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"document loaded"</span> );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$( <span class="built_in">window</span> ).on( <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"window loaded"</span> );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>将上面的代码插入页面的某个部件里执行，可以看到document很快就载入完成，等页面的所有其他元素都载入完成，<code>window loaded</code>才会被执行输出。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/03/19/jQuery-Memo/" data-id="cki6vunqq0008o89k3awebges" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%A1%AB%E4%B9%8B%E5%9D%91/" rel="tag">未填之坑</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-rubik-cube" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/02/05/rubik-cube/">LBL法还原魔方</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/02/05/rubik-cube/" class="article-date">
-  <time datetime="2019-02-05T13:16:36.000Z" itemprop="datePublished">2019-02-05</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
-<p>我写的东西，自己都看不懂</p>
-</blockquote>
-<h2 id="魔方的基本结构"><a href="#魔方的基本结构" class="headerlink" title="魔方的基本结构"></a>魔方的基本结构</h2><p>国际标准的魔方（Rubik’s Cube) 由黄蓝红绿橙白6个中心块，8个角，12个棱，组成。<br>魔方颜色的位置关系是：上黄下白，前蓝后绿，左橙右红。</p>
-<h2 id="魔方入门级复原步骤-原参考链接"><a href="#魔方入门级复原步骤-原参考链接" class="headerlink" title="魔方入门级复原步骤 原参考链接"></a>魔方入门级复原步骤 <a href="http://www.mf100.org/beginner.htm" target="_blank" rel="noopener">原参考链接</a></h2><p>LBL(Layer By Layer)法，复原过程以上黄下白为例。</p>
-<h3 id="第一层"><a href="#第一层" class="headerlink" title="第一层"></a>第一层</h3><p>目标：复原最下面一层：底面复位，层面看可以构成四个凸型</p>
-<p>首先，不在意侧面颜色，将四个白色棱块移动到上方（白面朝上），转动上层，将白色棱块侧面颜色移动到对应的面，180旋转侧面，将白色棱块移动到底部。<br>然后，使用左手或者右手公式，将上方的角块移到下方对应的夹角处。如果颜色方向不符合，就使用同一公式多转几次。</p>
-<h3 id="第二层"><a href="#第二层" class="headerlink" title="第二层"></a>第二层</h3><p>目标：复原中层的四个棱 - 完成两层</p>
-<p>现在底面已经复原，侧面看四个小凸型也完成，使用左手公式-整体右转-右手公式（或者 右手公式-整体左转-左手公式）将上方的棱块移动到中层。</p>
-<h3 id="第三层（顶面）"><a href="#第三层（顶面）" class="headerlink" title="第三层（顶面）"></a>第三层（顶面）</h3><p>目标：顶面复原</p>
-<p>首先，使用拐角或者一字公式，将顶面复原成十字。<br>然后连续的使用左小鱼或者右小鱼，先转出左（右）小鱼型的顶面，再对应的解决掉，就完成了顶面。</p>
-<h3 id="第三层（侧面）"><a href="#第三层（侧面）" class="headerlink" title="第三层（侧面）"></a>第三层（侧面）</h3><p>目标：完全复原</p>
-<p>观察顶层侧面的颜色结构，如果发现有至少一对眼，就将有眼的一面放到左手，做一遍一字公式+拐角公式；如果没有眼，就做一遍拐角公式+一字公式；如果全是眼….就进行下一步。<br>（此时顶层的四个顶角应该都已经复原了）使用左小鱼-上层右转-右小鱼（或者右小鱼-生成左转-左小鱼），可以将面前的两个角块和左侧（右小鱼起手则是右侧）的棱块移动到一起，这样魔方就复原了。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/02/05/rubik-cube/" data-id="cki6vunqk0005o89k2y038bs0" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bubik-s-Cube/" rel="tag">Bubik's Cube</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
     </article>
     
   
@@ -1023,7 +1085,7 @@
 </ul>
     </div>
     <ul class="list-inline">
-      <li>&copy; 2020 XSUN</li>
+      <li>&copy; 2021 XSUN</li>
       <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
       <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
     </ul>

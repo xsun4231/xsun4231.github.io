@@ -65,6 +65,157 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-servlet-1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2021/04/20/servlet-1/">Servlet 基础</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/04/20/servlet-1/" class="article-date">
+  <time datetime="2021-04-20T14:11:34.000Z" itemprop="datePublished">2021-04-20</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>内容总结自网络。</p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>Servlet(Server Applet) 可以翻译为Java小服务程序或者服务连接器。是用Java编写的服务器端程序，具有独立于平台和协议的特性。主要的功能是交互式地浏览和生成数据，生成动态Web内容。</p>
+<p>狭义的Servlet是指Java的一个接口，广义的Servlet是指任何实现了这个接口的类。从原理上讲Servlet可以响应任何类型的请求，但绝大多数情况侠Servlet只用来扩展基于HTTP协议的Web服务器。</p>
+<h2 id="实现过程"><a href="#实现过程" class="headerlink" title="实现过程"></a>实现过程</h2><p>Servlet交互式地浏览和生成数据的过程为：</p>
+<ol>
+<li>客户端发送请求到服务器</li>
+<li>服务器将请求信息发送至Servlet</li>
+<li>Servlet生成响应内容并传给服务器。</li>
+<li>服务器将响应返回客户端</li>
+</ol>
+<h2 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h2><ol>
+<li>客户端请求Servlet</li>
+<li>加载Servlet到内存</li>
+<li>生成Servlet实例，调用init()初始化</li>
+<li>server调用service()方法，将一个请求对象和一个响应对象传递给service()</li>
+<li>service()调用资源处理请求，使用响应对象的方法将响应传回server，再传回到客户端</li>
+<li>(一般是server关闭时)调用destroy()方法</li>
+</ol>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2021/04/20/servlet-1/" data-id="cknq4njlp0000no9k6v128zof" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Servlet/" rel="tag">Servlet</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-day-3" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/12/07/day-3/">Day 3 面向对象进阶</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/12/07/day-3/" class="article-date">
+  <time datetime="2020-12-07T14:59:08.000Z" itemprop="datePublished">2020-12-07</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>3/100</p>
+<h2 id="slots"><a href="#slots" class="headerlink" title="slots"></a><strong>slots</strong></h2><p>Python是动态语言，我们可以随时为对象绑定新的属性和方法。但是如果我们想限制类型的对象所能绑定的属性，则需要用到<code>__slots__</code>。</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Person</span><span class="params">(object)</span>:</span></span><br><span class="line"></span><br><span class="line">    __slots__ = (<span class="string">'_name'</span>, <span class="string">'_age'</span>, <span class="string">'_gender'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, name, age)</span>:</span></span><br><span class="line">        self._name = name</span><br><span class="line">        self._age = age</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">name</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._name</span><br><span class="line"></span><br><span class="line"><span class="meta">    @property</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">return</span> self._age</span><br><span class="line"></span><br><span class="line"><span class="meta">    @age.setter</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">age</span><span class="params">(self, age)</span>:</span></span><br><span class="line">        self._age = age</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">play</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">if</span> self._age &lt;= <span class="number">16</span>:</span><br><span class="line">            print(<span class="string">'play game'</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            print(<span class="string">'work'</span>)</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">()</span>:</span></span><br><span class="line">    person = Person(<span class="string">'Alice'</span>, <span class="number">20</span>)</span><br><span class="line">    person.play()</span><br><span class="line">    person._gender = <span class="string">'male'</span></span><br><span class="line">    <span class="comment"># Error</span></span><br><span class="line">    <span class="comment"># person._family = True</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    main()</span><br></pre></td></tr></table></figure>
+<h2 id="特殊方法"><a href="#特殊方法" class="headerlink" title="特殊方法"></a>特殊方法</h2><ol>
+<li>静态方法使用 <code>@staticmethod</code> 修饰</li>
+<li>类方法使用 <code>@classmethod</code> 来修饰, 类方法的第一个参数必须是<code>cls</code>，表示当前类的对象</li>
+</ol>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/12/07/day-3/" data-id="ckj0qv4fw0000hy9kd0okfcno" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/100-days-of-code/" rel="tag">100 days of code</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-day-2" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -674,174 +825,6 @@
 
 </article>
         
-          <article id="post-git-prune" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/01/24/git-prune/">Git Prune命令</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/01/24/git-prune/" class="article-date">
-  <time datetime="2020-01-24T05:45:42.000Z" itemprop="datePublished">2020-01-24</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p><code>git prune</code> 简单地说就是一个清扫（housekeeping）的命令。</p>
-<p>使用git查看分支，可以看到分支有三个重要分类：本地分支，本地-远程分支的参照，远程分支<br>比如我们在github上merge了一个PR，顺手删除了一个分支，这时在本地的电脑上本删除的分支对应的本地分支，远程分支，远程本地的参照关系都还存在，如果我们使用<code>git branch -D name</code>删除该分支， 会发现只删除了本地的分支，所参照的远程分支<code>origin/name</code>依然存在，清理这种残留垃圾的命令的时候，就是用到了prune。</p>
-<h3 id="git-remove-prune-和-git-fetch-prune"><a href="#git-remove-prune-和-git-fetch-prune" class="headerlink" title="git remove prune 和 git fetch --prune"></a><code>git remove prune</code> 和 <code>git fetch --prune</code></h3><p><code>git remove prune</code> 清理所有已经删掉的远程分支参照，但是不会删除本地分支</p>
-<p><code>git fetch --prune</code> 则是清理完远程的无用分支之后，再把最近状态fetch到本地</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/24/git-prune/" data-id="cki6vunrn001go89kdf5e3vt4" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-ng-state-event" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/01/21/ng-state-event/">AngularJS 页面载入事件的相关方法</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/01/21/ng-state-event/" class="article-date">
-  <time datetime="2020-01-21T00:46:17.000Z" itemprop="datePublished">2020-01-21</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>AngularJS的uirouter一个重要的内容就是使用<code>state</code>的使用，这里记录一组关于<code>state</code>的事件，每当路由转移过程中发生对应事件时，都会在<code>$rootScrope</code>广播，使用<code>$rootScope.$on(&#39;$stateEventName&#39;, function(event, ...))</code>获取该事件。</p>
-<h2 id="0-引入router-state-events"><a href="#0-引入router-state-events" class="headerlink" title="0. 引入router.state.events"></a>0. 引入router.state.events</h2><p>首先引入JavaScript源文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"stateEvents.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br>然后导入模块：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">"myApplication"</span>, [<span class="string">'ui.router'</span>, <span class="string">'ui.router.state.events'</span>]</span><br></pre></td></tr></table></figure></p>
-<h2 id="1-事件"><a href="#1-事件" class="headerlink" title="1. 事件"></a>1. <a href="https://ui-router.github.io/ng1/docs/latest/modules/ng1_state_events.html" target="_blank" rel="noopener">事件</a></h2><ol>
-<li>$stateChangeCancel</li>
-<li>$stateChangeStart</li>
-<li>$stateNotFound</li>
-<li>$stateChangeError</li>
-<li>$stateChangeSuccess</li>
-</ol>
-<h3 id="stateChangeCancel"><a href="#stateChangeCancel" class="headerlink" title="$stateChangeCancel"></a>$stateChangeCancel</h3><p>当一个页面的转移被取消时，会在<code>$rootScope</code>广播<code>$stateChangeCancel</code>事件<br>有以下参数可以使用：</p>
-<ul>
-<li>toState 目标state</li>
-<li>toParams 前往目标state时的参数</li>
-<li>fromState 来源state</li>
-<li>fromParams 带来的参数</li>
-<li>options 选项</li>
-<li>$transition$ </li>
-</ul>
-<p>和开始事件<code>$stateChangeStart</code> ， 成功事件<code>$stateChangeSuccess</code> 提供的参数相同</p>
-<h3 id="stateChangeError"><a href="#stateChangeError" class="headerlink" title="$stateChangeError"></a>$stateChangeError</h3><p>相比于开始和成功的事件，错误事件多一个参数<code>error</code>，其内容当然是错误信息。</p>
-<h3 id="stateNotFound"><a href="#stateNotFound" class="headerlink" title="$stateNotFound"></a>$stateNotFound</h3><p>没有找到state时的事件，提供一下参数可以用：</p>
-<ul>
-<li>unfoudState 未找到的state信息，提供<code>to</code> <code>toParams</code> <code>options</code>等属性</li>
-<li>fromState 来源state</li>
-<li>fromParams 来源参数</li>
-<li>options 选项</li>
-</ul>
-<h2 id="2-更新到-Transition-Hooks"><a href="#2-更新到-Transition-Hooks" class="headerlink" title="2. 更新到 Transition Hooks"></a>2. 更新到 <a href="https://ui-router.github.io/ng1/docs/1.0.0/classes/transition.transitionservice.html" target="_blank" rel="noopener">Transition Hooks</a></h2><p>uirouter已经更新了IHookRegistry接口，可以对<code>transition</code>进行更为详细控制。<br><code>$transition</code> 和<code>$transitionService</code>都实现了该接口，但是<code>$transition</code>对象只能在转换开始前使用。  </p>
-<p>该接口提供以下方法：</p>
-<ol>
-<li>getHooks 返回所有已登录的hook方法，参数时方法名，比如<code>onBefore onEnter</code>等等</li>
-<li>onBefore 开始前</li>
-<li>onStart 开始后</li>
-<li>onExit 退出，onStart之后transition会推出state</li>
-<li>onRetain 保留，onExit之后onRetain会被执行，子state会被优先执行</li>
-<li>onEnter 进入，在onRetain结束后，transition会进入state</li>
-<li>onFinish 结束前，这是最后可以取消或者定向transition的方法</li>
-<li>onError 错误</li>
-<li>onSuccess 成功</li>
-</ol>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/21/ng-state-event/" data-id="cki6vunrl001bo89kdn80fych" class="article-share-link">
-        分享
-      </a>
-      
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
     </article>
     
   
@@ -865,7 +848,7 @@
 </ul>
     </div>
     <ul class="list-inline">
-      <li>&copy; 2020 XSUN</li>
+      <li>&copy; 2021 XSUN</li>
       <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
       <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
     </ul>

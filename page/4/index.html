@@ -65,6 +65,148 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-jQuery-Memo" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/03/19/jQuery-Memo/">jQuery 基本知识点备忘录</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/03/19/jQuery-Memo/" class="article-date">
+  <time datetime="2019-03-19T05:06:56.000Z" itemprop="datePublished">2019-03-19</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="document-ready"><a href="#document-ready" class="headerlink" title="$(document).ready()"></a>$(document).ready()</h2><p>页面载入需要首先准备DOM（Document Object Model),jQuery可以检测到页面的DOM是否准备完毕，<code>$(document).ready(function)</code>中的function，会等到页面的DOM准备完毕再运行。<br>类似的还有<code>$(window).on(&quot;load&quot;,funciton)</code>,这种写法下的function会在整个页面（并不仅仅是DOM）载入完毕时再执行。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$( <span class="built_in">document</span> ).ready(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"document loaded"</span> );</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$( <span class="built_in">window</span> ).on( <span class="string">"load"</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log( <span class="string">"window loaded"</span> );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>将上面的代码插入页面的某个部件里执行，可以看到document很快就载入完成，等页面的所有其他元素都载入完成，<code>window loaded</code>才会被执行输出。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/03/19/jQuery-Memo/" data-id="cki6vunqq0008o89k3awebges" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/jQuery/" rel="tag">jQuery</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%A1%AB%E4%B9%8B%E5%9D%91/" rel="tag">未填之坑</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
+          <article id="post-rubik-cube" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/02/05/rubik-cube/">LBL法还原魔方</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/02/05/rubik-cube/" class="article-date">
+  <time datetime="2019-02-05T13:16:36.000Z" itemprop="datePublished">2019-02-05</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>我写的东西，自己都看不懂</p>
+</blockquote>
+<h2 id="魔方的基本结构"><a href="#魔方的基本结构" class="headerlink" title="魔方的基本结构"></a>魔方的基本结构</h2><p>国际标准的魔方（Rubik’s Cube) 由黄蓝红绿橙白6个中心块，8个角，12个棱，组成。<br>魔方颜色的位置关系是：上黄下白，前蓝后绿，左橙右红。</p>
+<h2 id="魔方入门级复原步骤-原参考链接"><a href="#魔方入门级复原步骤-原参考链接" class="headerlink" title="魔方入门级复原步骤 原参考链接"></a>魔方入门级复原步骤 <a href="http://www.mf100.org/beginner.htm" target="_blank" rel="noopener">原参考链接</a></h2><p>LBL(Layer By Layer)法，复原过程以上黄下白为例。</p>
+<h3 id="第一层"><a href="#第一层" class="headerlink" title="第一层"></a>第一层</h3><p>目标：复原最下面一层：底面复位，层面看可以构成四个凸型</p>
+<p>首先，不在意侧面颜色，将四个白色棱块移动到上方（白面朝上），转动上层，将白色棱块侧面颜色移动到对应的面，180旋转侧面，将白色棱块移动到底部。<br>然后，使用左手或者右手公式，将上方的角块移到下方对应的夹角处。如果颜色方向不符合，就使用同一公式多转几次。</p>
+<h3 id="第二层"><a href="#第二层" class="headerlink" title="第二层"></a>第二层</h3><p>目标：复原中层的四个棱 - 完成两层</p>
+<p>现在底面已经复原，侧面看四个小凸型也完成，使用左手公式-整体右转-右手公式（或者 右手公式-整体左转-左手公式）将上方的棱块移动到中层。</p>
+<h3 id="第三层（顶面）"><a href="#第三层（顶面）" class="headerlink" title="第三层（顶面）"></a>第三层（顶面）</h3><p>目标：顶面复原</p>
+<p>首先，使用拐角或者一字公式，将顶面复原成十字。<br>然后连续的使用左小鱼或者右小鱼，先转出左（右）小鱼型的顶面，再对应的解决掉，就完成了顶面。</p>
+<h3 id="第三层（侧面）"><a href="#第三层（侧面）" class="headerlink" title="第三层（侧面）"></a>第三层（侧面）</h3><p>目标：完全复原</p>
+<p>观察顶层侧面的颜色结构，如果发现有至少一对眼，就将有眼的一面放到左手，做一遍一字公式+拐角公式；如果没有眼，就做一遍拐角公式+一字公式；如果全是眼….就进行下一步。<br>（此时顶层的四个顶角应该都已经复原了）使用左小鱼-上层右转-右小鱼（或者右小鱼-生成左转-左小鱼），可以将面前的两个角块和左侧（右小鱼起手则是右侧）的棱块移动到一起，这样魔方就复原了。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/02/05/rubik-cube/" data-id="cki6vunqk0005o89k2y038bs0" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Bubik-s-Cube/" rel="tag">Bubik's Cube</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-FunctionDefinition" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -622,7 +764,7 @@
 </ul>
     </div>
     <ul class="list-inline">
-      <li>&copy; 2020 XSUN</li>
+      <li>&copy; 2021 XSUN</li>
       <li>Powered by <a href="http://hexo.io/" target="_blank">Hexo</a></li>
       <li>Theme  <a href="https://github.com/zhwangart/hexo-theme-ocean" target="_blank" rel="noopener">Ocean</a></li>
     </ul>
