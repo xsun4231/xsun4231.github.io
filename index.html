@@ -65,6 +65,121 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-servlet-2-xml" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2021/04/22/servlet-2-xml/">web.xml 的Servlet配置</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/04/22/servlet-2-xml/" class="article-date">
+  <time datetime="2021-04-22T10:40:50.000Z" itemprop="datePublished">2021-04-22</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p><a href="https://www.cnblogs.com/AlanWilliamWalker/p/11128688.html" target="_blank" rel="noopener">web.xml中servlet配置及其含义</a></p>
+<h2 id="什么是-web-xml"><a href="#什么是-web-xml" class="headerlink" title="什么是 web.xml"></a>什么是 web.xml</h2><p>web.xml是Java工程中用来设置初始化配置信息的文件。xml的书写规则是有Schema文件来定义的。</p>
+<p>web.xml使用的schema一般是Sun定义的，标注在标签<code>&lt;web-app&gt;</code>中。  </p>
+<h2 id="web-xml中设置Servlet的常用标签"><a href="#web-xml中设置Servlet的常用标签" class="headerlink" title="web.xml中设置Servlet的常用标签"></a>web.xml中设置Servlet的常用标签</h2><h3 id="【1】servlet"><a href="#【1】servlet" class="headerlink" title="【1】servlet"></a>【1】servlet</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- servlet的配置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 定义servlet的内部名称 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span><span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- servlet的类名 此处为全路径--&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span><span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- servlet的映射配置 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">servlet-mapping</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- 对应上面定义的servlet内部名称 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span><span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  <span class="comment">&lt;!-- servlet的映射路径 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span><span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet-maping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>配置servlet标签需要配置两个，一个是servlet本身，另一个servlet-mapping是servlet的映射信息。<br>servlet的servlet-name可以自定义，一般为servlet的类名，而servlet-class则是servlet类的全路径。<br>servlet-mapping的servlet-name是对应的servlet名，url-pattern则是我们输入到浏览器地址栏中的用来调用servlet的url。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:left"></th>
+<th>url-pattern</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">精确匹配</td>
+<td>/servlet</td>
+</tr>
+<tr>
+<td style="text-align:left">模糊匹配</td>
+<td>/*</td>
+</tr>
+<tr>
+<td style="text-align:left">模糊匹配</td>
+<td>/path/*</td>
+</tr>
+<tr>
+<td style="text-align:left">模糊匹配</td>
+<td>*.后缀</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>url-pattern除了上面的基本写法之外，还要注意几点：</p>
+<ol>
+<li><code>/</code> 或者 <code>*</code>, url不能直接用servlet名开头。</li>
+<li>同时使用两种模糊匹配是非法路径</li>
+<li>匹配优先级：精确匹配最优先，后缀匹配最后</li>
+</ol>
+<h3 id="【2】初始参数"><a href="#【2】初始参数" class="headerlink" title="【2】初始参数"></a>【2】初始参数</h3><figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">servlet</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-name</span>&gt;</span><span class="tag">&lt;/<span class="name">servlet-name</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">servlet-class</span>&gt;</span><span class="tag">&lt;/<span class="name">servlet-class</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">init-param</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-name</span>&gt;</span>userName<span class="tag">&lt;/<span class="name">param-name</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">param-value</span>&gt;</span>Alice<span class="tag">&lt;/<span class="name">param-value</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">init-param</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">servlet</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="【3】特殊标签"><a href="#【3】特殊标签" class="headerlink" title="【3】特殊标签"></a>【3】特殊标签</h3><ol>
+<li>错误处理<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">error-code</span>&gt;</span>404<span class="tag">&lt;/<span class="name">error-code</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">location</span>&gt;</span>/error404.jsp<span class="tag">&lt;/<span class="name">location</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span> </span><br><span class="line"></span><br><span class="line">...</span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">error-page</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">exception-type</span>&gt;</span>java.lang.Exception<span class="tag">&lt;<span class="name">exception-type</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">location</span>&gt;</span>/exception.jsp<span class="tag">&lt;<span class="name">location</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">error-page</span>&gt;</span></span><br></pre></td></tr></table></figure></li>
+<li><p>过滤器</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">filter</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span> <span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-class</span>&gt;</span> <span class="tag">&lt;/<span class="name">filter-class</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">filter</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;<span class="name">filter-mapping</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">filter-name</span>&gt;</span> <span class="tag">&lt;/<span class="name">filter-name</span>&gt;</span> </span><br><span class="line">    <span class="tag">&lt;<span class="name">url-pattern</span>&gt;</span> <span class="tag">&lt;/<span class="name">url-pattern</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">filter-mapping</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>监听器</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">listener</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">listener-class</span>&gt;</span><span class="tag">&lt;/<span class="name">listener-class</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">listener</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+<li><p>会话</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">session-config</span>&gt;</span> </span><br><span class="line">  <span class="comment">&lt;!-- 以分为单位 --&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">session-timeout</span>&gt;</span> <span class="tag">&lt;/<span class="name">session-timeout</span>&gt;</span> </span><br><span class="line"><span class="tag">&lt;/<span class="name">session-config</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ol>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2021/04/22/servlet-2-xml/" data-id="cknsxm2wd0000ij9ke7ey6cz1" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-servlet-1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -722,99 +837,6 @@
         分享
       </a>
       
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-python-class" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/01/28/python-class/">Python中类的使用</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/01/28/python-class/" class="article-date">
-  <time datetime="2020-01-28T02:52:30.000Z" itemprop="datePublished">2020-01-28</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
-<p>类就是Class</p>
-</blockquote>
-<h2 id="类的基本"><a href="#类的基本" class="headerlink" title="类的基本"></a>类的基本</h2><ol>
-<li>类和实体 我们可以简单的将实体（instance）理解成具体的实物对象，把类看作是生产实体的蓝图。比如我们定义一个类<code>Car</code>，之后就可以在任何地方反复调用这个蓝图来生产<code>Car</code>的实体</li>
-<li>方法 在Python中我们可以像写脚本一样随便写个方法就执行，但是这可能带来诸多麻烦。比如我们为汽车的启动和停止写了两个方法<code>run()</code>和<code>stop()</code>，为了确定让哪辆车启动哪辆车停下，我们需要把对象的车多为参数传递进方法，是不是有一种拿遥控器开车还要每次都设置开的哪辆车的感觉？ 当我们需要在不同的地方使用这两个方法时，就要重新写一遍。如果我们把<code>run()</code> 和<code>stop()</code>写到类<code>Car</code>里面，就可以通过每个<code>Car</code>的实体，直接调用启动和停止的方法，方法属于车的实体，不同实体间的启动停止互不影响，这就有开车那味儿了。</li>
-<li>成员变量 类的成员变量分为两种(此处为Java思维）：静态变量和实例变量。 所谓静态变量，我们可以理解成刻在蓝图里的，比如我们给<code>Car</code>定义一个静态变量<code>轮子数 = 4</code>,这样我们生成的每个车都可以使用这个变量，甚至不生成实例的时候，也可以使用<code>Car.轮子数</code>, 只要看一下蓝图，就知道这个变量值。相比之下，实例变量就是指从属于实例的变量，比如<code>排气量 长度 宽度</code>,如果要调用这些变量，直接通过<code>Car.排气量</code>是不行的，因为图纸上可没具体写这变量是多少，需要先生成一个实体<code>my_car = Car()</code>，然后给<code>my_car</code>设置并使用</li>
-</ol>
-<h2 id="Python中类的使用"><a href="#Python中类的使用" class="headerlink" title="Python中类的使用"></a>Python中类的使用</h2><h3 id="类的定义"><a href="#类的定义" class="headerlink" title="类的定义"></a>类的定义</h3><p>Python中定义类使用的是关键字<code>class</code>，类的范围通过统一的缩进来管理<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Car</span>:</span></span><br><span class="line">  id = <span class="number">12345</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, id)</span>:</span></span><br><span class="line">    self.id = id</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">def</span> <span class="title">run</span><span class="params">(self)</span>:</span></span><br><span class="line">    print(<span class="string">f'run <span class="subst">&#123;self.id&#125;</span>!'</span>)</span><br></pre></td></tr></table></figure></p>
-<p>类的内部使用关键字<code>def</code>来定义方法，方法必须至少有一个参数<code>self</code>，<code>self</code>的含义相当于Java的<code>this</code>，指的是类的实例，可以通过<code>self</code>来访问实例变量和方法。  </p>
-<p><code>__init__</code>是构造体，当我们使用类名来生成实例的时候，会根据参数来调用对应的构造体生成实例，最基本的写法就是直接通过构造体给实例变量初始化，比如使用上面代码里得构造体：<code>Car(54321)</code>。  </p>
-<p>Python中使用<code>__</code>双下划线来定义私有变量和私有方法，私有的元素无法在外部通过实例名或者类名访问到</p>
-<p>就像Java中所有的类都是Object的字类，都继承了一些基本的方法一样，Python中也有一些类的专有方法, 且可以重写：</p>
-<ul>
-<li><strong>init</strong> : 构造函数，在生成对象时调用</li>
-<li><strong>del</strong> : 析构函数，释放对象时使用</li>
-<li><strong>repr</strong> : 打印，转换</li>
-<li><strong>setitem</strong> : 按照索引赋值</li>
-<li><strong>getitem</strong>: 按照索引获取值</li>
-<li><strong>len</strong>: 获得长度</li>
-<li><strong>cmp</strong>: 比较运算</li>
-<li><strong>call</strong>: 函数调用</li>
-<li><strong>add</strong>: 加运算</li>
-<li><strong>sub</strong>: 减运算</li>
-<li><strong>mul</strong>: 乘运算</li>
-<li><strong>truediv</strong>: 除运算</li>
-<li><strong>mod</strong>: 求余运算</li>
-<li><strong>pow</strong>: 乘方</li>
-</ul>
-<h2 id="后记"><a href="#后记" class="headerlink" title="后记"></a>后记</h2><p>跟同事聊了聊为什么要使用类，想起了一个很重要的点：内存管理。<br>如果我们不适用类来管理方法和变量的话，程序运行过程中，定义的变量和方法就会一直存在，占用内存空间；但是当我们使用了类之后，则可以在需要的时候声明类的实例来调用内存，当一个实例不再被使用的时候，又可以通过垃圾回收自动收回内存（垃圾回收机制不同语言有不同的做法）。这样我们的程序才可以根据需求灵活地使用资源。<br>当然，方法和变量的管理更方便什么的，也算使用类的好处</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/28/python-class/" data-id="cki6vunrr001io89k0wshfgk2" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
     </footer>
 
   </div>

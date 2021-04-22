@@ -65,6 +65,89 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-Embadded-JavaScript" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/03/20/Embadded-JavaScript/">Embadded-JavaScript</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/03/20/Embadded-JavaScript/" class="article-date">
+  <time datetime="2019-03-20T01:51:17.000Z" itemprop="datePublished">2019-03-20</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h1 id="Ejs-文件是什么"><a href="#Ejs-文件是什么" class="headerlink" title="Ejs 文件是什么"></a>Ejs 文件是什么</h1><p>嵌入式JavaScript代码：Embadded JavaScript 是一种从JavaScript快速生成html的简易模板，详细说明可以阅读说明文档 <a href="https://ejs.bootcss.com" target="_blank" rel="noopener">Ejs 中文文档</a>。<br>Hexo网页使用ejs的时候，使用命令 <code>npm install hexo-renderer-ejs --save</code>， 添加ejs的支持就可以了。这里作为备忘录，简单记录一下标签的写法。</p>
+<h2 id="标签"><a href="#标签" class="headerlink" title="标签"></a>标签</h2><ul>
+<li>&lt;% ‘脚本’ 标签，用于流程控制，无输出。</li>
+<li>&lt;%_ 删除其前面的空格符</li>
+<li>&lt;%= 输出数据到模板（输出是转义 HTML 标签）</li>
+<li>&lt;%- 输出非转义的数据到模板</li>
+<li>&lt;%# 注释标签，不执行、不输出内容</li>
+<li>&lt;%% 输出字符串 ‘&lt;%’</li>
+<li>%&gt; 一般结束标签</li>
+<li>-%&gt; 删除紧随其后的换行符</li>
+<li>_%&gt; 将结束标签后面的空格符删除</li>
+</ul>
+<p>整理一下就是说，ejs代码就是写在html中的javascript，标签是<code>&lt;% %&gt;</code>,标签的开头和结尾有几中命令符可以使用，分别是</p>
+<ol>
+<li><code>_</code> 删除空格;</li>
+<li><code>=</code>输出数据;</li>
+<li><code>-</code> 在前：输出非转义数据（比如插入处理），在后：删除换行; </li>
+<li><code>#</code> 注释; </li>
+<li><code>%</code> 用于输出 <code>&lt;%</code></li>
+</ol>
+<h2 id="插入"><a href="#插入" class="headerlink" title="插入"></a>插入</h2><h2 id="自定义“转义符”-（官方文档写的是分隔符-delimiters，不是很理解）"><a href="#自定义“转义符”-（官方文档写的是分隔符-delimiters，不是很理解）" class="headerlink" title="自定义“转义符” （官方文档写的是分隔符-delimiters，不是很理解）"></a>自定义“转义符” （官方文档写的是分隔符-delimiters，不是很理解）</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/03/20/Embadded-JavaScript/" data-id="cki6vunqx000co89kggyyaify" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Ejs/" rel="tag">Ejs</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JavaScript/" rel="tag">JavaScript</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/%E6%9C%AA%E5%A1%AB%E4%B9%8B%E5%9D%91/" rel="tag">未填之坑</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-jQuery-Memo" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
