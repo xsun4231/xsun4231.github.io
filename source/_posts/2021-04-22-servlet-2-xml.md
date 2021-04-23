@@ -53,6 +53,11 @@ url-pattern除了上面的基本写法之外，还要注意几点：
 
 ### 【2】初始参数
 
+可以设置两种参数用来初始化servlet，一种是init-param，一种时context-param。  
+关于两种参数的区别：[init-param and context-param](https://stackoverflow.com/questions/28392888/init-param-and-context-param)  
+
+init-param是给特定servlet设置的参数，所以写在`<servlet>`下面
+
 ```xml
 <servlet>
   <servlet-name></servlet-name>
@@ -63,6 +68,21 @@ url-pattern除了上面的基本写法之外，还要注意几点：
   </init-param>
 </servlet>
 ```
+
+使用的时候通过`getServletConfig().getInitParamter("userName")`来调用。
+
+context-param是为webApp全局准备的参数，直接定义在`<web-app>`标签下，通过`getServletContext().getInitParamter("userName")`来调用
+
+```xml
+<web-app>
+  <context-param>
+    <param-name>userName</param-name>
+    <param-value>Alice</param-value>
+  </context-param>
+
+</web-app>
+```
+
 
 ### 【3】特殊标签
 
@@ -105,4 +125,15 @@ url-pattern除了上面的基本写法之外，还要注意几点：
   <!-- 以分为单位 -->
   <session-timeout> </session-timeout> 
 </session-config>
+```
+
+5. 欢迎页
+
+找不到index1，就会加载index2
+
+```xml
+<welcome-file-list>
+  <welcome-file>index1.jsp</welcome-file>
+  <welcome-file>index2.jsp</welcome-file>
+</welcome-file-list>
 ```
