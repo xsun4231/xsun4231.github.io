@@ -34,9 +34,9 @@
     
     
     
-    <category term="JUnit" scheme="https://xsun4231.github.io/tags/JUnit/"/>
-    
     <category term="Mockito" scheme="https://xsun4231.github.io/tags/Mockito/"/>
+    
+    <category term="JUnit" scheme="https://xsun4231.github.io/tags/JUnit/"/>
     
   </entry>
   

@@ -15,8 +15,8 @@
         lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
         }</script>]]></content>
       <tags>
-        <tag>JUnit</tag>
         <tag>Mockito</tag>
+        <tag>JUnit</tag>
       </tags>
   </entry>
   <entry>
