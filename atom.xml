@@ -6,7 +6,7 @@
   <link href="https://xsun4231.github.io/atom.xml" rel="self"/>
   
   <link href="https://xsun4231.github.io/"/>
-  <updated>2021-04-23T14:28:14.189Z</updated>
+  <updated>2021-08-04T02:06:20.588Z</updated>
   <id>https://xsun4231.github.io/</id>
   
   <author>
@@ -15,6 +15,30 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mockito使い始めて見る</title>
+    <link href="https://xsun4231.github.io/2021/07/21/junit-1/"/>
+    <id>https://xsun4231.github.io/2021/07/21/junit-1/</id>
+    <published>2021-07-21T00:57:31.000Z</published>
+    <updated>2021-08-04T02:06:20.588Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>Mockitoはクラスの偽のオブジェクトを作ってくれます。</p><p><code>when().thenReturn()</code>を利用して、<code>public</code>メソッドの戻る値を指定できます。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_with_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; mockedList = mock(List.class);</span><br><span class="line">    when(mockedList.size()).thenReturn(<span class="number">10</span>);</span><br><span class="line">    assertThat(mockedList.size(), is(<span class="number">10</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p><p>ここは1つ注意しなければならないことがあります。モックで作成したオブジェクトの全てのメソッドが偽物になります。下記の<code>add()</code>はモックされたため、リストに追加する処理はありません。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_without_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; mockedList = mock(List.class);</span><br><span class="line">    mockedList.add(<span class="string">"A"</span>);</span><br><span class="line">    mockedList.add(<span class="string">"B"</span>);</span><br><span class="line">    mockedList.add(<span class="string">"C"</span>);</span><br><span class="line">    assertThat(mockedList.size(), is(<span class="number">0</span>));</span><br></pre></td></tr></table></figure></p><p><code>Answers.CALL_REAL_METHODS</code>を利用すれば、本物のメソッドを呼べます。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call_real_method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Employee employee = mock(Employee.class, Answers.CALLS_REAL_METHODS);</span><br><span class="line">    employee.setName(<span class="keyword">new</span> Name(<span class="string">"Alice"</span>));</span><br><span class="line">    assertThat(employee.getName(), is(<span class="string">"Alice"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call_real_method_with_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Employee employee = mock(Employee.class, Answers.CALLS_REAL_METHODS);</span><br><span class="line">    employee.setName(<span class="keyword">new</span> Name(<span class="string">"Alice"</span>));</span><br><span class="line">    when(employee.getName()).thenReturn(<span class="keyword">new</span> Name(<span class="string">"Bob"</span>));</span><br><span class="line">    assertThat(employee.getName(), is(<span class="string">"Bob"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
+      
+    
+    
+    
+    
+    <category term="JUnit" scheme="https://xsun4231.github.io/tags/JUnit/"/>
+    
+    <category term="Mockito" scheme="https://xsun4231.github.io/tags/Mockito/"/>
+    
+  </entry>
   
   <entry>
     <title>web.xml 的Servlet配置</title>
@@ -439,28 +463,6 @@
     
     
     <category term="Lambda" scheme="https://xsun4231.github.io/tags/Lambda/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>HAS-A 和 IS-A的区别</title>
-    <link href="https://xsun4231.github.io/2019/11/14/has-a-and-is-a/"/>
-    <id>https://xsun4231.github.io/2019/11/14/has-a-and-is-a/</id>
-    <published>2019-11-14T04:39:09.000Z</published>
-    <updated>2020-07-05T10:15:00.008Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="一句话总结"><a href="#一句话总结" class="headerlink" title="一句话总结"></a>一句话总结</h2><p>不妨通过字面意思来理解，HAS-A 就是有什么的意思，而IS-A就是是什么的意思。在面向对象编程（OOP）中，类的继承就是IS-A的关系，简单来说就是“张三是个人，旺财是条狗”的意思。而类的对象使用，多数时候可以看作是HAS-A的关系，比如把身高，体重都看作是类的话，我们可以说“张三有身高，有体重”。</p><ul><li>Inheritance 继承 IS-A</li><li>composition 组成 HAS-A</li></ul><h2 id="举个栗子"><a href="#举个栗子" class="headerlink" title="举个栗子"></a>举个栗子</h2><p>谷歌搜到的第一篇说明就很<a href="https://www.w3resource.com/java-tutorial/inheritance-composition-relationship.php" target="_blank" rel="noopener">浅显易懂</a></p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Class Car&#123; ... &#125; <span class="comment">// 车是一个类 </span></span><br><span class="line"></span><br><span class="line">Class Engine&#123; ... &#125; <span class="comment">// 引擎也是一个类</span></span><br><span class="line"></span><br><span class="line">Class Toyota extends Car &#123; <span class="comment">// 丰田车作为一个有继承关系的子类，跟Car是IS-A关系，跟Engine是HAS-A的关系</span></span><br><span class="line">  <span class="keyword">private</span> Engine;</span><br><span class="line">  ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
-      
-    
-    
-    
-    
-    <category term="Inheritance" scheme="https://xsun4231.github.io/tags/Inheritance/"/>
     
   </entry>
   
