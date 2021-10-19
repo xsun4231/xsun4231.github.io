@@ -65,6 +65,74 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-log4j-using-lambda" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/11/14/log4j-using-lambda/">Log4j 节能写法</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/11/14/log4j-using-lambda/" class="article-date">
+  <time datetime="2019-11-14T08:06:39.000Z" itemprop="datePublished">2019-11-14</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="尽量使用Supplier-lt-gt-来生成log"><a href="#尽量使用Supplier-lt-gt-来生成log" class="headerlink" title="尽量使用Supplier&lt;&gt; 来生成log"></a>尽量使用Supplier&lt;&gt; 来生成log</h2><p>比如debug，我们可以使用下面三种方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message object with the &#123;<span class="doctag">@link</span> Level#DEBUG DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message string to log.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message with parameters at the &#123;<span class="doctag">@link</span> Level#DEBUG DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message to log; the format depends on the message factory.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> params parameters to the message.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> #getMessageFactory()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message, Object... params)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message with parameters which are only to be constructed if the logging level is the &#123;<span class="doctag">@link</span> Level#DEBUG</span></span><br><span class="line"><span class="comment"> * DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message to log; the format depends on the message factory.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> paramSuppliers An array of functions, which when called, produce the desired log message parameters.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.4</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message, Supplier&lt;?&gt;... paramSuppliers)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<h3 id="第一种：直接输出信息。"><a href="#第一种：直接输出信息。" class="headerlink" title="第一种：直接输出信息。"></a>第一种：直接输出信息。</h3><p>最不环保的写法，甚至新手的话可能会出现<code>logger.debug(&quot;A is &quot; + a + &quot;, B is&quot; + b + &quot;.&quot;);</code>这种写法，首先使用<code>+</code>来生成log文本是非常耗时的，其次，无论log输出的级别是否低于debug，这段字符串的处理都会被执行。</p>
+<h3 id="第二种：使用MessageFactory和参数生成log"><a href="#第二种：使用MessageFactory和参数生成log" class="headerlink" title="第二种：使用MessageFactory和参数生成log"></a>第二种：使用MessageFactory和参数生成log</h3><p>OpenJDK 8之前这么写是没问题的，使用MessageFactory来生成log既增加了可读性，又比字符串连接要节能。不过问题是log的生成还是总需要被执行。</p>
+<h3 id="第三种：使用Lambda"><a href="#第三种：使用Lambda" class="headerlink" title="第三种：使用Lambda"></a>第三种：使用Lambda</h3><p>doc中写了:<code>only to be constructed if the logging level is the DEBUG level.</code>，还需要解释吗？</p>
+<h3 id="那么，当需要把objectA写到debug里时"><a href="#那么，当需要把objectA写到debug里时" class="headerlink" title="那么，当需要把objectA写到debug里时"></a>那么，当需要把objectA写到debug里时</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logger.debug(objectA.toString()); <span class="comment">// 一般写法</span></span><br><span class="line"></span><br><span class="line">logger.debug(() -&gt; objectA.toString()); <span class="comment">// 略动脑筋的写法</span></span><br><span class="line"></span><br><span class="line">logger.debug(objectA::toString); <span class="comment">//文艺写法</span></span><br></pre></td></tr></table></figure>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/11/14/log4j-using-lambda/" data-id="ckrwuowfu000y5f9kao90h65h" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Lambda/" rel="tag">Lambda</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-has-a-and-is-a" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -956,100 +1024,12 @@
 
 </article>
         
-          <article id="post-python-f-strings" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/04/12/python-f-strings/">python 中的字符串格式化</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/04/12/python-f-strings/" class="article-date">
-  <time datetime="2019-04-12T07:46:14.000Z" itemprop="datePublished">2019-04-12</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
-<p>原文： <a href="https://realpython.com/python-f-strings/" target="_blank" rel="noopener">python-f-string</a></p>
-</blockquote>
-<p>自<code>3.6</code>版本开始，python引入了一种叫做<code>f-strings</code>的写法，使用改写发可以极大地增强字符串的可读性（当然好处不止这些).<br>不过在学习<code>f-strings</code>之前，先看看以往的写法都有哪些。</p>
-<h2 id="旧方法"><a href="#旧方法" class="headerlink" title="旧方法"></a>旧方法</h2><p>在<code>3.6</code>之前，我们常用的字符串格式化写法有两种：</p>
-<ol>
-<li>使用转移符 <code>%</code></li>
-<li>使用字符串的格式化方法 <code>str.format()</code> </li>
-</ol>
-<h3 id="旧选项1"><a href="#旧选项1" class="headerlink" title="旧选项1 %"></a>旧选项1 <code>%</code></h3><p>跟其他编程语言一样，python也可以用<code>%</code>来把变量值插入到字符串中的对应位置。写法如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">'Hello %s.'</span> % name)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom.'</span></span><br></pre></td></tr></table></figure><br>输出多个变量时，在<code>%</code>后使用括号将所有变量放到一起：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello %s, you are a %s.this is %s, a %s'</span> % (name1, type1, name2, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure><br>但是转移符这种东西，一个不小心就容易写错。</p>
-<h3 id="旧选项2-str-format"><a href="#旧选项2-str-format" class="headerlink" title="旧选项2 str.format()"></a>旧选项2 <code>str.format()</code></h3><p>从<code>2.6</code>开始，python为字符串添加了一个<code>format()</code>方法，可以将引入的参数按顺序替换到字符串中的<code>{}</code>处。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;&#125;, you are a &#123;&#125;.this is &#123;&#125;, a &#123;&#125;'</span>.format(name1, type1, name2, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
-<p>使用<code>format()</code>你还可以自定义参数的插入顺序，例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;0&#125;, you are a &#123;2&#125;.this is &#123;1&#125;, a &#123;3&#125;'</span>.format(name1, name2, type1, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
-<p><code>format()</code>方法的功能还不止于此，既然<code>index</code>可以用来出入参数，那可不可以用参数名称呢？毕竟<code>0,1,2,3</code>的可读性有限。答案是可以：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;name_a&#125;, you are a &#123;type_a&#125;.this is &#123;name_b&#125;, a &#123;type_b&#125;'</span>.format(name_a = name1, name_b = name2, type_a = type1, type_b = type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
-<p>既然可以这样写了，那干脆直接引入<code>dict</code>得了.这个也是可以的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">character = &#123;</span><br><span class="line">  <span class="string">'name'</span> : <span class="string">'Tom'</span>,</span><br><span class="line">  <span class="string">'type'</span> : <span class="string">'cat'</span></span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">'Hello &#123;name&#125;, you are a &#123;type&#125;.'</span>.format(**character))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat.'</span></span><br></pre></td></tr></table></figure></p>
-<p>这样可读性就非常好了，不过在<code>3.6</code>版本，更好的写法出现了。</p>
-<h2 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h2><p>关于<code>f-string</code>的引入，可以参看<a href="https://www.python.org/dev/peps/pep-0498/" target="_blank" rel="noopener">PEP498</a>, 或者<a href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings" target="_blank" rel="noopener">Python-doc</a>.  </p>
-<p>写法非常简单，在字符串前加<code>f</code>或者<code>F</code>，在字符串中直接插入<code>{变量名}</code>，就可以了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">type = <span class="string">'cat'</span></span><br><span class="line">print(<span class="string">f'Hello <span class="subst">&#123;name&#125;</span>, you are a <span class="subst">&#123;type&#125;</span>.'</span>)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat.'</span></span><br></pre></td></tr></table></figure></p>
-<p>在<code>{}</code>中不仅可以使用字符串，还可以使用运算公式，甚至调用方法：</p>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_name</span><span class="params">(input)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Jerry'</span></span><br><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">f"Hello <span class="subst">&#123;change_name(name)&#125;</span>."</span>)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Jerry.'</span></span><br></pre></td></tr></table></figure>
-<blockquote>
-<p>当使用<code>object</code>时，f-string会默认调用<code>__str__()</code>方法，如果想调用<code>__repr__</code>，需要在对象名后面加<code>!r</code>：<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f"<span class="subst">&#123;object&#125;</span>"</span></span><br><span class="line"><span class="comment"># 输出 object.__str__()的内容</span></span><br><span class="line"><span class="string">f"<span class="subst">&#123;object!r&#125;</span>"</span></span><br><span class="line"><span class="comment"># 输出 object.__repr__()的内容</span></span><br></pre></td></tr></table></figure></p>
-</blockquote>
-<p>最后一个考点：换行。在python中可以使用<code>&#39;&#39;&#39;</code>来输出带有换行的字符串，不过直接在前面加上f的结果并不怎么好看：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">f'''</span></span><br><span class="line"><span class="string">Hi,</span></span><br><span class="line"><span class="string">you are a </span></span><br><span class="line"><span class="string">Cat</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># message : '\nHi, \nyou are a \nCat\n'</span></span><br></pre></td></tr></table></figure></p>
-<p><code>f-string</code>的换行方法是，在每行的最后添加<code>\</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">f''</span>\</span><br><span class="line"><span class="string">f'Hi '</span>\</span><br><span class="line"><span class="string">f'you are a '</span>\</span><br><span class="line"><span class="string">f'Cat '</span></span><br><span class="line"><span class="comment"># message ： 'Hi you are a Cat'</span></span><br></pre></td></tr></table></figure></p>
-<p><strong>注意</strong> 一般情况下<code>f-string</code>使用单引号和双引号没有区别，但比如引用字典，需要单引号来标记key时，f-stirng就需要使用双引号了，否则字符串中的单引号会被错误理解。</p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/04/12/python-f-strings/" data-id="ckrwuowfj000g5f9k9ulmasdu" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/F-string/" rel="tag">F-string</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
     </article>
     
   
     
       <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
+        <a class="extend prev" rel="prev" href="/page/2/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><span class="page-number current">3</span><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/4/">下一页</a>
       </nav>
     
   </section>

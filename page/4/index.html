@@ -65,6 +65,94 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-python-f-strings" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2019/04/12/python-f-strings/">python 中的字符串格式化</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2019/04/12/python-f-strings/" class="article-date">
+  <time datetime="2019-04-12T07:46:14.000Z" itemprop="datePublished">2019-04-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
+<p>原文： <a href="https://realpython.com/python-f-strings/" target="_blank" rel="noopener">python-f-string</a></p>
+</blockquote>
+<p>自<code>3.6</code>版本开始，python引入了一种叫做<code>f-strings</code>的写法，使用改写发可以极大地增强字符串的可读性（当然好处不止这些).<br>不过在学习<code>f-strings</code>之前，先看看以往的写法都有哪些。</p>
+<h2 id="旧方法"><a href="#旧方法" class="headerlink" title="旧方法"></a>旧方法</h2><p>在<code>3.6</code>之前，我们常用的字符串格式化写法有两种：</p>
+<ol>
+<li>使用转移符 <code>%</code></li>
+<li>使用字符串的格式化方法 <code>str.format()</code> </li>
+</ol>
+<h3 id="旧选项1"><a href="#旧选项1" class="headerlink" title="旧选项1 %"></a>旧选项1 <code>%</code></h3><p>跟其他编程语言一样，python也可以用<code>%</code>来把变量值插入到字符串中的对应位置。写法如下：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">'Hello %s.'</span> % name)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom.'</span></span><br></pre></td></tr></table></figure><br>输出多个变量时，在<code>%</code>后使用括号将所有变量放到一起：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello %s, you are a %s.this is %s, a %s'</span> % (name1, type1, name2, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure><br>但是转移符这种东西，一个不小心就容易写错。</p>
+<h3 id="旧选项2-str-format"><a href="#旧选项2-str-format" class="headerlink" title="旧选项2 str.format()"></a>旧选项2 <code>str.format()</code></h3><p>从<code>2.6</code>开始，python为字符串添加了一个<code>format()</code>方法，可以将引入的参数按顺序替换到字符串中的<code>{}</code>处。例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;&#125;, you are a &#123;&#125;.this is &#123;&#125;, a &#123;&#125;'</span>.format(name1, type1, name2, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p>使用<code>format()</code>你还可以自定义参数的插入顺序，例如：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;0&#125;, you are a &#123;2&#125;.this is &#123;1&#125;, a &#123;3&#125;'</span>.format(name1, name2, type1, type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p><code>format()</code>方法的功能还不止于此，既然<code>index</code>可以用来出入参数，那可不可以用参数名称呢？毕竟<code>0,1,2,3</code>的可读性有限。答案是可以：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">name1 = <span class="string">'Tom'</span></span><br><span class="line">name2 = <span class="string">'Jerry'</span></span><br><span class="line">type1 = <span class="string">'cat'</span></span><br><span class="line">type2 = <span class="string">'god'</span></span><br><span class="line">print(<span class="string">'Hello &#123;name_a&#125;, you are a &#123;type_a&#125;.this is &#123;name_b&#125;, a &#123;type_b&#125;'</span>.format(name_a = name1, name_b = name2, type_a = type1, type_b = type2))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat. this is Jerry, a god'</span></span><br></pre></td></tr></table></figure></p>
+<p>既然可以这样写了，那干脆直接引入<code>dict</code>得了.这个也是可以的：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">character = &#123;</span><br><span class="line">  <span class="string">'name'</span> : <span class="string">'Tom'</span>,</span><br><span class="line">  <span class="string">'type'</span> : <span class="string">'cat'</span></span><br><span class="line">&#125;</span><br><span class="line">print(<span class="string">'Hello &#123;name&#125;, you are a &#123;type&#125;.'</span>.format(**character))</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat.'</span></span><br></pre></td></tr></table></figure></p>
+<p>这样可读性就非常好了，不过在<code>3.6</code>版本，更好的写法出现了。</p>
+<h2 id="新方法"><a href="#新方法" class="headerlink" title="新方法"></a>新方法</h2><p>关于<code>f-string</code>的引入，可以参看<a href="https://www.python.org/dev/peps/pep-0498/" target="_blank" rel="noopener">PEP498</a>, 或者<a href="https://docs.python.org/3/reference/lexical_analysis.html#f-strings" target="_blank" rel="noopener">Python-doc</a>.  </p>
+<p>写法非常简单，在字符串前加<code>f</code>或者<code>F</code>，在字符串中直接插入<code>{变量名}</code>，就可以了：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">type = <span class="string">'cat'</span></span><br><span class="line">print(<span class="string">f'Hello <span class="subst">&#123;name&#125;</span>, you are a <span class="subst">&#123;type&#125;</span>.'</span>)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Tom, you are a cat.'</span></span><br></pre></td></tr></table></figure></p>
+<p>在<code>{}</code>中不仅可以使用字符串，还可以使用运算公式，甚至调用方法：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">change_name</span><span class="params">(input)</span>:</span></span><br><span class="line">    <span class="keyword">return</span> <span class="string">'Jerry'</span></span><br><span class="line">name = <span class="string">'Tom'</span></span><br><span class="line">print(<span class="string">f"Hello <span class="subst">&#123;change_name(name)&#125;</span>."</span>)</span><br><span class="line"><span class="comment"># 输出结果: 'Hello Jerry.'</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>当使用<code>object</code>时，f-string会默认调用<code>__str__()</code>方法，如果想调用<code>__repr__</code>，需要在对象名后面加<code>!r</code>：<br> <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">f"<span class="subst">&#123;object&#125;</span>"</span></span><br><span class="line"><span class="comment"># 输出 object.__str__()的内容</span></span><br><span class="line"><span class="string">f"<span class="subst">&#123;object!r&#125;</span>"</span></span><br><span class="line"><span class="comment"># 输出 object.__repr__()的内容</span></span><br></pre></td></tr></table></figure></p>
+</blockquote>
+<p>最后一个考点：换行。在python中可以使用<code>&#39;&#39;&#39;</code>来输出带有换行的字符串，不过直接在前面加上f的结果并不怎么好看：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">f'''</span></span><br><span class="line"><span class="string">Hi,</span></span><br><span class="line"><span class="string">you are a </span></span><br><span class="line"><span class="string">Cat</span></span><br><span class="line"><span class="string">'''</span></span><br><span class="line"><span class="comment"># message : '\nHi, \nyou are a \nCat\n'</span></span><br></pre></td></tr></table></figure></p>
+<p><code>f-string</code>的换行方法是，在每行的最后添加<code>\</code><br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">message = <span class="string">f''</span>\</span><br><span class="line"><span class="string">f'Hi '</span>\</span><br><span class="line"><span class="string">f'you are a '</span>\</span><br><span class="line"><span class="string">f'Cat '</span></span><br><span class="line"><span class="comment"># message ： 'Hi you are a Cat'</span></span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong> 一般情况下<code>f-string</code>使用单引号和双引号没有区别，但比如引用字典，需要单引号来标记key时，f-stirng就需要使用双引号了，否则字符串中的单引号会被错误理解。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2019/04/12/python-f-strings/" data-id="ckrwuowfj000g5f9k9ulmasdu" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/F-string/" rel="tag">F-string</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-Hexo" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -774,152 +862,12 @@
 
 </article>
         
-          <article id="post-Markdown" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2017/11/18/Markdown/">Markdown 语法笔记</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2017/11/18/Markdown/" class="article-date">
-  <time datetime="2017-11-17T15:00:00.000Z" itemprop="datePublished">2017-11-18</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<blockquote>
-<p>内容整理自 <a href="https://www.markdowntutorial.com/" target="_blank" rel="noopener">markdowntutorial</a>.</p>
-</blockquote>
-<h2 id="粗体和斜体"><a href="#粗体和斜体" class="headerlink" title="粗体和斜体"></a>粗体和斜体</h2><h3 id="斜体"><a href="#斜体" class="headerlink" title="斜体"></a><em>斜体</em></h3><p><code>_Italic_</code><br>输入内容的前后添加下划线，使字体变为斜体。</p>
-<h3 id="粗体"><a href="#粗体" class="headerlink" title="粗体"></a><strong>粗体</strong></h3><p><code>**Bold**</code><br>输入内容的前后添加星号，使字体变为粗体。</p>
-<h3 id="删除线"><a href="#删除线" class="headerlink" title="删除线"></a><del>删除线</del></h3><p><code>~~删除线~~</code><br>输入内容的前后加波浪线，在文字上添加删除划线。</p>
-<h2 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"># Header one</span><br><span class="line">## Header two </span><br><span class="line">### Header three</span><br><span class="line">#### Header four</span><br><span class="line">##### Header five</span><br><span class="line">###### Header six</span><br></pre></td></tr></table></figure>
-<h2 id="链接"><a href="#链接" class="headerlink" title="链接"></a>链接</h2><h3 id="完整的链接"><a href="#完整的链接" class="headerlink" title="完整的链接"></a>完整的链接</h3><p><code>[XSUN的主页](https://xsun4231.github.io/)</code><br>效果： <a href="https://xsun4231.github.io/">XSUN的主页</a><br>链接的书写格式： 方括号+圆括号的组合 方括号内为页面显示内容，圆括号内为链接URL</p>
-<h3 id="参照"><a href="#参照" class="headerlink" title="参照"></a>参照</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[从这里进入][url名]</span><br><span class="line">[从这里也可以][url名]</span><br><span class="line">[这里也行][url名]</span><br><span class="line"></span><br><span class="line">[url名]: https:&#x2F;&#x2F;xsun4231.github.io&#x2F;</span><br></pre></td></tr></table></figure>
-<p><a href="https://xsun4231.github.io/">从这里进入</a><br><a href="https://xsun4231.github.io/">从这里也可以</a><br><a href="https://xsun4231.github.io/">这里也行</a></p>
-<p>设置参照与设置链接方法基本相同，只是在链接URL前面单独设置一个标签，标签可反复使用。</p>
-<h2 id="插入（图片）"><a href="#插入（图片）" class="headerlink" title="插入（图片）"></a>插入（图片）</h2><p><code>![这是一张很可爱的图片](https://octodex.github.com/images/spidertocat.png)</code></p>
-<p><a href="https://octodex.github.com/images/spidertocat.png" target="_blank" rel="noopener" title="这是一张很可爱的图片" class="gallery-item"><img src="https://octodex.github.com/images/spidertocat.png" alt="这是一张很可爱的图片"></a></p>
-<p>图片的是指方法与链接的设置方法基本相同，只是在方括号前面添加叹号。</p>
-<blockquote>
-<p>图片的链接同样可以设置为参照</p>
-</blockquote>
-<h2 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h2><p><code>&gt; 孟子曰：孔子说的对。</code></p>
-<blockquote>
-<p>孟子曰：孔子说的对。</p>
-</blockquote>
-<p>在文字块(以换行结束)前添加大于号(右尖括号)，则将整个文字块设置成引用。<br>将多个段落设置成一个引用块时，在每一个新段落(换行后)添加大于号。</p>
-<h2 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">* milk</span><br><span class="line">* egg</span><br><span class="line">* apple</span><br><span class="line">    1. fuji</span><br><span class="line">    2. fuji2</span><br><span class="line">    3. fuji3</span><br><span class="line">* banana</span><br><span class="line">* people</span><br><span class="line">    1. AAA</span><br><span class="line">    1. BBB</span><br><span class="line">    1. CCC</span><br></pre></td></tr></table></figure>
-<ul>
-<li>milk</li>
-<li>egg</li>
-<li>apple<ol>
-<li>fuji</li>
-<li>fuji2</li>
-<li>fuji3</li>
-</ol>
-</li>
-<li>banana<ol>
-<li>AAA</li>
-<li>BBB</li>
-<li>CCC</li>
-</ol>
-</li>
-</ul>
-<p>列表用星号来标记，在星号前添加缩进来增加层次，使用数字代替星号可以将标签变为数字。</p>
-<h2 id="段落"><a href="#段落" class="headerlink" title="段落"></a>段落</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">第一段</span><br><span class="line">第二段</span><br><span class="line">第三段</span><br></pre></td></tr></table></figure>
-<p>代码块外的单一换行不会被识别，可以使用多个换行来制造强制换行，不过会造成很大的间距。</p>
-<p><strong>第一段</strong><br><strong>第二段</strong></p>
-<p><strong>第三段</strong></p>
-<p>标准的换行是在行位添加两个空格：</p>
-<p><strong>第一段</strong><br><strong>第二段</strong><br><strong>第三段</strong></p>
-<h2 id="代码块"><a href="#代码块" class="headerlink" title="代码块"></a>代码块</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">@requires_authorization</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    # A comment</span><br><span class="line">    print &#39;hello world&#39;</span><br></pre></td></tr></table></figure>
-<p><strong>` 是键盘左上角Esc下面那个，不是单引号’</strong><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">三个&#96; </span><br><span class="line">@requires_authorization</span><br><span class="line">class SomeClass:</span><br><span class="line">    pass</span><br><span class="line"></span><br><span class="line">if __name__ &#x3D;&#x3D; &#39;__main__&#39;:</span><br><span class="line">    # A comment</span><br><span class="line">    print &#39;hello world&#39;</span><br><span class="line"></span><br><span class="line">三个&#96;</span><br></pre></td></tr></table></figure></p>
-<h2 id="图表"><a href="#图表" class="headerlink" title="图表"></a>图表</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">| ID     | NAME | AGE   |</span><br><span class="line">| :---- | ----: | :---: |</span><br><span class="line">| 00001 | AAAA |  5    |</span><br><span class="line">| 002 | BB |  12   |</span><br><span class="line">| 03 | CCC |  9  |</span><br></pre></td></tr></table></figure>
-<div class="table-container">
-<table>
-<thead>
-<tr>
-<th style="text-align:left">ID</th>
-<th style="text-align:right">NAME</th>
-<th style="text-align:center">AGE</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">00001</td>
-<td style="text-align:right">AAAA</td>
-<td style="text-align:center">5</td>
-</tr>
-<tr>
-<td style="text-align:left">002</td>
-<td style="text-align:right">BB</td>
-<td style="text-align:center">12</td>
-</tr>
-<tr>
-<td style="text-align:left">03</td>
-<td style="text-align:right">CCC</td>
-<td style="text-align:center">9</td>
-</tr>
-</tbody>
-</table>
-</div>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2017/11/18/Markdown/" data-id="ckrwuowex00005f9k8s21dwa5" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Markdown/" rel="tag">Markdown</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
     </article>
     
   
     
       <nav class="page-nav">
-        <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span>
+        <a class="extend prev" rel="prev" href="/page/3/">上一页</a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="page-number current">4</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/5/">下一页</a>
       </nav>
     
   </section>

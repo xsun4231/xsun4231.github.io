@@ -6,7 +6,7 @@
   <link href="https://xsun4231.github.io/atom.xml" rel="self"/>
   
   <link href="https://xsun4231.github.io/"/>
-  <updated>2021-08-04T02:06:20.588Z</updated>
+  <updated>2021-10-19T12:41:38.663Z</updated>
   <id>https://xsun4231.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>InjectMocksのインジェクト方法</title>
+    <link href="https://xsun4231.github.io/2021/08/04/injectMocks/"/>
+    <id>https://xsun4231.github.io/2021/08/04/injectMocks/</id>
+    <published>2021-08-04T02:10:32.000Z</published>
+    <updated>2021-10-19T12:41:38.663Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>テスト対象のインスタンスに <code>@InjectMocks</code>をつけると、対象インスタンスのフィルドに<code>@Mock</code>されたインスタンスを差し込むことができる。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@InjectMocks</span></span><br><span class="line">Manager manager;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Mock</span></span><br><span class="line">Name name; <span class="comment">// manager.nameはモックされる</span></span><br></pre></td></tr></table></figure><h2 id="実現方法"><a href="#実現方法" class="headerlink" title="実現方法"></a>実現方法</h2><p><code>InjectMocks</code>のJavadocを読むと、フィルドのinject方法は3つあります。  </p><ol><li><p>Constructor injection;<br>1つ目はコンストラクターを利用してモックインスタンスを設定する。この方法はデフォルトで引数の数が一番多いコンストラクターを利用する。<br>要注意なことは、必要なモックインスタンスが見つからない場合、その引数は<code>null</code>となる。<br>引数にモックできないタイプ（基本型）がある場合、デフォルトのコンストラクターで<code>InjectMocks</code>のインスタンスを作って別の方法でInjectを実現する。</p></li><li><p>Property setter injection;<br>2つ目はとてもわかりやすくて、フィルドの<code>setter</code>メソッドを利用して、モックインスタンスを差し込む。<br>該当の<code>setter</code>メソッドを探すとき、まずフィルドのタイプを利用する。同じタイプのフィルドが存在する場合、モックインスタンスの名前を利用する。<br>という理由で、モックインスタンスを定義するとき、できる限り<code>Inject</code>対象のフィルドと同じ名前にする方がいい。<br><code>Constructor Injection</code>でデフォルトコンストラクターを利用する場合、モックインスタンスの差し込むはこの方法で実現される。</p></li></ol><ol><li>Field injection;<br>フィルドの<code>setter</code>がない場合、直接設定で<code>Inject</code>を実現する。ルールは<code>Property setter injection</code>と同じ。</li></ol></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>Mockito使い始めて見る</title>
@@ -441,28 +461,6 @@
     <category term="Java" scheme="https://xsun4231.github.io/tags/Java/"/>
     
     <category term="stream" scheme="https://xsun4231.github.io/tags/stream/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>Log4j 节能写法</title>
-    <link href="https://xsun4231.github.io/2019/11/14/log4j-using-lambda/"/>
-    <id>https://xsun4231.github.io/2019/11/14/log4j-using-lambda/</id>
-    <published>2019-11-14T08:06:39.000Z</published>
-    <updated>2020-07-05T10:15:00.008Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="尽量使用Supplier-lt-gt-来生成log"><a href="#尽量使用Supplier-lt-gt-来生成log" class="headerlink" title="尽量使用Supplier&lt;&gt; 来生成log"></a>尽量使用Supplier&lt;&gt; 来生成log</h2><p>比如debug，我们可以使用下面三种方法<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message object with the &#123;<span class="doctag">@link</span> Level#DEBUG DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message string to log.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message with parameters at the &#123;<span class="doctag">@link</span> Level#DEBUG DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message to log; the format depends on the message factory.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> params parameters to the message.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@see</span> #getMessageFactory()</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message, Object... params)</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Logs a message with parameters which are only to be constructed if the logging level is the &#123;<span class="doctag">@link</span> Level#DEBUG</span></span><br><span class="line"><span class="comment"> * DEBUG&#125; level.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> message the message to log; the format depends on the message factory.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span> paramSuppliers An array of functions, which when called, produce the desired log message parameters.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@since</span> 2.4</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">(String message, Supplier&lt;?&gt;... paramSuppliers)</span></span>;</span><br></pre></td></tr></table></figure></p><h3 id="第一种：直接输出信息。"><a href="#第一种：直接输出信息。" class="headerlink" title="第一种：直接输出信息。"></a>第一种：直接输出信息。</h3><p>最不环保的写法，甚至新手的话可能会出现<code>logger.debug(&quot;A is &quot; + a + &quot;, B is&quot; + b + &quot;.&quot;);</code>这种写法，首先使用<code>+</code>来生成log文本是非常耗时的，其次，无论log输出的级别是否低于debug，这段字符串的处理都会被执行。</p><h3 id="第二种：使用MessageFactory和参数生成log"><a href="#第二种：使用MessageFactory和参数生成log" class="headerlink" title="第二种：使用MessageFactory和参数生成log"></a>第二种：使用MessageFactory和参数生成log</h3><p>OpenJDK 8之前这么写是没问题的，使用MessageFactory来生成log既增加了可读性，又比字符串连接要节能。不过问题是log的生成还是总需要被执行。</p><h3 id="第三种：使用Lambda"><a href="#第三种：使用Lambda" class="headerlink" title="第三种：使用Lambda"></a>第三种：使用Lambda</h3><p>doc中写了:<code>only to be constructed if the logging level is the DEBUG level.</code>，还需要解释吗？</p><h3 id="那么，当需要把objectA写到debug里时"><a href="#那么，当需要把objectA写到debug里时" class="headerlink" title="那么，当需要把objectA写到debug里时"></a>那么，当需要把objectA写到debug里时</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">logger.debug(objectA.toString()); <span class="comment">// 一般写法</span></span><br><span class="line"></span><br><span class="line">logger.debug(() -&gt; objectA.toString()); <span class="comment">// 略动脑筋的写法</span></span><br><span class="line"></span><br><span class="line">logger.debug(objectA::toString); <span class="comment">//文艺写法</span></span><br></pre></td></tr></table></figure></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
-      
-    
-    
-    
-    
-    <category term="Lambda" scheme="https://xsun4231.github.io/tags/Lambda/"/>
     
   </entry>
   
