@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    Git Prune命令 |
+    JUnit5から使える @ParameterizedTest |
     
     XSUN</title>
   
@@ -32,7 +32,7 @@
 <body>
 <main class="content">
   <section class="outer">
-  <article id="post-git-prune" class="article article-type-post" itemscope
+  <article id="post-parameterizedtest" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      Git Prune命令
+      JUnit5から使える @ParameterizedTest
     </h1>
   
   
@@ -54,8 +54,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/01/24/git-prune/" class="article-date">
-  <time datetime="2020-01-24T05:45:42.000Z" itemprop="datePublished">2020-01-24</time>
+      <a href="/2021/10/20/parameterizedtest/" class="article-date">
+  <time datetime="2021-10-20T08:00:16.000Z" itemprop="datePublished">2021-10-20</time>
 </a>
       
     </div>
@@ -74,10 +74,19 @@
       
 
       
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p><code>git prune</code> 简单地说就是一个清扫（housekeeping）的命令。</p>
-<p>使用git查看分支，可以看到分支有三个重要分类：本地分支，本地-远程分支的参照，远程分支<br>比如我们在github上merge了一个PR，顺手删除了一个分支，这时在本地的电脑上本删除的分支对应的本地分支，远程分支，远程本地的参照关系都还存在，如果我们使用<code>git branch -D name</code>删除该分支， 会发现只删除了本地的分支，所参照的远程分支<code>origin/name</code>依然存在，清理这种残留垃圾的命令的时候，就是用到了prune。</p>
-<h3 id="git-remove-prune-和-git-fetch-prune"><a href="#git-remove-prune-和-git-fetch-prune" class="headerlink" title="git remove prune 和 git fetch --prune"></a><code>git remove prune</code> 和 <code>git fetch --prune</code></h3><p><code>git remove prune</code> 清理所有已经删掉的远程分支参照，但是不会删除本地分支</p>
-<p><code>git fetch --prune</code> 则是清理完远程的无用分支之后，再把最近状态fetch到本地</p>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p><code>@ParameterizedTest</code>は指定のテストメソッドに違う引数を順番に渡して処理することで、複数のテストを実現する方法。<br>JUnit5の新しい機能として、使うとき以下のパッケージを依存関係に追加する必要がある。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.junit.jupiter:junit-jupiter-params</span><br></pre></td></tr></table></figure></p>
+<h2 id="使ってみる"><a href="#使ってみる" class="headerlink" title="使ってみる"></a>使ってみる</h2><p><code>@ParameterizedTest</code>でパラメーター指定のテストケースを声明する。そして<code>@ValueSource</code>を利用してパラメーターを指定する（整数:1,2,3）。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@ValueSource</span>(ints = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>これで１つのメソッドでテストを3回実行した。<br><code>@ParameterizedTest</code>は<code>org.junit.jupiter.params.provider</code>パッケージ下のインタフェースと一緒に使う必要がある。</p>
+<h2 id="DisplayName-of-ParameterizedTest"><a href="#DisplayName-of-ParameterizedTest" class="headerlink" title="DisplayName of ParameterizedTest"></a>DisplayName of ParameterizedTest</h2><p><code>@ParameterizedTest</code>はパラメーターごとにテストケースを命名できる。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span>(name = <span class="string">"input is &#123;0&#125; &#123;1&#125; &#123;2&#125;"</span>)</span><br><span class="line"><span class="meta">@CsvSource</span>(value = &#123;<span class="string">"1,a,true"</span>&#125;)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, String b, <span class="keyword">boolean</span> c)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>使えるplaceholderは以下となる。</p>
+<ul>
+<li><code>{index}</code> テストケースの番号</li>
+<li><code>{0~n}</code> 指定番号の引数の値（0から）</li>
+<li><code>{arguments}</code> 全ても引数</li>
+<li><code>{displayName}</code> <code>@DisplayName</code>で指定する内容、<code>@DisplayName</code>がない場合はテストメソッドの名前</li>
+</ul>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -87,12 +96,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/24/git-prune/" data-id="ckuzh67ds001dum9k4fyo5u7g" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2021/10/20/parameterizedtest/" data-id="ckuzh67e90026um9k47tl9xd6" class="article-share-link">
         分享
       </a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/" rel="tag">git</a></li></ul>
-
     </footer>
 
   </div>
@@ -101,19 +108,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/01/28/python-class/" class="article-nav-link">
-        <strong class="article-nav-caption">前一篇</strong>
-        <div class="article-nav-title">
-          
-            Python中类的使用
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/01/21/ng-state-event/" class="article-nav-link">
+      <a href="/2021/08/04/injectMocks/" class="article-nav-link">
         <strong class="article-nav-caption">后一篇</strong>
-        <div class="article-nav-title">AngularJS 页面载入事件的相关方法</div>
+        <div class="article-nav-title">InjectMocksのインジェクト方法</div>
       </a>
     
   </nav>

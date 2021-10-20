@@ -6,7 +6,7 @@
   <link href="https://xsun4231.github.io/atom.xml" rel="self"/>
   
   <link href="https://xsun4231.github.io/"/>
-  <updated>2021-10-19T12:41:38.663Z</updated>
+  <updated>2021-10-20T12:10:32.601Z</updated>
   <id>https://xsun4231.github.io/</id>
   
   <author>
@@ -15,6 +15,26 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JUnit5から使える @ParameterizedTest</title>
+    <link href="https://xsun4231.github.io/2021/10/20/parameterizedtest/"/>
+    <id>https://xsun4231.github.io/2021/10/20/parameterizedtest/</id>
+    <published>2021-10-20T08:00:16.000Z</published>
+    <updated>2021-10-20T12:10:32.601Z</updated>
+    
+    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p><code>@ParameterizedTest</code>は指定のテストメソッドに違う引数を順番に渡して処理することで、複数のテストを実現する方法。<br>JUnit5の新しい機能として、使うとき以下のパッケージを依存関係に追加する必要がある。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">org.junit.jupiter:junit-jupiter-params</span><br></pre></td></tr></table></figure></p><h2 id="使ってみる"><a href="#使ってみる" class="headerlink" title="使ってみる"></a>使ってみる</h2><p><code>@ParameterizedTest</code>でパラメーター指定のテストケースを声明する。そして<code>@ValueSource</code>を利用してパラメーターを指定する（整数:1,2,3）。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span></span><br><span class="line"><span class="meta">@ValueSource</span>(ints = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> i)</span> </span>&#123;</span><br><span class="line">    System.out.println(i);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>これで１つのメソッドでテストを3回実行した。<br><code>@ParameterizedTest</code>は<code>org.junit.jupiter.params.provider</code>パッケージ下のインタフェースと一緒に使う必要がある。</p><h2 id="DisplayName-of-ParameterizedTest"><a href="#DisplayName-of-ParameterizedTest" class="headerlink" title="DisplayName of ParameterizedTest"></a>DisplayName of ParameterizedTest</h2><p><code>@ParameterizedTest</code>はパラメーターごとにテストケースを命名できる。</p><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@ParameterizedTest</span>(name = <span class="string">"input is &#123;0&#125; &#123;1&#125; &#123;2&#125;"</span>)</span><br><span class="line"><span class="meta">@CsvSource</span>(value = &#123;<span class="string">"1,a,true"</span>&#125;)</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">test</span><span class="params">(<span class="keyword">int</span> a, String b, <span class="keyword">boolean</span> c)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p>使えるplaceholderは以下となる。</p><ul><li><code>{index}</code> テストケースの番号</li><li><code>{0~n}</code> 指定番号の引数の値（0から）</li><li><code>{arguments}</code> 全ても引数</li><li><code>{displayName}</code> <code>@DisplayName</code>で指定する内容、<code>@DisplayName</code>がない場合はテストメソッドの名前</li></ul></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
+      
+    
+    
+    
+    
+  </entry>
   
   <entry>
     <title>InjectMocksのインジェクト方法</title>
@@ -437,30 +457,6 @@
     
     
     <category term="Data Analysis" scheme="https://xsun4231.github.io/tags/Data-Analysis/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>关于Java的stream执行顺序的笔记</title>
-    <link href="https://xsun4231.github.io/2019/11/20/about-java-stream-lazy/"/>
-    <id>https://xsun4231.github.io/2019/11/20/about-java-stream-lazy/</id>
-    <published>2019-11-20T04:39:55.000Z</published>
-    <updated>2020-07-05T10:15:00.008Z</updated>
-    
-    <content type="html"><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="Java-util-stream-基本"><a href="#Java-util-stream-基本" class="headerlink" title="Java.util.stream 基本"></a>Java.util.stream 基本</h2><p>首先来个例子：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="string">"aaa"</span>, <span class="string">"aa"</span>, <span class="string">"bbbb"</span>, <span class="string">"bb"</span>, <span class="string">"ccccc"</span>, <span class="string">"cc"</span>, <span class="string">"dddddd"</span>, <span class="string">"eeeeeee"</span>)</span><br><span class="line">        .filter(len -&gt; len.length() &gt; <span class="number">3</span>)</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure><br>stream在使用的时候，分为中间操作（intermediate operation)和终端操作（terminal operation），例子中的<code>filter()</code>就是中间操作，中间操作可以有多个，跟火车厢一样接起来就可以。<br>而终端操作（或者叫终结操作)只能有一个。终端操作很容易理解成是对stream的结束，事实上终端操作最主要的作用是执行。如果没有终端操作，中间操作的内容将不会生效。所以，下面这个stream执行后是什么效果？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="string">"aaa"</span>, <span class="string">"aa"</span>, <span class="string">"bbbb"</span>, <span class="string">"bb"</span>, <span class="string">"ccccc"</span>, <span class="string">"cc"</span>, <span class="string">"dddddd"</span>, <span class="string">"eeeeeee"</span>)</span><br><span class="line">        .mapToInt(String::length)</span><br><span class="line">        .filter(len -&gt; len &gt; <span class="number">3</span>)</span><br><span class="line">        .peek(System.out::println)</span><br><span class="line">        .limit(<span class="number">2</span>);</span><br></pre></td></tr></table></figure><br>答案是：什么也不输出。因为<code>limit()</code>是个中间方法，对这个stream的操作将不会生效。  </p><h3 id="执行顺序"><a href="#执行顺序" class="headerlink" title="执行顺序"></a>执行顺序</h3><p>弄懂了什么中间操作和终端操作的区别以后，我们就要面对下一个疑问了：中间操作和终端操作的执行顺序是什么？<br>很简单，来个例子瞧瞧：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="string">"aaa"</span>, <span class="string">"aa"</span>, <span class="string">"bbbb"</span>, <span class="string">"bb"</span>, <span class="string">"ccccc"</span>, <span class="string">"cc"</span>, <span class="string">"dddddd"</span>, <span class="string">"eeeeeee"</span>)</span><br><span class="line">        .filter(len -&gt; len.length() &gt; <span class="number">3</span>)</span><br><span class="line">        .peek(System.out::println)</span><br><span class="line">        .mapToInt(String::length)</span><br><span class="line">        .limit(<span class="number">2</span>)</span><br><span class="line">        .forEach(System.out::println);</span><br></pre></td></tr></table></figure><br>输出结果有几行？内容是?</p><a href="/2019/11/20/about-java-stream-lazy/1.png" class="gallery-item"><img src="/2019/11/20/about-java-stream-lazy/1.png" class="" title="result"></a><p>这里重点在<code>peek()</code>，<code>limit()</code>和<code>forEach()</code>的生效顺序，从结果上来看,应该是stream中的每一个元素，对应一组打包的操作，所以输出字符串b之后紧接着输出的是b的长度，而不是字符串c。而<code>limit()</code>限制了处理的元素个数，大于limit的元素到达不了终端操作，自然不会生效。</p><p>我们换个方法再验证一遍，这次终端操作用<code>sum()</code>来替代<code>forEach()</code>，终端操作不是对元素逐一的操作了，对中间操作的执行顺序会有什么影响吗？<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">Stream.of(<span class="string">"aaa"</span>, <span class="string">"aa"</span>, <span class="string">"bbbb"</span>, <span class="string">"bb"</span>, <span class="string">"ccccc"</span>, <span class="string">"cc"</span>, <span class="string">"dddddd"</span>, <span class="string">"eeeeeee"</span>)</span><br><span class="line">        .filter(len -&gt; len.length() &gt; <span class="number">3</span>)</span><br><span class="line">        .peek(System.out::println)</span><br><span class="line">        .mapToInt(String::length)</span><br><span class="line">        .limit(<span class="number">2</span>)</span><br><span class="line">        .peek(System.out::println)</span><br><span class="line">        .sum();</span><br></pre></td></tr></table></figure><br>结果跟<code>forEach()</code>是一样的。</p></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {        var options = {            selector: '.gallery-item'        };        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);        }</script>]]></content>
-    
-    
-      
-      
-    <summary type="html">&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css&quot; /&gt;&lt;div class=&quot;.article</summary>
-      
-    
-    
-    
-    
-    <category term="Java" scheme="https://xsun4231.github.io/tags/Java/"/>
-    
-    <category term="stream" scheme="https://xsun4231.github.io/tags/stream/"/>
     
   </entry>
   
