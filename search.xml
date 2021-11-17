@@ -1,6 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title>Vue.js プロジェクトの構造</title>
+    <url>/2021/11/12/vue-project/</url>
+    <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>Vue.jsプロジェクトファイルの構造とVueファイルの構造をメモする。</p>
+<h2 id="Vue-jsプロジェクトの構造"><a href="#Vue-jsプロジェクトの構造" class="headerlink" title="Vue.jsプロジェクトの構造"></a>Vue.jsプロジェクトの構造</h2><ul>
+<li>src<ul>
+<li>components: 各モジュールはここで定義する</li>
+<li>main.js: 入り口のjs</li>
+<li>router <ul>
+<li>index.js: ルーター設定</li>
+</ul>
+</li>
+<li>App.vue </li>
+<li>assets: 画像などのリソース</li>
+</ul>
+</li>
+<li>index.html: 画面入り口</li>
+<li>static: 静的リソース</li>
+<li>test</li>
+<li>config<ul>
+<li>index.js: 各種設定</li>
+</ul>
+</li>
+<li>build</li>
+<li>package.json</li>
+<li>node_modules</li>
+</ul>
+<h2 id="Vueファイルの構造"><a href="#Vueファイルの構造" class="headerlink" title="Vueファイルの構造"></a>Vueファイルの構造</h2><p>Vueファイルは以下３つの部分がある。</p>
+<p>[1]HTML<br><figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"Vue logo"</span> <span class="attr">src</span>=<span class="string">"./assets/logo.png"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">HelloWorld</span> <span class="attr">msg</span>=<span class="string">"Welcome to Your Vue.js App"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>[2]JavaScript<br><figure class="highlight js"><table><tr><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">'./components/HelloWorld.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'App'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>[3]css<br><figure class="highlight"><table><tr><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-id">#app</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">  <span class="attribute">-webkit-font-smoothing</span>: antialiased;</span><br><span class="line">  <span class="attribute">-moz-osx-font-smoothing</span>: grayscale;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#2c3e50</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>]]></content>
+  </entry>
+  <entry>
     <title>JUnit5から使える @ParameterizedTest</title>
     <url>/2021/10/20/parameterizedtest/</url>
     <content><![CDATA[<link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p><code>@ParameterizedTest</code>は指定のテストメソッドに違う引数を順番に渡して処理することで、複数のテストを実現する方法。<br>JUnit5の新しい機能として、使うとき以下のパッケージを依存関係に追加する必要がある。<br><figure class="highlight plain"><table><tr><td class="code"><pre><span class="line">org.junit.jupiter:junit-jupiter-params</span><br></pre></td></tr></table></figure></p>

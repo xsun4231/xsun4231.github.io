@@ -65,6 +65,95 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-vue-project" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2021/11/12/vue-project/">Vue.js プロジェクトの構造</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/11/12/vue-project/" class="article-date">
+  <time datetime="2021-11-12T11:55:02.000Z" itemprop="datePublished">2021-11-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>Vue.jsプロジェクトファイルの構造とVueファイルの構造をメモする。</p>
+<h2 id="Vue-jsプロジェクトの構造"><a href="#Vue-jsプロジェクトの構造" class="headerlink" title="Vue.jsプロジェクトの構造"></a>Vue.jsプロジェクトの構造</h2><ul>
+<li>src<ul>
+<li>components: 各モジュールはここで定義する</li>
+<li>main.js: 入り口のjs</li>
+<li>router <ul>
+<li>index.js: ルーター設定</li>
+</ul>
+</li>
+<li>App.vue </li>
+<li>assets: 画像などのリソース</li>
+</ul>
+</li>
+<li>index.html: 画面入り口</li>
+<li>static: 静的リソース</li>
+<li>test</li>
+<li>config<ul>
+<li>index.js: 各種設定</li>
+</ul>
+</li>
+<li>build</li>
+<li>package.json</li>
+<li>node_modules</li>
+</ul>
+<h2 id="Vueファイルの構造"><a href="#Vueファイルの構造" class="headerlink" title="Vueファイルの構造"></a>Vueファイルの構造</h2><p>Vueファイルは以下３つの部分がある。</p>
+<p>[1]HTML<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">template</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"app"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">alt</span>=<span class="string">"Vue logo"</span> <span class="attr">src</span>=<span class="string">"./assets/logo.png"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">HelloWorld</span> <span class="attr">msg</span>=<span class="string">"Welcome to Your Vue.js App"</span>/&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>[2]JavaScript<br><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="keyword">import</span> HelloWorld <span class="keyword">from</span> <span class="string">'./components/HelloWorld.vue'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> &#123;</span><br><span class="line">  name: <span class="string">'App'</span>,</span><br><span class="line">  components: &#123;</span><br><span class="line">    HelloWorld</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>[3]css<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;<span class="selector-tag">style</span>&gt;</span><br><span class="line"><span class="selector-id">#app</span> &#123;</span><br><span class="line">  <span class="attribute">font-family</span>: Avenir, Helvetica, Arial, sans-serif;</span><br><span class="line">  <span class="attribute">-webkit-font-smoothing</span>: antialiased;</span><br><span class="line">  <span class="attribute">-moz-osx-font-smoothing</span>: grayscale;</span><br><span class="line">  <span class="attribute">text-align</span>: center;</span><br><span class="line">  <span class="attribute">color</span>: <span class="number">#2c3e50</span>;</span><br><span class="line">  <span class="attribute">margin-top</span>: <span class="number">60px</span>;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/style&gt;</span><br></pre></td></tr></table></figure></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2021/11/12/vue-project/" data-id="ckvwcqdze0001049k6kvxh26c" class="article-share-link">
+        分享
+      </a>
+      
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-parameterizedtest" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -775,71 +864,6 @@
       </a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PlantUML/" rel="tag">PlantUML</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-java-optional-best-practice" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/08/31/java-optional-best-practice/">实用Optional时需要注意的二三事</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/08/31/java-optional-best-practice/" class="article-date">
-  <time datetime="2020-08-31T00:20:42.000Z" itemprop="datePublished">2020-08-31</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="使用了Optional为什么还发生NullPointerException"><a href="#使用了Optional为什么还发生NullPointerException" class="headerlink" title="使用了Optional为什么还发生NullPointerException"></a>使用了Optional为什么还发生NullPointerException</h2><h2 id="对于空值应该怎么设置"><a href="#对于空值应该怎么设置" class="headerlink" title="对于空值应该怎么设置"></a>对于空值应该怎么设置</h2><h2 id="如何高效的实用Optional返回值"><a href="#如何高效的实用Optional返回值" class="headerlink" title="如何高效的实用Optional返回值"></a>如何高效的实用Optional返回值</h2><h2 id="如何避免Optional相关的反模式"><a href="#如何避免Optional相关的反模式" class="headerlink" title="如何避免Optional相关的反模式"></a>如何避免Optional相关的反模式</h2><h2 id="怎么把Optional用的更专业"><a href="#怎么把Optional用的更专业" class="headerlink" title="怎么把Optional用的更专业"></a>怎么把Optional用的更专业</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blogs.oracle.com/javamagazine/12-recipes-for-using-the-optional-class-as-its-meant-to-be-used" target="_blank" rel="noopener">The Java Optianl class (12 recipes)</a></p>
-<p><a href="https://blogs.oracle.com/javamagazine/the-java-optional-class-11-more-recipes-for-preventing-null-pointer-exceptions" target="_blank" rel="noopener">The Java Optianl class (11 recipes)</a></p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/08/31/java-optional-best-practice/" data-id="ckuzh67dz001mum9k06k53si6" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
 
     </footer>
 
