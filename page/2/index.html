@@ -65,6 +65,77 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-er-1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/10/12/er-1/">PlantUML（一） 类图</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/10/12/er-1/" class="article-date">
+  <time datetime="2020-10-12T08:35:23.000Z" itemprop="datePublished">2020-10-12</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>ER图笔记（一）</p>
+<p><strong>ER图</strong> Entity Relationship Diagram</p>
+<h3 id="Cardinality"><a href="#Cardinality" class="headerlink" title="Cardinality"></a>Cardinality</h3><p>在线的端点通过下列符号来指定数量关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--  1</span><br><span class="line">--||  1 &amp;&amp; only 1</span><br><span class="line">--o|  0 or 1</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.plantuml.com/plantuml/svg/SzJDqKtaSjAjgKbIu7BMpQz91W00" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzJDqKtaSjAjgKbIu7BMpQz91W00" /></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--&#123;  multi</span><br><span class="line">--|&#123;  1 or more</span><br><span class="line">--o&#123;  0 or more</span><br></pre></td></tr></table></figure><br><a href="https://www.plantuml.com/plantuml/svg/Sz6jJk5orQsfJkLoqyslJWC0" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/Sz6jJk5orQsfJkLoqyslJWC0" /></a></p>
+<h3 id="Direction"><a href="#Direction" class="headerlink" title="Direction"></a>Direction</h3><p>在线的中央插入下列关键字来指定方向<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">up, u</span><br><span class="line">down, d, do</span><br><span class="line">left, l, le</span><br><span class="line">right, r, ri</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.plantuml.com/plantuml/svg/SzGjrRKBBU1oqatHjNF9Byy30000" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzGjrRKBBU1oqatHjNF9Byy30000" /></a><br><a href="https://www.plantuml.com/plantuml/svg/SzRDqRNpIKqhuNBHBTAr2yfCpoW10000" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzRDqRNpIKqhuNBHBTAr2yfCpoW10000" /></a></p>
+<h3 id="package-style"><a href="#package-style" class="headerlink" title="package style"></a>package style</h3><p>可以使用自带的模版来定义每个包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package foo1 &lt;&lt;Node&gt;&gt; &#123;</span><br><span class="line">  class Class1</span><br><span class="line">&#125;</span><br><span class="line">package foo2 &lt;&lt;Rectangle&gt;&gt; &#123;</span><br><span class="line">  class Class2</span><br><span class="line">&#125;</span><br><span class="line">package foo3 &lt;&lt;Folder&gt;&gt; &#123;</span><br><span class="line">  class Class3</span><br><span class="line">&#125;</span><br><span class="line">package foo4 &lt;&lt;Frame&gt;&gt; &#123;</span><br><span class="line">  class Class4</span><br><span class="line">&#125;</span><br><span class="line">package foo5 &lt;&lt;Cloud&gt;&gt; &#123;</span><br><span class="line">  class Class5</span><br><span class="line">&#125;</span><br><span class="line">package foo6 &lt;&lt;Database&gt;&gt; &#123;</span><br><span class="line">  class Class6</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><a href="https://www.plantuml.com/plantuml/svg/RSon3O0W443HdYbk1GMj38t6qi8DJa0BqJEYbM5tiJ84cb-z_0FLYek1cQY0fXb86odXOG3AedFGVYsOPySFom17eoxS5vlHPQnvq3rPRSwKyfYAZvwuPQOYbbMGhQLRfxAAPHraXnTEw3BRclaN" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/RSon3O0W443HdYbk1GMj38t6qi8DJa0BqJEYbM5tiJ84cb-z_0FLYek1cQY0fXb86odXOG3AedFGVYsOPySFom17eoxS5vlHPQnvq3rPRSwKyfYAZvwuPQOYbbMGhQLRfxAAPHraXnTEw3BRclaN" /></a></p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/10/12/er-1/" data-id="ckw3njyzk001u4d9k2p2j4x33" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PlantUML/" rel="tag">PlantUML</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-java-optional-best-practice" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -114,7 +185,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/08/31/java-optional-best-practice/" data-id="ckuzh67dz001mum9k06k53si6" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/08/31/java-optional-best-practice/" data-id="ckw3njyzj001r4d9kack18jta" class="article-share-link">
         分享
       </a>
       
@@ -188,7 +259,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/02/14/oracle-quiz-enums/" data-id="ckuzh67dy001lum9kdgzz99w6" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/02/14/oracle-quiz-enums/" data-id="ckw3njyzi001p4d9k4hh19ng6" class="article-share-link">
         分享
       </a>
       
@@ -267,7 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/02/06/java-io-csv/" data-id="ckuzh67dv001jum9kci5a9h0m" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/02/06/java-io-csv/" data-id="ckw3njyzg001n4d9kg43l3lmd" class="article-share-link">
         分享
       </a>
       
@@ -336,7 +407,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/28/clob-octet/" data-id="ckuzh67dt001gum9k1dv201q7" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/01/28/clob-octet/" data-id="ckw3njyzf001m4d9k3ebohxbz" class="article-share-link">
         分享
       </a>
       
@@ -427,7 +498,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/28/python-class/" data-id="ckuzh67du001ium9k5n0b9vs4" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/01/28/python-class/" data-id="ckw3njyzd001h4d9k5quw7tzr" class="article-share-link">
         分享
       </a>
       
@@ -494,7 +565,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/24/git-prune/" data-id="ckuzh67ds001dum9k4fyo5u7g" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/01/24/git-prune/" data-id="ckw3njyze001j4d9kd7o84dsl" class="article-share-link">
         分享
       </a>
       
@@ -549,7 +620,7 @@
 
       
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>AngularJS的uirouter一个重要的内容就是使用<code>state</code>的使用，这里记录一组关于<code>state</code>的事件，每当路由转移过程中发生对应事件时，都会在<code>$rootScrope</code>广播，使用<code>$rootScope.$on(&#39;$stateEventName&#39;, function(event, ...))</code>获取该事件。</p>
-<h2 id="0-引入router-state-events"><a href="#0-引入router-state-events" class="headerlink" title="0. 引入router.state.events"></a>0. 引入router.state.events</h2><p>首先引入JavaScript源文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"stateEvents.js"</span>&gt;</span><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br>然后导入模块：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">"myApplication"</span>, [<span class="string">'ui.router'</span>, <span class="string">'ui.router.state.events'</span>]</span><br></pre></td></tr></table></figure></p>
+<h2 id="0-引入router-state-events"><a href="#0-引入router-state-events" class="headerlink" title="0. 引入router.state.events"></a>0. 引入router.state.events</h2><p>首先引入JavaScript源文件：<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">"stateEvents.js"</span>&gt;</span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure><br>然后导入模块：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">angular.module(<span class="string">"myApplication"</span>, [<span class="string">'ui.router'</span>, <span class="string">'ui.router.state.events'</span>]</span><br></pre></td></tr></table></figure></p>
 <h2 id="1-事件"><a href="#1-事件" class="headerlink" title="1. 事件"></a>1. <a href="https://ui-router.github.io/ng1/docs/latest/modules/ng1_state_events.html" target="_blank" rel="noopener">事件</a></h2><ol>
 <li>$stateChangeCancel</li>
 <li>$stateChangeStart</li>
@@ -597,7 +668,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/21/ng-state-event/" data-id="ckuzh67dp0019um9k7f8q0oeo" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/01/21/ng-state-event/" data-id="ckw3njyza001f4d9keomddomp" class="article-share-link">
         分享
       </a>
       
@@ -672,7 +743,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/01/16/css-vertical-align/" data-id="ckuzh67dq001bum9khov2h9ds" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/01/16/css-vertical-align/" data-id="ckw3njyz9001e4d9k0kwg4c4d" class="article-share-link">
         分享
       </a>
       
@@ -754,84 +825,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/12/12/pipenv-introduction/" data-id="ckuzh67do0018um9kg6bldpb9" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/12/12/pipenv-introduction/" data-id="ckw3njyz500174d9k8vp4gcdd" class="article-share-link">
         分享
       </a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Pipenv/" rel="tag">Pipenv</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-measures-for-in-sample-evaluation" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/11/28/measures-for-in-sample-evaluation/">均方误差和决定系数</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/11/28/measures-for-in-sample-evaluation/" class="article-date">
-  <time datetime="2019-11-28T05:00:58.000Z" itemprop="datePublished">2019-11-28</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="均方误差-Mean-Square-Error"><a href="#均方误差-Mean-Square-Error" class="headerlink" title="均方误差 Mean Square Error"></a>均方误差 Mean Square Error</h2><p>是对误差的一个估计，其定义为所有估值和样本的误差平方的平均值。  </p>
-<p>在python中这样写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.metrics <span class="keyword">import</span> mean_squared_error</span><br><span class="line"></span><br><span class="line">mean_sqlared_error(df[<span class="string">'data'</span>],predict)</span><br></pre></td></tr></table></figure></p>
-<h2 id="决定系数-Coefficient-of-determination-R-2"><a href="#决定系数-Coefficient-of-determination-R-2" class="headerlink" title="决定系数 Coefficient of determination / $R^2$"></a>决定系数 Coefficient of determination / $R^2$</h2><p>维基百科的定义是：<em>用于度量因变量的变异中可由自变量解释部分所占的比例，以此来判断统计模型的解释力。</em>  </p>
-<ul>
-<li>首先得到一组因变量 取得平均值 $\bar{y}$</li>
-<li>由此可以得到总的方差 $SS_{tot}$</li>
-<li>再取得预估值的方差 $SS_{res}$</li>
-<li>最后得到决定系数 $R^2 = 1 - \frac{SS<em>{tot}}{SS</em>{res}}$</li>
-</ul>
-<p>在python中这样写：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> sklearn.linear_model <span class="keyword">import</span> LinearRegression</span><br><span class="line"></span><br><span class="line">lm=LinearRegression()</span><br><span class="line"></span><br><span class="line">lm.score(X,Y)</span><br></pre></td></tr></table></figure></p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/11/28/measures-for-in-sample-evaluation/" data-id="ckuzh67dm0015um9k5dpk9hv8" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Data-Science/" rel="tag">Data Science</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Python/" rel="tag">Python</a></li></ul>
 
     </footer>
 

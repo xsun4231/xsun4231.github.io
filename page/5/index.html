@@ -65,6 +65,75 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-NaN" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2018/05/29/NaN/">Java 中的NaN</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2018/05/29/NaN/" class="article-date">
+  <time datetime="2018-05-28T15:00:00.000Z" itemprop="datePublished">2018-05-29</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h2><p>在学习JavaScript时看到了Number类型中的NaN和Infinity，因为概念本身是通用的，所以趁机总结了一下Java中的NaN和Infinity。</p>
+<h2 id="基本"><a href="#基本" class="headerlink" title="基本"></a>基本</h2><p>Java的Float型和Double型各有三个很特别的常量：NaN(非数），POSITIVE_INFINITY(正无穷)，NEGATIVE_INFINITY(负无穷)</p>
+<p><strong>Float</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding the positive infinity of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> float&#125;. It is equal to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Float.intBitsToFloat(0x7f800000)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> POSITIVE_INFINITY = <span class="number">1.0f</span> / <span class="number">0.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding the negative infinity of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> float&#125;. It is equal to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Float.intBitsToFloat(0xff800000)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> NEGATIVE_INFINITY = -<span class="number">1.0f</span> / <span class="number">0.0f</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding a Not-a-Number (NaN) value of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> float&#125;.  It is equivalent to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Float.intBitsToFloat(0x7fc00000)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">float</span> NaN = <span class="number">0.0f</span> / <span class="number">0.0f</span>;</span><br></pre></td></tr></table></figure><br><strong>Double</strong><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding the positive infinity of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> double&#125;. It is equal to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Double.longBitsToDouble(0x7ff0000000000000L)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> POSITIVE_INFINITY = <span class="number">1.0</span> / <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding the negative infinity of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> double&#125;. It is equal to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Double.longBitsToDouble(0xfff0000000000000L)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> NEGATIVE_INFINITY = -<span class="number">1.0</span> / <span class="number">0.0</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * A constant holding a Not-a-Number (NaN) value of type</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> double&#125;. It is equivalent to the value returned by</span></span><br><span class="line"><span class="comment"> * &#123;<span class="doctag">@code</span> Double.longBitsToDouble(0x7ff8000000000000L)&#125;.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">double</span> NaN = <span class="number">0.0</span>d / <span class="number">0.0</span>;</span><br></pre></td></tr></table></figure></p>
+<h2 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h2><p>NaN是<code>Not a Number</code>的缩写，表示未定义或者不可表示的值，NaN有一个特性，那就是它与任何数都不相等，包括它自己。判断一个数是不是NaN，<strong>只能</strong>使用Float或者Double的<code>isNaN()</code>方法，那么这个方法是怎么判断的呢？我们看一看(查看的是Float版，Double除了参数类型都一样，下面二者没有区别的部分都直接使用Float的内容来说明)：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Returns &#123;<span class="doctag">@code</span> true&#125; if the specified number is a</span></span><br><span class="line"><span class="comment"> * Not-a-Number (NaN) value, &#123;<span class="doctag">@code</span> false&#125; otherwise.</span></span><br><span class="line"><span class="comment"> *</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@param</span>   v   the value to be tested.</span></span><br><span class="line"><span class="comment"> * <span class="doctag">@return</span>  &#123;<span class="doctag">@code</span> true&#125; if the argument is NaN;</span></span><br><span class="line"><span class="comment"> *          &#123;<span class="doctag">@code</span> false&#125; otherwise.</span></span><br><span class="line"><span class="comment"> */</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">boolean</span> <span class="title">isNaN</span><span class="params">(<span class="keyword">float</span> v)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (v != v);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>所以，跟自己不相等的数字，就是NaN.</p>
+<h3 id="计算中产生的NaN"><a href="#计算中产生的NaN" class="headerlink" title="计算中产生的NaN"></a>计算中产生的NaN</h3><p>什么时候会产生NaN呢？首先，任何与NaN进行的运算，其结果都是NaN.比如下面的运算，不要去想太多，结果就是<code>NaN</code><br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">Test</span> </span>&#123;</span><br><span class="line">	<span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> </span>&#123;</span><br><span class="line">		<span class="keyword">var</span> x = Float.NaN;</span><br><span class="line">		<span class="keyword">var</span> y = x - x + <span class="number">1</span>;</span><br><span class="line">		System.out.println(y);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>其次，从数学角度讲，无法进行的运算(<code>N/0</code>)或者会产生复数的运算(<code>sqrt(-N)</code>)，都会产生NaN。</p>
+<p>(咕咕咕，后面的笔记被鸽了)</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2018/05/29/NaN/" data-id="ckw3njyy600084d9ke1ddg5ey" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-JavaScript" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -164,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2018/04/26/JavaScript/" data-id="ckuzh67cw0004um9k3kpuabn3" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2018/04/26/JavaScript/" data-id="ckw3njyy100054d9ket6b6ifg" class="article-share-link">
         分享
       </a>
       
@@ -238,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2017/12/22/IDE_memo/" data-id="ckuzh67ct0002um9k8p41gt3i" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2017/12/22/IDE_memo/" data-id="ckw3njyxt00014d9k132t7guo" class="article-share-link">
         分享
       </a>
       
@@ -378,7 +447,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2017/11/18/Markdown/" data-id="ckuzh67cr0001um9k6nfp1gtz" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2017/11/18/Markdown/" data-id="ckw3njyxn00004d9kgzj44rpb" class="article-share-link">
         分享
       </a>
       

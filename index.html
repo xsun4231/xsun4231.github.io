@@ -65,6 +65,80 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-vue-step1" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2021/11/17/vue-step1/">CLIでVue.jsを作る</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2021/11/17/vue-step1/" class="article-date">
+  <time datetime="2021-11-17T14:37:59.000Z" itemprop="datePublished">2021-11-17</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>事前準備として、<a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodeを</a>インストールする。</p>
+<p>以下のコマンドを使って、バージョン確認する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
+<p>バージョン古いときは以下のコマンドで更新できる。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -g install npm</span><br></pre></td></tr></table></figure></p>
+<p>次のステップは<code>vue-vli</code>のインストール。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue&#x2F;cli</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.x バージョンのvueは　<code>npm install -g vue-cli</code>でインストールする</p>
+</blockquote>
+<p>次はプロジェクトの親フォルダーへ移動して、プロジェクトを作る。</p>
+<p>Webページのプロジェクトを作るため、以下のコマンドを実行する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack myVueProject</span><br></pre></td></tr></table></figure><br>プロジェクト名などはディフォルで設定してくれるので、エンターキー連発でいい。<br><code>router</code> <code>test</code>などの機能も初期化したい場合は、該当の確認で <code>Y</code> を入力すればいい。</p>
+<p>これで、Vue.jsのプロジェクト作成完了。</p>
+<p>最後は <code>npm run build</code>でビルドして、 <code>npm run dev</code>でサーバーを起動すればいい。</p>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2021/11/17/vue-step1/" data-id="ckw3njyzp002b4d9k9n9ha35t" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-vue-project" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -140,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2021/11/12/vue-project/" data-id="ckvwcqdze0001049k6kvxh26c" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2021/11/12/vue-project/" data-id="ckw3njyzr002f4d9k3ofp33n9" class="article-share-link">
         分享
       </a>
       
@@ -214,7 +288,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2021/10/20/parameterizedtest/" data-id="ckuzh67e90026um9k47tl9xd6" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2021/10/20/parameterizedtest/" data-id="ckw3njyzq002e4d9k0ftc07l3" class="article-share-link">
         分享
       </a>
       
@@ -287,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2021/08/04/injectMocks/" data-id="ckuzh67e80025um9kgolp6p85" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2021/08/04/injectMocks/" data-id="ckw3njyzp00294d9k9m2l5jwq" class="article-share-link">
         分享
       </a>
       
@@ -340,10 +414,10 @@
 
       
       <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>Mockitoはクラスの偽のオブジェクトを作ってくれます。</p>
-<p><code>when().thenReturn()</code>を利用して、<code>public</code>メソッドの戻る値を指定できます。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_with_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; mockedList = mock(List.class);</span><br><span class="line">    when(mockedList.size()).thenReturn(<span class="number">10</span>);</span><br><span class="line">    assertThat(mockedList.size(), is(<span class="number">10</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>ここは1つ注意しなければならないことがあります。モックで作成したオブジェクトの全てのメソッドが偽物になります。下記の<code>add()</code>はモックされたため、リストに追加する処理はありません。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_without_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; mockedList = mock(List.class);</span><br><span class="line">    mockedList.add(<span class="string">"A"</span>);</span><br><span class="line">    mockedList.add(<span class="string">"B"</span>);</span><br><span class="line">    mockedList.add(<span class="string">"C"</span>);</span><br><span class="line">    assertThat(mockedList.size(), is(<span class="number">0</span>));</span><br></pre></td></tr></table></figure></p>
+<p><code>when().thenReturn()</code>を利用して、<code>public</code>メソッドの戻る値を指定できます。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_with_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; mockedList = mock(List<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    when(mockedList.size()).thenReturn(<span class="number">10</span>);</span><br><span class="line">    assertThat(mockedList.size(), is(<span class="number">10</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>ここは1つ注意しなければならないことがあります。モックで作成したオブジェクトの全てのメソッドが偽物になります。下記の<code>add()</code>はモックされたため、リストに追加する処理はありません。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">add_without_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    List&lt;String&gt; mockedList = mock(List<span class="class">.<span class="keyword">class</span>)</span>;</span><br><span class="line">    mockedList.add(<span class="string">"A"</span>);</span><br><span class="line">    mockedList.add(<span class="string">"B"</span>);</span><br><span class="line">    mockedList.add(<span class="string">"C"</span>);</span><br><span class="line">    assertThat(mockedList.size(), is(<span class="number">0</span>));</span><br></pre></td></tr></table></figure></p>
 <p><code>Answers.CALL_REAL_METHODS</code>を利用すれば、本物のメソッドを呼べます。</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call_real_method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Employee employee = mock(Employee.class, Answers.CALLS_REAL_METHODS);</span><br><span class="line">    employee.setName(<span class="keyword">new</span> Name(<span class="string">"Alice"</span>));</span><br><span class="line">    assertThat(employee.getName(), is(<span class="string">"Alice"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call_real_method_with_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Employee employee = mock(Employee.class, Answers.CALLS_REAL_METHODS);</span><br><span class="line">    employee.setName(<span class="keyword">new</span> Name(<span class="string">"Alice"</span>));</span><br><span class="line">    when(employee.getName()).thenReturn(<span class="keyword">new</span> Name(<span class="string">"Bob"</span>));</span><br><span class="line">    assertThat(employee.getName(), is(<span class="string">"Bob"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call_real_method</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Employee employee = mock(Employee<span class="class">.<span class="keyword">class</span>, <span class="title">Answers</span>.<span class="title">CALLS_REAL_METHODS</span>)</span>;</span><br><span class="line">    employee.setName(<span class="keyword">new</span> Name(<span class="string">"Alice"</span>));</span><br><span class="line">    assertThat(employee.getName(), is(<span class="string">"Alice"</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">@Test</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">call_real_method_with_when</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    Employee employee = mock(Employee<span class="class">.<span class="keyword">class</span>, <span class="title">Answers</span>.<span class="title">CALLS_REAL_METHODS</span>)</span>;</span><br><span class="line">    employee.setName(<span class="keyword">new</span> Name(<span class="string">"Alice"</span>));</span><br><span class="line">    when(employee.getName()).thenReturn(<span class="keyword">new</span> Name(<span class="string">"Bob"</span>));</span><br><span class="line">    assertThat(employee.getName(), is(<span class="string">"Bob"</span>));</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -353,7 +427,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2021/07/21/junit-1/" data-id="ckuzh67e80023um9kb87s9aj7" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2021/07/21/junit-1/" data-id="ckw3njyzo00264d9k821i2kiy" class="article-share-link">
         分享
       </a>
       
@@ -477,7 +551,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2021/04/22/servlet-2-xml/" data-id="ckuzh67e60020um9k66fbfvc7" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2021/04/22/servlet-2-xml/" data-id="ckw3njyzn00254d9k4ub94yop" class="article-share-link">
         分享
       </a>
       
@@ -558,7 +632,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2021/04/20/servlet-1/" data-id="ckuzh67e4001wum9kg7nz056q" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2021/04/20/servlet-1/" data-id="ckw3njyzn00234d9k4v7v86os" class="article-share-link">
         分享
       </a>
       
@@ -628,7 +702,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/12/07/day-3/" data-id="ckuzh67e5001yum9kgo758tv1" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/12/07/day-3/" data-id="ckw3njyzm00214d9kceonag5g" class="article-share-link">
         分享
       </a>
       
@@ -697,7 +771,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/12/07/day-2/" data-id="ckuzh67e3001uum9k33f8cg3e" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/12/07/day-2/" data-id="ckw3njyzl001y4d9kdw3jckby" class="article-share-link">
         分享
       </a>
       
@@ -788,82 +862,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/12/06/day-1/" data-id="ckuzh67e1001pum9k30qx1hs5" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2020/12/06/day-1/" data-id="ckw3njyzl001w4d9k4vlhdrvv" class="article-share-link">
         分享
       </a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/100-days-of-code/" rel="tag">100 days of code</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-er-1" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2020/10/12/er-1/">PlantUML（一） 类图</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2020/10/12/er-1/" class="article-date">
-  <time datetime="2020-10-12T08:35:23.000Z" itemprop="datePublished">2020-10-12</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>ER图笔记（一）</p>
-<p><strong>ER图</strong> Entity Relationship Diagram</p>
-<h3 id="Cardinality"><a href="#Cardinality" class="headerlink" title="Cardinality"></a>Cardinality</h3><p>在线的端点通过下列符号来指定数量关系<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--  1</span><br><span class="line">--||  1 &amp;&amp; only 1</span><br><span class="line">--o|  0 or 1</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://www.plantuml.com/plantuml/svg/SzJDqKtaSjAjgKbIu7BMpQz91W00" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzJDqKtaSjAjgKbIu7BMpQz91W00" /></a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">--&#123;  multi</span><br><span class="line">--|&#123;  1 or more</span><br><span class="line">--o&#123;  0 or more</span><br></pre></td></tr></table></figure><br><a href="https://www.plantuml.com/plantuml/svg/Sz6jJk5orQsfJkLoqyslJWC0" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/Sz6jJk5orQsfJkLoqyslJWC0" /></a></p>
-<h3 id="Direction"><a href="#Direction" class="headerlink" title="Direction"></a>Direction</h3><p>在线的中央插入下列关键字来指定方向<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">up, u</span><br><span class="line">down, d, do</span><br><span class="line">left, l, le</span><br><span class="line">right, r, ri</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://www.plantuml.com/plantuml/svg/SzGjrRKBBU1oqatHjNF9Byy30000" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzGjrRKBBU1oqatHjNF9Byy30000" /></a><br><a href="https://www.plantuml.com/plantuml/svg/SzRDqRNpIKqhuNBHBTAr2yfCpoW10000" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/SzRDqRNpIKqhuNBHBTAr2yfCpoW10000" /></a></p>
-<h3 id="package-style"><a href="#package-style" class="headerlink" title="package style"></a>package style</h3><p>可以使用自带的模版来定义每个包<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">package foo1 &lt;&lt;Node&gt;&gt; &#123;</span><br><span class="line">  class Class1</span><br><span class="line">&#125;</span><br><span class="line">package foo2 &lt;&lt;Rectangle&gt;&gt; &#123;</span><br><span class="line">  class Class2</span><br><span class="line">&#125;</span><br><span class="line">package foo3 &lt;&lt;Folder&gt;&gt; &#123;</span><br><span class="line">  class Class3</span><br><span class="line">&#125;</span><br><span class="line">package foo4 &lt;&lt;Frame&gt;&gt; &#123;</span><br><span class="line">  class Class4</span><br><span class="line">&#125;</span><br><span class="line">package foo5 &lt;&lt;Cloud&gt;&gt; &#123;</span><br><span class="line">  class Class5</span><br><span class="line">&#125;</span><br><span class="line">package foo6 &lt;&lt;Database&gt;&gt; &#123;</span><br><span class="line">  class Class6</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p><a href="https://www.plantuml.com/plantuml/svg/RSon3O0W443HdYbk1GMj38t6qi8DJa0BqJEYbM5tiJ84cb-z_0FLYek1cQY0fXb86odXOG3AedFGVYsOPySFom17eoxS5vlHPQnvq3rPRSwKyfYAZvwuPQOYbbMGhQLRfxAAPHraXnTEw3BRclaN" target="_blank" rel="noopener" class="gallery-item"><img src="https://www.plantuml.com/plantuml/svg/RSon3O0W443HdYbk1GMj38t6qi8DJa0BqJEYbM5tiJ84cb-z_0FLYek1cQY0fXb86odXOG3AedFGVYsOPySFom17eoxS5vlHPQnvq3rPRSwKyfYAZvwuPQOYbbMGhQLRfxAAPHraXnTEw3BRclaN" /></a></p>
-</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/10/12/er-1/" data-id="ckuzh67e1001rum9kbxel1gfq" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/PlantUML/" rel="tag">PlantUML</a></li></ul>
 
     </footer>
 

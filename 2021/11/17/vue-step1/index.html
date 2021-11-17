@@ -9,7 +9,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <title>
-    实用Optional时需要注意的二三事 |
+    CLIでVue.jsを作る |
     
     XSUN</title>
   
@@ -32,7 +32,7 @@
 <body>
 <main class="content">
   <section class="outer">
-  <article id="post-java-optional-best-practice" class="article article-type-post" itemscope
+  <article id="post-vue-step1" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
   <div class="article-inner">
@@ -41,7 +41,7 @@
       
   
     <h1 class="article-title" itemprop="name">
-      实用Optional时需要注意的二三事
+      CLIでVue.jsを作る
     </h1>
   
   
@@ -54,8 +54,8 @@
 
     
     <div class="article-meta">
-      <a href="/2020/08/31/java-optional-best-practice/" class="article-date">
-  <time datetime="2020-08-31T00:20:42.000Z" itemprop="datePublished">2020-08-31</time>
+      <a href="/2021/11/17/vue-step1/" class="article-date">
+  <time datetime="2021-11-17T14:37:59.000Z" itemprop="datePublished">2021-11-17</time>
 </a>
       
     </div>
@@ -63,8 +63,6 @@
 
     
     
-<div class="tocbot"></div>
-
     
 
     <div class="article-entry" itemprop="articleBody">
@@ -74,8 +72,17 @@
       
 
       
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<h2 id="使用了Optional为什么还发生NullPointerException"><a href="#使用了Optional为什么还发生NullPointerException" class="headerlink" title="使用了Optional为什么还发生NullPointerException"></a>使用了Optional为什么还发生NullPointerException</h2><h2 id="对于空值应该怎么设置"><a href="#对于空值应该怎么设置" class="headerlink" title="对于空值应该怎么设置"></a>对于空值应该怎么设置</h2><h2 id="如何高效的实用Optional返回值"><a href="#如何高效的实用Optional返回值" class="headerlink" title="如何高效的实用Optional返回值"></a>如何高效的实用Optional返回值</h2><h2 id="如何避免Optional相关的反模式"><a href="#如何避免Optional相关的反模式" class="headerlink" title="如何避免Optional相关的反模式"></a>如何避免Optional相关的反模式</h2><h2 id="怎么把Optional用的更专业"><a href="#怎么把Optional用的更专业" class="headerlink" title="怎么把Optional用的更专业"></a>怎么把Optional用的更专业</h2><h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p><a href="https://blogs.oracle.com/javamagazine/12-recipes-for-using-the-optional-class-as-its-meant-to-be-used" target="_blank" rel="noopener">The Java Optianl class (12 recipes)</a></p>
-<p><a href="https://blogs.oracle.com/javamagazine/the-java-optional-class-11-more-recipes-for-preventing-null-pointer-exceptions" target="_blank" rel="noopener">The Java Optianl class (11 recipes)</a></p>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>事前準備として、<a href="https://nodejs.org/en/" target="_blank" rel="noopener">nodeを</a>インストールする。</p>
+<p>以下のコマンドを使って、バージョン確認する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">node -v</span><br><span class="line">npm -v</span><br></pre></td></tr></table></figure></p>
+<p>バージョン古いときは以下のコマンドで更新できる。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm -g install npm</span><br></pre></td></tr></table></figure></p>
+<p>次のステップは<code>vue-vli</code>のインストール。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g @vue&#x2F;cli</span><br></pre></td></tr></table></figure></p>
+<blockquote>
+<p>2.x バージョンのvueは　<code>npm install -g vue-cli</code>でインストールする</p>
+</blockquote>
+<p>次はプロジェクトの親フォルダーへ移動して、プロジェクトを作る。</p>
+<p>Webページのプロジェクトを作るため、以下のコマンドを実行する。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack myVueProject</span><br></pre></td></tr></table></figure><br>プロジェクト名などはディフォルで設定してくれるので、エンターキー連発でいい。<br><code>router</code> <code>test</code>などの機能も初期化したい場合は、該当の確認で <code>Y</code> を入力すればいい。</p>
+<p>これで、Vue.jsのプロジェクト作成完了。</p>
+<p>最後は <code>npm run build</code>でビルドして、 <code>npm run dev</code>でサーバーを起動すればいい。</p>
 </div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
         var options = {
             selector: '.gallery-item'
@@ -85,11 +92,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2020/08/31/java-optional-best-practice/" data-id="ckw3njyzj001r4d9kack18jta" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2021/11/17/vue-step1/" data-id="ckw3njyzp002b4d9k9n9ha35t" class="article-share-link">
         分享
       </a>
       
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Java/" rel="tag">Java</a></li></ul>
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Vue-js/" rel="tag">Vue.js</a></li></ul>
 
     </footer>
 
@@ -99,19 +106,10 @@
   
   <nav class="article-nav">
     
-      <a href="/2020/10/12/er-1/" class="article-nav-link">
-        <strong class="article-nav-caption">前一篇</strong>
-        <div class="article-nav-title">
-          
-            PlantUML（一） 类图
-          
-        </div>
-      </a>
     
-    
-      <a href="/2020/02/14/oracle-quiz-enums/" class="article-nav-link">
+      <a href="/2021/11/12/vue-project/" class="article-nav-link">
         <strong class="article-nav-caption">后一篇</strong>
-        <div class="article-nav-title">关于Enums的小问题</div>
+        <div class="article-nav-title">Vue.js プロジェクトの構造</div>
       </a>
     
   </nav>
