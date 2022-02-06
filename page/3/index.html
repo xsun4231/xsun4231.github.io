@@ -65,6 +65,83 @@
       <h1 class="page-type-title"></h1>
       
         
+          <article id="post-css-vertical-align" class="article article-type-post" itemscope
+  itemprop="blogPost" data-scroll-reveal>
+
+  <div class="article-inner">
+    
+    <header class="article-header">
+      
+  
+    <h2 itemprop="name">
+      <a class="article-title" href="/2020/01/16/css-vertical-align/">CSS 文字对齐</a>
+    </h2>
+  
+  
+
+
+
+
+    </header>
+    
+
+    
+    <div class="article-meta">
+      <a href="/2020/01/16/css-vertical-align/" class="article-date">
+  <time datetime="2020-01-16T12:09:17.000Z" itemprop="datePublished">2020-01-16</time>
+</a>
+      
+    </div>
+    
+
+    
+
+    <div class="article-entry" itemprop="articleBody">
+      
+
+
+      
+
+      
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>本来想直接把代码内嵌到markdown里，但是hexo好像不支持，残念</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span> <span class="attr">style</span>=<span class="string">"width:1000px"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span><span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>A<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>B<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>C<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span> &gt;</span>0<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"text-align: right;"</span>&gt;</span>text-align: right;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"text-align: left;"</span>&gt;</span>text-align: left;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"text-align: center;"</span>&gt;</span>text-align: center;<span class="tag">&lt;/<span class="name">td</span>&gt;</span>                                             </span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">tr</span> <span class="attr">style</span>=<span class="string">"height:100px;"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">th</span>&gt;</span>1<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"vertical-align: top;"</span>&gt;</span>vertical-align: top;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"vertical-align: bottom;"</span>&gt;</span>vertical-align: bottom;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">td</span> <span class="attr">style</span>=<span class="string">"vertical-align: middle;"</span>&gt;</span>vertical-align: middle;<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>水平方向对齐：</p>
+<ol>
+<li><code>text-align: right;</code></li>
+<li><code>text-align: center;</code></li>
+<li><code>text-align: left;</code></li>
+</ol>
+<p>垂直方向对齐：</p>
+<ol>
+<li><code>vertical-align: top;</code></li>
+<li><code>vertical-align: middle;</code></li>
+<li><code>vertical-align: bottom;</code></li>
+</ol>
+</div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
+        var options = {
+            selector: '.gallery-item'
+        };
+        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
+        }</script>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="https://xsun4231.github.io/2020/01/16/css-vertical-align/" data-id="ckzasmrfu001mwr9khxoybcnb" class="article-share-link">
+        分享
+      </a>
+      
+  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/" rel="tag">css</a></li></ul>
+
+    </footer>
+
+  </div>
+
+  
+
+  
+
+</article>
+        
           <article id="post-pipenv-introduction" class="article article-type-post" itemscope
   itemprop="blogPost" data-scroll-reveal>
 
@@ -131,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/12/12/pipenv-introduction/" data-id="ckz9wq3g50019p19k5r5z73t5" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/12/12/pipenv-introduction/" data-id="ckzasmrfp001cwr9k3yu65nq0" class="article-share-link">
         分享
       </a>
       
@@ -204,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/11/28/measures-for-in-sample-evaluation/" data-id="ckz9wq3g10018p19k0gghend5" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/11/28/measures-for-in-sample-evaluation/" data-id="ckzasmrfo0019wr9kgr3n55p7" class="article-share-link">
         分享
       </a>
       
@@ -273,7 +350,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/11/26/linear-regression/" data-id="ckz9wq3g8001dp19k0ctbgl23" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/11/26/linear-regression/" data-id="ckzasmrfm0014wr9k2s2g5oo8" class="article-share-link">
         分享
       </a>
       
@@ -341,7 +418,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/11/20/about-java-stream-lazy/" data-id="ckz9wq3g00015p19k3m2hae8n" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/11/20/about-java-stream-lazy/" data-id="ckzasmrfn0017wr9keb8x4kfd" class="article-share-link">
         分享
       </a>
       
@@ -409,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/11/14/log4j-using-lambda/" data-id="ckz9wq3fz0013p19k8k7m7h8p" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/11/14/log4j-using-lambda/" data-id="ckzasmrfh0010wr9kgcd43jl2" class="article-share-link">
         分享
       </a>
       
@@ -478,7 +555,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/11/14/has-a-and-is-a/" data-id="ckz9wq3fu000vp19kbpkqet9y" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/11/14/has-a-and-is-a/" data-id="ckzasmrfg000ywr9kg3ro7364" class="article-share-link">
         分享
       </a>
       
@@ -564,7 +641,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/08/05/concurrency/" data-id="ckz9wq3fw0010p19kgqhacgi5" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/08/05/concurrency/" data-id="ckzasmrfl0013wr9kdmtrc9zx" class="article-share-link">
         分享
       </a>
       
@@ -682,7 +759,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/07/30/docker-instruction-commands/" data-id="ckz9wq3fv000yp19k1mgccyue" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/07/30/docker-instruction-commands/" data-id="ckzasmrfj0011wr9k7ni58fpt" class="article-share-link">
         分享
       </a>
       
@@ -768,83 +845,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/07/23/docker-ibmdb2/" data-id="ckz9wq3ft000up19k5orndped" class="article-share-link">
+      <a data-url="https://xsun4231.github.io/2019/07/23/docker-ibmdb2/" data-id="ckzasmrfe000uwr9k4dej4ncd" class="article-share-link">
         分享
       </a>
       
   <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/DB2/" rel="tag">DB2</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Docker/" rel="tag">Docker</a></li></ul>
-
-    </footer>
-
-  </div>
-
-  
-
-  
-
-</article>
-        
-          <article id="post-enum-things" class="article article-type-post" itemscope
-  itemprop="blogPost" data-scroll-reveal>
-
-  <div class="article-inner">
-    
-    <header class="article-header">
-      
-  
-    <h2 itemprop="name">
-      <a class="article-title" href="/2019/07/17/enum-things/">关于枚举型的一些理解</a>
-    </h2>
-  
-  
-
-
-
-
-    </header>
-    
-
-    
-    <div class="article-meta">
-      <a href="/2019/07/17/enum-things/" class="article-date">
-  <time datetime="2019-07-16T23:39:22.000Z" itemprop="datePublished">2019-07-17</time>
-</a>
-      
-    </div>
-    
-
-    
-
-    <div class="article-entry" itemprop="articleBody">
-      
-
-
-      
-
-      
-      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/css/lightgallery.min.css" /><div class=".article-gallery"<p>最近工作中写了一个枚举类，在code-review的时候被佐藤老师指摘了好几处，特别总结一下加深理解。</p>
-<h2 id="什么是枚举型-Enum"><a href="#什么是枚举型-Enum" class="headerlink" title="什么是枚举型 Enum"></a>什么是枚举型 Enum</h2><p>Enum是Java 5开始引入的一个接口，关键字 <code>enum</code> 创建的类会自动使用Enum接口。  </p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">enum</span> WeekDay &#123;</span><br><span class="line">    MONDAY, TUESDAY, WEDNESDAY,</span><br><span class="line">    THURSDAY, FRIDAY, SATURDAY, SUNDAY</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>像这样定义了<code>WeekDay</code>之后，我们就不必为周一到周日创建整形或者字符串的静态变量了，可以直接把<code>WeekDay</code>中定义的七个名字当做基本型来使用: <code>WeekDay.MONDAY</code> , <code>WeekDay.TUESDAY</code> , <code>WeekDay.WEDNESDAY</code> ,  <code>WeekDay.THURSDAY</code> ,  <code>WeekDay.FRIDAY</code> ,  <code>WeekDay.SATURDAY</code> ,  <code>WeekDay.SUNDAY</code> 。 </p>
-<p>枚举型的构造体是私有的，不可以使用构造体来构建枚举类的实体，但是枚举类中的元素是公开的，可以像基本型一样直接取来使用。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">WorkDay day = WorkDat.SUNDAY;</span><br></pre></td></tr></table></figure></p>
-<h2 id="用枚举类的思维方式来使用枚举类"><a href="#用枚举类的思维方式来使用枚举类" class="headerlink" title="用枚举类的思维方式来使用枚举类"></a>用枚举类的思维方式来使用枚举类</h2><p>引入枚举类的一个主要目的，是可以有一种类型安全，不可变的方法来定义常量。在引入枚举类之前，一般通过定义基本型的常量来表达一些固定的值。<br>比如<code>static final int MONDAY = 1;</code> 这种写法看似没什么问题，可没有什么实际意义的<code>1</code>在这里承担了很重要的职责，不免让人产生疑问，改成<code>0</code>可不可以呢？<br>而在判断是不是<code>MONDAY</code>时，又必须和<code>1</code>作比较，这就让程序逐渐变得复杂而又危险了。</p>
-<p>引入枚举类之后，MONDAY本身就可以起到表达数值，作为判断条件的作用，从而减少了产生bug的可能性。<br>所以，像下面这种强行使用枚举类的<code>name</code> <code>toString</code>来判断对象是否为枚举类中的一个元素的写法，是很不符合枚举类的思维方式的，浪费了使用枚举类的好处。<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">String a = System.getEnv(“TODAY”)；</span><br><span class="line">String today = <span class="string">"Undefined"</span>;</span><br><span class="line"><span class="keyword">if</span>(WeekDay.MONDAY.name.equals(a))&#123;</span><br><span class="line">  today = WeekDay.MONDAY.name;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>我们可以给<code>WeekDay</code>添加一个方法来返回元素:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> WeekDay <span class="title">as</span><span class="params">(String candidate)</span></span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(MONDAY.name.equals(candidate))&#123;</span><br><span class="line">    <span class="keyword">return</span> MONDAY;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(...)&#123;</span><br><span class="line">    ...</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> UNDEFINED; <span class="comment">//添加一个未定义的元素</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>这样我们在外面就可以告别那个中间的String，直接获取WeekDay的对象：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">WeekDay today = WeekDay.as(System.getEnv(<span class="string">"TODAY"</span>));</span><br><span class="line">If(today == WeekDay.UNDEFINED)&#123;</span><br><span class="line">  <span class="comment">// 对于未定义，空的设定值，或者默认值，可以在这里自由的设置</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(today == WeekDay.MONDAY)&#123;</span><br><span class="line">  <span class="comment">// 想干啥干啥咯</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="关联-使用私有构造体或者枚举类型来强化单例性"><a href="#关联-使用私有构造体或者枚举类型来强化单例性" class="headerlink" title="关联 [使用私有构造体或者枚举类型来强化单例性]"></a>关联 [使用私有构造体或者枚举类型来强化单例性]</h2></div><script src="https://cdn.jsdelivr.net/lightgallery.js/1.0.1/js/lightgallery.min.js"></script><script>if (typeof lightGallery !== 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        lightGallery(document.getElementsByClassName('.article-gallery')[0], options);
-        }</script>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="https://xsun4231.github.io/2019/07/17/enum-things/" data-id="ckz9wq3fs000tp19k8x6n706x" class="article-share-link">
-        分享
-      </a>
-      
-  <ul class="article-tag-list" itemprop="keywords"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/Enum/" rel="tag">Enum</a></li></ul>
 
     </footer>
 
