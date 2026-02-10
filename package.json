@@ -9,7 +9,7 @@
     "test": ""
   },
   "dependencies": {
-    "eslint": "^8.52.0",
+    "eslint": "^8.57.1",
     "hexo": "^6.3.0",
     "hexo-cli": "^4.3.1",
     "hexo-deployer-git": "^4.0.0",
