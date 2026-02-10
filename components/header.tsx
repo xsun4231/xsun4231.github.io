@@ -4,7 +4,9 @@ import { ThemeToggle } from './theme-toggle'
 export default function Header() {
   const navItems = [
     { label: 'Blog', href: '/blog' },
+    { label: 'Tags', href: '/tags' },
     { label: 'About', href: '/about' },
+    { label: 'Search', href: '/search' },
   ]
 
   return (
