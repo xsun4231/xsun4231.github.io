@@ -1,0 +1,120 @@
+---
+title: Hexo 说明文档笔记
+date: '2019-04-05'
+excerpt: ' * [Hexo 文档](https://hexo.io)'
+tags:
+  - Hexo
+  - Gitpage
+category: Technology
+---
+
+ * [Hexo 文档](https://hexo.io)
+
+## theme文件夹结构
+ 
+* _config.yml
+* languages
+* layout
+* scripts
+* source
+
+### _config.yml
+主题的配置文件，修改主题的配置文件不需要重启服务器（修改网站根目录的那个_config.yml则需要重启才能生效)
+
+### languages
+国际化设置，使用yml文件设置网站元素的翻译，具体参考[i18n](https://hexo.io/docs/internationalization)
+
+### layout
+网页、模板的设置。hexo默认使用Swig,不过也可以手动添加EJS,Haml,Jade或者Pug的支持。模板的写法参考 [Templates](https://hexo.io/docs/templates)
+
+### scripts
+存放JavaScript代码的文件夹，Hexo会自动加载这里的javaScript文件。扩展功能参考 [plugins](https://hexo.io/docs/plugins)
+
+### source
+顾名思义，这里是存放资源的。不属于页面模板的资源理论上都应该在此文件夹下面。
+
+
+## 模板
+### Layout 布局
+在主题文件夹下的layout中定义不同模板的页面的呈现方式，具体的模板文件定义了页面的`body`内容，而layout则定义了如何显示`body`。
+比如在布局中这样写：
+```html
+<!DOCTYPE html>
+<html>
+  <body><%- body %></body>
+</html>
+```
+系统默认的布局为layout布局，不过在post的头部可以通过定义来使用具体的布局。
+
+### Partial 组件
+不同页面之间共享的内容可以写成组件来管理，比如`Header`,`Footer`,`Sidebar`。
+引用组件时：
+```html
+<%- partial('partial/header') %>
+```
+
+## 变量
+
+
+
+## 资源文件夹
+从`Hexo 3 `开始，在`_config.yml`中启用`post_asset_folder=true`, 使用hexo的资源文件夹功能。
+启用后，`_posts`里每生成一个post，会在相同路径下生成一个同名的文件夹作用该post的资源管理文件夹。
+
+### 引用资源文件夹中的资源
+启用了`asset_folder`后，可以使用以下几种命令，在文章中引用资源:
+```
+{% asset_path name %}
+{% asset_img name title %}
+{% asset_link name title %}
+```
+在`name`的地方填写资源文件夹内的相对路径。
+
+比如以下的文件结构：
+```
+ - sample.md
+ - sample
+   - part1
+    - img.jpg
+```
+
+在sample.md中引用img.jpg时的写法是:
+```
+{% asset_img part1\img.jpg this is title %}
+```
+
+### 优点
+使用资源文件夹与使用`markdown`的引用语法的最大不同就是：在网站首页或者归档处显示时，使用资源文件夹功能的引用可以被显示，而`markdown`语法引用的内容则无法被正确显示。
+
+###  样板
+{% asset_img 1.JPG i1 %}
+
+
+## 国际化 i18n
+`i18n` (Internationalization) 是指针对不同的国家、地域、语言环境，改变网站通用部分的显示语言。
+
+### 设置
+使用`YAML`或者`JSON`编写不同的语言文件，并统一放在主题文件夹`languages`中。
+
+
+### 使用
+使用`__`或者`_p`来取得对应语言的字符串。比如：
+```
+menu：
+  titile: HOME
+  archive: ARCHIVE
+  search: SEARCH
+```
+```
+menu：
+  titile: 首页
+  archive: 归档
+  search: 搜索
+```
+
+在模板中使用目录时（例如语言是英文）：
+```
+<%= __('menu.title') %> // HOME
+<%= __('menu.archive') %> // 归档
+<%= __('menu.search) %> // 搜索 
+```

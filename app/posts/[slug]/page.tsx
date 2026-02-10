@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation'
-import { getPostBySlug } from '@/lib/posts'
+import { getPostBySlug, getPosts } from '@/lib/posts'
 import { format } from 'date-fns'
 import { Calendar, Clock, Tag, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
@@ -7,6 +7,13 @@ import { Button } from '@/components/ui/button'
 
 interface PostPageProps {
   params: Promise<{ slug: string }>
+}
+
+export async function generateStaticParams() {
+  const posts = await getPosts()
+  return posts.map((post) => ({
+    slug: post.slug,
+  }))
 }
 
 export default async function PostPage({ params }: PostPageProps) {
@@ -64,31 +71,10 @@ export default async function PostPage({ params }: PostPageProps) {
           {post.excerpt}
         </div>
         
-        <div className="content">
-          {/* In production, this would render markdown content */}
-          <p className="text-lg leading-relaxed">
-            This is a sample post content. In the actual implementation, this would render
-            the markdown content from the post file. The post content would include proper
-            formatting, code blocks, images, and other rich content.
-          </p>
-          
-          <h2>Sample Content Section</h2>
-          <p>
-            This demonstrates how the post content would be structured. Each post would
-            have its own unique content based on the markdown file.
-          </p>
-          
-          <pre className="bg-muted p-4 rounded-lg overflow-x-auto">
-            <code>
-{`// Example code block
-function greet(name: string) {
-  console.log(\`Hello, \${name}!\`)
-}
-
-greet('World')`}
-            </code>
-          </pre>
-        </div>
+        <div 
+          className="content"
+          dangerouslySetInnerHTML={{ __html: post.content }}
+        />
       </div>
 
       <div className="mt-12 pt-8 border-t">

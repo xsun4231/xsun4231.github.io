@@ -1,6 +1,12 @@
 import fs from 'fs'
 import path from 'path'
 import matter from 'gray-matter'
+import { unified } from 'unified'
+import remarkParse from 'remark-parse'
+import remarkGfm from 'remark-gfm'
+import remarkRehype from 'remark-rehype'
+import rehypeShiki from 'rehype-shiki'
+import rehypeStringify from 'rehype-stringify'
 
 const postsDirectory = path.join(process.cwd(), 'content/posts')
 
@@ -14,21 +20,94 @@ export interface Post {
   readTime: number
 }
 
+function calculateReadTimeInMinutes(content: string): number {
+  const WORDS_PER_MINUTE = 200
+  const words = content.trim().split(/\s+/).length
+  return Math.ceil(words / WORDS_PER_MINUTE)
+}
+
 export async function getPosts(): Promise<Post[]> {
   try {
-    // For now, return sample posts
-    // In production, this would read from the content directory
-    return getSamplePosts()
+    if (!fs.existsSync(postsDirectory)) {
+      console.warn('Content directory does not exist, using sample posts')
+      return getSamplePosts()
+    }
+
+    const fileNames = fs.readdirSync(postsDirectory)
+    const markdownFiles = fileNames.filter(name => name.endsWith('.md'))
+
+    if (markdownFiles.length === 0) {
+      console.warn('No markdown files found, using sample posts')
+      return getSamplePosts()
+    }
+
+    const allPostsData = await Promise.all(
+      markdownFiles.map(async (fileName) => {
+        const slug = fileName.replace(/\.md$/, '')
+        const fullPath = path.join(postsDirectory, fileName)
+        const fileContents = fs.readFileSync(fullPath, 'utf8')
+        const { data, content } = matter(fileContents)
+        const excerpt = data.excerpt || content.slice(0, 150).trim() + '...'
+
+        return {
+          slug,
+          title: data.title || 'Untitled',
+          date: data.date || new Date().toISOString().split('T')[0],
+          excerpt,
+          content,
+          tags: data.tags || [],
+          readTime: calculateReadTimeInMinutes(content),
+        } as Post
+      })
+    )
+
+    return allPostsData.sort((a, b) => a.date < b.date ? 1 : -1)
   } catch (error) {
     console.error('Error getting posts:', error)
     return getSamplePosts()
   }
 }
 
+async function convertMarkdownToHtml(markdown: string): Promise<string> {
+  const processedContent = await unified()
+    .use(remarkParse)
+    .use(remarkGfm)
+    .use(remarkRehype)
+    .use(rehypeShiki, {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      }
+    })
+    .use(rehypeStringify)
+    .process(markdown)
+  
+  return processedContent.toString()
+}
+
 export async function getPostBySlug(slug: string): Promise<Post | null> {
   try {
-    const posts = await getPosts()
-    return posts.find(post => post.slug === slug) || null
+    const fullPath = path.join(postsDirectory, `${slug}.md`)
+    
+    if (!fs.existsSync(fullPath)) {
+      const posts = getSamplePosts()
+      return posts.find(post => post.slug === slug) || null
+    }
+
+    const fileContents = fs.readFileSync(fullPath, 'utf8')
+    const { data, content } = matter(fileContents)
+    const htmlContent = await convertMarkdownToHtml(content)
+    const excerpt = data.excerpt || content.slice(0, 150).trim() + '...'
+
+    return {
+      slug,
+      title: data.title || 'Untitled',
+      date: data.date || new Date().toISOString().split('T')[0],
+      excerpt,
+      content: htmlContent,
+      tags: data.tags || [],
+      readTime: calculateReadTimeInMinutes(content),
+    } as Post
   } catch (error) {
     console.error('Error getting post:', error)
     return null

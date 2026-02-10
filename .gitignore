@@ -1,9 +1,30 @@
+# System files
 .DS_Store
 Thumbs.db
-db.json
 *.log
+
+# Dependencies
 node_modules/
+
+# Next.js build output
+.next/
+out/
+*.tsbuildinfo
+next-env.d.ts
+
+# Environment variables
+.env
+.env*.local
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Legacy Hexo files (to be removed)
+db.json
 .deploy*/
 public/
 .deploy_git/
-.idea/**

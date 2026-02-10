@@ -1,43 +1,52 @@
 {
-  "name": "hexo-site",
-  "version": "0.0.0",
+  "name": "xsun-blog",
+  "version": "1.0.0",
   "private": true,
-  "hexo": {
-    "version": "6.3.0"
-  },
+  "description": "XSun's personal blog built with Next.js",
+  "author": "XSun <xsun4231@gmail.com>",
+  "license": "MIT",
   "scripts": {
-    "test": ""
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "export": "next build",
+    "lint": "next lint",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "eslint": "^8.52.0",
-    "hexo": "^6.3.0",
-    "hexo-cli": "^4.3.1",
-    "hexo-deployer-git": "^4.0.0",
-    "hexo-filter-plantuml": "^2.1.1",
-    "hexo-fs": "^4.1.1",
-    "hexo-generator-archive": "^2.0.0",
-    "hexo-generator-category": "^2.0.0",
-    "hexo-generator-feed": "^3.0.0",
-    "hexo-generator-index-pin-top": "^0.2.2",
-    "hexo-generator-json-content": "^4.2.3",
-    "hexo-generator-search": "^2.4.3",
-    "hexo-generator-searchdb": "^1.4.1",
-    "hexo-generator-tag": "^2.0.0",
-    "hexo-light-gallery": "^1.0.2",
-    "hexo-pagination": "^3.0.0",
-    "hexo-renderer-ejs": "^2.0.0",
-    "hexo-renderer-kramed": "^0.1.4",
-    "hexo-renderer-pug": "^3.0.0",
-    "hexo-renderer-sass": "^0.5.0",
-    "hexo-renderer-stylus": "^3.0.0",
-    "hexo-server": "^3.0.0",
-    "hexo-util": "^3.1.0",
-    "npm": "^10.2.1"
+    "next": "^14.2.18",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "typescript": "^5.6.3",
+    "next-themes": "^0.3.0",
+    "gray-matter": "^4.0.3",
+    "remark": "^15.0.1",
+    "remark-parse": "^11.0.0",
+    "remark-gfm": "^4.0.0",
+    "remark-rehype": "^11.1.1",
+    "rehype": "^13.0.2",
+    "rehype-stringify": "^10.0.1",
+    "rehype-shiki": "^0.0.9",
+    "shiki": "^1.24.2",
+    "unified": "^11.0.5",
+    "lucide-react": "^0.460.0",
+    "date-fns": "^4.1.0",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.5.5"
   },
   "devDependencies": {
-    "textlint": "^13.3.3",
-    "textlint-rule-preset-ja-spacing": "^2.3.0",
-    "textlint-rule-preset-ja-technical-writing": "^8.0.0",
-    "textlint-rule-spellcheck-tech-word": "^5.0.0"
+    "@types/node": "^22.10.2",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
+    "tailwindcss": "^3.4.15",
+    "postcss": "^8.4.49",
+    "autoprefixer": "^10.4.20",
+    "eslint": "^8.57.1",
+    "eslint-config-next": "^14.2.18"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
   }
 }

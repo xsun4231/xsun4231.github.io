@@ -1,0 +1,53 @@
+---
+title: Mockito使い始めて見る
+date: '2021-07-21'
+excerpt: Mockitoはクラスの偽のオブジェクトを作ってくれます。
+tags:
+  - Mockito
+  - JUnit
+category: Technology
+---
+
+
+Mockitoはクラスの偽のオブジェクトを作ってくれます。
+
+`when().thenReturn()`を利用して、`public`メソッドの戻る値を指定できます。
+```Java
+    @Test
+    public void add_with_when() {
+        List<String> mockedList = mock(List.class);
+        when(mockedList.size()).thenReturn(10);
+        assertThat(mockedList.size(), is(10));
+    }
+```
+
+ここは1つ注意しなければならないことがあります。モックで作成したオブジェクトの全てのメソッドが偽物になります。下記の`add()`はモックされたため、リストに追加する処理はありません。
+```Java
+    @Test
+    public void add_without_when() {
+        List<String> mockedList = mock(List.class);
+        mockedList.add("A");
+        mockedList.add("B");
+        mockedList.add("C");
+        assertThat(mockedList.size(), is(0));    
+```
+
+`Answers.CALL_REAL_METHODS`を利用すれば、本物のメソッドを呼べます。
+
+```Java
+    @Test
+    public void call_real_method() {
+        Employee employee = mock(Employee.class, Answers.CALLS_REAL_METHODS);
+        employee.setName(new Name("Alice"));
+        assertThat(employee.getName(), is("Alice"));
+    }
+
+    @Test
+    public void call_real_method_with_when() {
+        Employee employee = mock(Employee.class, Answers.CALLS_REAL_METHODS);
+        employee.setName(new Name("Alice"));
+        when(employee.getName()).thenReturn(new Name("Bob"));
+        assertThat(employee.getName(), is("Bob"));
+    }
+```
+

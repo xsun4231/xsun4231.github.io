@@ -1,0 +1,48 @@
+---
+title: IDE使用备忘录
+date: '2017-12-22'
+excerpt: 在项目上右键 -> Deployment Assembly -> add -> project.
+tags:
+  - Eclipse
+  - IntellJ IDEA
+category: Technology
+---
+
+> “这里应该怎么设置来着？ ”
+
+## Eclipse
+
+### Web Application Library添加本地jar包
+在项目上右键 -> Deployment Assembly -> add -> project.
+
+### 显示/隐藏 空白符号
+在 `Windows/Preferences/General/Editors/Text Editors` 中  
+通过勾选 `Show whitespace characters` 来设置是否显示空白符号  
+点击右侧的`configure visibility`，还可以进行具体(比如换行符)的设置.
+
+{% asset_img space\2.PNG setting %}
+
+隐藏状态
+{% asset_img space\1.PNG hide %}
+
+显示状态
+{% asset_img space\3.PNG show %}
+
+## Intellj IDEA
+### propertity文件相关
+
+#### 显示文字而不是ASCII编码
+
+直接打开propertity文件的话，UTF-8编码会直接显示ASCII编码而不是文字，可以在设置里修改：
+`File -> Setting -> Editor -> File Encoding`  
+
+大约中间靠下的位置，勾选  
+`transparent native to ascii conversion`
+就可以显示文字而不是直接显示ASCII编码了。
+
+#### 修改ASCII编码的默认大小写
+使用ASCII码的property文件在IDEA中编辑会默认使用大写字母(例：使用 **\u00E3** 而不是 **\u00e3**)  
+如果想要保存成小写字母，需要在IntellJ的根目录下找到 **idea.properties**，在其中添加：
+`
+idea.native2ascii.lowercase=true  
+`
