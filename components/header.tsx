@@ -1,7 +1,12 @@
+"use client"
+
 import Link from 'next/link'
+import { useState } from 'react'
 import { ThemeToggle } from './theme-toggle'
 
 export default function Header() {
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  
   const navItems = [
     { label: 'Blog', href: '/blog' },
     { label: 'Tags', href: '/tags' },
@@ -17,7 +22,7 @@ export default function Header() {
             XSun
           </Link>
 
-          <nav className="flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-8">
             {navItems.map((item) => (
               <Link
                 key={item.href}
@@ -29,7 +34,35 @@ export default function Header() {
             ))}
             <ThemeToggle />
           </nav>
+
+          <button
+            className="md:hidden flex flex-col gap-1 w-6 h-6 justify-center"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label="Toggle menu"
+          >
+            <span className={`h-0.5 w-full bg-foreground transition-transform ${mobileMenuOpen ? 'rotate-45 translate-y-1.5' : ''}`} />
+            <span className={`h-0.5 w-full bg-foreground transition-opacity ${mobileMenuOpen ? 'opacity-0' : ''}`} />
+            <span className={`h-0.5 w-full bg-foreground transition-transform ${mobileMenuOpen ? '-rotate-45 -translate-y-1.5' : ''}`} />
+          </button>
         </div>
+
+        {mobileMenuOpen && (
+          <nav className="md:hidden py-4 space-y-4 border-t border-foreground/10">
+            {navItems.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className="block text-sm hover:text-foreground/60 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <div className="pt-2">
+              <ThemeToggle />
+            </div>
+          </nav>
+        )}
       </div>
     </header>
   )

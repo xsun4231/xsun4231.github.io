@@ -4,8 +4,31 @@ import { ThemeProvider } from '@/components/theme-provider'
 import Header from '@/components/header'
 
 export const metadata: Metadata = {
-  title: 'XSun',
-  description: 'Personal website and blog',
+  title: {
+    default: 'XSun - Software Developer',
+    template: '%s | XSun'
+  },
+  description: 'Personal website and blog about technology, programming, and software development',
+  keywords: ['Software Developer', 'Web Development', 'React', 'Next.js', 'TypeScript', 'Programming'],
+  authors: [{ name: 'XSun' }],
+  creator: 'XSun',
+  openGraph: {
+    type: 'website',
+    locale: 'en_US',
+    url: 'https://xsun4231.github.io',
+    title: 'XSun - Software Developer',
+    description: 'Personal website and blog about technology and programming',
+    siteName: 'XSun',
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'XSun - Software Developer',
+    description: 'Personal website and blog about technology and programming',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 }
 
 export default function RootLayout({
