@@ -1,0 +1,15 @@
+---
+import ThemeToggle from './ThemeToggle.astro';
+---
+
+<header class="border-b border-border bg-bg-surface/80 backdrop-blur sticky top-0 z-50">
+  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
+    <a href="/" class="text-accent font-bold text-xl">XSun</a>
+    <div class="flex items-center gap-6">
+      <a href="/" class="text-text-secondary hover:text-accent transition-colors">Home</a>
+      <a href="/blog" class="text-text-secondary hover:text-accent transition-colors">Blog</a>
+      <a href="/about" class="text-text-secondary hover:text-accent transition-colors">About</a>
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>
