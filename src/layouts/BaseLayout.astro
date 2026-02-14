@@ -1,0 +1,47 @@
+---
+import '../styles/global.css';
+import Navbar from '../components/layout/Navbar.astro';
+import Footer from '../components/layout/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'XSun personal blog' } = Astro.props;
+---
+
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+
+    <!-- FOUC Prevention - must be inline and first -->
+    <script is:inline>
+      // eslint-disable-next-line prettier/prettier
+      (function () {
+
+        const t = localStorage.getItem('xsun-theme');
+        const d = t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        if (d) document.documentElement.classList.add('dark');
+        else document.documentElement.classList.remove('dark');
+      })();
+    </script>
+
+    <slot name="head" />
+  </head>
+  <body
+    class="bg-bg-primary text-text-primary min-h-screen flex flex-col transition-colors duration-300"
+  >
+    <Navbar />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>
