@@ -1,0 +1,241 @@
+/* Code block styles - standard CSS only, no @apply */
+
+/* Base code block styling */
+pre {
+  background: #0d1117;
+  border-radius: 0.75rem;
+  padding: 1rem;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  border: 1px solid var(--border);
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  font-size: 0.875rem;
+  line-height: 1.7;
+}
+
+pre code {
+  display: block;
+  background: transparent;
+  padding: 0;
+  color: #c9d1d9;
+}
+
+/* Inline code */
+:not(pre) > code {
+  background: var(--bg-surface-hover);
+  color: var(--accent);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+  font-family:
+    ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
+  font-size: 0.875em;
+  border: 1px solid var(--border);
+}
+
+/* Light mode adjustments */
+@media (prefers-color-scheme: light) {
+  pre {
+    background: #f6f8fa;
+    border-color: #d0d7de;
+  }
+
+  pre code {
+    color: #24292f;
+  }
+
+  :not(pre) > code {
+    background: var(--bg-surface-hover);
+    border-color: #d0d7de;
+  }
+}
+
+:root.light pre {
+  background: #f6f8fa;
+  border-color: #d0d7de;
+}
+
+:root.light pre code {
+  color: #24292f;
+}
+
+:root.light :not(pre) > code {
+  background: var(--bg-surface-hover);
+  border-color: #d0d7de;
+}
+
+/* Shiki syntax highlighting token colors - dark mode (default) */
+pre .token.comment,
+pre .token.prolog,
+pre .token.doctype,
+pre .token.cdata {
+  color: #8b949e;
+}
+
+pre .token.punctuation {
+  color: #c9d1d9;
+}
+
+pre .token.property,
+pre .token.tag,
+pre .token.boolean,
+pre .token.number,
+pre .token.constant,
+pre .token.symbol,
+pre .token.deleted {
+  color: #79c0ff;
+}
+
+pre .token.selector,
+pre .token.attr-name,
+pre .token.string,
+pre .token.char,
+pre .token.builtin,
+pre .token.inserted {
+  color: #a5d6ff;
+}
+
+pre .token.operator,
+pre .token.entity,
+pre .token.url {
+  color: #a5d6ff;
+}
+
+pre .token.atrule,
+pre .token.attr-value,
+pre .token.keyword {
+  color: #ff7b72;
+}
+
+pre .token.function,
+pre .token.class-name {
+  color: #d2a8ff;
+}
+
+pre .token.regex,
+pre .token.important,
+pre .token.variable {
+  color: #ffa657;
+}
+
+/* Shiki token colors - light mode */
+@media (prefers-color-scheme: light) {
+  pre .token.comment,
+  pre .token.prolog,
+  pre .token.doctype,
+  pre .token.cdata {
+    color: #6e7781;
+  }
+
+  pre .token.punctuation {
+    color: #24292f;
+  }
+
+  pre .token.property,
+  pre .token.tag,
+  pre .token.boolean,
+  pre .token.number,
+  pre .token.constant,
+  pre .token.symbol,
+  pre .token.deleted {
+    color: #0550ae;
+  }
+
+  pre .token.selector,
+  pre .token.attr-name,
+  pre .token.string,
+  pre .token.char,
+  pre .token.builtin,
+  pre .token.inserted {
+    color: #0a3069;
+  }
+
+  pre .token.operator,
+  pre .token.entity,
+  pre .token.url {
+    color: #0a3069;
+  }
+
+  pre .token.atrule,
+  pre .token.attr-value,
+  pre .token.keyword {
+    color: #cf222e;
+  }
+
+  pre .token.function,
+  pre .token.class-name {
+    color: #8250df;
+  }
+
+  pre .token.regex,
+  pre .token.important,
+  pre .token.variable {
+    color: #953800;
+  }
+}
+
+:root.light pre .token.comment,
+:root.light pre .token.prolog,
+:root.light pre .token.doctype,
+:root.light pre .token.cdata {
+  color: #6e7781;
+}
+
+:root.light pre .token.punctuation {
+  color: #24292f;
+}
+
+:root.light pre .token.property,
+:root.light pre .token.tag,
+:root.light pre .token.boolean,
+:root.light pre .token.number,
+:root.light pre .token.constant,
+:root.light pre .token.symbol,
+:root.light pre .token.deleted {
+  color: #0550ae;
+}
+
+:root.light pre .token.selector,
+:root.light pre .token.attr-name,
+:root.light pre .token.string,
+:root.light pre .token.char,
+:root.light pre .token.builtin,
+:root.light pre .token.inserted {
+  color: #0a3069;
+}
+
+:root.light pre .token.operator,
+:root.light pre .token.entity,
+:root.light pre .token.url {
+  color: #0a3069;
+}
+
+:root.light pre .token.atrule,
+:root.light pre .token.attr-value,
+:root.light pre .token.keyword {
+  color: #cf222e;
+}
+
+:root.light pre .token.function,
+:root.light pre .token.class-name {
+  color: #8250df;
+}
+
+:root.light pre .token.regex,
+:root.light pre .token.important,
+:root.light pre .token.variable {
+  color: #953800;
+}
+
+/* Line numbers */
+.line-number {
+  display: inline-block;
+  width: 1.5rem;
+  text-align: right;
+  color: var(--text-muted);
+  margin-right: 1rem;
+  user-select: none;
+  opacity: 0.5;
+}

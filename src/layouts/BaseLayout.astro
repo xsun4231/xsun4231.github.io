@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Navbar from '../components/layout/Navbar.astro';
 import Footer from '../components/layout/Footer.astro';
+import SearchModal from '../components/ui/SearchModal.astro';
 
 interface Props {
   title: string;
@@ -25,7 +26,6 @@ const { title, description = 'XSun personal blog' } = Astro.props;
     <script is:inline>
       // eslint-disable-next-line prettier/prettier
       (function () {
-
         const t = localStorage.getItem('xsun-theme');
         const d = t === 'dark' || (!t && window.matchMedia('(prefers-color-scheme: dark)').matches);
         if (d) document.documentElement.classList.add('dark');
@@ -43,5 +43,6 @@ const { title, description = 'XSun personal blog' } = Astro.props;
       <slot />
     </main>
     <Footer />
+    <SearchModal />
   </body>
 </html>

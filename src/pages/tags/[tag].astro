@@ -1,0 +1,66 @@
+---
+import type { GetStaticPaths } from 'astro';
+import type { CollectionEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogList from '../../components/blog/BlogList.astro';
+
+export const getStaticPaths = (async () => {
+  const posts = await getCollection('blog');
+
+  // Get all unique tags
+  const allTags = [...new Set(posts.flatMap(post => post.data.tags))];
+
+  return allTags.map(tag => {
+    const filteredPosts = posts.filter(post => post.data.tags.includes(tag));
+
+    return {
+      params: { tag: tag.toLowerCase() },
+      props: { tag, posts: filteredPosts },
+    };
+  });
+}) satisfies GetStaticPaths;
+
+interface Props {
+  tag: string;
+  posts: CollectionEntry<'blog'>[];
+}
+
+const { tag, posts } = Astro.props;
+const sortedPosts = posts.sort(
+  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
+);
+---
+
+<BaseLayout
+  title={`Posts tagged "${tag}" - XSun`}
+  description={`All blog posts tagged with ${tag}`}
+>
+  <section class="py-16 border-b border-border">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center gap-2 text-text-muted mb-4">
+        <a href="/tags" class="hover:text-accent transition-colors">Tags</a>
+        <span>/</span>
+        <span class="text-text-primary">{tag}</span>
+      </div>
+      <h1 class="text-4xl md:text-5xl font-bold text-text-primary mb-4">
+        Posts tagged "<span class="text-accent">{tag}</span>"
+      </h1>
+      <p class="text-xl text-text-secondary">
+        {sortedPosts.length} article{sortedPosts.length !== 1 ? 's' : ''}
+      </p>
+    </div>
+  </section>
+
+  <section class="py-12">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <BlogList posts={sortedPosts} columns={2} />
+
+      <div class="mt-12 text-center">
+        <a href="/blog" class="text-accent hover:text-accent-hover transition-colors">
+          ← Back to all posts
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

@@ -1,0 +1,126 @@
+---
+
+---
+
+<div id="search-modal" class="fixed inset-0 z-50 hidden">
+  <div class="absolute inset-0 bg-bg-primary/80 backdrop-blur-sm" id="search-backdrop"></div>
+  <div class="relative flex items-start justify-center pt-[20vh] px-4">
+    <div
+      class="w-full max-w-2xl bg-bg-surface rounded-xl shadow-2xl border border-border overflow-hidden"
+    >
+      <div class="flex items-center gap-3 p-4 border-b border-border">
+        <svg class="w-5 h-5 text-text-muted" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+        </svg>
+        <input
+          type="text"
+          id="search-input"
+          placeholder="Search posts..."
+          class="flex-1 bg-transparent text-text-primary placeholder-text-muted outline-none text-lg"
+          autocomplete="off"
+        />
+        <kbd
+          class="hidden sm:block px-2 py-1 text-xs text-text-muted bg-bg-primary rounded border border-border"
+          >ESC</kbd
+        >
+      </div>
+      <div id="search-results" class="max-h-[50vh] overflow-y-auto p-2">
+        <div class="text-text-muted text-sm p-4 text-center">Type to search...</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  /* eslint-disable prettier/prettier */
+  import Fuse from 'fuse.js';
+
+  let fuse;
+  let searchData = [];
+
+  const modal = document.getElementById('search-modal');
+  const input = document.getElementById('search-input');
+  const results = document.getElementById('search-results');
+  const backdrop = document.getElementById('search-backdrop');
+
+  async function loadSearchData() {
+    const response = await fetch('/search-index.json');
+    searchData = await response.json();
+    fuse = new Fuse(searchData, {
+      keys: [
+        { name: 'title', weight: 2 },
+        { name: 'description', weight: 1 },
+        { name: 'tags', weight: 1.5 },
+      ],
+      threshold: 0.3,
+    });
+  }
+
+  function openModal() {
+    modal?.classList.remove('hidden');
+    input?.focus();
+    if (!fuse) loadSearchData();
+  }
+
+  function closeModal() {
+    modal?.classList.add('hidden');
+    if (input) input.value = '';
+    results.innerHTML =
+      '<div class="text-text-muted text-sm p-4 text-center">Type to search...</div>';
+  }
+
+  backdrop?.addEventListener('click', closeModal);
+
+  input?.addEventListener('input', e => {
+    const query = e.target.value;
+    if (!query.trim()) {
+      results.innerHTML =
+        '<div class="text-text-muted text-sm p-4 text-center">Type to search...</div>';
+      return;
+    }
+    if (fuse) {
+      const searchResults = fuse.search(query);
+      if (searchResults.length === 0) {
+        results.innerHTML =
+          '<div class="text-text-muted text-sm p-4 text-center">No results found</div>';
+        return;
+      }
+      let html = '';
+      for (const r of searchResults) {
+        html +=
+          '<a href="/blog/' +
+          r.item.slug +
+          '" class="block p-3 rounded-lg hover:bg-accent-subtle transition-colors">';
+        html += '<h3 class="text-text-primary font-medium">' + r.item.title + '</h3>';
+        html += '<p class="text-text-secondary text-sm mt-1">' + r.item.description + '</p>';
+        if (r.item.tags && r.item.tags.length > 0) {
+          html += '<div class="flex gap-2 mt-2">';
+          for (const tag of r.item.tags) {
+            html +=
+              '<span class="text-xs text-accent bg-accent-subtle px-2 py-0.5 rounded-full">' +
+              tag +
+              '</span>';
+          }
+          html += '</div>';
+        }
+        html += '</a>';
+      }
+      results.innerHTML = html;
+    }
+  });
+
+  document.addEventListener('keydown', e => {
+    if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+      e.preventDefault();
+      openModal();
+    }
+    if (e.key === 'Escape') closeModal();
+  });
+
+  window.openSearchModal = openModal;
+  /* eslint-enable prettier/prettier */
+</script>

@@ -1,0 +1,126 @@
+---
+import { getCollection, type CollectionEntry } from 'astro:content';
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import '/src/styles/code.css';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blog');
+  return posts.map(post => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+interface Props {
+  post: CollectionEntry<'blog'>;
+}
+
+const { post } = Astro.props;
+const { Content, headings } = await render(post);
+
+const formattedDate = post.data.publishDate.toLocaleDateString('zh-CN', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
+---
+
+<BaseLayout title={`${post.data.title} - XSun`} description={post.data.description}>
+  <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-[1fr_280px] gap-12">
+      <!-- Main Content -->
+      <article class="max-w-3xl min-w-0">
+        <!-- Header -->
+        <header class="mb-8 pb-8 border-b border-[var(--color-border)]">
+          <div class="flex flex-wrap gap-2 mb-4">
+            {
+              post.data.tags.map(tag => (
+                <a
+                  href={`/tags/${tag.toLowerCase()}`}
+                  class="px-3 py-1 text-sm bg-[var(--color-accent-subtle)] text-[var(--color-accent)] rounded-full hover:bg-[var(--color-accent)] hover:text-white transition-colors duration-200"
+                >
+                  {tag}
+                </a>
+              ))
+            }
+          </div>
+          <h1
+            class="text-3xl md:text-4xl font-bold text-[var(--color-text-primary)] mb-4 leading-tight"
+          >
+            {post.data.title}
+          </h1>
+          <time
+            class="text-[var(--color-text-muted)] block"
+            datetime={post.data.publishDate.toISOString()}
+          >
+            {formattedDate}
+          </time>
+        </header>
+
+        <!-- Content -->
+        <div
+          class="prose prose-lg max-w-none
+          prose-headings:text-[var(--color-text-primary)]
+          prose-p:text-[var(--color-text-secondary)]
+          prose-a:text-[var(--color-accent)] hover:prose-a:text-[var(--color-accent-hover)]
+          prose-strong:text-[var(--color-text-primary)]
+          prose-code:text-[var(--color-accent)]
+          prose-blockquote:border-l-[var(--color-accent)] prose-blockquote:text-[var(--color-text-muted)]
+          prose-li:text-[var(--color-text-secondary)]
+          prose-img:rounded-lg prose-img:shadow-md"
+        >
+          <Content />
+        </div>
+
+        <!-- Footer Navigation -->
+        <footer class="mt-12 pt-8 border-t border-[var(--color-border)]">
+          <div class="flex flex-wrap gap-4">
+            <a
+              href="/blog"
+              class="text-[var(--color-accent)] hover:text-[var(--color-accent-hover)] transition-colors font-medium"
+            >
+              ← Back to Blog
+            </a>
+            <a
+              href="/"
+              class="text-[var(--color-text-secondary)] hover:text-[var(--color-accent)] transition-colors font-medium"
+            >
+              ← Home
+            </a>
+          </div>
+        </footer>
+      </article>
+
+      <!-- Table of Contents (Desktop) -->
+      {
+        headings.length > 0 && (
+          <aside class="hidden lg:block">
+            <div class="sticky top-24 max-h-[calc(100vh-6rem)] overflow-y-auto pr-4">
+              <h2 class="text-sm font-semibold text-[var(--color-text-muted)] uppercase tracking-wider mb-4">
+                Table of Contents
+              </h2>
+              <nav class="space-y-1">
+                {headings
+                  .filter(h => h.depth <= 3)
+                  .map(heading => (
+                    <a
+                      href={`#${heading.slug}`}
+                      class:list={[
+                        'block text-sm transition-colors duration-200 py-1 border-l-2 pl-3 hover:text-[var(--color-accent)] hover:border-[var(--color-accent)]',
+                        heading.depth === 2
+                          ? 'text-[var(--color-text-secondary)] border-transparent'
+                          : 'text-[var(--color-text-muted)] border-transparent ml-2',
+                      ]}
+                    >
+                      {heading.text}
+                    </a>
+                  ))}
+              </nav>
+            </div>
+          </aside>
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>

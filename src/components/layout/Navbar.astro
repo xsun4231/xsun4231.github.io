@@ -1,15 +1,128 @@
 ---
 import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  currentPage?: string;
+}
+
+const { currentPage } = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Home' },
+  { href: '/blog', label: 'Blog' },
+  { href: '/about', label: 'About' },
+];
 ---
 
-<header class="border-b border-border bg-bg-surface/80 backdrop-blur sticky top-0 z-50">
-  <nav class="max-w-6xl mx-auto px-4 py-4 flex items-center justify-between">
-    <a href="/" class="text-accent font-bold text-xl">XSun</a>
-    <div class="flex items-center gap-6">
-      <a href="/" class="text-text-secondary hover:text-accent transition-colors">Home</a>
-      <a href="/blog" class="text-text-secondary hover:text-accent transition-colors">Blog</a>
-      <a href="/about" class="text-text-secondary hover:text-accent transition-colors">About</a>
-      <ThemeToggle />
+<header class="sticky top-0 z-50 border-b border-border bg-bg-surface/80 backdrop-blur-md">
+  <nav class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+      <!-- Logo -->
+      <a href="/" class="text-accent font-bold text-xl hover:text-accent-hover transition-colors">
+        XSun
+      </a>
+
+      <!-- Desktop Nav -->
+      <div class="hidden md:flex items-center gap-8">
+        {
+          navItems.map(item => (
+            <a
+              href={item.href}
+              class:list={[
+                'text-sm font-medium transition-colors',
+                currentPage === item.href ? 'text-accent' : 'text-text-secondary hover:text-accent',
+              ]}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
+
+      <!-- Right side actions -->
+      <div class="flex items-center gap-2">
+        <!-- Search trigger (Task 11 will add functionality) -->
+        <button
+          id="search-trigger"
+          class="p-2 rounded-lg text-text-secondary hover:text-accent hover:bg-accent-subtle transition-colors"
+          aria-label="Search"
+          onclick="window.openSearchModal?.()"
+        >
+          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+          </svg>
+        </button>
+
+        <ThemeToggle />
+
+        <!-- Mobile menu button -->
+        <button
+          id="mobile-menu-btn"
+          class="md:hidden p-2 rounded-lg text-text-secondary hover:text-accent hover:bg-accent-subtle transition-colors"
+          aria-label="Toggle menu"
+        >
+          <svg id="menu-icon" class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"></path>
+          </svg>
+          <svg
+            id="close-icon"
+            class="w-5 h-5 hidden"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Nav -->
+    <div id="mobile-menu" class="hidden md:hidden pb-4">
+      <div class="flex flex-col gap-2">
+        {
+          navItems.map(item => (
+            <a
+              href={item.href}
+              class:list={[
+                'px-3 py-2 rounded-lg text-sm font-medium transition-colors',
+                currentPage === item.href
+                  ? 'text-accent bg-accent-subtle'
+                  : 'text-text-secondary hover:text-accent hover:bg-accent-subtle',
+              ]}
+            >
+              {item.label}
+            </a>
+          ))
+        }
+      </div>
     </div>
   </nav>
 </header>
+
+<script>
+  /* eslint-disable prettier/prettier */
+  const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const menuIcon = document.getElementById('menu-icon');
+  const closeIcon = document.getElementById('close-icon');
+
+  mobileMenuBtn?.addEventListener('click', () => {
+    mobileMenu?.classList.toggle('hidden');
+    menuIcon?.classList.toggle('hidden');
+    closeIcon?.classList.toggle('hidden');
+  });
+  /* eslint-enable prettier/prettier */
+</script>

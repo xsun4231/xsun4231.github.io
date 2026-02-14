@@ -1,0 +1,20 @@
+---
+interface Props {
+  variant?: 'default' | 'bordered';
+  class?: string;
+}
+
+const { variant = 'default', class: className = '' } = Astro.props;
+
+const baseStyles = 'rounded-xl overflow-hidden transition-all duration-300';
+const variants = {
+  default: 'bg-bg-surface shadow-sm',
+  bordered: 'bg-transparent border border-border',
+};
+
+const finalClass = `${baseStyles} ${variants[variant]} ${className}`;
+---
+
+<div class={finalClass}>
+  <slot />
+</div>
